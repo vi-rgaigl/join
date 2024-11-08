@@ -1,0 +1,97 @@
+.button-blue {
+    background-color: var(--dark-blue);
+    color: white;
+    font-size: 21px;
+    font-weight: 700;
+    border: unset;
+    border-radius: 8px;
+    padding: 14px 24px;
+    cursor: pointer;
+}
+
+.button-blue:hover {
+    background-color: var(--light-blue);
+    box-shadow: var(--box-shadow);
+}
+
+.button-white {
+    background-color: white;
+    color: var(--dark-blue);
+    font-size: 21px;
+    font-weight: 700;
+    border: unset;
+    border: 1px solid var(--dark-blue);
+    border-radius: 8px;
+    padding: 14px 24px;
+    cursor: pointer;
+}
+
+.button-white:hover {
+    color: var(--light-blue);
+    border: 1px solid var(--light-blue);
+    box-shadow: var(--box-shadow)
+}
+
+a {
+    all: unset;
+    cursor: pointer;
+}
+
+.d-none {
+    display: none;
+}
+
+h1 {
+    font-size: 61px;
+    font-weight: 700;
+    margin: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    width: 100%
+}
+
+.input {
+    /* all: unset; */
+    border: 1px solid var(--light-grey);
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 12px 21px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.input:focus {
+    border: 1px solid var(--light-blue);
+}
+
+::placeholder {
+    color: var(--light-grey);
+}
+
+input[type='email'] {
+    background: url(../assets/img/mail.svg) no-repeat;
+    background-position: 97%;
+}
+
+input[type='password'] {
+    background: url(../assets/img/lock.svg) no-repeat;
+    background-position: 97%;
+}
+
+input[type='name'] {
+    background: url(../assets/img/person.svg) no-repeat;
+    background-position: 97%;
+}
+
+.select-arrow {
+    appearance: none;
+    background-image: url(../assets/img/select-arrow.svg);
+    background-repeat: no-repeat;
+    background-position: right 0.7rem top 50%;
+    background-size: 0.65rem auto;
+}
