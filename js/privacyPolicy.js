@@ -1,3 +1,4 @@
-function initPrivacyPolicyNoLogin() {
-    renderHeaderAndNavbarNoLogin();
-}
+// vorerst nicht nötig
+// function initPrivacyPolicyNoLogin() {
+//     renderHeaderAndNavbarNoLogin();
+// }

@@ -1,3 +1,4 @@
-function initLegalNoticeNoLogin() {
-    renderHeaderAndNavbarNoLogin();
-}
+// vorerst nicht nötig
+// function initLegalNoticeNoLogin() {
+//     renderHeaderAndNavbarNoLogin();
+// }
