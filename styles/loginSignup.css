@@ -25,6 +25,14 @@
     justify-content: end;
 }
 
+.header-signup {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: end;
+}
+
 .logo-login {
     position: absolute;
     width: 100px;
