@@ -74,23 +74,23 @@ form {
 }
 
 input[type='email'] {
-    background: url(../assets/img/mail.svg) no-repeat;
+    background: url(../assets/icons/mail.svg) no-repeat;
     background-position: 97%;
 }
 
 input[type='password'] {
-    background: url(../assets/img/lock.svg) no-repeat;
+    background: url(../assets/icons/lock.svg) no-repeat;
     background-position: 97%;
 }
 
 input[type='name'] {
-    background: url(../assets/img/person.svg) no-repeat;
+    background: url(../assets/icons/person.svg) no-repeat;
     background-position: 97%;
 }
 
 .select-arrow {
     appearance: none;
-    background-image: url(../assets/img/select-arrow.svg);
+    background-image: url(../assets/icons/select-arrow.svg);
     background-repeat: no-repeat;
     background-position: right 0.7rem top 50%;
     background-size: 0.65rem auto;
