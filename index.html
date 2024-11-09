@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./styles/navBarHeader.css">
     <link rel="stylesheet" href="./styles/loginSignup.css">
-    
+    <link rel="stylesheet" href="./styles/loginAnimation.css">
+
 
     <script src="./js/remoteStorage.js"></script>
     <script src="./js/login.js"></script>
@@ -23,50 +24,54 @@
 <body onload="initLogin();">
 
     <div class="index-body">
-
-        <div id="application-content">
-            <div id="login_body" class="login-body">
-                <div id="header-login" class="header-login">
-                    <img id="logo_login" class="logo-login" src="./assets/icons/logo-blue-small.svg" onclick="window.open('./summaryUser.html', '_self')" alt="Join Logo"> <!--summary.html only when user logged in-->
-                    <div class="signup-line">
-                        Not a Join user?
-                        <button class="button-blue" onclick="window.open('./signup.html', '_self')" class="signup-button-blue">Sign
-                            up</button>
-                    </div>
-                </div>
-                <div class="login-form-box login-form-pad-wd">
-                    <form onsubmit="return false;">
-                        <div class="headline">
-                            <h1>Log in</h1>
-                            <div class="underline-blue"></div>
-                        </div>
-                        <div class="input-line">
-                            <input class="input input-login-email" type="email" id="login_email" placeholder="Email">
-                            <input class="input input-login-password" type="password" id="login_password"
-                                placeholder="Password">
-                        </div>
-                        <div class="checkbox-line">
-                            <input type="checkbox" name="rememberme" id="login_checkbox">
-                            <label for="rememberme">Remember me</label>
-                        </div>
-                        <div class="button-line">
-                            <button class="button-blue" onclick="loginUser(1)">Log in</button>
-                            <button class="button-white" onclick="loginUser(0)">Guest Log in</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="signup-line-mobile">
-                    Not a Join user?
-                    <button class="button-blue" onclick="window.open('./signup.html', '_self')" class="signup-button-blue">Sign
-                        up</button>
-                </div>
-                <div class="footer-login">
-                    <a class="info-link" onclick="window.open('./privacyPolicy.html')" class="a-link">Privacy Policy</a>
-                    <a class="info-link" onclick="window.open('./legalNotice.html')" class="a-link">Legal notice</a>
-                </div>
+        <div id="header-login" class="header-login">
+            <img id="logo-login" class="logo-login" src="./assets/icons/logo-blue-small.svg"
+                onclick="window.open('./summaryUser.html', '_self')" alt="Join Logo">
+            <!--summary.html only when user logged in-->
+            <div class="signup-line">
+                Not a Join user?
+                <button class="button-blue" onclick="window.open('./signup.html', '_self')"
+                    class="signup-button-blue">Sign
+                    up</button>
             </div>
-
         </div>
+
+        <div id="login-body" class="login-body">
+
+            <div id="login-form-box" class="login-form-box login-form-pad-wd">
+                <form onsubmit="return false;">
+                    <div class="headline">
+                        <h1>Log in</h1>
+                        <div class="underline-blue"></div>
+                    </div>
+                    <div class="input-line">
+                        <input class="input input-login-email" type="email" id="login_email" placeholder="Email">
+                        <input class="input input-login-password" type="password" id="login_password"
+                            placeholder="Password">
+                    </div>
+                    <div class="checkbox-line">
+                        <input type="checkbox" name="rememberme" id="login_checkbox">
+                        <label for="rememberme">Remember me</label>
+                    </div>
+                    <div class="button-line">
+                        <button class="button-blue" onclick="loginUser(1)">Log in</button>
+                        <button class="button-white" onclick="loginUser(0)">Guest Log in</button>
+                    </div>
+                </form>
+            </div>
+            <div class="signup-line-mobile">
+                Not a Join user?
+                <button class="button-blue" onclick="window.open('./signup.html', '_self')"
+                    class="signup-button-blue">Sign
+                    up</button>
+            </div>
+            <div class="footer-login">
+                <a class="info-link" onclick="window.open('./privacyPolicy.html')" class="a-link">Privacy Policy</a>
+                <a class="info-link" onclick="window.open('./legalNotice.html')" class="a-link">Legal notice</a>
+            </div>
+        </div>
+
+
 
 </body>
 
