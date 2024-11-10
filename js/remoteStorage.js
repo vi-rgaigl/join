@@ -1,5 +1,5 @@
 let Base_URL =
-  "https://join-test-380c6-default-rtdb.europe-west1.firebasedatabase.app/";
+  "https://join-a8a87-default-rtdb.europe-west1.firebasedatabase.app/";
 
 /**
  * Gets all data in a list
