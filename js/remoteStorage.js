@@ -46,15 +46,13 @@ function getArrayOfData(json) {
 async function pushData(endpoint, data) {
   let url = `${Base_URL}${endpoint}.json`;
   try {
-    let response = await fetch(url, {
+    await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
-    let newId = await response.json();
-    return { id: newId.name, ...data };
   } catch (error) {
     throw error;
   }
