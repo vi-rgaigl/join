@@ -1,7 +1,7 @@
 .content-top {
-  padding-top: 80px;
-  padding-left: 64px;
-  padding-right: 64px;
+  margin-top: 80px;
+  margin-left: 64px;
+  margin-right: 64px;
 }
 
 .content-top-menue {
@@ -30,4 +30,58 @@
 .button-add-img {
   height: 18px;
   width: 18px;
+}
+
+.content-data {
+  margin-top: 45px;
+  margin-left: 64px;
+  margin-right: 64px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.content-data-row {
+  width: 100%;
+}
+
+.data-row-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--dark-grey);
+  font-weight: 700;
+  width: 100%;
+}
+
+.categories {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.data-row-title img {
+  height: 24px;
+  cursor: pointer;
+}
+
+.plus-button {
+  height: 24px;
+  width: 24px;
+  border: 2px solid black;
+  color: black;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.plus-button:hover {
+  border: 2px solid var(--light-blue);
+  color: black;
+}
+
+.plus-button p {
+  padding: 0;
+  margin: 0;
 }

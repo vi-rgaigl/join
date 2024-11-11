@@ -13,19 +13,9 @@
     <link rel="stylesheet" href="./styles/standard.css" />
     <link rel="stylesheet" href="./styles/navBarHeader.css" />
     <link rel="stylesheet" href="./styles/board.css" />
-
-    <script src="./js/remoteStorage.js"></script>
-    <script src="./templates/header.template.js"></script>
-    <script src="./templates/navBar.template.js"></script>
-    <script src="./js/navBarHeader.js"></script>
-    <script src="./js/summaryUser.js"></script>
-    <script src="./js/addTask.js"></script>
-    <script src="./js/board.js"></script>
-    <script src="./js/contacts.js"></script>
-    <script src="./script.js"></script>
   </head>
 
-  <body onload="init(3)">
+  <body onload="init(3);loadData()">
     <div class="application-main">
       <div id="navbar-container" class="navbar-container"></div>
 
@@ -49,11 +39,42 @@
               </div>
             </div>
           </div>
+          <div class="content-data">
+            <div class="content-data-row">
+              <div class="data-row-title">
+                To do
+                <img src="./assets/icons/plus-button.svg" alt="plus_button" />
+              </div>
+            </div>
+            <div class="content-data-row">
+              <div class="data-row-title">
+                In progess
+                <img src="./assets/icons/plus-button.svg" alt="plus_button" />
+              </div>
+            </div>
+            <div class="content-data-row">
+              <div class="data-row-title">
+                Await Feedback
+                <img src="./assets/icons/plus-button.svg" alt="plus_button" />
+              </div>
+            </div>
+            <div class="content-data-row">
+              <div class="data-row-title">Done</div>
+            </div>
+          </div>
 
           <!-- TODO -->
         </div>
       </div>
       <div id="navbar-container-mobile" class="navbar-container-mobile"></div>
     </div>
+
+    <script src="./js/remoteStorage.js"></script>
+    <script src="./templates/header.template.js"></script>
+    <script src="./templates/navBar.template.js"></script>
+    <script src="./templates/board.template.js"></script>
+    <script src="./js/navBarHeader.js"></script>
+    <script src="./js/board.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
