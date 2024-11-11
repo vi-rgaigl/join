@@ -7,10 +7,17 @@
   flex: 1;
 }
 
-.content-top {
-  margin-top: 80px;
+.mx-64 {
   margin-left: 64px;
   margin-right: 64px;
+}
+
+.mt-16 {
+  margin-top: 16px;
+}
+
+.content-top {
+  margin-top: 80px;
 }
 
 .content-top-menue {
@@ -43,8 +50,6 @@
 }
 
 .layout-rows {
-  margin-left: 64px;
-  margin-right: 64px;
   display: flex;
   justify-content: space-between;
   gap: 24px;
@@ -97,4 +102,16 @@
 .plus-button p {
   padding: 0;
   margin: 0;
+}
+
+.cardNoTask {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed #a8a8a8;
+  border-radius: 10px;
+  box-shadow: 0px 0px 4px 0px #00000029;
+  background-color: #e7e7e7;
+  height: 48px;
+  color: #a8a8a8;
 }
