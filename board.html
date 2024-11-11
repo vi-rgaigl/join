@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>myJoin</title>
-    <link rel="shortcut icon" href="./assets/icons/logo-blue-small.svg" type="image/x-icon">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./styles/standard.css">
-    <link rel="stylesheet" href="./styles/navBarHeader.css">
-    <link rel="stylesheet" href="./styles/board.css">
+    <link
+      rel="shortcut icon"
+      href="./assets/icons/logo-blue-small.svg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./styles/standard.css" />
+    <link rel="stylesheet" href="./styles/navBarHeader.css" />
+    <link rel="stylesheet" href="./styles/board.css" />
 
     <script src="./js/remoteStorage.js"></script>
     <script src="./templates/header.template.js"></script>
@@ -20,29 +23,37 @@
     <script src="./js/board.js"></script>
     <script src="./js/contacts.js"></script>
     <script src="./script.js"></script>
+  </head>
 
-</head>
-
-<body onload="init(3)">
-
-
+  <body onload="init(3)">
     <div class="application-main">
-        <div id="navbar-container" class="navbar-container"></div>
+      <div id="navbar-container" class="navbar-container"></div>
 
-        <div class="application-main-content">
-            <header id="header-container" class="header"></header>
+      <div class="application-main-content">
+        <header id="header-container" class="header"></header>
 
-            <div id="application-content">
-
-                <h1>Board</h1>
-
-                <!-- TODO -->
-
+        <div id="application-content">
+          <div class="content-top">
+            <div class="content-top-menue">
+              <h1>Board</h1>
+              <div class="content-top-menue-right">
+                <input class="input input-search" type="text" />
+                <button class="button-blue button-add">
+                  Add Task
+                  <img
+                    class="button-add-img"
+                    src="./assets/icons/add.svg"
+                    alt="add_Symbol"
+                  />
+                </button>
+              </div>
             </div>
+          </div>
+
+          <!-- TODO -->
         </div>
-        <div id="navbar-container-mobile" class="navbar-container-mobile"></div>
+      </div>
+      <div id="navbar-container-mobile" class="navbar-container-mobile"></div>
     </div>
-
-</body>
-
+  </body>
 </html>

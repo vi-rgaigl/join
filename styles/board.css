@@ -1,0 +1,33 @@
+.content-top {
+  padding-top: 80px;
+  padding-left: 64px;
+  padding-right: 64px;
+}
+
+.content-top-menue {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content-top-menue-right {
+  height: 48px;
+  display: flex;
+  gap: 32px;
+}
+
+.input-search {
+  width: 312px;
+}
+
+.button-add {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+}
+
+.button-add-img {
+  height: 18px;
+  width: 18px;
+}
