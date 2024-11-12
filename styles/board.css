@@ -3,6 +3,14 @@
   flex-direction: column;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
 .flex-1 {
   flex: 1;
 }
@@ -16,12 +24,24 @@
   margin-top: 16px;
 }
 
+.header-board {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+@media (max-width: 560px) {
+  .header-board {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
 .overflow {
   overflow: hidden;
 }
 
 .content-top {
-  margin-top: 80px;
+  padding-top: 80px;
 }
 
 .content-top-menue {
@@ -61,7 +81,7 @@
 
 .content-data {
   padding: 0 64px;
-  margin-top: 16px;
+  padding-top: 16px;
 }
 
 .content-data-row {

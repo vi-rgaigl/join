@@ -16,60 +16,58 @@
   </head>
 
   <body onload="init(3);loadData();">
-    <div class="application-main">
+    <div class="application-main overflow-hidden">
       <div id="navbar-container" class="navbar-container"></div>
       <div class="application-main-content flex-column">
-        <header id="header-container" class="header"></header>
-        <div class="flex-column flex-1">
-          <div class="content-top">
-            <div class="content-top-menue mx-64">
-              <h1>Board</h1>
-              <div class="content-top-menue-right">
-                <input class="input input-search" type="text" />
-                <button class="button-blue button-add">
-                  Add Task
-                  <img
-                    class="button-add-img"
-                    src="./assets/icons/add.svg"
-                    alt="add_Symbol"
-                  />
-                </button>
-              </div>
-            </div>
-            <div class="layout-rows mx-64">
-              <div class="data-row-title">
-                To do
+        <header id="header-container" class="header header-board"></header>
+        <div class="content-top">
+          <div class="content-top-menue mx-64">
+            <h1>Board</h1>
+            <div class="content-top-menue-right">
+              <input class="input input-search" type="text" />
+              <button class="button-blue button-add">
+                Add Task
                 <img
-                  src="./assets/icons/plus-button.svg"
-                  alt="plus_button"
-                  onclick="addTask('ToDo')"
+                  class="button-add-img"
+                  src="./assets/icons/add.svg"
+                  alt="add_Symbol"
                 />
-              </div>
-              <div class="data-row-title">
-                In progress
-                <img
-                  src="./assets/icons/plus-button.svg"
-                  alt="plus_button"
-                  onclick="addTask('InProgess')"
-                />
-              </div>
-              <div class="data-row-title">
-                Await feedback
-                <img
-                  src="./assets/icons/plus-button.svg"
-                  alt="plus_button"
-                  onclick="addTask('AwaitFeedback')"
-                />
-              </div>
-              <div class="data-row-title">Done</div>
+              </button>
             </div>
           </div>
-          <div class="layout-rows content-data">
-            <div id="rowToDo" class="content-data-row"></div>
-            <div id="rowInProgess" class="content-data-row"></div>
-            <div id="rowAwaitFeedback" class="content-data-row"></div>
-            <div id="rowDone" class="content-data-row"></div>
+          <div class="layout-rows mx-64">
+            <div class="data-row-title">
+              To do
+              <img
+                src="./assets/icons/plus-button.svg"
+                alt="plus_button"
+                onclick="addTask('ToDo')"
+              />
+            </div>
+            <div class="data-row-title">
+              In progress
+              <img
+                src="./assets/icons/plus-button.svg"
+                alt="plus_button"
+                onclick="addTask('InProgess')"
+              />
+            </div>
+            <div class="data-row-title">
+              Await feedback
+              <img
+                src="./assets/icons/plus-button.svg"
+                alt="plus_button"
+                onclick="addTask('AwaitFeedback')"
+              />
+            </div>
+            <div class="data-row-title">Done</div>
           </div>
+        </div>
+        <div class="layout-rows content-data overflow-auto">
+          <div id="rowToDo" class="content-data-row"></div>
+          <div id="rowInProgess" class="content-data-row"></div>
+          <div id="rowAwaitFeedback" class="content-data-row"></div>
+          <div id="rowDone" class="content-data-row"></div>
         </div>
       </div>
       <div id="navbar-container-mobile" class="navbar-container-mobile"></div>
