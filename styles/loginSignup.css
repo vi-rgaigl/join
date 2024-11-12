@@ -65,6 +65,13 @@
     display: none;
 }
 
+.button-blue:disabled {
+    pointer-events: none;
+    background-color: var(--dark-blue);
+    opacity: .8;
+    cursor: not-allowed;
+}
+
 .signup-button-blue {
     background-color: var(--dark-blue);
     color: white;
