@@ -56,3 +56,33 @@
         opacity: 1;
     }
 }
+
+@media (max-width: 560px) {
+    @keyframes logo-position {
+        0% {
+        }
+    
+    
+        100% {
+            width: 70px;
+            height: 100px;
+            top: 60px;
+            left: 46px;
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    @keyframes logo-position {
+        0% {
+        }
+    
+    
+        100% {
+            width: 50px;
+            height: 90px;
+            top: 45px;
+            left: 36px;
+        }
+    }
+}

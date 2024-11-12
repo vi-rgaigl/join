@@ -30,7 +30,7 @@
     top: 0;
     width: 100vw;
     display: flex;
-    justify-content: end;
+    justify-content: start;
 }
 
 .logo-login {
@@ -41,6 +41,13 @@
     left: 77px;
     opacity: 1;
     z-index: 5;
+}
+.logo-signup {
+    position: absolute;
+    width: 100px;
+    height: 120px;
+    top: 80px;
+    left: 77px;
 }
 
 .signup-line {
@@ -96,8 +103,15 @@
 }
 
 .login-form-pad-wd {
-    width: 35vw;
-    padding: 48px 115px;
+    width: 55vw;
+    height: 50vh;
+    padding: 48px 115px 98px 115px;
+}
+
+.signup-form-pad-wd {
+    width: 55vw;
+    height: 66vh;
+    padding: 48px 115px 98px 115px;
 }
 
 .form-header-signup {
@@ -172,9 +186,25 @@
         font-size: 20px;
         font-weight: 400;
     }
+    .logo-login {
+        height: 120px;
+        top: 70px;
+        left: 67px;
+    }
+    .logo-signup {
+        height: 120px;
+        top: 70px;
+        left: 67px;
+    }
     .login-form-pad-wd {
-        width: 56vw;
+        width: 65vw;
+        height: 40vh;
         padding: 32px 72px;
+    }
+    .signup-form-pad-wd {
+        width: 64vw;
+        height: 55vh;
+        padding: 48px 64px 98px 64px;
     }
 }
 
@@ -182,16 +212,26 @@
     .form-header-signup {
         width: 100%;
     }
+
     .login-form-pad-wd {
-        width: 80vw;
+        width: 85vw;
+        height: 55vh;
         padding: 28px 24px;
     }
+    .signup-form-pad-wd {
+        width: 90vw;
+        height: 68vh;
+        padding: 14px 24px 51px 24px;
+    }
     .logo-login {
-        position: relative;
-        width: 100px;
         height: 90px;
         top: 20px;
         left: 20px;
+    }
+    .logo-signup {
+        height: 90px;
+        top: 20px;
+        left: 0px;
     }
     .footer-login {
         bottom: 24px;
@@ -200,19 +240,28 @@
 }
 
 @media (max-width: 360px) {
-    .join-container {
+    .login-form-box {
         border-radius: 16px;
     }
     .login-form-pad-wd {
-        width: 85vw;
+        width: 95vw;
+        height: 58vh;
         padding: 16px 10px;
     }
+    .signup-form-pad-wd {
+        width: 90vw;
+        height: 74vh;
+        padding: 14px 24px 51px 24px;
+    }
     .logo-login {
-        position: relative;
-        width: 100px;
         height: 60px;
         top: 20px;
         left: 10px;
+    }
+    .logo-signup {
+        height: 60px;
+        top: 20px;
+        left: 0px;
     }
     .footer-login {
         bottom: 12px;
