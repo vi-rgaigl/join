@@ -30,17 +30,7 @@ function getTemplateCard(task, contacts) {
                   ${getSubtasks(task.subtasks)}
                 
                 <div class="card-footer">
-                  <div class="card-footer-assign">
-                    <div class="assign-name" style="background-color: #ff7a00">
-                      AM
-                    </div>
-                    <div class="assign-name" style="background-color: #1fd7c1">
-                      EM
-                    </div>
-                    <div class="assign-name" style="background-color: #462f8a">
-                      MB
-                    </div>
-                  </div>
+  ${getAssignName(task.assignedTo, contacts)}
                   <div class="card-footer-prio">
                   <img
                       src="./assets/icons/${task.prio}-priority-small-color.svg"
@@ -52,7 +42,7 @@ function getTemplateCard(task, contacts) {
 }
 
 function getDescription(text) {
-  return text.length > 40 ? text.slice(0, 40) + "..." : text;
+  return text.length > 40 ? text.slice(0, 45) + "..." : text;
 }
 
 function getSubtasks(subtasks) {
@@ -88,4 +78,30 @@ function getCategory(category) {
     default:
       return "";
   }
+}
+
+function getAssignName(listOfAssign, contacts) {
+  let beginn = `<div class="card-footer-assign">`;
+  let end = `</div>`;
+  listOfAssign.forEach((assignId) => {
+    let assignedContact = getAssignedContact(assignId, contacts);
+    beginn += ` <div class="assign-name" style="background-color: ${
+      assignedContact.color
+    }">
+                  ${getNameCode(assignedContact.name)}
+                </div>`;
+  });
+  return beginn + end;
+}
+
+function getAssignedContact(assignId, contacts) {
+  return contacts.find((contact) => {
+    return contact.id === assignId;
+  });
+}
+
+function getNameCode(name) {
+  const woerter = name.split(" ");
+  const initialen = woerter.map((wort) => wort.charAt(0).toUpperCase());
+  return initialen.join("");
 }
