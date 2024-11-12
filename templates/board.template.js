@@ -1,38 +1,3 @@
-let templateTask = `<div class="cardTask">
-                <div class="card-category category-UserStory">User Stroy</div>
-                <div class="card-title">
-                  Kochwelt Page & Recipe Recommender
-                  <div class="card-description">
-                    Build start page with recipe recommendation...
-                  </div>
-                </div>
-                <div class="card-subtasks">
-                  <div class="progressContainer">
-                    <div class="progressBar" style="width: 50%"></div>
-                  </div>
-                  <p class="card-subtasks-text">1/2 Subtasks</p>
-                </div>
-                <div class="card-footer">
-                  <div class="card-footer-assign">
-                    <div class="assign-name" style="background-color: #ff7a00">
-                      AM
-                    </div>
-                    <div class="assign-name" style="background-color: #1fd7c1">
-                      EM
-                    </div>
-                    <div class="assign-name" style="background-color: #462f8a">
-                      MB
-                    </div>
-                  </div>
-                  <div class="card-footer-prio">
-                    <img
-                      src="./assets/icons/medium-priority-small-color.svg"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </div>`;
-
 function getTemplateCards(list, tasks, contacts) {
   let tasksOfList = findTasks(list, tasks);
   if (tasksOfList.length > 0) {
@@ -53,8 +18,8 @@ function findTasks(list, tasks) {
 }
 
 function getTemplateCard(task, contacts) {
-  return `<div class="cardTask">
-                <div class="card-category category-UserStory">User Stroy</div>
+  return /*HTML*/ `<div class="cardTask">
+                ${getCategory(task.category)}
                 <div class="card-title">
                   ${task.title}
                   <div class="card-description">
@@ -94,18 +59,33 @@ function getSubtasks(subtasks) {
   if (subtasks === false) {
     return "";
   } else {
-    console.log(subtasks);
     let numbersSubtasks = subtasks.length;
-    let numbersSubtasksDone = 0;
-    subtasks.forEach((subtask) => {
-      if (subtask.done) {
-        numbersSubtasksDone++;
-      }
-    });
+    let numbersSubtasksDone = getNumbersOfDoneTasks(subtasks);
     let percent = (numbersSubtasksDone / numbersSubtasks) * 100;
-    return `<div class="card-subtasks"><div class="progressContainer">
+    return /*HTML*/ `<div class="card-subtasks"><div class="progressContainer">
                     <div class="progressBar" style="width: ${percent}%"></div>
                   </div>
                   <p class="card-subtasks-text">${numbersSubtasksDone}/${numbersSubtasks} Subtasks</p></div>`;
+  }
+}
+
+function getNumbersOfDoneTasks(subtasks) {
+  let numbersSubtasksDone = 0;
+  subtasks.forEach((subtask) => {
+    if (subtask.done) {
+      numbersSubtasksDone++;
+    }
+  });
+  return numbersSubtasksDone;
+}
+
+function getCategory(category) {
+  switch (category) {
+    case "user-story":
+      return `<div class="card-category category-UserStory">User Stroy</div>`;
+    case "technical-task":
+      return `<div class="card-category category-Technicaltask">Technical Task</div>`;
+    default:
+      return "";
   }
 }
