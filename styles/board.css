@@ -16,6 +16,10 @@
   margin-top: 16px;
 }
 
+.overflow {
+  overflow: hidden;
+}
+
 .content-top {
   margin-top: 80px;
 }
@@ -56,11 +60,15 @@
 }
 
 .content-data {
-  flex: 1;
+  padding: 0 64px;
+  margin-top: 16px;
 }
 
 .content-data-row {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .data-row-title {
