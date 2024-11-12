@@ -5,8 +5,6 @@ async function loadData() {
   try {
     tasks = await getData("tasks");
     contacts = await getData("contacts");
-    console.log(tasks);
-    console.log(contacts);
     renderTasks();
   } catch (error) {
     console.warn(error);
