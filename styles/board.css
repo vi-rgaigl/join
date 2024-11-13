@@ -1,0 +1,293 @@
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.mx-64 {
+  margin-left: 64px;
+  margin-right: 64px;
+}
+
+.mt-16 {
+  margin-top: 16px;
+}
+
+.header-board {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+@media (max-width: 560px) {
+  .header-board {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+.overflow {
+  overflow: hidden;
+}
+
+.content-top {
+  padding-top: 80px;
+}
+
+.content-top-menue {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 45px;
+}
+
+.content-top-menue-right {
+  height: 48px;
+  display: flex;
+  gap: 32px;
+}
+
+.input-search {
+  width: 312px;
+}
+
+.button-add {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+}
+
+.button-add-img {
+  height: 18px;
+  width: 18px;
+}
+
+.layout-rows {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.content-data {
+  padding: 0 64px;
+  padding-top: 16px;
+}
+
+.content-data-row {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.data-row-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--dark-grey);
+  font-weight: 700;
+  width: 100%;
+}
+
+.categories {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.data-row-title img {
+  height: 24px;
+  cursor: pointer;
+}
+
+.plus-button {
+  height: 24px;
+  width: 24px;
+  border: 2px solid black;
+  color: black;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.plus-button:hover {
+  border: 2px solid var(--light-blue);
+  color: black;
+}
+
+.plus-button p {
+  padding: 0;
+  margin: 0;
+}
+
+.cardNoTask {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed #a8a8a8;
+  border-radius: 10px;
+  box-shadow: 0px 0px 4px 0px #00000029;
+  background-color: #e7e7e7;
+  height: 48px;
+  color: #a8a8a8;
+}
+
+.cardTask {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 3px #00000014;
+  padding: 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.card-category {
+  padding: 4px 16px;
+  border-radius: 8px;
+  color: white;
+}
+
+.category-UserStory {
+  background-color: #0038ff;
+}
+
+.category-Technicaltask {
+  background-color: #1fd7c1;
+}
+
+.card-title {
+  font-weight: 700;
+}
+
+.card-description {
+  color: #a8a8a8;
+  font-weight: 400;
+  padding-top: 8px;
+}
+
+.card-subtasks {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progressContainer {
+  width: 100%;
+  background-color: #cccccc;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  height: 8px;
+}
+
+.progressBar {
+  height: 8px;
+  background-color: #4589ff;
+}
+
+.card-subtasks-text {
+  font-size: 12px;
+  text-wrap: nowrap;
+  margin-left: 10px;
+}
+
+.card-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-footer-assign {
+  display: flex;
+}
+
+.assign-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 12px;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  border: 1px solid #ffffff;
+}
+
+.card-footer-assign > .assign-name:not(:first-child) {
+  margin-left: -6px;
+}
+
+.card-footer-prio {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-footer-prio img {
+  width: 50%;
+}
+
+.on-dragging {
+  transform: rotate(5deg);
+}
+
+.drag-area {
+  display: none;
+  border-radius: 10px;
+}
+
+.drag-area-active {
+  display: block;
+  padding-top: 160px;
+  border: 2px dashed lightgray;
+}
+
+.drag-area-active-highlight {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.overflow-auto {
+  --sb-track-color: #f6f7f8;
+  --sb-thumb-color: #2a3647;
+  --sb-size: 8px;
+}
+
+.overflow-auto::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.overflow-auto::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 8px;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 8px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .overflow-auto {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}

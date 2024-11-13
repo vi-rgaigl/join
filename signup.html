@@ -19,55 +19,54 @@
 
 </head>
 
-<body onload="initLogin();">
+<body onload="">
 
     <div class="index-body">
-
-        <div id="application-content">
-            <div id="login_body" class="login-body">
-                <div id="header-login" class="header-login">
-                    <img id="logo_login" class="logo-login" src="./assets/icons/logo-blue-small.svg" alt="Join Logo">
-                </div>
-                <div class="join-container login-form-pad-wd">
-                    <form onsubmit="registerUser(); return false;">
-                        <div class="form-header-signup">
-                            <div class="back-to-login">
-                                <a href="./index.html"><img class="back-to-login-img"
-                                        src="./assets/icons/arrow-left-line.svg" alt="Back to Login"></a>
-                            </div>
-                            <div class="headline">
-                                <h1>Sign up</h1>
-                                <div class="underline-blue"></div>
-                            </div>
-                        </div>
-                        <div class="input-line">
-                            <input class="input input-login-text" type="name" id="signup_name" placeholder="Name"
-                                required>
-                            <input class="input input-login-email" type="email" id="signup_email" placeholder="Email"
-                                required>
-                            <input class="input input-login-password" type="password" id="signup_password"
-                                placeholder="Password" required>
-                            <input class="input input-login-password" type="password" id="confirm_password"
-                                placeholder="Confirm Password" required>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="privacy" id="policy_checkbox">
-                            <label for="privacy">I accept the <a href="#" id="confirm_privacy_link">Privacy
-                                    Policy</a></label>
-                        </div>
-                        <div>
-                            <input type="submit" class="button-blue" id="signup_button" value="Sign up"
-                                onclick="location.href='./index.html'" />
-                        </div>
-                    </form>
-                </div>
-                <div class="footer-login">
-                    <a class="info-link" onclick="window.open('./privacyPolicy.html')" class="a-link">Privacy Policy</a>
-                    <a class="info-link" onclick="window.open('./legalNotice.html')" class="a-link">Legal notice</a>
-                </div>
-            </div>
-
+        <div id="header-login" class="header-signup">
+            <img id="logo_login" class="logo-signup" src="./assets/icons/logo-blue-small.svg" alt="Join Logo">
         </div>
+
+        <div id="login_body" class="login-body">
+
+            <div class="login-form-box signup-form-pad-wd">
+                <form onsubmit="registerUser(); return false;">
+                    <div class="form-header-signup">
+                        <div class="back-to-login">
+                            <a href="./index.html"><img class="back-to-login-img"
+                                    src="./assets/icons/arrow-left-line.svg" alt="Back to Login"></a>
+                        </div>
+                        <div class="headline">
+                            <h1>Sign up</h1>
+                            <div class="underline-blue"></div>
+                        </div>
+                    </div>
+                    <div class="input-line">
+                        <input class="input input-login-text" type="name" id="signup_name" placeholder="Name" required>
+                        <input class="input input-login-email" type="email" id="signup_email" placeholder="Email"
+                            required>
+                        <input class="input input-login-password" type="password" id="signup_password"
+                            placeholder="Password" required>
+                        <input class="input input-login-password" type="password" id="confirm_password"
+                            placeholder="Confirm Password" required>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="privacy" id="policy_checkbox">
+                        <label for="privacy">I accept the <a href="#" id="confirm_privacy_link">Privacy
+                                Policy</a></label>
+                    </div>
+                    <div>
+                        <input type="submit" class="button-blue" id="signup_button" value="Sign up"
+                            onclick="location.href='./index.html'" />
+                    </div>
+                </form>
+            </div>
+            <div class="footer-login">
+                <a class="info-link" onclick="window.open('./privacyPolicy.html')" class="a-link">Privacy Policy</a>
+                <a class="info-link" onclick="window.open('./legalNotice.html')" class="a-link">Legal notice</a>
+            </div>
+        </div>
+
+
 
 </body>
 

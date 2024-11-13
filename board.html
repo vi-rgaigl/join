@@ -1,48 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>myJoin</title>
-    <link rel="shortcut icon" href="./assets/icons/logo-blue-small.svg" type="image/x-icon">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./styles/standard.css">
-    <link rel="stylesheet" href="./styles/navBarHeader.css">
-    <link rel="stylesheet" href="./styles/board.css">
+    <link
+      rel="shortcut icon"
+      href="./assets/icons/logo-blue-small.svg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./styles/standard.css" />
+    <link rel="stylesheet" href="./styles/navBarHeader.css" />
+    <link rel="stylesheet" href="./styles/board.css" />
+  </head>
+
+  <body onload="init(3);initLoadData();">
+    <div class="application-main overflow-hidden">
+      <div id="navbar-container" class="navbar-container"></div>
+      <div class="application-main-content flex-column">
+        <header id="header-container" class="header header-board"></header>
+        <div class="content-top">
+          <div class="content-top-menue mx-64">
+            <h1>Board</h1>
+            <div class="content-top-menue-right">
+              <input class="input input-search" type="text" />
+              <button class="button-blue button-add">
+                Add Task
+                <img
+                  class="button-add-img"
+                  src="./assets/icons/add.svg"
+                  alt="add_Symbol"
+                />
+              </button>
+            </div>
+          </div>
+          <div class="layout-rows mx-64">
+            <div class="data-row-title">
+              To do
+              <img
+                src="./assets/icons/plus-button.svg"
+                alt="plus_button"
+                onclick="addTask('ToDo')"
+              />
+            </div>
+            <div class="data-row-title">
+              In progress
+              <img
+                src="./assets/icons/plus-button.svg"
+                alt="plus_button"
+                onclick="addTask('InProgess')"
+              />
+            </div>
+            <div class="data-row-title">
+              Await feedback
+              <img
+                src="./assets/icons/plus-button.svg"
+                alt="plus_button"
+                onclick="addTask('AwaitFeedback')"
+              />
+            </div>
+            <div class="data-row-title">Done</div>
+          </div>
+        </div>
+        <div class="layout-rows content-data overflow-auto">
+          <div
+            id="to-do"
+            class="content-data-row"
+            ondrop="moveTo('to-do')"
+            ondragleave="removeHighlight('to-do')"
+            ondragover="allowDrop(event); highlight('to-do')"
+          ></div>
+          <div
+            id="in-progress"
+            class="content-data-row"
+            ondrop="moveTo('in-progress')"
+            ondragleave="removeHighlight('in-progress')"
+            ondragover="allowDrop(event); highlight('in-progress')"
+          ></div>
+          <div
+            id="await-feedback"
+            class="content-data-row"
+            ondrop="moveTo('await-feedback')"
+            ondragleave="removeHighlight('await-feedback')"
+            ondragover="allowDrop(event); highlight('await-feedback')"
+          ></div>
+          <div
+            id="done"
+            class="content-data-row"
+            ondrop="moveTo('done')"
+            ondragleave="removeHighlight('done')"
+            ondragover="allowDrop(event); highlight('done')"
+          ></div>
+        </div>
+      </div>
+      <div id="navbar-container-mobile" class="navbar-container-mobile"></div>
+    </div>
 
     <script src="./js/remoteStorage.js"></script>
     <script src="./templates/header.template.js"></script>
     <script src="./templates/navBar.template.js"></script>
+    <script src="./templates/board.template.js"></script>
     <script src="./js/navBarHeader.js"></script>
-    <script src="./js/summaryUser.js"></script>
-    <script src="./js/addTask.js"></script>
     <script src="./js/board.js"></script>
-    <script src="./js/contacts.js"></script>
     <script src="./script.js"></script>
-
-</head>
-
-<body onload="init(3)">
-
-    <div class="application-body">
-
-        <div class="application-main">
-            <div id="navbar-container" class="navbar-container"></div>
-
-            <div class="application-main-content">
-                <header id="header-container" class="header"></header>
-
-                <div id="application-content">
-
-                    <h1>Board</h1>
-                   
-                    <!-- TODO -->
-
-                </div>
-            </div>
-            <div id="navbar-container-mobile" class="navbar-container-mobile"></div>
-        </div>
-    </div>
-
-</body>
+  </body>
 </html>

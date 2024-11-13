@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,19 +25,19 @@
 
 <body onload="init(4), renderUserList();">
 
-    <div class="application-body">
 
-        <div class="application-main">
-            <div id="navbar-container" class="navbar-container"></div>
+    <div class="application-main">
+        <div id="navbar-container" class="navbar-container"></div>
 
-            <div class="application-main-content">
-                <header id="header-container" class="header"></header>
+        <div class="application-main-content">
+            <header id="header-container" class="header"></header>
 
-                <div id="application-content">
+            <div id="application-content">
 
-                    <h1>Contacts</h1>
-                    <div id="contactList"></div>
+                <h1>Contacts</h1>
+                <div id="contactList"></div>
 
+<<<<<<< HEAD
                     <!-- contact info -->
                     <div id="contactDetails" class="hidden">
                         <h2 id="contactName"></h2>
@@ -46,11 +47,22 @@
                         <button onclick="deleteContact()">Löschen</button>
                     </div>
                    
+=======
+                <!-- Kontaktinformationen -->
+                <div id="contactDetails" class="hidden">
+                    <h2 id="contactName"></h2>
+                    <p>Email: <span id="contactEmail"></span></p>
+                    <p>Telefonnummer: <span id="contactPhone"></span></p>
+                    <button onclick="editContact()">Bearbeiten</button>
+                    <button onclick="deleteContact()">Löschen</button>
+>>>>>>> 22626a8efa3fd532b91cb73c3c143436cbd41ea1
                 </div>
+
             </div>
-            <div id="navbar-container-mobile" class="navbar-container-mobile"></div>
         </div>
+        <div id="navbar-container-mobile" class="navbar-container-mobile"></div>
     </div>
 
 </body>
+
 </html>
