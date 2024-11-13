@@ -265,3 +265,29 @@
 .drag-area-active-highlight {
   background-color: rgba(0, 0, 0, 0.05);
 }
+
+.overflow-auto {
+  --sb-track-color: #f6f7f8;
+  --sb-thumb-color: #2a3647;
+  --sb-size: 8px;
+}
+
+.overflow-auto::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.overflow-auto::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 8px;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 8px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .overflow-auto {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
