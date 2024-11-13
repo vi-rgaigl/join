@@ -1,13 +1,14 @@
 function getTemplateCards(list, tasks, contacts) {
+  let templateDragArea = `<div id="${list}-drag-area" class="drag-area"></div>`;
   let tasksOfList = findTasks(list, tasks);
   if (tasksOfList.length > 0) {
     let html = "";
     tasksOfList.forEach((task) => {
       html += getTemplateCard(task, contacts);
     });
-    return html;
+    return html + templateDragArea;
   } else {
-    return `<div class="cardNoTask">No Task To do</div>`;
+    return `<div class="cardNoTask">No Task To do</div>` + templateDragArea;
   }
 }
 

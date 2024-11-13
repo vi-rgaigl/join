@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="./styles/board.css" />
   </head>
 
-  <body onload="init(3);loadData();">
+  <body onload="init(3);initLoadData();">
     <div class="application-main overflow-hidden">
       <div id="navbar-container" class="navbar-container"></div>
       <div class="application-main-content flex-column">
@@ -64,10 +64,34 @@
           </div>
         </div>
         <div class="layout-rows content-data overflow-auto">
-          <div id="rowToDo" class="content-data-row"></div>
-          <div id="rowInProgess" class="content-data-row"></div>
-          <div id="rowAwaitFeedback" class="content-data-row"></div>
-          <div id="rowDone" class="content-data-row"></div>
+          <div
+            id="to-do"
+            class="content-data-row"
+            ondrop="moveTo('to-do')"
+            ondragleave="removeHighlight('to-do')"
+            ondragover="allowDrop(event); highlight('to-do')"
+          ></div>
+          <div
+            id="in-progress"
+            class="content-data-row"
+            ondrop="moveTo('in-progress')"
+            ondragleave="removeHighlight('in-progress')"
+            ondragover="allowDrop(event); highlight('in-progress')"
+          ></div>
+          <div
+            id="await-feedback"
+            class="content-data-row"
+            ondrop="moveTo('await-feedback')"
+            ondragleave="removeHighlight('await-feedback')"
+            ondragover="allowDrop(event); highlight('await-feedback')"
+          ></div>
+          <div
+            id="done"
+            class="content-data-row"
+            ondrop="moveTo('done')"
+            ondragleave="removeHighlight('done')"
+            ondragover="allowDrop(event); highlight('done')"
+          ></div>
         </div>
       </div>
       <div id="navbar-container-mobile" class="navbar-container-mobile"></div>
