@@ -25,3 +25,10 @@ function renderTasks() {
   );
   rowDoneRef.innerHTML = getTemplateCards("done", tasks, contacts);
 }
+
+function startDragging(id) {
+  document.getElementById(id).classList.add("on-dragging");
+}
+function endDragging(id) {
+  document.getElementById(id).classList.remove("on-dragging");
+}
