@@ -6,8 +6,7 @@
  */
 function setToLocalStorage(key, value) {
     let toStoreItem = {
-        email: value.email,
-        user: value.user,
+        user: value.user
     }
     try {
         localStorage.setItem(key, JSON.stringify(toStoreItem));

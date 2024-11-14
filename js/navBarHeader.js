@@ -6,3 +6,12 @@ function setAktivItemBackground(mobile, index) {
         }
     }
 }
+
+function getInitials(name) {
+    return name.split(' ').map(word => word.charAt(0)).join('');
+}
+
+function setMonogram() {
+    let user = getFromLocalStorage('join');
+    return user ? getInitials(user.user) : '';
+}

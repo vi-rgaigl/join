@@ -27,7 +27,7 @@ function login() {
         return;
     }
     if (getRememberme()) {
-        setToLocalStorage('user', user);
+        setToLocalStorage('join', user);
     }
     // alert('Login successful!');
     window.open('./summaryUser.html', '_self');
@@ -73,7 +73,7 @@ function getRememberme() {
 }
 
 function isUserRemembered() {
-    let storedUser = getFromLocalStorage('user');
+    let storedUser = getFromLocalStorage('join');
     if (storedUser) {
         window.location.href = './summaryUser.html';
         return;
