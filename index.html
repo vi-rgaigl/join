@@ -40,7 +40,7 @@
         <div id="login-body" class="login-body">
 
             <div id="login-form-box" class="login-form-box login-form-pad-wd">
-                <form onsubmit="login(); return false;">
+                <form onsubmit="return false;">
                     <div class="headline">
                         <h1>Log in</h1>
                         <div class="underline-blue"></div>
@@ -55,8 +55,8 @@
                         <label for="rememberme">Remember me</label>
                     </div>
                     <div class="button-line">
-                        <button type="submit" id="login-button" class="button-blue" disabled>Log in</button>
-                        <button class="button-white">Guest Log in</button>
+                        <button id="login-button" class="button-blue" onclick="login()" disabled>Log in</button>
+                        <button class="button-white" onclick="guestLogin()">Guest Log in</button>
                     </div>
                 </form>
             </div>

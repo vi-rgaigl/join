@@ -86,3 +86,10 @@ function clearLoginForm() {
     document.getElementById('login-checkbox').checked = false;
     document.getElementById('login-button').disabled = true;
 }
+
+
+function guestLogin() {
+    let user = getUserByEmail('guest@guest.example');
+    setToLocalStorage('join', user);
+    window.location.href = './summaryUser.html';
+}
