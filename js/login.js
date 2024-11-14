@@ -27,7 +27,7 @@ function login() {
         return;
     }
     if (getRememberme()) {
-        localStorage.setItem('user', JSON.stringify(user));
+        setToLocalStorage('user', user);
     }
     // alert('Login successful!');
     window.open('./summaryUser.html', '_self');
