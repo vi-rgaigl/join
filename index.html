@@ -45,16 +45,19 @@
                         <h1>Log in</h1>
                         <div class="underline-blue"></div>
                     </div>
-                    <div class="input-line">
-                        <input id="login-email" class="input input-login-email" type="email" placeholder="Email" autocomplete="username">
-                        <input id="login-password" class="input input-login-password" type="password"
-                            placeholder="Password" autocomplete="current-password">
-                    </div>
+                    <div class="input-line mrg-top-32">
+                        <input id="login-email" class="input input-login-email" type="email" 
+                            placeholder="Email" autocomplete="username">
+                        <input id="login-password" class="input input-login-password mrg-top-32" type="password"
+                            placeholder="Password" autocomplete="current-password">                          
+                            <div id="show-hidden-password" class="show-hidden-password" onmousedown="togglePasswordVisibility()"></div>
+                        </div>
+                    
                     <div class="checkbox-line">
                         <input type="checkbox" id="login-checkbox" name="rememberme">
                         <label for="rememberme">Remember me</label>
                     </div>
-                    <div class="button-line">
+                    <div class="button-line mrg-top-32">
                         <button id="login-button" class="button-blue" onclick="login()" disabled>Log in</button>
                         <button class="button-white" onclick="guestLogin()">Guest Log in</button>
                     </div>

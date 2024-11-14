@@ -152,8 +152,15 @@
 .input-line {
     display: flex;
     flex-direction: column;
-    gap: 32px;
     width: 100%;
+}
+
+.show-hidden-password {
+    position: relative;
+    bottom: 27%;
+    right: -93%;
+    height: 48px;
+    width: 70px;
 }
 
 .checkbox-line {
@@ -182,6 +189,18 @@
 }
 
 /* Media queries for different screen sizes */
+@media (max-width: 1700px) {
+    .show-hidden-password {
+        right: -90%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .show-hidden-password {
+        right: -85%;
+    }
+}
+
 @media (max-width: 860px) {
     .signup-line {
         display: none;

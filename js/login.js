@@ -45,13 +45,15 @@ function login() {
     }
     if (getRememberme()) {
         setToLocalStorage('join', user);
+    } else {
+        clearLocalStorage();
     }
+    
     window.open('./summaryUser.html', '_self');
 }
 
 
 document.addEventListener('DOMContentLoaded', () => isUserRemembered() );
-    
 document.addEventListener('DOMContentLoaded', function() {
     let loginButton = document.getElementById('login-button');
     let emailInput = document.getElementById('login-email');
@@ -126,4 +128,14 @@ function guestLogin() {
     let user = getUserByEmail('guest@guest.example');
     setToLocalStorage('join', user);
     window.location.href = './summaryUser.html';
+}
+
+
+function togglePasswordVisibility() {
+    let passwordInput = document.getElementById('login-password');
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'passwordshowtext';
+    } else {
+        passwordInput.type = 'password';
+    }
 }
