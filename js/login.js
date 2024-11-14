@@ -33,20 +33,23 @@ function login() {
     window.open('./summaryUser.html', '_self');
 }
 
+document.addEventListener('DOMContentLoaded', () => isUserRemembered() );
+    
 document.addEventListener('DOMContentLoaded', function() {
     let loginButton = document.getElementById('login-button');
     let emailInput = document.getElementById('login-email');
     let passwordInput = document.getElementById('login-password');
-    function isFormFilled() {
-        if (emailInput && passwordInput) {
+    function isFormFilled() {    
+        if (emailInput.value && passwordInput.value) {
             loginButton.disabled = false;
         } else {
             loginButton.disabled = true;
         }
-    }
+    };
     emailInput.addEventListener('input', isFormFilled);
     passwordInput.addEventListener('input', isFormFilled);
 });
+
 
 function validateLoginForm() {
     let email = document.getElementById('login-email');
@@ -67,6 +70,14 @@ function validateLoginForm() {
 
 function getRememberme() {
     return document.getElementById('login-checkbox').checked;
+}
+
+function isUserRemembered() {
+    let storedUser = getFromLocalStorage('user');
+    if (storedUser) {
+        window.location.href = './summaryUser.html';
+        return;
+    }
 }
 
 function clearLoginForm() {
