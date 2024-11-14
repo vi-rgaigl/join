@@ -1,11 +1,17 @@
 let users =[];
 
+/**
+ * Initializes the login page with the logo animation.
+ */
 function initLogin() {
     document.getElementById('login-form-box').classList.add('dawn');
     document.getElementById('login-body').classList.add('dawn');
     document.getElementById('logo-login').classList.add('logo-position');
 }
 
+/**
+ * Fetches users from remote storage.
+ */
 async function getUsers() {
     users = await getData('users');
     console.log(users);
@@ -13,10 +19,21 @@ async function getUsers() {
     console.log(user);
 }
 
+/**
+ * Finds a user by their email address.
+ * 
+ * @param {string} email - The email address to search for.
+ * @returns {Object|undefined} The user object if found, otherwise undefined.
+ */
 function getUserByEmail(email) {
     return users.find(user => user.email === email);
 }
 
+
+/**
+ * Handles the login process by validating the form, checking user credentials,
+ * and redirecting to the summary page if successful.
+ */
 function login() {
     let formData = validateLoginForm();
     if (!formData) return; 
@@ -29,9 +46,9 @@ function login() {
     if (getRememberme()) {
         setToLocalStorage('join', user);
     }
-    // alert('Login successful!');
     window.open('./summaryUser.html', '_self');
 }
+
 
 document.addEventListener('DOMContentLoaded', () => isUserRemembered() );
     
@@ -50,7 +67,11 @@ document.addEventListener('DOMContentLoaded', function() {
     passwordInput.addEventListener('input', isFormFilled);
 });
 
-
+/**
+ * Validates the login form and returns the form data if valid.
+ * 
+ * @returns {Object|boolean} The form data if valid, or false if invalid.
+ */
 function validateLoginForm() {
     let email = document.getElementById('login-email');
     let password = document.getElementById('login-password');
@@ -68,10 +89,18 @@ function validateLoginForm() {
     };
 }
 
+/**
+ * Gets the state of the "Remember me" checkbox.
+ * 
+ * @returns {boolean} True if the checkbox is checked, false otherwise.
+ */
 function getRememberme() {
     return document.getElementById('login-checkbox').checked;
 }
 
+/**
+ * Checks if a user is remembered in localStorage and redirects to summaryUser.html if found.
+ */
 function isUserRemembered() {
     let storedUser = getFromLocalStorage('join');
     if (storedUser) {
@@ -80,6 +109,9 @@ function isUserRemembered() {
     }
 }
 
+/**
+ * Clears the login form inputs and disables the login button.
+ */
 function clearLoginForm() {
     document.getElementById('login-email').value = '';
     document.getElementById('login-password').value = '';
@@ -87,7 +119,9 @@ function clearLoginForm() {
     document.getElementById('login-button').disabled = true;
 }
 
-
+/**
+ * Logs in as a guest user and redirects to summaryUser.html.
+ */
 function guestLogin() {
     let user = getUserByEmail('guest@guest.example');
     setToLocalStorage('join', user);
