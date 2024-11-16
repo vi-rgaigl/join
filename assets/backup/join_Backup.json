@@ -1,0 +1,234 @@
+{
+  "contacts": {
+    "-OBKydSIljAGwoLdBPg4": {
+      "color": "rgb(255,87,51)",
+      "email": "alice@example.com",
+      "name": "Alice Smith",
+      "phone": "01234567890"
+    },
+    "-OBKydT47iOhqim7ZFXO": {
+      "color": "rgb(51,255,87)",
+      "email": "bob@example.com",
+      "name": "Bob Johnson",
+      "phone": "02345678901"
+    },
+    "-OBKydTh_o-DY_fi58cw": {
+      "color": "rgb(51,87,255)",
+      "email": "charlie@example.com",
+      "name": "Charlie Williams",
+      "phone": "03456789012"
+    },
+    "-OBKydUP-fuPvw9qGQjx": {
+      "color": "rgb(255,51,161)",
+      "email": "david@example.com",
+      "name": "David Brown",
+      "phone": "04567890123"
+    },
+    "-OBKydV1q5EY7dmznyny": {
+      "color": "rgb(161,51,255)",
+      "email": "eve@example.com",
+      "name": "Eve Jones",
+      "phone": "05678901234"
+    },
+    "-OBKydVeQIY387wxIScG": {
+      "color": "rgb(51,255,161)",
+      "email": "frank@example.com",
+      "name": "Frank Garcia",
+      "phone": "06789012345"
+    },
+    "-OBKydWGzacsIBTiLwGi": {
+      "color": "rgb(255,87,51)",
+      "email": "grace@example.com",
+      "name": "Grace Miller",
+      "phone": "07890123456"
+    },
+    "-OBKydWuthLaG6HgwcWI": {
+      "color": "rgb(51,255,87)",
+      "email": "heidi@example.com",
+      "name": "Heidi Davis",
+      "phone": "018901234567"
+    },
+    "-OBKydXVz5MIjIHi0aPC": {
+      "color": "rgb(51,87,255)",
+      "email": "ivan@example.com",
+      "name": "Ivan Martinez",
+      "phone": "09012345678"
+    },
+    "-OBKydY3hHLl_IpUhQES": {
+      "color": "rgb(255,51,161)",
+      "email": "judy@example.com",
+      "name": "Judy Hernandez",
+      "phone": "0123456789"
+    }
+  },
+  "tasks": {
+    "-OBKyb62evxgVNUBVNhM": {
+      "assignedTo": [
+        "-OBKydSIljAGwoLdBPg4",
+        "-OBKydUP-fuPvw9qGQjx",
+        "-OBKydWuthLaG6HgwcWI"
+      ],
+      "category": "user-story",
+      "description": "Create a login page with email and password fields, and implement authentication.",
+      "dueDate": "2023-11-01",
+      "prio": "high",
+      "status": "in-progress",
+      "subtasks": [
+        {
+          "done": false,
+          "subtitle": "Design login page UI"
+        },
+        {
+          "done": true,
+          "subtitle": "Set up authentication backend"
+        }
+      ],
+      "title": "Implement login functionality"
+    },
+    "-OBKyb6uMqpMt7Ff4n0v": {
+      "assignedTo": [
+        "-OBKydVeQIY387wxIScG",
+        "-OBKydY3hHLl_IpUhQES",
+        "-OBKydWuthLaG6HgwcWI"
+      ],
+      "category": "technical-task",
+      "description": "Configure continuous integration and continuous deployment pipeline for the project.",
+      "dueDate": "2023-11-05",
+      "prio": "medium",
+      "status": "to-do",
+      "subtasks": false,
+      "title": "Set up CI/CD pipeline"
+    },
+    "-OBKyb7hLZ4k7HrQMWCY": {
+      "assignedTo": [
+        "-OBKydWGzacsIBTiLwGi",
+        "-OBKydUP-fuPvw9qGQjx",
+        "-OBKydTh_o-DY_fi58cw"
+      ],
+      "category": "user-story",
+      "description": "Develop a user profile page where users can update their information.",
+      "dueDate": "2023-11-10",
+      "prio": "low",
+      "status": "done",
+      "subtasks": [
+        {
+          "done": true,
+          "subtitle": "Design profile page UI"
+        },
+        {
+          "done": false,
+          "subtitle": "Implement profile update functionality"
+        }
+      ],
+      "title": "Create user profile page"
+    },
+    "-OBKyb8H4GmWVFx91jYh": {
+      "assignedTo": [
+        "-OBKydUP-fuPvw9qGQjx",
+        "-OBKydTh_o-DY_fi58cw",
+        "-OBKydVeQIY387wxIScG"
+      ],
+      "category": "technical-task",
+      "description": "Improve the performance of database queries by adding indexes and optimizing SQL.",
+      "dueDate": "2023-11-15",
+      "prio": "medium",
+      "status": "to-do",
+      "subtasks": [
+        {
+          "done": true,
+          "subtitle": "Identify slow queries"
+        },
+        {
+          "done": false,
+          "subtitle": "Add necessary indexes"
+        },
+        {
+          "done": false,
+          "subtitle": "Optimize SQL queries"
+        },
+        {
+          "done": false,
+          "subtitle": "Test performance improvements"
+        },
+        {
+          "done": false,
+          "subtitle": "Deploy changes to production"
+        }
+      ],
+      "title": "Optimize database queries"
+    },
+    "-OBKyb8zOm5DqruG4x70": {
+      "assignedTo": [
+        "-OBKydT47iOhqim7ZFXO"
+      ],
+      "category": "user-story",
+      "description": "Allow users to reset their passwords via email.",
+      "dueDate": "2023-11-20",
+      "prio": "high",
+      "status": "in-progress",
+      "subtasks": [
+        {
+          "done": false,
+          "subtitle": "Create password reset UI"
+        },
+        {
+          "done": false,
+          "subtitle": "Implement email sending functionality"
+        }
+      ],
+      "title": "Develop password reset feature"
+    }
+  },
+  "users": {
+    "-OBKyohyZkeQ1Nok1X9I": {
+      "email": "guest@guest.example",
+      "password": "guest123#",
+      "user": "guest"
+    },
+    "-OBKyoilFIhgaWX_KXYr": {
+      "email": "bob.builder@example.com",
+      "password": "BobSecure.456",
+      "user": "Bob Builder"
+    },
+    "-OBKyojVONNjduUymc0g": {
+      "email": "charlie.sheen@example.com",
+      "password": "Charlie789.",
+      "user": "Charlie Sheen"
+    },
+    "-OBKyok8Zd4lSK3ijcFy": {
+      "email": "david.drugg@example.com",
+      "password": "DavidPass.101",
+      "user": "David Drugg"
+    },
+    "-OBKyokhPTMZZUh190RX": {
+      "email": "eve.eberling@example.com",
+      "password": "EveSecure102.",
+      "user": "Eve Eberling"
+    },
+    "-OBKyolI3MkEQa0PrUE1": {
+      "email": "frank.schmidt@example.com",
+      "password": "FrankPass.103",
+      "user": "Frank Schmidt"
+    },
+    "-OBKyoloPWE-bBGAoReE": {
+      "email": "grace123@example.com",
+      "password": "GraceSecure104.",
+      "user": "Grace Green"
+    },
+    "-OBKyomW4Iw2suEn2RMM": {
+      "email": "heidi@example.com",
+      "password": "HeidiPass.105",
+      "user": "Heidi"
+    },
+    "-OBKyon5BEpJ038bTgi8": {
+      "email": "ivan.293@example.com",
+      "password": "IvanSecure106.",
+      "user": "Ivan Johnson"
+    },
+    "-OBKyonl_FL0rz4gKuM9": {
+      "email": "judy@example.com",
+      "password": "JudyPass.107",
+      "user": "Judy Jude"
+    }
+  }
+}
