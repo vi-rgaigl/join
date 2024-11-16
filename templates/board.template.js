@@ -23,7 +23,7 @@ function getTemplateCard(task, contacts) {
     task.id
   }')" ondragend="endDragging('${
     task.id
-  }')" draggable="true" onclick="openDialog(${task.id})">
+  }')" draggable="true" onclick="openDialog('${task.id}')">
                 ${getCategory(task.category)}
                 <div class="card-title">
                   ${task.title}
