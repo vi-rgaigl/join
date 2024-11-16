@@ -1,0 +1,26 @@
+#boardDialog {
+  width: 200px;
+  height: 200px;
+}
+
+dialog[open] {
+  animation: show 250ms ease normal;
+}
+
+@keyframes show {
+  from {
+    transform: translateX(600%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+dialog.hide {
+  animation: hide 250ms ease normal;
+}
+@keyframes hide {
+  to {
+    transform: translateX(600%);
+  }
+}

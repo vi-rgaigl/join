@@ -13,9 +13,12 @@
     <link rel="stylesheet" href="./styles/standard.css" />
     <link rel="stylesheet" href="./styles/navBarHeader.css" />
     <link rel="stylesheet" href="./styles/board.css" />
+    <link rel="stylesheet" href="./styles/boardDialog.css" />
   </head>
 
   <body onload="init(3);initLoadData();">
+    <dialog id="boardDialog"><div onclick="closeDialog()">x</div></dialog>
+
     <div class="application-main overflow-hidden">
       <div id="navbar-container" class="navbar-container"></div>
       <div class="application-main-content flex-column">
