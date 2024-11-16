@@ -10,6 +10,7 @@ async function initLoadData() {
   } catch (error) {
     console.warn(error);
   }
+  openDialog();
 }
 
 async function loadData() {
@@ -77,4 +78,27 @@ function highlight(status) {
   document
     .getElementById(status + "-drag-area")
     .classList.add("drag-area-active-highlight");
+}
+
+function openDialog() {
+  let boardDialogRef = document.getElementById("boardDialog");
+  boardDialogRef.showModal();
+}
+
+function closeDialog() {
+  let boardDialogRef = document.getElementById("boardDialog");
+  boardDialogRef.classList.add("hide");
+  boardDialogRef.addEventListener(
+    "webkitAnimationEnd",
+    function () {
+      boardDialogRef.classList.remove("hide");
+      boardDialogRef.close();
+      boardDialogRef.removeEventListener(
+        "webkitAnimationEnd",
+        arguments.callee,
+        false
+      );
+    },
+    false
+  );
 }
