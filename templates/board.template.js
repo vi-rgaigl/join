@@ -21,7 +21,9 @@ function findTasks(list, tasks) {
 function getTemplateCard(task, contacts) {
   return `<div class="cardTask" id="${task.id}" ondragstart="startDragging('${
     task.id
-  }')" ondragend="endDragging('${task.id}')" draggable="true">
+  }')" ondragend="endDragging('${
+    task.id
+  }')" draggable="true" onclick="openDialog(${task.id})">
                 ${getCategory(task.category)}
                 <div class="card-title">
                   ${task.title}
