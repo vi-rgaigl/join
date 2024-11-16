@@ -88,10 +88,8 @@ function getAssignName(listOfAssign, contacts) {
   let end = `</div>`;
   listOfAssign.forEach((assignId) => {
     let assignedContact = getAssignedContact(assignId, contacts);
-    beginn += ` <div class="assign-name" style="background-color: ${
-      assignedContact.color
-    }">
-                  ${getNameCode(assignedContact.name)}
+    beginn += ` <div class="assign-name" style="background-color: ${assignedContact.color}">
+                  ${assignedContact.initials}
                 </div>`;
   });
   return beginn + end;
@@ -101,10 +99,4 @@ function getAssignedContact(assignId, contacts) {
   return contacts.find((contact) => {
     return contact.id === assignId;
   });
-}
-
-function getNameCode(name) {
-  const woerter = name.split(" ");
-  const initialen = woerter.map((wort) => wort.charAt(0).toUpperCase());
-  return initialen.join("");
 }
