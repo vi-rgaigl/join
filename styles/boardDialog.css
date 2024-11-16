@@ -1,6 +1,105 @@
 #boardDialog {
-  width: 200px;
-  height: 200px;
+  width: 525px;
+  border-radius: 30px;
+  background-color: white;
+  border: none;
+  box-shadow: 0px 0px 4px 0px #00000029;
+  padding: 40px;
+}
+
+#boardDialog:focus-visible {
+  outline: none;
+}
+
+.dialog-task-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  height: 32px;
+}
+
+.closeX {
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.closeX > img {
+  height: 13px;
+}
+
+.headline {
+  color: var(--dark-blue);
+}
+
+.headline > p {
+  display: inline;
+  margin: 0;
+}
+
+.dialog-assigned {
+  margin-top: 10px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dialog-subtask {
+  margin-top: 6px;
+  margin-left: 6px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.dialog-subtask img {
+  cursor: pointer;
+}
+
+.dialog-subtask:hover {
+  background-color: var(--light-grey);
+}
+
+.dialog-menue {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.dialog-menue-points {
+  display: flex;
+  height: 24px;
+  gap: 8px;
+}
+
+.dialog-menue-point {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dialog-menue-point img {
+  height: 100%;
+  margin-right: 8px;
+}
+
+.dialog-menue-poinsts-seperator {
+  height: 100%;
+
+  border: 1px solid #d1d1d1;
 }
 
 dialog[open] {
@@ -19,6 +118,7 @@ dialog[open] {
 dialog.hide {
   animation: hide 250ms ease normal;
 }
+
 @keyframes hide {
   to {
     transform: translateX(600%);

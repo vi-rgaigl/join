@@ -17,9 +17,8 @@
   </head>
 
   <body onload="init(3);initLoadData();">
-    <dialog id="boardDialog"><div onclick="closeDialog()">x</div></dialog>
-
     <div class="application-main overflow-hidden">
+      <dialog id="boardDialog"></dialog>
       <div id="navbar-container" class="navbar-container"></div>
       <div class="application-main-content flex-column">
         <header id="header-container" class="header header-board"></header>
@@ -105,6 +104,7 @@
     <script src="./templates/header.template.js"></script>
     <script src="./templates/navBar.template.js"></script>
     <script src="./templates/board.template.js"></script>
+    <script src="./templates/boardDialog.template.js"></script>
     <script src="./js/navBarHeader.js"></script>
     <script src="./js/board.js"></script>
     <script src="./script.js"></script>
