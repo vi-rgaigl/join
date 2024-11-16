@@ -10,7 +10,6 @@ async function initLoadData() {
   } catch (error) {
     console.warn(error);
   }
-  openDialog();
 }
 
 async function loadData() {
@@ -80,8 +79,9 @@ function highlight(status) {
     .classList.add("drag-area-active-highlight");
 }
 
-function openDialog() {
+function openDialog(id) {
   let boardDialogRef = document.getElementById("boardDialog");
+  renderDialogTaskOverview(getTask(id));
   boardDialogRef.showModal();
 }
 
@@ -101,4 +101,10 @@ function closeDialog() {
     },
     false
   );
+}
+
+function getTask(id) {
+  return tasks.find((task) => {
+    return task.id === id;
+  });
 }
