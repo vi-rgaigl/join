@@ -1,0 +1,89 @@
+.application-content {
+    margin-left: 64px;
+    margin-top: 80px;
+}
+
+form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.first-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.second-column {
+    display: flex;
+    flex-direction: column;
+    margin-top: -30px;
+}
+
+.separator {
+    width: 1px;
+    height: 400px;
+    background-color: #d1d1d1;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+button {
+    color: black;
+}
+
+.input-button {
+    display: flex;
+    flex-direction: row;
+}
+
+.input-button-solo {
+    width: 120px!important;
+    margin-right: 20px;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+label {
+    margin-bottom: 9px;
+    font-size: 17px;
+}
+
+input {
+    margin-bottom: 16px;
+    border-radius: 8px;
+    width: 400px;
+    height: 45px;
+    border: 1px solid #d1d1d1;
+    padding-left: 10px;
+    padding-top: 5px;
+    font-size: 16px;
+}
+
+textarea {
+    width: 400px;
+    height: 100px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    border: 1px solid #d1d1d1;
+    padding-left: 10px;
+    padding-top: 10px;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+}
+
+.date-picker {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: "Inter", sans-serif;
+}
+
+select {
+    height: 45px;
+    border-radius: 8px;
+    border: 1px solid #d1d1d1;
+    font-size: 16px;
+    cursor: pointer;
+    padding-left: 10px;
+    margin-bottom: 16px
+}
