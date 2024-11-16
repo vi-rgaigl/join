@@ -37,6 +37,9 @@
 
 .headline {
   color: var(--dark-blue);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .headline > p {
@@ -62,6 +65,7 @@
   gap: 16px;
   padding: 4px;
   border-radius: 6px;
+  font-size: 16px;
 }
 
 .dialog-subtask img {

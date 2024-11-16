@@ -81,7 +81,7 @@ function highlight(status) {
 
 function openDialog(id) {
   let boardDialogRef = document.getElementById("boardDialog");
-  renderDialogTaskOverview(getTask(id));
+  boardDialogRef.innerHTML = renderDialogTaskOverview(getTask(id), contacts);
   boardDialogRef.showModal();
 }
 

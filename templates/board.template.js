@@ -32,10 +32,10 @@ function getTemplateCard(task, contacts) {
                   </div>
                 </div>
                 
-                  ${getSubtasks(task.subtasks)}
+                  ${getSubtasksBar(task.subtasks)}
                 
                 <div class="card-footer">
-  ${getAssignName(task.assignedTo, contacts)}
+  ${getAssignInitials(task.assignedTo, contacts)}
                   <div class="card-footer-prio">
                   <img
                       src="./assets/icons/${task.prio}-priority-small-color.svg"
@@ -50,7 +50,7 @@ function getDescription(text) {
   return text.length > 40 ? text.slice(0, 45) + "..." : text;
 }
 
-function getSubtasks(subtasks) {
+function getSubtasksBar(subtasks) {
   if (subtasks === false) {
     return "";
   } else {
@@ -85,7 +85,7 @@ function getCategory(category) {
   }
 }
 
-function getAssignName(listOfAssign, contacts) {
+function getAssignInitials(listOfAssign, contacts) {
   let beginn = `<div class="card-footer-assign">`;
   let end = `</div>`;
   listOfAssign.forEach((assignId) => {

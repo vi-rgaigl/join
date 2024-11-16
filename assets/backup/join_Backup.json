@@ -81,7 +81,7 @@
       "category": "user-story",
       "description": "Create a login page with email and password fields, and implement authentication.",
       "dueDate": "2023-11-01",
-      "prio": "high",
+      "prio": "urgent",
       "status": "in-progress",
       "subtasks": [
         {
@@ -174,7 +174,7 @@
       "category": "user-story",
       "description": "Allow users to reset their passwords via email.",
       "dueDate": "2023-11-20",
-      "prio": "high",
+      "prio": "urgent",
       "status": "in-progress",
       "subtasks": [
         {
