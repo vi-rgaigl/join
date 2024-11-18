@@ -43,10 +43,10 @@ function getNavbarNoLoginTemplate() {
         <div class="navbar-main-nologin">
             <div class="navbar-footer-link">
             <div id="navbar-menu-5" class="navbar-menu-item">
-                    <a class="a-link" href="./privacyPolicy.html">Privacy Policy</a>
+                    <a class="a-link" href="./privacyPolicyNoLogin.html">Privacy Policy</a>
                 </div>
                 <div id="navbar-menu-6" class="navbar-menu-item">
-                    <a class="a-link" href="./legalNotice.html">Legal notice</a>
+                    <a class="a-link" href="./legalNoticeNoLogin.html">Legal notice</a>
                 </div>  
             </div>
         </div>
