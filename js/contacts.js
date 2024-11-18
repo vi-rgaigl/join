@@ -1,125 +1,223 @@
-let contacts = [];
+let databaseURL = "https://join-a8a87-default-rtdb.europe-west1.firebasedatabase.app/";
+let contactsList = [];
 let currentContactIndex = null;
-const databaseURL = 'https://join-a8a87-default-rtdb.europe-west1.firebasedatabase.app/';
-const contactsRef = firebase.database().ref('contacts'); 
-const usersRef = firebase.database().ref('users');
+const initials = getInitials;
 
-//updates the display of the contact list.
 async function renderContactList() {
-    const contactList = document.getElementById('contactList');
-    contactList.innerHTML = '';
+    const contactListElement = document.getElementById("contactList");
+    contactListElement.innerHTML = "";
 
-    // Retrieve contacts from Firebase
     try {
-        const snapshot = await firebase.firestore().collection('contacts').get();
-        contacts = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        contactsList = await getData("contacts");
+        if (!contactsList || contactsList.length === 0) {
+            console.error("Die Kontaktliste ist leer.");
+            return;
+        }
 
-        for (let i = 0; i < contacts.length; i++) {
-            contactList.innerHTML += `
+        for (let i = 0; i < contactsList.length; i++) {
+            const contact = contactsList[i];
+            const initials = getInitials(contact.name);
+            const color = contact.color || getRandomColor();
+
+            contactListElement.innerHTML += `
                 <div class="contact-item" onclick="showContactDetails(${i})">
-                    <p>${contacts[i].firstName} ${contacts[i].lastName}</p>
+                    <div class="contact-initials" style="background-color:${color}">${initials}</div>
+                    <p>${contact.name}</p>
                 </div>
             `;
         }
     } catch (error) {
-        console.error('Fehler beim Abrufen der Kontakte:', error);
+        console.error("Fehler beim Abrufen der Kontakte:", error);
     }
 }
 
-//shows the contact information
-function showContactDetails(index) {
+function showContactDetails(index) { 
     currentContactIndex = index;
-    const contact = contacts[index];
-    
-    const detailElements = {
-        contactName: `${contact.firstName} ${contact.lastName}`,
-        contactEmail: contact.email,
-        contactPhone: contact.phone
-    };
-    
-    for (let id in detailElements) {
-        document.getElementById(id).innerText = detailElements[id];
-    }
+    const contact = contactsList[index];
+    const initials = getInitials(contact.name);
 
-    document.getElementById('contactDetails').classList.remove('hidden');
+    document.getElementById("current-contact").innerHTML = `
+    <div class="contact-header">
+        <div class="contact-initials" style="background-color:${contact.color || getRandomColor()}">${initials}</div>
+    <div class="contact-name-section">
+        <div class="contact-name">
+            <h2>${contact.name}</h2>
+        </div>
+    <div class="contact-actions-container">
+        <div class="contact-actions">
+            <img onclick="editContact()" src="./assets/icons/edit.svg"><p>Edit</p>
+            <img onclick="deleteContact()" src="./assets/icons/delete.svg"><p>Delete</p>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="contact-infos">
+        <p>Email: ${contact.email}</p>
+        <p>Telefonnummer: ${contact.phone}</p>
+    </div>
+    `;
+
+    document.getElementById("contactDetailsContainer").classList.add("active");
 }
 
-//creates a new contact and adds it to the contacts array
+function getInitials(name) {
+    if (!name) return "";
+    const parts = name.split(" ");
+    const initials = parts.map((part) => part[0]).join("");
+    return initials.toUpperCase();
+}
+
 async function addContact() {
     const newContact = {
-        firstName: document.getElementById('firstName').value,
-        lastName: document.getElementById('lastName').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        color: document.getElementById("color").value,
     };
 
     try {
-        const contactRef = await firebase.firestore().collection('contacts').add(newContact);
-        newContact.id = contactRef.id;
-        contacts.push(newContact);
+        await pushData("contacts", newContact);
+        contactsList.push(newContact);
         renderContactList();
-        clearForm();
     } catch (error) {
-        console.error('Fehler beim Hinzufügen des Kontakts:', error);
+        console.error("Fehler beim Hinzufügen des Kontakts:", error);
     }
 }
 
-//loads the data for the editing contact
-function editContact() {
-    const contact = contacts[currentContactIndex];
+function openAddContactDialog() {
+    const dialog = document.getElementById("addContactDialog");
+    if (dialog) {
+        dialog.style.display = "flex";
+    }
+}
 
-    const formFields = ['firstName', 'lastName', 'email', 'phone'];
-    
-    for (let field of formFields) {
-        document.getElementById(field).value = contact[field];
+function closeDialog() {
+    const dialog = document.getElementById("addContactDialog");
+    if (dialog) {
+        dialog.style.display = "none";
+        clearDialogFields();
+    }
+}
+
+function clearDialogFields() {
+    document.getElementById("firstName").value = "";
+    document.getElementById("lastName").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("phone").value = "";
+}
+
+async function saveNewContact() {
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+
+    if (!firstName || !lastName || !email || !phone) {
+        alert("Please fill out all fields.");
+        return;
     }
 
-    const form = document.getElementById('contactForm');
-    if (!document.getElementById('saveButton')) {
-        form.innerHTML += `<button id="saveButton" onclick="saveContact()">Speichern</button>`;
+    const newContact = {
+        name: `${firstName} ${lastName}`,
+        email: email,
+        phone: phone,
+        color: getRandomColor(),
+    };
+
+    try {
+        await pushData("contacts", newContact);
+        contactsList.push(newContact);
+        renderContactList();
+        closeDialog();
+    } catch (error) {
+        console.error("Error saving new contact:", error);
+        alert("Failed to save the contact. Please try again.");
+    }
+}
+
+function editContact() {
+    if (currentContactIndex === null || !contactsList[currentContactIndex])
+        return;
+    const contact = contactsList[currentContactIndex];
+
+    const firstNameElement = document.getElementById("firstName");
+    const lastNameElement = document.getElementById("lastName");
+    const emailElement = document.getElementById("email");
+    const phoneElement = document.getElementById("phone");
+
+    if (firstNameElement && lastNameElement && emailElement && phoneElement) {
+        firstNameElement.value = contact.name.split(" ")[0];
+        lastNameElement.value = contact.name.split(" ")[1];
+        emailElement.value = contact.email;
+        phoneElement.value = contact.phone;
+
+        if (!document.getElementById("saveButton")) {
+            document.getElementById(
+                "contactForm"
+            ).innerHTML += `<button id="saveButton" onclick="saveContact()">Speichern</button>`;
+        }
+    } else {
+        console.error("Ein oder mehrere Formularelemente fehlen.");
     }
 }
 
 async function saveContact() {
-    const contact = contacts[currentContactIndex];
-    const formFields = ['firstName', 'lastName', 'email', 'phone'];
-    
-    for (let field of formFields) {
-        contact[field] = document.getElementById(field).value;
-    }
+    if (currentContactIndex === null || !contactsList[currentContactIndex])
+        return;
+    const updatedContact = {
+        id: contactsList[currentContactIndex].id,
+        name:
+            document.getElementById("firstName").value +
+            " " +
+            document.getElementById("lastName").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+    };
 
     try {
-        // Update contact in Firebase
-        await firebase.firestore().collection('contacts').doc(contact.id).update(contact);
-
-        document.getElementById('saveButton').remove();
-        renderContactList();
+        await changeData("contacts", updatedContact);
+        await renderContactList();
         showContactDetails(currentContactIndex);
     } catch (error) {
-        console.error('Fehler beim Speichern des Kontakts:', error);
+        console.error("Fehler beim Speichern des Kontakts:", error);
     }
 }
 
-//this function deletes the current contact from the contacts array
+function toggleEditLayer(contactIndex) {
+    const editLayer = document.getElementById("editLayer");
+    if (editLayer) {
+        editLayer.style.display = contactIndex !== null ? "block" : "none";
+        if (contactIndex !== null) {
+            const contact = contactsList[contactIndex];
+            document.getElementById("firstName").value = contact.name.split(" ")[0];
+            document.getElementById("lastName").value = contact.name.split(" ")[1];
+            document.getElementById("email").value = contact.email;
+            document.getElementById("phone").value = contact.phone;
+        }
+    }
+}
+
 async function deleteContact() {
-    const contactId = contacts[currentContactIndex].id;
-    // contact delete from Firebase
+    if (currentContactIndex === null || !contactsList[currentContactIndex])
+        return;
+    const contactId = contactsList[currentContactIndex].id;
     try {
-        await firebase.firestore().collection('contacts').doc(contactId).delete();
-        
-        contacts.splice(currentContactIndex, 1);
-        document.getElementById('contactDetails').classList.add('hidden');
+        await deleteData("contacts", { id: contactId });
+        contactsList.splice(currentContactIndex, 1);
         renderContactList();
     } catch (error) {
-        console.error('Fehler beim Löschen des Kontakts:', error);
+        console.error("Fehler beim Löschen des Kontakts:", error);
     }
 }
 
-//resets all form fields to empty values
 function clearForm() {
-    const formFields = ['firstName', 'lastName', 'email', 'phone'];
-    
-    for (let field of formFields) {
-        document.getElementById(field).value = '';
-    }
+    const firstNameElement = document.getElementById("firstName");
+    const lastNameElement = document.getElementById("lastName");
+    const emailElement = document.getElementById("email");
+    const phoneElement = document.getElementById("phone");
+
+    if (firstNameElement) firstNameElement.value = "";
+    if (lastNameElement) lastNameElement.value = "";
+    if (emailElement) emailElement.value = "";
+    if (phoneElement) phoneElement.value = "";
 }
