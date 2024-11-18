@@ -24,8 +24,7 @@
 
 </head>
 
-<body onload="init(4), renderUserList();">
-
+<body onload="init(4); renderContactList();">
 
     <div class="application-main">
         <div id="navbar-container" class="navbar-container"></div>
@@ -35,30 +34,34 @@
 
             <div id="application-content">
 
-                <h1>Contacts</h1>
-                <div id="contactList"></div>
-
-<<<<<<< HEAD
-                    <!-- contact info -->
-                    <div id="contactDetails" class="hidden">
-                        <h2 id="contactName"></h2>
-                        <p>Email: <span id="contactEmail"></span></p>
-                        <p>Telefonnummer: <span id="contactPhone"></span></p>
-                        <button onclick="editContact()">Bearbeiten</button>
-                        <button onclick="deleteContact()">Löschen</button>
+                <div class="contacts-container d-flex">
+                    <!-- Left container: contact-list -->
+                    <div id="contactListContainer" class="contact-list-container">
+                        <div class="add-contact-button-container">
+                            <button id="addContact" type="button" onclick="openAddContactDialog()" class="add-new-contact-btn"> 
+                                <h5 class="bold newContact">Add new Contact</h5>
+                                <img id="addPerson" src="./assets/icons/person-add.svg" class="icon">
+                            </button>
+                        </div>
+                        <div id="contactList" class="contact-list"></div>
                     </div>
-                   
-=======
-                <!-- Kontaktinformationen -->
-                <div id="contactDetails" class="hidden">
-                    <h2 id="contactName"></h2>
-                    <p>Email: <span id="contactEmail"></span></p>
-                    <p>Telefonnummer: <span id="contactPhone"></span></p>
-                    <button onclick="editContact()">Bearbeiten</button>
-                    <button onclick="deleteContact()">Löschen</button>
->>>>>>> 22626a8efa3fd532b91cb73c3c143436cbd41ea1
-                </div>
+                    <!-- Right container: Contact details -->
+                    <div id="contactDetailsContainer" class="contact-details-container">
+                        <div class="contact-title">
+                            <h1>Contacts</h1>
+                            <div class="contact-vertical-line"></div>
+                            <p class="contact-text">Better with a team</p>
+                          </div>
+                          <!-- contact details are displayed here -->
+                        <div id="current-contact" class="current-contact">
+                            
+                        </div>
+                    </div>
+                </div>                
+                        </div>
+                    </div>
 
+                </div>
             </div>
         </div>
         <div id="navbar-container-mobile" class="navbar-container-mobile"></div>
