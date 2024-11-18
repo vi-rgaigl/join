@@ -9,11 +9,13 @@
 }
 
 .login-body {
+    height: 100vh;
+    margin-top: 28vh;
+    margin-bottom: 16px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 32px;
+    justify-content: space-between;
 }
 
 .header-login {
@@ -101,23 +103,23 @@
 
 /* login - register form */
 .login-form-box {
+    max-width: 800px;
+    max-height: 500px;
     background-color: white;
     border-radius: 30px;
     box-shadow: 0 0 14px 3px rgba(0, 0, 0, 0.04);
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 45vw;
+    height: 45vh;
 }
 
 .login-form-pad-wd {
-    width: 55vw;
-    height: 50vh;
     padding: 48px 115px 98px 115px;
 }
 
 .signup-form-pad-wd {
-    width: 55vw;
-    height: 66vh;
     padding: 48px 115px 98px 115px;
 }
 
@@ -190,15 +192,49 @@
 }
 
 /* Media queries for different screen sizes */
+@media (max-height: 1120px) {
+    .login-form-box {
+        height: 44vh;
+    }
+}
+@media (max-height: 1090px) {
+    .login-form-box {
+        height: 55vh;
+    }
+}
+@media (max-height: 860px) {
+    .login-body {
+        margin-top: 16vh;
+    }
+    .login-form-box {
+        height: 63vh;
+    }
+}
+
 @media (max-width: 1700px) {
     .show-hidden-password {
         right: -90%;
     }
 }
 
+@media (max-width: 1400px) {
+    .login-form-box {
+        width: 54vw;
+    }
+}
+
 @media (max-width: 1200px) {
     .show-hidden-password {
         right: -85%;
+    }
+    .login-form-pad-wd {
+        padding: 48px 72px 98px 72px;
+    } 
+}
+
+@media (max-width: 1050px) {
+    .login-form-box {
+        width: 60vw;
     }
 }
 
@@ -223,14 +259,14 @@
         top: 70px;
         left: 67px;
     }
+    .login-form-box {
+        width: 72vw;
+        height: 41vh;
+    }
     .login-form-pad-wd {
-        width: 65vw;
-        height: 40vh;
         padding: 32px 72px;
     }
     .signup-form-pad-wd {
-        width: 64vw;
-        height: 55vh;
         padding: 48px 64px 98px 64px;
     }
 }
@@ -239,15 +275,14 @@
     .form-header-signup {
         width: 100%;
     }
-
+    .login-form-box {
+        width: 90vw;
+        height: 56vh;
+    }
     .login-form-pad-wd {
-        width: 85vw;
-        height: 55vh;
         padding: 28px 24px;
     }
     .signup-form-pad-wd {
-        width: 90vw;
-        height: 68vh;
         padding: 14px 24px 51px 24px;
     }
     .logo-login {
@@ -268,16 +303,14 @@
 
 @media (max-width: 360px) {
     .login-form-box {
+        width: 86vw;
+        height: 64vh;
         border-radius: 16px;
     }
     .login-form-pad-wd {
-        width: 95vw;
-        height: 58vh;
         padding: 16px 10px;
     }
     .signup-form-pad-wd {
-        width: 90vw;
-        height: 74vh;
         padding: 14px 24px 51px 24px;
     }
     .logo-login {
