@@ -161,6 +161,7 @@
     right: -93%;
     height: 48px;
     width: 70px;
+    cursor: pointer;
 }
 
 .checkbox-line {

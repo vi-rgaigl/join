@@ -14,21 +14,11 @@ function setAktivItemBackground(mobile, index) {
 }
 
 /**
- * Gets the initials from a full name.
- * 
- * @param {string} name - The full name.
- * @returns {string} The initials.
- */
-function getInitials(name) {
-    return name.split(' ').map(word => word.charAt(0)).join('').toUpperCase();
-}
-
-/**
  * Sets the monogram (initials) of the user from localStorage.
  * 
  * @returns {string} The initials of the user, or an empty string if no user is found.
  */
 function setMonogram() {
-    let user = getFromLocalStorage('join');
-    return user ? getInitials(user.user) : '';
+    let user = getFromLocalStorage('join393');
+    return user ? user.initials : '';
 }
