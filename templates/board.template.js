@@ -21,7 +21,9 @@ function findTasks(list, tasks) {
 function getTemplateCard(task, contacts) {
   return `<div class="cardTask" id="${task.id}" ondragstart="startDragging('${
     task.id
-  }')" ondragend="endDragging('${task.id}')" draggable="true">
+  }')" ondragend="endDragging('${
+    task.id
+  }')" draggable="true" onclick="openDialog('${task.id}')">
                 ${getCategory(task.category)}
                 <div class="card-title">
                   ${task.title}
@@ -30,10 +32,10 @@ function getTemplateCard(task, contacts) {
                   </div>
                 </div>
                 
-                  ${getSubtasks(task.subtasks)}
+                  ${getSubtasksBar(task.subtasks)}
                 
                 <div class="card-footer">
-  ${getAssignName(task.assignedTo, contacts)}
+  ${getAssignInitials(task.assignedTo, contacts)}
                   <div class="card-footer-prio">
                   <img
                       src="./assets/icons/${task.prio}-priority-small-color.svg"
@@ -48,7 +50,7 @@ function getDescription(text) {
   return text.length > 40 ? text.slice(0, 45) + "..." : text;
 }
 
-function getSubtasks(subtasks) {
+function getSubtasksBar(subtasks) {
   if (subtasks === false) {
     return "";
   } else {
@@ -83,15 +85,13 @@ function getCategory(category) {
   }
 }
 
-function getAssignName(listOfAssign, contacts) {
+function getAssignInitials(listOfAssign, contacts) {
   let beginn = `<div class="card-footer-assign">`;
   let end = `</div>`;
   listOfAssign.forEach((assignId) => {
     let assignedContact = getAssignedContact(assignId, contacts);
-    beginn += ` <div class="assign-name" style="background-color: ${
-      assignedContact.color
-    }">
-                  ${getNameCode(assignedContact.name)}
+    beginn += ` <div class="assign-name" style="background-color: ${assignedContact.color}">
+                  ${assignedContact.initials}
                 </div>`;
   });
   return beginn + end;
@@ -101,10 +101,4 @@ function getAssignedContact(assignId, contacts) {
   return contacts.find((contact) => {
     return contact.id === assignId;
   });
-}
-
-function getNameCode(name) {
-  const woerter = name.split(" ");
-  const initialen = woerter.map((wort) => wort.charAt(0).toUpperCase());
-  return initialen.join("");
 }

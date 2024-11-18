@@ -78,3 +78,33 @@ function highlight(status) {
     .getElementById(status + "-drag-area")
     .classList.add("drag-area-active-highlight");
 }
+
+function openDialog(id) {
+  let boardDialogRef = document.getElementById("boardDialog");
+  boardDialogRef.innerHTML = renderDialogTaskOverview(getTask(id), contacts);
+  boardDialogRef.showModal();
+}
+
+function closeDialog() {
+  let boardDialogRef = document.getElementById("boardDialog");
+  boardDialogRef.classList.add("hide");
+  boardDialogRef.addEventListener(
+    "webkitAnimationEnd",
+    function () {
+      boardDialogRef.classList.remove("hide");
+      boardDialogRef.close();
+      boardDialogRef.removeEventListener(
+        "webkitAnimationEnd",
+        arguments.callee,
+        false
+      );
+    },
+    false
+  );
+}
+
+function getTask(id) {
+  return tasks.find((task) => {
+    return task.id === id;
+  });
+}
