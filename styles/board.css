@@ -88,7 +88,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* gap: 16px; */
 }
 
 .data-row-title {
@@ -99,6 +98,10 @@
   font-weight: 700;
   width: 100%;
   padding-right: 16px;
+}
+
+.data-row-title img:hover {
+  filter: var(--filter-blue);
 }
 
 .categories {

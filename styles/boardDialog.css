@@ -31,6 +31,10 @@
   cursor: pointer;
 }
 
+.closeX:hover {
+  filter: var(--filter-blue);
+}
+
 .closeX > img {
   height: 13px;
 }
