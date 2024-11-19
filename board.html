@@ -20,7 +20,7 @@
     <div class="application-main overflow-hidden">
       <dialog id="boardDialog"></dialog>
       <div id="navbar-container" class="navbar-container"></div>
-      <div class="application-main-content flex-column">
+      <div class="application-main-content flex-column flex-1">
         <header id="header-container" class="header header-board"></header>
         <div class="content-top">
           <div class="content-top-menue mx-64">
@@ -37,7 +37,9 @@
               </button>
             </div>
           </div>
-          <div class="layout-rows mx-64">
+        </div>
+        <div class="layout-rows content-data flex-1 overflow-hidden">
+          <div class="content-data-row">
             <div class="data-row-title">
               To do
               <img
@@ -46,6 +48,15 @@
                 onclick="addTask('ToDo')"
               />
             </div>
+            <div
+              id="to-do"
+              class="content-data-row padding-end overflow-auto"
+              ondrop="moveTo('to-do')"
+              ondragleave="removeHighlight('to-do')"
+              ondragover="allowDrop(event); highlight('to-do')"
+            ></div>
+          </div>
+          <div class="content-data-row">
             <div class="data-row-title">
               In progress
               <img
@@ -54,6 +65,15 @@
                 onclick="addTask('InProgess')"
               />
             </div>
+            <div
+              id="in-progress"
+              class="content-data-row padding-end overflow-auto"
+              ondrop="moveTo('in-progress')"
+              ondragleave="removeHighlight('in-progress')"
+              ondragover="allowDrop(event); highlight('in-progress')"
+            ></div>
+          </div>
+          <div class="content-data-row">
             <div class="data-row-title">
               Await feedback
               <img
@@ -62,38 +82,24 @@
                 onclick="addTask('AwaitFeedback')"
               />
             </div>
-            <div class="data-row-title">Done</div>
+            <div
+              id="await-feedback"
+              class="content-data-row padding-end overflow-auto"
+              ondrop="moveTo('await-feedback')"
+              ondragleave="removeHighlight('await-feedback')"
+              ondragover="allowDrop(event); highlight('await-feedback')"
+            ></div>
           </div>
-        </div>
-        <div class="layout-rows content-data overflow-auto">
-          <div
-            id="to-do"
-            class="content-data-row"
-            ondrop="moveTo('to-do')"
-            ondragleave="removeHighlight('to-do')"
-            ondragover="allowDrop(event); highlight('to-do')"
-          ></div>
-          <div
-            id="in-progress"
-            class="content-data-row"
-            ondrop="moveTo('in-progress')"
-            ondragleave="removeHighlight('in-progress')"
-            ondragover="allowDrop(event); highlight('in-progress')"
-          ></div>
-          <div
-            id="await-feedback"
-            class="content-data-row"
-            ondrop="moveTo('await-feedback')"
-            ondragleave="removeHighlight('await-feedback')"
-            ondragover="allowDrop(event); highlight('await-feedback')"
-          ></div>
-          <div
-            id="done"
-            class="content-data-row"
-            ondrop="moveTo('done')"
-            ondragleave="removeHighlight('done')"
-            ondragover="allowDrop(event); highlight('done')"
-          ></div>
+          <div class="content-data-row">
+            <div class="data-row-title">Done</div>
+            <div
+              id="done"
+              class="content-data-row padding-end overflow-auto"
+              ondrop="moveTo('done')"
+              ondragleave="removeHighlight('done')"
+              ondragover="allowDrop(event); highlight('done')"
+            ></div>
+          </div>
         </div>
       </div>
       <div id="navbar-container-mobile" class="navbar-container-mobile"></div>
