@@ -88,11 +88,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-}
-
-.padding-end {
-  padding-right: 8px;
+  /* gap: 16px; */
 }
 
 .data-row-title {
@@ -147,6 +143,7 @@
   background-color: #e7e7e7;
   height: 48px;
   color: #a8a8a8;
+  margin: 10px;
 }
 
 .cardTask {
@@ -160,6 +157,7 @@
   padding: 16px;
   font-size: 16px;
   cursor: pointer;
+  margin: 10px;
 }
 
 .card-category {
