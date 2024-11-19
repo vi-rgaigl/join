@@ -7,6 +7,9 @@ async function initLoadData() {
     tasks = await getData("tasks");
     contacts = await getData("contacts");
     renderTasks();
+
+    let boardDialogRef = document.getElementById("boardDialog");
+    boardDialogRef.showModal();
   } catch (error) {
     console.warn(error);
   }
@@ -131,4 +134,9 @@ async function deleteTask(idTask) {
   } catch (error) {
     console.warn(error);
   }
+}
+
+function renderEditTask(id) {
+  let boardDialogRef = document.getElementById("boardDialog");
+  boardDialogRef.innerHTML = renderDialogTaskEdit(getTask(id), contacts);
 }

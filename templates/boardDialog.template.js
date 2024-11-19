@@ -1,5 +1,7 @@
 function renderDialogTaskOverview(task, contacts) {
-  return `<div class="dialog-task-overview">
+  return `
+  <div class="dialog-scroll">
+  <div class="dialog-task-overview">
           <div class="dialog-header">
           ${getCategory(task.category)}
             <div class="closeX" onclick="closeDialog()">
@@ -31,10 +33,13 @@ ${getPriority(task.prio)}
                 <img src="./assets/icons/delete.svg" alt="" /> Delete
               </div>
               <div class="dialog-menue-poinsts-seperator"></div>
-              <div class="dialog-menue-point">
+              <div class="dialog-menue-point" onclick="renderEditTask('${
+                task.id
+              }')">
                 <img src="./assets/icons/edit.svg" alt="" /> Edit
               </div>
             </div>
+          </div>
           </div>
         </div>`;
 }
@@ -45,9 +50,9 @@ function formatDate(date) {
 
 function getPriority(prio) {
   let namePrio = prio.charAt(0).toUpperCase() + prio.slice(1);
-  return /*HTML*/ ` <p>${namePrio}</p>
-                    <img src="./assets/icons/${prio}-priority-small-color.svg"
-                    alt="prio-${prio}"/>`;
+  return `<p>${namePrio}</p>
+          <img src="./assets/icons/${prio}-priority-small-color.svg"
+          alt="prio-${prio}"/>`;
 }
 
 function getAssignInitialsName(listOfAssign, contacts) {

@@ -144,11 +144,88 @@ dialog.hide {
   }
 }
 
-/* dialog::-webkit-scrollbar {
+.flex-end {
+  justify-content: flex-end;
+}
+
+.formBoard {
+  align-items: flex-start;
+}
+
+.input-row {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.errorMassage {
+  height: 20px;
+  width: 100%;
+  color: red;
+}
+
+.radio-btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.radio-container input[type="radio"] {
   display: none;
 }
 
-dialog {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-} */
+.radio-container label {
+  margin-top: 16px;
+  display: inline-flex;
+  width: 120px;
+  height: 50px;
+  align-items: center;
+  padding: 6px 12px;
+  border: 2px solid var(--light-grey);
+  border-radius: 12px;
+  background-color: white;
+  font-size: 16px;
+  /* color: #333; */
+  cursor: pointer;
+  /* transition: all 0.3s ease; */
+}
+
+.radio-urgent input[type="radio"]:checked + label {
+  border-color: red;
+  background-color: red;
+  color: white;
+  background-image: url(../assets/icons/urgent-priority-small-white.svg);
+  background-repeat: no-repeat;
+}
+
+.radio-medium input[type="radio"]:checked + label {
+  border-color: orange;
+  background-color: orange;
+  color: white;
+  background-image: url(../assets/icons/medium-priority-small-white.svg);
+  background-repeat: no-repeat;
+}
+
+.radio-low input[type="radio"]:checked + label {
+  border-color: greenyellow;
+  background-color: greenyellow;
+  color: white;
+  background-image: url(../assets/icons/low-priority-small-white.svg);
+  background-repeat: no-repeat;
+}
+
+.radio-urgent label {
+  background: url(../assets/icons/urgent-priority-small-color.svg) no-repeat;
+  background-position: 90%;
+}
+
+.radio-medium label {
+  background: url(../assets/icons/medium-priority-small-color.svg) no-repeat;
+  background-position: 90%;
+}
+
+.radio-low label {
+  background: url(../assets/icons/low-priority-small-color.svg) no-repeat;
+  background-position: 90%;
+}
