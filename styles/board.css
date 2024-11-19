@@ -276,6 +276,7 @@
   --sb-thumb-color: #2a3647;
   --sb-size: 8px;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .overflow-auto::-webkit-scrollbar {
