@@ -47,7 +47,7 @@ function getTemplateCard(task, contacts) {
 }
 
 function getDescription(text) {
-  return text.length > 40 ? text.slice(0, 45) + "..." : text;
+  return text.length > 50 ? text.slice(0, 45) + "..." : text;
 }
 
 function getSubtasksBar(subtasks) {
