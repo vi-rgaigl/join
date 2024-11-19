@@ -95,8 +95,12 @@
   cursor: pointer;
 }
 
+.dialog-menue-point:hover {
+  filter: var(--filter-blue);
+}
+
 .dialog-menue-point img {
-  height: 100%;
+  height: 90%;
   margin-right: 8px;
 }
 

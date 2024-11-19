@@ -1,5 +1,5 @@
 function renderDialogTaskOverview(task, contacts) {
-  return /*HTML*/ `<div class="dialog-task-overview">
+  return `<div class="dialog-task-overview">
           <div class="dialog-header">
           ${getCategory(task.category)}
             <div class="closeX" onclick="closeDialog()">
@@ -25,7 +25,9 @@ ${getPriority(task.prio)}
                       </div>
           <div class="dialog-menue">
             <div class="dialog-menue-points">
-              <div class="dialog-menue-point">
+              <div class="dialog-menue-point" onclick="deleteTask('${
+                task.id
+              }')">
                 <img src="./assets/icons/delete.svg" alt="" /> Delete
               </div>
               <div class="dialog-menue-poinsts-seperator"></div>

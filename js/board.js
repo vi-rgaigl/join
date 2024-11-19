@@ -117,5 +117,19 @@ async function subtasktChangeDone(idSubtask, idTask) {
     tasks = await getData("tasks");
     renderTasks();
     openDialog(idTask);
-  } catch (error) {}
+  } catch (error) {
+    console.warn(error);
+  }
+}
+
+async function deleteTask(idTask) {
+  let currentTask = getTask(idTask);
+  try {
+    await deleteData("tasks", currentTask);
+    tasks = await getData("tasks");
+    renderTasks();
+    closeDialog();
+  } catch (error) {
+    console.warn(error);
+  }
 }
