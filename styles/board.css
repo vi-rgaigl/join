@@ -1,6 +1,9 @@
 :root {
   --filter-blue: brightness(0) saturate(100%) invert(53%) sepia(98%)
     saturate(891%) hue-rotate(165deg) brightness(95%) contrast(86%);
+  --sb-track-color: #f6f7f8;
+  --sb-thumb-color: #2a3647;
+  --sb-size: 8px;
 }
 
 .flex-column {
@@ -273,23 +276,20 @@
 }
 
 .overflow-auto {
-  --sb-track-color: #f6f7f8;
-  --sb-thumb-color: #2a3647;
-  --sb-size: 8px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
 
-.overflow-auto::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: var(--sb-size);
 }
 
-.overflow-auto::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: var(--sb-track-color);
   border-radius: 8px;
 }
 
-.overflow-auto::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: var(--sb-thumb-color);
   border-radius: 8px;
 }

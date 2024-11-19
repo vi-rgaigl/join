@@ -4,11 +4,18 @@
   background-color: white;
   border: none;
   box-shadow: 0px 0px 4px 0px #00000029;
-  padding: 40px;
+  padding: 40px 20px;
+  overflow: hidden;
 }
 
 #boardDialog:focus-visible {
   outline: none;
+}
+
+.dialog-scroll {
+  max-height: calc(100vh - 160px);
+  overflow: auto;
+  padding: 0 20px;
 }
 
 .dialog-task-overview {
@@ -137,11 +144,11 @@ dialog.hide {
   }
 }
 
-dialog::-webkit-scrollbar {
+/* dialog::-webkit-scrollbar {
   display: none;
 }
 
 dialog {
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
+} */
