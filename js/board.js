@@ -108,3 +108,14 @@ function getTask(id) {
     return task.id === id;
   });
 }
+
+async function subtasktChangeDone(idSubtask, idTask) {
+  let currentTask = getTask(idTask);
+  currentTask.subtasks[idSubtask].done = !currentTask.subtasks[idSubtask].done;
+  try {
+    await changeData("tasks", currentTask);
+    tasks = await getData("tasks");
+    renderTasks();
+    openDialog(idTask);
+  } catch (error) {}
+}

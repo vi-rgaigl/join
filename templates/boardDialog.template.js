@@ -21,7 +21,7 @@ ${getPriority(task.prio)}
             
           </div>
           <div>
-            ${getListOfSubtasks(task.subtasks)}
+            ${getListOfSubtasks(task.subtasks, task.id)}
                       </div>
           <div class="dialog-menue">
             <div class="dialog-menue-points">
@@ -67,16 +67,16 @@ function getAssignInitialsName(listOfAssign, contacts) {
   return beginn;
 }
 
-function getListOfSubtasks(subtasks) {
+function getListOfSubtasks(subtasks, id) {
   if (subtasks === false) {
     return "";
   } else {
     let headline = `<div class="headline">Subtasks</div>`;
 
-    subtasks.forEach((subtask) => {
+    subtasks.forEach((subtask, index) => {
       let nameImg = subtask.done ? "checked" : "unchecked";
       headline += `<div class="dialog-subtask">
-        <img src="./assets/icons/check-button-${nameImg}.svg" alt="Task_${nameImg}" />
+        <img src="./assets/icons/check-button-${nameImg}.svg" alt="Task_${nameImg}" onclick="subtasktChangeDone('${index}','${id}')"/>
         ${subtask.subtitle}
       </div>`;
     });
