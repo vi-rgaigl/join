@@ -132,3 +132,12 @@ dialog.hide {
     transform: translateX(600%);
   }
 }
+
+dialog::-webkit-scrollbar {
+  display: none;
+}
+
+dialog {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
