@@ -1,62 +1,107 @@
 let databaseURL = "https://join-a8a87-default-rtdb.europe-west1.firebasedatabase.app/";
 let contactsList = [];
 let currentContactIndex = null;
-const initials = getInitials;
 
-async function renderContactList() {
-    const contactListElement = document.getElementById("contactList");
-    contactListElement.innerHTML = "";
-
+async function fetchContactsData() {
     try {
-        contactsList = await getData("contacts");
-        if (!contactsList || contactsList.length === 0) {
+        const contacts = await getData("contacts");
+        if (!contacts || contacts.length === 0) {
             console.error("Die Kontaktliste ist leer.");
-            return;
+            return [];
         }
+        return contacts;
+    } catch (error) {
+        console.error("Fehler beim Abrufen der Kontakte:", error);
+        return [];
+    }
+}
 
-        for (let i = 0; i < contactsList.length; i++) {
-            const contact = contactsList[i];
+function groupContactsByInitial(contacts) {
+    return contacts.reduce((grouped, contact) => {
+        const initial = contact.name.charAt(0).toUpperCase();
+        if (!grouped[initial]) {
+            grouped[initial] = [];
+        }
+        grouped[initial].push(contact);
+        return grouped;
+    }, {});
+}
+
+function sortContactsByName(contacts) {
+    return contacts.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+function groupContactsByInitial(contacts) {
+    return contacts.reduce((acc, contact) => {
+        const initial = contact.name[0].toUpperCase();
+        if (!acc[initial]) acc[initial] = [];
+        acc[initial].push(contact);
+        return acc;
+    }, {});
+}
+
+function generateContactListHTML(groupedContacts) {
+    let html = "";
+    for (const initial in groupedContacts) {
+        html += `<h3>${initial}</h3>`;
+        groupedContacts[initial].forEach((contact, index) => {
             const initials = getInitials(contact.name);
             const color = contact.color || getRandomColor();
-
-            contactListElement.innerHTML += `
-                <div class="contact-item" onclick="showContactDetails(${i})">
+            html += `
+                <div class="contact-item" onclick="showContactDetails(${index})">
                     <div class="contact-initials" style="background-color:${color}">${initials}</div>
                     <p>${contact.name}</p>
                 </div>
             `;
-        }
-    } catch (error) {
-        console.error("Fehler beim Abrufen der Kontakte:", error);
+        });
     }
+    return html;
 }
 
-function showContactDetails(index) { 
+async function renderContactList() {
+    const contactListElement = document.getElementById("contactList");
+    contactListElement.innerHTML = "";
+    contactsList = await fetchContactsData();
+    if (!contactsList.length) return;
+    const sortedContacts = sortContactsByName(contactsList);
+    const groupedContacts = groupContactsByInitial(sortedContacts);
+    contactListElement.innerHTML = generateContactListHTML(groupedContacts);
+}
+
+function generateContactDetailsHTML(contact) {
+    const initials = getInitials(contact.name);
+    return `
+        <div class="contact-header">
+            <div class="contact-initials" style="background-color:${contact.color || getRandomColor()}">${initials}</div>
+            <div class="contact-name-section">
+                <div class="contact-name">
+                    <h2>${contact.name}</h2>
+                </div>
+                <div class="contact-actions-container">
+                    <div class="contact-actions">
+                        <img onclick="editContact()" src="./assets/icons/edit.svg"><p>Edit</p>
+                        <img onclick="deleteContact()" src="./assets/icons/delete.svg"><p>Delete</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p>Contact Information</p>
+        <div class="contact-infos">
+            <p><b>Email</b> ${contact.email}</p>
+            <p><b>Phone</b> ${contact.phone}</p>
+        </div>
+    `;
+}
+
+function showContactDetails(index) {
     currentContactIndex = index;
     const contact = contactsList[index];
-    const initials = getInitials(contact.name);
+    if (!contact) {
+        console.error("Kontakt nicht gefunden.");
+        return;
+    }
 
-    document.getElementById("current-contact").innerHTML = `
-    <div class="contact-header">
-        <div class="contact-initials" style="background-color:${contact.color || getRandomColor()}">${initials}</div>
-    <div class="contact-name-section">
-        <div class="contact-name">
-            <h2>${contact.name}</h2>
-        </div>
-    <div class="contact-actions-container">
-        <div class="contact-actions">
-            <img onclick="editContact()" src="./assets/icons/edit.svg"><p>Edit</p>
-            <img onclick="deleteContact()" src="./assets/icons/delete.svg"><p>Delete</p>
-        </div>
-    </div>
-    </div>
-    </div>
-    <div class="contact-infos">
-        <p>Email: ${contact.email}</p>
-        <p>Telefonnummer: ${contact.phone}</p>
-    </div>
-    `;
-
+    document.getElementById("current-contact").innerHTML = generateContactDetailsHTML(contact);
     document.getElementById("contactDetailsContainer").classList.add("active");
 }
 
@@ -65,6 +110,11 @@ function getInitials(name) {
     const parts = name.split(" ");
     const initials = parts.map((part) => part[0]).join("");
     return initials.toUpperCase();
+}
+
+function getRandomColor() {
+    const colors = ["#FF5733", "#33FF57", "#3357FF", "#FF33A6", "#A633FF", "#33FFF5", "#FFBB33"];
+    return colors[Math.floor(Math.random() * colors.length)];
 }
 
 async function addContact() {
@@ -180,20 +230,6 @@ async function saveContact() {
         showContactDetails(currentContactIndex);
     } catch (error) {
         console.error("Fehler beim Speichern des Kontakts:", error);
-    }
-}
-
-function toggleEditLayer(contactIndex) {
-    const editLayer = document.getElementById("editLayer");
-    if (editLayer) {
-        editLayer.style.display = contactIndex !== null ? "block" : "none";
-        if (contactIndex !== null) {
-            const contact = contactsList[contactIndex];
-            document.getElementById("firstName").value = contact.name.split(" ")[0];
-            document.getElementById("lastName").value = contact.name.split(" ")[1];
-            document.getElementById("email").value = contact.email;
-            document.getElementById("phone").value = contact.phone;
-        }
     }
 }
 
