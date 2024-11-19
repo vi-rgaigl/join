@@ -126,8 +126,7 @@ async function deleteTask(idTask) {
   let currentTask = getTask(idTask);
   try {
     await deleteData("tasks", currentTask);
-    tasks = await getData("tasks");
-    renderTasks();
+    loadData();
     closeDialog();
   } catch (error) {
     console.warn(error);
