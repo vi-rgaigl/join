@@ -31,15 +31,6 @@ function sortContactsByName(contacts) {
     return contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
-function groupContactsByInitial(contacts) {
-    return contacts.reduce((acc, contact) => {
-        const initial = contact.name[0].toUpperCase();
-        if (!acc[initial]) acc[initial] = [];
-        acc[initial].push(contact);
-        return acc;
-    }, {});
-}
-
 function generateContactListHTML(groupedContacts) {
     let html = "";
     for (const initial in groupedContacts) {
@@ -54,6 +45,7 @@ function generateContactListHTML(groupedContacts) {
                 </div>
             `;
         });
+        html += `<hr>`;
     }
     return html;
 }
