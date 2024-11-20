@@ -37,3 +37,16 @@ function validateSignupForm() {
         rememberMe: rememberMe
     };
 }
+
+
+/**
+ * Toggles the visibility of the login password.
+ */
+function togglePasswordVisibilitySignup(item) {
+    let passwordInput = document.getElementById(`${item}-password`);
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'passwordshowtext';
+    } else {
+        passwordInput.type = 'password';
+    } 
+}

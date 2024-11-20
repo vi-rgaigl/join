@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="./styles/signup.css">
 
     <script src="./js/remoteStorage.js"></script>
-    <script src="./js/login.js"></script>
     <script src="./js/privacyPolicy.js"></script>
     <script src="./js/legalNotice.js"></script>
+    <script src="./js/signup.js"></script>
     <script src="./script.js"></script>
 
 </head>
@@ -43,21 +43,25 @@
                     </div>
                     <div class="input-line">
                         <input class="input input-login-text mrg-top-32" type="name" id="signup_name" placeholder="Name" required>
-                        <input class="input input-login-email mrg-top-32" type="email" id="signup_email" placeholder="Email"
+                        <input class="input input-login-email mrg-top-32" type="email" id="signup_email" placeholder="Email" autocomplete="email"
                             required>
-                        <input class="input input-login-password mrg-top-32" type="password" id="signup_password"
-                            placeholder="Password" required>
-                        <input class="input input-login-password mrg-top-32" type="password" id="confirm_password"
-                            placeholder="Confirm Password" required>
+                        <input class="input input-login-password mrg-top-32" type="password" id="signup-password"
+                            placeholder="Password" autocomplete="new-password" required>
+                        <input class="input input-login-password mrg-top-32" type="password" id="confirm-password"
+                            placeholder="Confirm Password" autocomplete="new-password">
+                        <div id="show-hidden-password-signup" class="show-hidden-password-signup">
+                            <div  onmousedown="togglePasswordVisibilitySignup('signup')" style="width: 100%; height: 50%;"></div>
+                            <div  onmousedown="togglePasswordVisibilitySignup('confirm')" style="width: 100%; height: 50%;"></div>
+                        </div>
                     </div>
-                    <div>
-                        <input type="checkbox" class="mrg-top-32" name="privacy" id="policy_checkbox">
-                        <label for="privacy">I accept the <a href="#" class="info-link-static" id="confirm_privacy_link">Privacy
+                    <div class="check-box-line">
+                        <input type="checkbox" name="privacy" id="policy_checkbox">
+                        <label for="privacy">I accept the <a href="./privacyPolicyNoLogin.html" class="info-link-static" id="confirm_privacy_link">Privacy
                                 Policy</a></label>
                     </div>
                     <div>
                         <input type="submit" class="button-blue mrg-top-32" id="signup_button" value="Sign up"
-                            onclick="location.href='./index.html'" />
+                            onclick="location.href='./index.html'" disabled/>
                     </div>
                 </form>
             </div>

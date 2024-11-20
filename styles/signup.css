@@ -46,6 +46,19 @@
     width: 32px;
 }
 
+.show-hidden-password-signup {
+    position: relative;
+    bottom: 29%;
+    right: -86%;
+    height: 140px;
+    width: 96px;
+    cursor: pointer;
+}
+
+.check-box-line {
+    margin-top: -9vh;
+}
+
 
 /* Media queries for different screen sizes */
 @media (max-height: 1120px) {
@@ -55,7 +68,7 @@
 }
 @media (max-height: 1090px) {
     .signup-form-box {
-        height: 55vh;
+        height: 70vh;
     }
 }
 @media (max-height: 860px) {
@@ -63,7 +76,12 @@
         margin-top: 16vh;
     }
     .signup-form-box {
-        height: 63vh;
+        height: 70vh;
+    }
+}
+@media (max-height: 760px) {
+    .signup-form-box {
+        height: 76vh;
     }
 }
 
@@ -124,7 +142,6 @@
     }
     .signup-form-box {
         width: 90vw;
-        height: 52vh;
     }
     .signup-form-pad-wd {
         padding: 14px 24px 51px 24px;
@@ -137,12 +154,17 @@
     .signup-title {
         font-size: 50px;
     }
+    .show-hidden-password-signup {
+        width: 78px;
+    }
+    .check-box-line {
+        margin-top: -14vh;
+    }
 }
 
 @media (max-width: 360px) {
     .signup-form-box {
         width: 86vw;
-        height: 52vh;
         border-radius: 16px;
     }
     .logo-signup {
@@ -152,5 +174,8 @@
     }
     .back-to-login {
         width: 20%;
+    }
+    .show-hidden-password-signup {
+        width: 58px;
     }
 }
