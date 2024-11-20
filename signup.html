@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./styles/navBarHeader.css">
     <link rel="stylesheet" href="./styles/loginSignup.css">
+    <link rel="stylesheet" href="./styles/signup.css">
 
     <script src="./js/remoteStorage.js"></script>
     <script src="./js/login.js"></script>
@@ -28,7 +29,7 @@
 
         <div id="login_body" class="login-body">
 
-            <div class="login-form-box signup-form-pad-wd">
+            <div class="signup-form-box signup-form-pad-wd">
                 <form onsubmit="registerUser(); return false;">
                     <div class="form-header-signup">
                         <div class="back-to-login">
@@ -36,26 +37,26 @@
                                     src="./assets/icons/arrow-left-line.svg" alt="Back to Login"></a>
                         </div>
                         <div class="headline">
-                            <h1>Sign up</h1>
+                            <h1 class="signup-title">Sign up</h1>
                             <div class="underline-blue"></div>
                         </div>
                     </div>
                     <div class="input-line">
-                        <input class="input input-login-text" type="name" id="signup_name" placeholder="Name" required>
-                        <input class="input input-login-email" type="email" id="signup_email" placeholder="Email"
+                        <input class="input input-login-text mrg-top-32" type="name" id="signup_name" placeholder="Name" required>
+                        <input class="input input-login-email mrg-top-32" type="email" id="signup_email" placeholder="Email"
                             required>
-                        <input class="input input-login-password" type="password" id="signup_password"
+                        <input class="input input-login-password mrg-top-32" type="password" id="signup_password"
                             placeholder="Password" required>
-                        <input class="input input-login-password" type="password" id="confirm_password"
+                        <input class="input input-login-password mrg-top-32" type="password" id="confirm_password"
                             placeholder="Confirm Password" required>
                     </div>
                     <div>
-                        <input type="checkbox" name="privacy" id="policy_checkbox">
-                        <label for="privacy">I accept the <a href="#" id="confirm_privacy_link">Privacy
+                        <input type="checkbox" class="mrg-top-32" name="privacy" id="policy_checkbox">
+                        <label for="privacy">I accept the <a href="#" class="info-link-static" id="confirm_privacy_link">Privacy
                                 Policy</a></label>
                     </div>
                     <div>
-                        <input type="submit" class="button-blue" id="signup_button" value="Sign up"
+                        <input type="submit" class="button-blue mrg-top-32" id="signup_button" value="Sign up"
                             onclick="location.href='./index.html'" />
                     </div>
                 </form>

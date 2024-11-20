@@ -4,8 +4,9 @@ let users =[];
  * Initializes the login page with the logo animation. Loads users from remote storage and set user inactive.
  */
 async function initLogin() {
+    document.getElementById('body').classList.add('dark-dawn');
     document.getElementById('login-form-box').classList.add('dawn');
-    document.getElementById('login-body').classList.add('dawn');
+    document.getElementById('header-login').classList.add('dawn'); 
     document.getElementById('logo-login').classList.add('logo-position');
     await getUsers();
     removeFromLocalStorage('join393active');
