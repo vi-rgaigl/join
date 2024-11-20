@@ -122,6 +122,13 @@
     flex-direction: column;
     width: 100%;
 }
+.login-signup-warning {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    color: red;
+    font-weight: bold;
+}
 
 .show-hidden-password {
     position: relative;
