@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./styles/navBarHeader.css">
-    <link rel="stylesheet" href="./styles/loginSignup.css">
+    <link rel="stylesheet" href="./styles/login.css">
     <link rel="stylesheet" href="./styles/loginAnimation.css">
 
 
@@ -22,7 +22,7 @@
 
 </head>
 
-<body onload="initLogin()">
+<body id="body" onload="initLogin()">
 
     <div class="index-body">
         <div id="header-login" class="header-login">
@@ -40,7 +40,7 @@
         <div id="login-body" class="login-body">
 
             <div id="login-form-box" class="login-form-box login-form-pad-wd">
-                <form onsubmit="return false;">
+                <form id="login-form" onsubmit="return false;">
                     <div class="headline">
                         <h1>Log in</h1>
                         <div class="underline-blue"></div>
@@ -48,7 +48,8 @@
                     <div class="input-line mrg-top-32">
                         <input id="login-email" class="input input-login-email" type="email" 
                             placeholder="Email" autocomplete="username">
-                        <input id="login-password" class="input input-login-password mrg-top-32" type="password"
+                        <div id="error-login-message" class="login-signup-warning"></div>
+                        <input id="login-password" class="input input-login-password" type="password"
                             placeholder="Password" autocomplete="current-password">                          
                             <div id="show-hidden-password" class="show-hidden-password" onmousedown="togglePasswordVisibility()"></div>
                         </div>

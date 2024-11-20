@@ -4,8 +4,9 @@ let users =[];
  * Initializes the login page with the logo animation. Loads users from remote storage and set user inactive.
  */
 async function initLogin() {
+    document.getElementById('body').classList.add('dark-dawn');
     document.getElementById('login-form-box').classList.add('dawn');
-    document.getElementById('login-body').classList.add('dawn');
+    document.getElementById('header-login').classList.add('dawn'); 
     document.getElementById('logo-login').classList.add('logo-position');
     await getUsers();
     removeFromLocalStorage('join393active');
@@ -24,6 +25,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let loginButton = document.getElementById('login-button');
     let emailInput = document.getElementById('login-email');
     let passwordInput = document.getElementById('login-password');
+    let signupForm = document.querySelector('#login-form');
+    signupForm.setAttribute('novalidate', true);
+    signupForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+    });
     
     function isFormFilled() {    
         if (emailInput.value && passwordInput.value) {
@@ -45,9 +51,11 @@ function login() {
     if (!formData) return; 
     let user = getUserByEmail(formData.email);
     if (!user || user.password !== formData.password) {
-        alert('Incorrect password or email address. Please try again.');
+        setErrorMessage('error-login-message', 'Email or password not correct.');
         clearLoginForm();
         return;
+    } else {
+        clearErrorMessage('error-login-message');
     }
     if (getRemembermeCheckbox()) {
         setRememberme(user);
@@ -170,4 +178,17 @@ function togglePasswordVisibility() {
     } else {
         passwordInput.type = 'password';
     }
+}
+
+function setErrorMessage(id, message) {
+    let errorMessage = document.getElementById(id);
+    errorMessage.innerHTML = message;
+}
+
+function setErrorMessage(elementId, message) {
+    document.getElementById(elementId).textContent = message;
+}
+
+function clearErrorMessage(elementId) {
+    document.getElementById(elementId).textContent = '';
 }

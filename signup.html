@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./styles/navBarHeader.css">
-    <link rel="stylesheet" href="./styles/loginSignup.css">
+    <link rel="stylesheet" href="./styles/login.css">
+    <link rel="stylesheet" href="./styles/signup.css">
 
     <script src="./js/remoteStorage.js"></script>
-    <script src="./js/login.js"></script>
     <script src="./js/privacyPolicy.js"></script>
     <script src="./js/legalNotice.js"></script>
+    <script src="./js/signup.js"></script>
     <script src="./script.js"></script>
 
 </head>
@@ -28,35 +29,41 @@
 
         <div id="login_body" class="login-body">
 
-            <div class="login-form-box signup-form-pad-wd">
-                <form onsubmit="registerUser(); return false;">
+            <div class="signup-form-box signup-form-pad-wd">
+                <form id="signup-form" onsubmit="return false;">
                     <div class="form-header-signup">
                         <div class="back-to-login">
                             <a href="./index.html"><img class="back-to-login-img"
                                     src="./assets/icons/arrow-left-line.svg" alt="Back to Login"></a>
                         </div>
                         <div class="headline">
-                            <h1>Sign up</h1>
+                            <h1 class="signup-title">Sign up</h1>
                             <div class="underline-blue"></div>
                         </div>
                     </div>
                     <div class="input-line">
-                        <input class="input input-login-text" type="name" id="signup_name" placeholder="Name" required>
-                        <input class="input input-login-email" type="email" id="signup_email" placeholder="Email"
-                            required>
-                        <input class="input input-login-password" type="password" id="signup_password"
-                            placeholder="Password" required>
-                        <input class="input input-login-password" type="password" id="confirm_password"
-                            placeholder="Confirm Password" required>
+                        <input class="input input-login-text mrg-top-32" type="name" id="signup-name" placeholder="Name">
+                        <div id="error-signup-name" class="login-signup-warning"></div>
+                        <input class="input input-login-email" type="email" id="signup-email" placeholder="Email" autocomplete="email">
+                        <div id="error-signup-email" class="login-signup-warning"></div>
+                        <input class="input input-login-password" type="password" id="signup-password"
+                            placeholder="Password" autocomplete="new-password">
+                        <div id="error-signup-password" class="login-signup-warning"></div>
+                            <input class="input input-login-password" type="password" id="confirm-password"
+                            placeholder="Confirm Password" autocomplete="new-password">
+                        <div id="show-hidden-password-signup" class="show-hidden-password-signup">
+                            <div  onmousedown="togglePasswordVisibilitySignup('signup')" style="width: 100%; height: 50%;"></div>
+                            <div  onmousedown="togglePasswordVisibilitySignup('confirm')" style="width: 100%; height: 50%;"></div>
+                        </div>
                     </div>
-                    <div>
-                        <input type="checkbox" name="privacy" id="policy_checkbox">
-                        <label for="privacy">I accept the <a href="#" id="confirm_privacy_link">Privacy
+                    <div class="check-box-line">
+                        <input type="checkbox" name="privacy" id="policy-checkbox">
+                        <label for="privacy">I accept the <a href="./privacyPolicyNoLogin.html" class="info-link-static" id="confirm_privacy_link">Privacy
                                 Policy</a></label>
                     </div>
                     <div>
-                        <input type="submit" class="button-blue" id="signup_button" value="Sign up"
-                            onclick="location.href='./index.html'" />
+                        <input type="submit" class="button-blue mrg-top-32" id="signup_button" value="Sign up"
+                            onclick="setSignupRedirect()"/>
                     </div>
                 </form>
             </div>

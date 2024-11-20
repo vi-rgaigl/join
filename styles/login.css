@@ -27,14 +27,6 @@
     justify-content: end;
 }
 
-.header-signup {
-    position: absolute;
-    top: 0;
-    width: 100vw;
-    display: flex;
-    justify-content: start;
-}
-
 .logo-login {
     position: absolute;
     width: 100px;
@@ -43,13 +35,6 @@
     left: 77px;
     opacity: 1;
     z-index: 5;
-}
-.logo-signup {
-    position: absolute;
-    width: 100px;
-    height: 120px;
-    top: 80px;
-    left: 77px;
 }
 
 .signup-line {
@@ -119,25 +104,6 @@
     padding: 48px 115px 98px 115px;
 }
 
-.signup-form-pad-wd {
-    padding: 48px 115px 98px 115px;
-}
-
-.form-header-signup {
-    display: flex;
-    width: 115%;
-}
-
-.back-to-login {
-    width: 6%;
-    cursor: pointer;
-}
-
-.back-to-login-img {
-    height: 32px;
-    width: 32px;
-}
-
 .headline {
     width: 94%;
     display: flex;
@@ -155,6 +121,13 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+.login-signup-warning {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    color: red;
+    font-weight: bold;
 }
 
 .show-hidden-password {
@@ -184,6 +157,11 @@
 #confirm-privacy-link:hover {
     text-decoration: underline;
     font-weight: unset;
+}
+
+.info-link-static {
+    color: var(--light-blue);
+    font-weight: bold;
 }
 
 .info-link:hover {
@@ -309,9 +287,6 @@
     }
     .login-form-pad-wd {
         padding: 16px 10px;
-    }
-    .signup-form-pad-wd {
-        padding: 14px 24px 51px 24px;
     }
     .logo-login {
         height: 60px;
