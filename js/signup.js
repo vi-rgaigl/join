@@ -10,44 +10,57 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 function signupUser() {
-    if (validateSignupForm()) {
-        // Proceed with signup logic
+    let formData = getFormData();
+    if (validateSignupForm(formData)) {
         console.log('Form is valid and ready for submission.');
+        userItem = {
+            email: formData.email,
+            initials: getInitials(formData.name),
+            password: formData.password,
+            user: formData.name
+        }
+        pushData('users', userItem);
     }
 }
 
-
-function validateSignupForm() {
-    let name = document.getElementById('signup-name').value;
-    let email = document.getElementById('signup-email').value;
-    let password = document.getElementById('signup-password').value;
-    let confirmPassword = document.getElementById('confirm-password').value;
+function validateSignupForm(formData) {
     let isValid = true;
 
-    if (!name) {
+    if (!formData.name) {
         setErrorMessage('error-signup-name', 'Name is required.');
         isValid = false;
     } else {
         clearErrorMessage('error-signup-name');
     }
 
-    if (!checkEmailRegex(email)) {
+    if (!checkEmailRegex(formData.email)) {
         setErrorMessage('error-signup-email', 'Please enter a valid email address.');
         isValid = false;
     } else {
         clearErrorMessage('error-signup-email');
     }
 
-    if (!checkPasswordRegex(password)) {
+    if (!checkPasswordRegex(formData.password)) {
         setErrorMessage('error-signup-password', 'At least 8 chars, 1 uppercase, 1 digit, 1 special char.');
         isValid = false;
-    } else if (password !== confirmPassword) {
+    } else if (formData.password !== formData.confirmPassword) {
         setErrorMessage('error-signup-password', 'Passwords do not match.');
         isValid = false;
     } else {
         clearErrorMessage('error-signup-password');
     }
     return isValid;
+}
+
+function getFormData() {
+    let formData = {
+        name: document.getElementById('signup-name').value,
+        email: document.getElementById('signup-email').value,
+        password: document.getElementById('signup-password').value,
+        confirmPassword: document.getElementById('confirm-password').value,
+        policyCheckbox: getPolicyCheckbox()
+    };
+    return formData;
 }
 
 function checkEmailRegex(email) {
@@ -90,4 +103,8 @@ function togglePasswordVisibilitySignup(item) {
     } else {
         passwordInput.type = 'password';
     } 
+}
+
+function getInitials(name) {
+    return name.split(' ').map((n) => n[0]).join('').toUpperCase();
 }
