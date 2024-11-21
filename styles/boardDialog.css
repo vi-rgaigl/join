@@ -164,6 +164,8 @@ dialog.hide {
   height: 20px;
   width: 100%;
   color: red;
+  font-size: 12px;
+  padding-top: 4px;
 }
 
 .radio-btns {

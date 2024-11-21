@@ -140,3 +140,8 @@ function renderEditTask(id) {
   let boardDialogRef = document.getElementById("boardDialog");
   boardDialogRef.innerHTML = renderDialogTaskEdit(getTask(id), contacts);
 }
+
+function toggleDropdown() {
+  let dropdownAssignedRef = document.getElementById("dropdownAssinged");
+  dropdownAssignedRef.classList.toggle("dropdown-open");
+}
