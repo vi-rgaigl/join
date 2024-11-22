@@ -276,23 +276,9 @@
 }
 
 .overflow-auto {
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
-
-/* ::-webkit-scrollbar {
-  width: var(--sb-size);
-}
-
-::-webkit-scrollbar-track {
-  background: var(--sb-track-color);
-  border-radius: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--sb-thumb-color);
-  border-radius: 8px;
-} */
 
 @supports not selector(::-webkit-scrollbar) {
   dialog,

@@ -46,7 +46,7 @@ ${getPriority(task.prio)}
 
 function renderDialogTaskEdit(task, contacts) {
   return `<div class="dialog-header flex-end">
-          <div class="closeX" onclick="closeDialog()">
+          <div class="closeX" onclick="closeDialogEdit()">
             <img src="./assets/icons/close.svg" alt="closeButton" />
           </div>
         </div>
@@ -123,7 +123,9 @@ function renderDialogTaskEdit(task, contacts) {
           <div class="input-row form-submit-btn">
           <div>
           <p class="lableRequiert">*</p>This field is required</div>
-            <button onclick="submitEditTask()" id="btnSubmitEditTask" class="button-blue button-check">
+            <button onclick="submitEditTask('${
+              task.id
+            }')" id="btnSubmitEditTask" class="button-blue button-check">
               OK <img src="./assets/icons/checkWithoutCircle.svg" alt="check" />
             </button>
           </div>

@@ -2,7 +2,7 @@ let tasks = [];
 let contacts = [];
 let dragginTaskId;
 let editTask;
-let errorEditTask = { title: false, dueDate: false };
+let errorEditTask = { Title: false, DueDate: false };
 
 async function initLoadData() {
   try {
@@ -87,6 +87,10 @@ function openDialog(id) {
   boardDialogRef.showModal();
 }
 
+function closeDialogEdit() {
+  renderOverviewTask(editTask.id);
+}
+
 function closeDialog() {
   let boardDialogRef = document.getElementById("boardDialog");
   boardDialogRef.classList.add("hide");
@@ -141,6 +145,11 @@ function renderEditTask(id) {
   boardDialogRef.innerHTML = renderDialogTaskEdit(editTask, contacts);
 }
 
+function renderOverviewTask(id) {
+  let boardDialogRef = document.getElementById("boardDialog");
+  boardDialogRef.innerHTML = renderDialogTaskOverview(getTask(id), contacts);
+}
+
 function toggleDropdown() {
   let dropdownAssignedRef = document.getElementById("dropdownAssinged");
   dropdownAssignedRef.classList.toggle("dropdown-open");
@@ -148,16 +157,10 @@ function toggleDropdown() {
 
 function changeTitle(event) {
   let title = event.target.value;
-  let errorTitleRef = document.getElementById("errorTitle");
-  let inputTitleRef = document.getElementById("inputTitle");
   if (title.length > 0) {
-    errorTitleRef.innerText = "";
-    inputTitleRef.classList.remove("inputError");
-    errorEditTask.title = false;
+    errorMassage("", "Title");
   } else {
-    errorTitleRef.innerText = "This field is required.";
-    inputTitleRef.classList.add("inputError");
-    errorEditTask.title = true;
+    errorMassage("This field is required.", "Title");
   }
   checkIfError();
   editTask.title = title;
@@ -169,23 +172,29 @@ function changeDescription(event) {
 
 function changeDueDate(event) {
   let dueDate = event.target.value;
-  let errorDueDateRef = document.getElementById("errorDueDate");
-  let inputDueDateRef = document.getElementById("inputDueDate");
   if (dueDate.length <= 0) {
-    errorDueDateRef.innerText = "This field is required.";
-    inputDueDateRef.classList.add("inputError");
-    errorEditTask.dueDate = true;
+    errorMassage("This field is required.", "DueDate");
   } else if (checkIfPast(dueDate)) {
-    errorDueDateRef.innerText = "The date must be in the future.";
-    inputDueDateRef.classList.add("inputError");
-    errorEditTask.dueDate = true;
+    errorMassage("The date must be in the future.", "DueDate");
   } else {
-    errorDueDateRef.innerText = "";
-    inputDueDateRef.classList.remove("inputError");
-    errorEditTask.dueDate = false;
+    errorMassage("", "DueDate");
   }
   checkIfError();
   editTask.dueDate = dueDate;
+}
+
+function errorMassage(text, field) {
+  let errorRef = document.getElementById(`error${field}`);
+  let inputRef = document.getElementById(`input${field}`);
+  if (text == "") {
+    errorRef.innerText = text;
+    inputRef.classList.remove("inputError");
+    errorEditTask[field] = false;
+  } else {
+    errorRef.innerText = text;
+    inputRef.classList.add("inputError");
+    errorEditTask[field] = true;
+  }
 }
 
 function checkIfPast(date) {
@@ -265,4 +274,14 @@ function checkIfError() {
     }
   }
   btnSubmitEditTaskRef.disabled = isError;
+}
+
+async function submitEditTask(id) {
+  try {
+    await changeData("tasks", editTask);
+    await loadData();
+    renderOverviewTask(id);
+  } catch (error) {
+    console.warn(error);
+  }
 }
