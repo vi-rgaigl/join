@@ -242,3 +242,8 @@ function renderSubtasks(task) {
   let listSubtasksRef = document.getElementById("listSubtasks");
   listSubtasksRef.innerHTML = getListOfSubtasksEdit(task.subtasks);
 }
+
+function deleteSubtask(indexOfSubtak) {
+  editTask.subtasks.splice(indexOfSubtak, 1);
+  renderSubtasks(editTask);
+}

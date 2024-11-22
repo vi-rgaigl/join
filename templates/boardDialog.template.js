@@ -251,13 +251,14 @@ function getListOfSubtasksEdit(subtasks) {
   if (subtasks === false) {
     return "";
   } else {
-    subtasks.forEach((subtask) => {
+    subtasks.forEach((subtask, index) => {
       html += `<div class="subtask-list-item">
       ${subtask.subtitle}
       <img
         src="./assets/icons/delete.svg"
         alt="delete"
         class="subtask-list-img"
+        onclick="deleteSubtask(${index})"
       />
     </div>`;
     });
