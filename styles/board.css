@@ -280,7 +280,7 @@
   overflow-x: hidden;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: var(--sb-size);
 }
 
@@ -292,7 +292,7 @@
 ::-webkit-scrollbar-thumb {
   background: var(--sb-thumb-color);
   border-radius: 8px;
-}
+} */
 
 @supports not selector(::-webkit-scrollbar) {
   dialog,
