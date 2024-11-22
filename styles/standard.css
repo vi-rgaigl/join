@@ -54,6 +54,11 @@ form {
   width: 100%;
 }
 
+.lableRequiert {
+  display: inline;
+  color: red;
+}
+
 .input {
   /* all: unset; */
   border: 1px solid var(--light-grey);

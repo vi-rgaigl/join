@@ -248,9 +248,11 @@ dialog.hide {
 
 .form-submit-btn {
   display: flex;
-  align-items: flex-end;
   margin-top: 16px;
   margin-bottom: 16px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .dialog-scroll-edit {

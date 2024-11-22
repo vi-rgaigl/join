@@ -54,7 +54,7 @@ function renderDialogTaskEdit(task, contacts) {
         <div class="formBoard">
           <div class="dialog-scroll dialog-scroll-edit w-100">
             <div class="input-row">
-              <label for="inputTitle" class="lable">Title</label>
+              <label for="inputTitle" class="lable">Title<p class="lableRequiert">*</p></label>
               <input type="text" class="input" id="inputTitle" value="${
                 task.title
               }"/>
@@ -70,7 +70,7 @@ function renderDialogTaskEdit(task, contacts) {
               </div>
             </div>
             <div class="input-row">
-              <label for="inputDueDate" class="lable">Due Date</label>
+              <label for="inputDueDate" class="lable">Due Date<p class="lableRequiert">*</p></label>
               <input type="date" class="input" id="inputDueDate" value="${
                 task.dueDate
               }"/>
@@ -78,7 +78,7 @@ function renderDialogTaskEdit(task, contacts) {
               </div>
             </div>
             <div class="input-row">
-              <label for="inputPriority" class="lable">Priority</label>
+              <label for="inputPriority" class="lable">Priority<p class="lableRequiert">*</p></label>
               <div class="radio-btns">
                 ${getPriorityEdit(task.prio)}
               </div>
@@ -119,6 +119,8 @@ function renderDialogTaskEdit(task, contacts) {
             </div>
           </div>
           <div class="input-row form-submit-btn">
+          <div>
+          <p class="lableRequiert">*</p>This field is required</div>
             <button onclick="submitEditTask()" class="button-blue button-check">
               OK <img src="./assets/icons/checkWithoutCircle.svg" alt="check" />
             </button>
