@@ -101,9 +101,53 @@ input[type="name"] {
 }
 
 .dropdown {
+  background-position: right 1.5rem top 20px;
+}
+
+.dropdown-click {
   cursor: pointer;
+}
+
+.dropdown-hr {
+  border: 1px solid var(--light-grey);
 }
 
 .select-arrow.dropdown-open {
   background-image: url(../assets/icons/select-arrow-up.svg);
+}
+
+.dropdown:not(.dropdown-open) .dropdown-list {
+  display: none;
+}
+
+.dropdown-list-item {
+  margin-top: 10px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + label {
+  display: block;
+  width: 100%;
+  padding-left: 24px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-image: url(../assets/icons/check-button-unchecked.svg);
+  background-repeat: no-repeat;
+  background-position: 97%;
+}
+
+input[type="checkbox"]:checked + label {
+  background-color: var(--light-blue);
+  background-image: url(../assets/icons/check-button-checked.svg);
+  background-repeat: no-repeat;
+  background-position: 97%;
+}
+
+input[type="checkbox"]:hover + label {
+  background-color: var(--light-grey);
 }
