@@ -72,7 +72,7 @@ function renderDialogTaskEdit(task, contacts) {
               <label for="inputDueDate" class="lable">Due Date<p class="lableRequiert">*</p></label>
               <input type="date" class="input" id="inputDueDate" value="${
                 task.dueDate
-              }"/>
+              }" oninput="changeDueDate(event)"/>
               <div id="errorDueDate" class="errorMassage">
               </div>
             </div>

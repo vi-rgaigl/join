@@ -153,7 +153,7 @@ function changeTitle(event) {
     errorTitleRef.innerText = "";
     inputTitleRef.classList.remove("inputError");
   } else {
-    errorTitleRef.innerText = "This field is required";
+    errorTitleRef.innerText = "This field is required.";
     inputTitleRef.classList.add("inputError");
   }
   editTask.title = title;
@@ -162,4 +162,27 @@ function changeTitle(event) {
 function changeDescription(event) {
   let description = event.target.value;
   editTask.description = description;
+}
+
+function changeDueDate(event) {
+  let dueDate = event.target.value;
+  let errorDueDateRef = document.getElementById("errorDueDate");
+  let inputDueDateRef = document.getElementById("inputDueDate");
+  if (dueDate.length <= 0) {
+    errorDueDateRef.innerText = "This field is required.";
+    inputDueDateRef.classList.add("inputError");
+  } else if (checkIfPast(dueDate)) {
+    errorDueDateRef.innerText = "The date must be in the future.";
+    inputDueDateRef.classList.add("inputError");
+  } else {
+    errorDueDateRef.innerText = "";
+    inputDueDateRef.classList.remove("inputError");
+  }
+}
+
+function checkIfPast(date) {
+  let dateTask = new Date(date + ":00:00.000");
+  let dateNow = new Date();
+  dateNow.setHours(0, 0, 0, 0);
+  return dateTask < dateNow;
 }
