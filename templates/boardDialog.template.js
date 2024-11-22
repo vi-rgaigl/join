@@ -161,6 +161,7 @@ function getPriorityEdit(prio) {
                     id="inputPriorityUrgent"
                     name="inputPriority"
                     value="urgent"
+                    oninput="changePrio(event)"
                     ${inputPriorityUrgent}
                   />
                   <label for="inputPriorityUrgent">Urgent</label>
@@ -171,6 +172,7 @@ function getPriorityEdit(prio) {
                     id="inputPriorityMedium"
                     name="inputPriority"
                     value="medium"
+                    oninput="changePrio(event)"
                     ${inputPriorityMedium}
                   />
                   <label for="inputPriorityMedium">Medium</label>
@@ -181,6 +183,7 @@ function getPriorityEdit(prio) {
                     id="inputPriorityLow"
                     name="inputPriority"
                     value="low"
+                    oninput="changePrio(event)"
                     ${inputPriorityLow}
                   />
                   <label for="inputPriorityLow">Low</label>

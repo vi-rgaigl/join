@@ -160,8 +160,7 @@ function changeTitle(event) {
 }
 
 function changeDescription(event) {
-  let description = event.target.value;
-  editTask.description = description;
+  editTask.description = event.target.value;
 }
 
 function changeDueDate(event) {
@@ -178,6 +177,7 @@ function changeDueDate(event) {
     errorDueDateRef.innerText = "";
     inputDueDateRef.classList.remove("inputError");
   }
+  editTask.dueDate = dueDate;
 }
 
 function checkIfPast(date) {
@@ -185,4 +185,8 @@ function checkIfPast(date) {
   let dateNow = new Date();
   dateNow.setHours(0, 0, 0, 0);
   return dateTask < dateNow;
+}
+
+function changePrio(event) {
+  editTask.prio = event.target.value;
 }
