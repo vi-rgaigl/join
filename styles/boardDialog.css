@@ -12,6 +12,10 @@
   outline: none;
 }
 
+.w-100 {
+  width: 100%;
+}
+
 .dialog-scroll {
   max-height: calc(100vh - 160px);
   overflow: auto;
@@ -230,4 +234,104 @@ dialog.hide {
 .radio-low label {
   background: url(../assets/icons/low-priority-small-color.svg) no-repeat;
   background-position: 90%;
+}
+
+.lable {
+  margin-bottom: 4px;
+}
+
+.assinged-users {
+  display: flex;
+  margin-top: 8px;
+  gap: 8px;
+}
+
+.form-submit-btn {
+  display: flex;
+  align-items: flex-end;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.dialog-scroll-edit {
+  max-height: calc(100vh - 230px);
+}
+
+.button-check {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.input-group {
+  border: 1px solid var(--light-grey);
+  background-color: var(--white);
+  border-radius: 10px;
+  padding: 12px 21px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-group:has(.input-subtasks:focus) {
+  border: 1px solid var(--light-blue);
+}
+
+.input-subtasks {
+  border: unset;
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 400;
+  flex: 1;
+}
+
+.input-subtasks:focus-visible {
+  outline: none;
+}
+
+.subtaskCheckBtn {
+  filter: invert(1);
+  cursor: pointer;
+  display: none;
+}
+
+.input-subtasks:focus + .subtaskCheckBtn {
+  display: block;
+}
+
+.listSubtasks {
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+.subtask-list-item {
+  padding: 4px 24px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subtask-list-img {
+  display: none;
+  height: 16px;
+  cursor: pointer;
+}
+.subtask-list-item:hover .subtask-list-img {
+  display: block;
+}
+
+.subtask-list-item:hover {
+  background-color: var(--light-grey);
+  border-radius: 8px;
+}
+
+.subtask-list-item::before {
+  content: "•";
+  position: absolute;
+  left: 8px;
+  top: 0;
+  font-size: 16px;
+  line-height: 1.5;
 }
