@@ -225,6 +225,7 @@ function changeVisibilityButton(event) {
 
 function addNewSubtask() {
   let inputSubtasksRef = document.getElementById("inputSubtasks");
+  let subtaskCheckBtnRef = document.getElementById("subtaskCheckBtn");
   let newSubtask = inputSubtasksRef.value;
   let newSubtaskObj = { done: false, subtitle: newSubtask };
   if (editTask.subtasks === false) {
@@ -232,6 +233,7 @@ function addNewSubtask() {
   } else {
     editTask.subtasks.push(newSubtaskObj);
   }
+  subtaskCheckBtnRef.classList.remove("subtaskCheckBtnActive");
   inputSubtasksRef.value = "";
   renderSubtasks(editTask);
 }
