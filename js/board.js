@@ -7,7 +7,6 @@ async function initLoadData() {
     tasks = await getData("tasks");
     contacts = await getData("contacts");
     renderTasks();
-    openDialogEdit("-OBKyb7hLZ4k7HrQMWCY");
   } catch (error) {
     console.warn(error);
   }
@@ -83,12 +82,6 @@ function highlight(status) {
 function openDialog(id) {
   let boardDialogRef = document.getElementById("boardDialog");
   boardDialogRef.innerHTML = renderDialogTaskOverview(getTask(id), contacts);
-  boardDialogRef.showModal();
-}
-
-function openDialogEdit(id) {
-  let boardDialogRef = document.getElementById("boardDialog");
-  boardDialogRef.innerHTML = renderDialogTaskEdit(getTask(id), contacts);
   boardDialogRef.showModal();
 }
 
