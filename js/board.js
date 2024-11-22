@@ -158,3 +158,8 @@ function changeTitle(event) {
   }
   editTask.title = title;
 }
+
+function changeDescription(event) {
+  let description = event.target.value;
+  editTask.description = description;
+}

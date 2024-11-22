@@ -62,7 +62,7 @@ function renderDialogTaskEdit(task, contacts) {
             </div>
             <div class="input-row">
               <label for="inputDescription" class="lable">Description</label>
-              <textarea class="input" id="inputDescription" rows="4">${
+              <textarea class="input" id="inputDescription" rows="4" oninput="changeDescription(event)">${
                 task.description
               }</textarea>
               <div id="errorDescription" class="errorMassage">
