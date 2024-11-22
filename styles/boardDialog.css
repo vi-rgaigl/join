@@ -337,3 +337,7 @@ dialog.hide {
   font-size: 16px;
   line-height: 1.5;
 }
+
+.inputError {
+  border-color: red;
+}

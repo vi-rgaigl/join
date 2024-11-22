@@ -45,7 +45,6 @@ ${getPriority(task.prio)}
 }
 
 function renderDialogTaskEdit(task, contacts) {
-  console.log(task);
   return `<div class="dialog-header flex-end">
           <div class="closeX" onclick="closeDialog()">
             <img src="./assets/icons/close.svg" alt="closeButton" />
@@ -57,7 +56,7 @@ function renderDialogTaskEdit(task, contacts) {
               <label for="inputTitle" class="lable">Title<p class="lableRequiert">*</p></label>
               <input type="text" class="input" id="inputTitle" value="${
                 task.title
-              }"/>
+              }" oninput="changeTitle(event)"/>
               <div id="errorTitle" class="errorMassage">
               </div>
             </div>

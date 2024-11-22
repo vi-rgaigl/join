@@ -144,3 +144,17 @@ function toggleDropdown() {
   let dropdownAssignedRef = document.getElementById("dropdownAssinged");
   dropdownAssignedRef.classList.toggle("dropdown-open");
 }
+
+function changeTitle(event) {
+  let title = event.target.value;
+  let errorTitleRef = document.getElementById("errorTitle");
+  let inputTitleRef = document.getElementById("inputTitle");
+  if (title.length > 0) {
+    errorTitleRef.innerText = "";
+    inputTitleRef.classList.remove("inputError");
+  } else {
+    errorTitleRef.innerText = "This field is required";
+    inputTitleRef.classList.add("inputError");
+  }
+  editTask.title = title;
+}
