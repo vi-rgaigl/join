@@ -95,24 +95,7 @@ function renderDialogTaskEdit(task, contacts) {
                 </div>
               </div>
               <div class="assinged-users" id="assingedUsers">
-                <div
-                  class="assign-name"
-                  style="background-color: rgb(255, 87, 51)"
-                >
-                  AS
-                </div>
-                <div
-                  class="assign-name"
-                  style="background-color: rgb(255, 87, 51)"
-                >
-                  AS
-                </div>
-                <div
-                  class="assign-name"
-                  style="background-color: rgb(255, 87, 51)"
-                >
-                  AS
-                </div>
+              ${getAssignInitialsNameEdit(task.assignedTo, contacts)}
               </div>
             </div>
             <div class="input-row">
@@ -248,6 +231,23 @@ function getAssignInitialsName(listOfAssign, contacts) {
               </div>
               ${assignedContact.name}
             </div>`;
+    });
+  }
+  return beginn;
+}
+
+function getAssignInitialsNameEdit(listOfAssign, contacts) {
+  let beginn = ``;
+  if (listOfAssign !== false) {
+    listOfAssign.forEach((assignId) => {
+      let assignedContact = getAssignedContact(assignId, contacts);
+      beginn += `<div
+                class="assign-name"
+                style="background-color: ${assignedContact.color}"
+              >
+              ${assignedContact.initials}
+              </div>
+              `;
     });
   }
   return beginn;
