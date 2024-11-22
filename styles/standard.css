@@ -14,6 +14,11 @@
   box-shadow: var(--box-shadow);
 }
 
+.button-blue:disabled {
+  background-color: var(--grey);
+  box-shadow: none;
+}
+
 .button-white {
   background-color: white;
   color: var(--dark-blue);
