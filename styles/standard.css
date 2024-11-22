@@ -146,11 +146,11 @@ input[type="phone"] {
   margin-top: 10px;
 }
 
-input[type="checkbox"] {
+.dropdown-list input[type="checkbox"] {
   display: none;
 }
 
-input[type="checkbox"] + label {
+.dropdown-list input[type="checkbox"] + label {
   display: block;
   width: 100%;
   padding-left: 24px;
@@ -163,14 +163,14 @@ input[type="checkbox"] + label {
   background-position: 97%;
 }
 
-input[type="checkbox"]:checked + label {
+.dropdown-list input[type="checkbox"]:checked + label {
   background-color: var(--light-blue);
   background-image: url(../assets/icons/check-button-checked.svg);
   background-repeat: no-repeat;
   background-position: 97%;
 }
 
-input[type="checkbox"]:hover + label {
+.dropdown-list input[type="checkbox"]:hover + label {
   background-color: var(--light-grey);
 }
 
