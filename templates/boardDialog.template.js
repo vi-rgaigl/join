@@ -44,54 +44,8 @@ ${getPriority(task.prio)}
         </div>`;
 }
 
-function formatDate(date) {
-  return date.split("-").reverse().join("/");
-}
-
-function getPriority(prio) {
-  let namePrio = prio.charAt(0).toUpperCase() + prio.slice(1);
-  return `<p>${namePrio}</p>
-          <img src="./assets/icons/${prio}-priority-small-color.svg"
-          alt="prio-${prio}"/>`;
-}
-
-function getAssignInitialsName(listOfAssign, contacts) {
-  let beginn = `<div class="headline">Assigned To:</div>`;
-  if (listOfAssign !== false) {
-    listOfAssign.forEach((assignId) => {
-      let assignedContact = getAssignedContact(assignId, contacts);
-      beginn += `<div class="dialog-assigned">
-              <div
-                class="assign-name"
-                style="background-color: ${assignedContact.color}"
-              >
-              ${assignedContact.initials}
-              </div>
-              ${assignedContact.name}
-            </div>`;
-    });
-  }
-  return beginn;
-}
-
-function getListOfSubtasks(subtasks, id) {
-  if (subtasks === false) {
-    return "";
-  } else {
-    let headline = `<div class="headline">Subtasks</div>`;
-
-    subtasks.forEach((subtask, index) => {
-      let nameImg = subtask.done ? "checked" : "unchecked";
-      headline += `<div class="dialog-subtask">
-        <img src="./assets/icons/check-button-${nameImg}.svg" alt="Task_${nameImg}" onclick="subtasktChangeDone('${index}','${id}')"/>
-        ${subtask.subtitle}
-      </div>`;
-    });
-    return headline;
-  }
-}
-
 function renderDialogTaskEdit(task, contacts) {
+  console.log(task);
   return `<div class="dialog-header flex-end">
           <div class="closeX" onclick="closeDialog()">
             <img src="./assets/icons/close.svg" alt="closeButton" />
@@ -101,56 +55,32 @@ function renderDialogTaskEdit(task, contacts) {
           <div class="dialog-scroll dialog-scroll-edit w-100">
             <div class="input-row">
               <label for="inputTitle" class="lable">Title</label>
-              <input type="text" class="input" id="inputTitle" />
+              <input type="text" class="input" id="inputTitle" value="${
+                task.title
+              }"/>
               <div id="errorTitle" class="errorMassage">
-                This field is reqiuert
               </div>
             </div>
             <div class="input-row">
               <label for="inputDescription" class="lable">Description</label>
-              <textarea class="input" id="inputDescription"></textarea>
+              <textarea class="input" id="inputDescription" rows="4">${
+                task.description
+              }</textarea>
               <div id="errorDescription" class="errorMassage">
-                This field is reqiuert
               </div>
             </div>
             <div class="input-row">
               <label for="inputDueDate" class="lable">Due Date</label>
-              <input type="date" class="input" id="inputDueDate" />
+              <input type="date" class="input" id="inputDueDate" value="${
+                task.dueDate
+              }"/>
               <div id="errorDueDate" class="errorMassage">
-                This field is reqiuert
               </div>
             </div>
             <div class="input-row">
               <label for="inputPriority" class="lable">Priority</label>
               <div class="radio-btns">
-                <div class="radio-container radio-urgent">
-                  <input
-                    type="radio"
-                    id="inputPriorityUrgent"
-                    name="inputPriority"
-                    value="urgent"
-                    checked
-                  />
-                  <label for="inputPriorityUrgent">Urgent</label>
-                </div>
-                <div class="radio-container radio-medium">
-                  <input
-                    type="radio"
-                    id="inputPriorityMedium"
-                    name="inputPriority"
-                    value="medium"
-                  />
-                  <label for="inputPriorityMedium">Medium</label>
-                </div>
-                <div class="radio-container radio-low">
-                  <input
-                    type="radio"
-                    id="inputPriorityLow"
-                    name="inputPriority"
-                    value="high"
-                  />
-                  <label for="inputPriorityLow">Low</label>
-                </div>
+                ${getPriorityEdit(task.prio)}
               </div>
             </div>
             <div class="input-row">
@@ -259,4 +189,100 @@ function renderDialogTaskEdit(task, contacts) {
             </button>
           </div>
         </div>`;
+}
+
+function formatDate(date) {
+  return date.split("-").reverse().join("/");
+}
+
+function getPriority(prio) {
+  let namePrio = prio.charAt(0).toUpperCase() + prio.slice(1);
+  return `<p>${namePrio}</p>
+          <img src="./assets/icons/${prio}-priority-small-color.svg"
+          alt="prio-${prio}"/>`;
+}
+
+function getPriorityEdit(prio) {
+  let inputPriorityUrgent = "";
+  let inputPriorityMedium = "";
+  let inputPriorityLow = "";
+
+  switch (prio) {
+    case "urgent":
+      inputPriorityUrgent = "checked";
+      break;
+    case "medium":
+      inputPriorityMedium = "checked";
+      break;
+    case "low":
+      inputPriorityLow = "checked";
+      break;
+  }
+
+  return `<div class="radio-container radio-urgent">
+                  <input
+                    type="radio"
+                    id="inputPriorityUrgent"
+                    name="inputPriority"
+                    value="urgent"
+                    ${inputPriorityUrgent}
+                  />
+                  <label for="inputPriorityUrgent">Urgent</label>
+                </div>
+                <div class="radio-container radio-medium">
+                  <input
+                    type="radio"
+                    id="inputPriorityMedium"
+                    name="inputPriority"
+                    value="medium"
+                    ${inputPriorityMedium}
+                  />
+                  <label for="inputPriorityMedium">Medium</label>
+                </div>
+                <div class="radio-container radio-low">
+                  <input
+                    type="radio"
+                    id="inputPriorityLow"
+                    name="inputPriority"
+                    value="low"
+                    ${inputPriorityLow}
+                  />
+                  <label for="inputPriorityLow">Low</label>
+                </div>`;
+}
+
+function getAssignInitialsName(listOfAssign, contacts) {
+  let beginn = `<div class="headline">Assigned To:</div>`;
+  if (listOfAssign !== false) {
+    listOfAssign.forEach((assignId) => {
+      let assignedContact = getAssignedContact(assignId, contacts);
+      beginn += `<div class="dialog-assigned">
+              <div
+                class="assign-name"
+                style="background-color: ${assignedContact.color}"
+              >
+              ${assignedContact.initials}
+              </div>
+              ${assignedContact.name}
+            </div>`;
+    });
+  }
+  return beginn;
+}
+
+function getListOfSubtasks(subtasks, id) {
+  if (subtasks === false) {
+    return "";
+  } else {
+    let headline = `<div class="headline">Subtasks</div>`;
+
+    subtasks.forEach((subtask, index) => {
+      let nameImg = subtask.done ? "checked" : "unchecked";
+      headline += `<div class="dialog-subtask">
+        <img src="./assets/icons/check-button-${nameImg}.svg" alt="Task_${nameImg}" onclick="subtasktChangeDone('${index}','${id}')"/>
+        ${subtask.subtitle}
+      </div>`;
+    });
+    return headline;
+  }
 }
