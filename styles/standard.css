@@ -64,8 +64,8 @@ form {
   font-weight: 400;
 }
 
-.input:focus {
-  border: 1px solid var(--light-blue);
+.input:focus-visible {
+  outline: 1px solid var(--light-blue);
 }
 
 ::placeholder {
@@ -101,7 +101,7 @@ input[type="name"] {
 }
 
 .dropdown {
-  background-position: right 1.5rem top 20px;
+  background-position: right 1rem top 20px;
 }
 
 .dropdown-click {
