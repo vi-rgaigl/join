@@ -298,7 +298,7 @@ dialog.hide {
   display: none;
 }
 
-.input-subtasks:focus + .subtaskCheckBtn {
+.subtaskCheckBtnActive {
   display: block;
 }
 

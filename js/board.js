@@ -213,3 +213,30 @@ function renderAssignedTo(task) {
     contacts
   );
 }
+
+function changeVisibilityButton(event) {
+  let subtaskCheckBtnRef = document.getElementById("subtaskCheckBtn");
+  if (event.target.value.length > 0) {
+    subtaskCheckBtnRef.classList.add("subtaskCheckBtnActive");
+  } else {
+    subtaskCheckBtnRef.classList.remove("subtaskCheckBtnActive");
+  }
+}
+
+function addNewSubtask() {
+  let inputSubtasksRef = document.getElementById("inputSubtasks");
+  let newSubtask = inputSubtasksRef.value;
+  let newSubtaskObj = { done: false, subtitle: newSubtask };
+  if (editTask.subtasks === false) {
+    editTask.subtasks = [newSubtaskObj];
+  } else {
+    editTask.subtasks.push(newSubtaskObj);
+  }
+  inputSubtasksRef.value = "";
+  renderSubtasks(editTask);
+}
+
+function renderSubtasks(task) {
+  let listSubtasksRef = document.getElementById("listSubtasks");
+  listSubtasksRef.innerHTML = getListOfSubtasksEdit(task.subtasks);
+}

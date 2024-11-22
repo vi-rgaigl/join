@@ -105,14 +105,17 @@ function renderDialogTaskEdit(task, contacts) {
                   class="input-subtasks"
                   id="inputSubtasks"
                   placeholder="Add new Subtasks"
+                  oninput="changeVisibilityButton(event)"
                 />
                 <img
                   src="./assets/icons/checkWithoutCircle.svg"
                   alt="check"
                   class="subtaskCheckBtn"
+                  onclick="addNewSubtask()"
+                  id="subtaskCheckBtn"
                 />
               </div>
-              <div class="listSubtasks">
+              <div class="listSubtasks" id="listSubtasks">
               ${getListOfSubtasksEdit(task.subtasks)}
               </div>
             </div>
