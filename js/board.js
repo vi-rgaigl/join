@@ -141,7 +141,7 @@ async function deleteTask(idTask) {
 
 function renderEditTask(id) {
   let boardDialogRef = document.getElementById("boardDialog");
-  editTask = getTask(id);
+  editTask = structuredClone(getTask(id));
   boardDialogRef.innerHTML = renderDialogTaskEdit(editTask, contacts);
 }
 
