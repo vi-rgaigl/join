@@ -2,6 +2,7 @@ let tasks = [];
 let contacts = [];
 let dragginTaskId;
 let editTask;
+let errorEditTask = { title: false, dueDate: false };
 
 async function initLoadData() {
   try {
@@ -152,10 +153,13 @@ function changeTitle(event) {
   if (title.length > 0) {
     errorTitleRef.innerText = "";
     inputTitleRef.classList.remove("inputError");
+    errorEditTask.title = false;
   } else {
     errorTitleRef.innerText = "This field is required.";
     inputTitleRef.classList.add("inputError");
+    errorEditTask.title = true;
   }
+  checkIfError();
   editTask.title = title;
 }
 
@@ -170,13 +174,17 @@ function changeDueDate(event) {
   if (dueDate.length <= 0) {
     errorDueDateRef.innerText = "This field is required.";
     inputDueDateRef.classList.add("inputError");
+    errorEditTask.dueDate = true;
   } else if (checkIfPast(dueDate)) {
     errorDueDateRef.innerText = "The date must be in the future.";
     inputDueDateRef.classList.add("inputError");
+    errorEditTask.dueDate = true;
   } else {
     errorDueDateRef.innerText = "";
     inputDueDateRef.classList.remove("inputError");
+    errorEditTask.dueDate = false;
   }
+  checkIfError();
   editTask.dueDate = dueDate;
 }
 
@@ -246,4 +254,15 @@ function renderSubtasks(task) {
 function deleteSubtask(indexOfSubtak) {
   editTask.subtasks.splice(indexOfSubtak, 1);
   renderSubtasks(editTask);
+}
+
+function checkIfError() {
+  let btnSubmitEditTaskRef = document.getElementById("btnSubmitEditTask");
+  let isError = false;
+  for (const [key, value] of Object.entries(errorEditTask)) {
+    if (value) {
+      isError = true;
+    }
+  }
+  btnSubmitEditTaskRef.disabled = isError;
 }

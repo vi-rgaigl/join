@@ -123,7 +123,7 @@ function renderDialogTaskEdit(task, contacts) {
           <div class="input-row form-submit-btn">
           <div>
           <p class="lableRequiert">*</p>This field is required</div>
-            <button onclick="submitEditTask()" class="button-blue button-check">
+            <button onclick="submitEditTask()" id="btnSubmitEditTask" class="button-blue button-check">
               OK <img src="./assets/icons/checkWithoutCircle.svg" alt="check" />
             </button>
           </div>
