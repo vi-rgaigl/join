@@ -114,38 +114,7 @@ function renderDialogTaskEdit(task, contacts) {
                 />
               </div>
               <div class="listSubtasks">
-                <div class="subtask-list-item">
-                  Das ist ein Test Subtask
-                  <img
-                    src="./assets/icons/delete.svg"
-                    alt="delete"
-                    class="subtask-list-img"
-                  />
-                </div>
-                <div class="subtask-list-item">
-                  Das ist ein Test Subtask
-                  <img
-                    src="./assets/icons/delete.svg"
-                    alt="delete"
-                    class="subtask-list-img"
-                  />
-                </div>
-                <div class="subtask-list-item">
-                  Das ist ein Test Subtask
-                  <img
-                    src="./assets/icons/delete.svg"
-                    alt="delete"
-                    class="subtask-list-img"
-                  />
-                </div>
-                <div class="subtask-list-item">
-                  Das ist ein Test Subtask
-                  <img
-                    src="./assets/icons/delete.svg"
-                    alt="delete"
-                    class="subtask-list-img"
-                  />
-                </div>
+              ${getListOfSubtasksEdit(task.subtasks)}
               </div>
             </div>
           </div>
@@ -267,6 +236,25 @@ function getListOfSubtasks(subtasks, id) {
       </div>`;
     });
     return headline;
+  }
+}
+
+function getListOfSubtasksEdit(subtasks) {
+  let html = "";
+  if (subtasks === false) {
+    return "";
+  } else {
+    subtasks.forEach((subtask) => {
+      html += `<div class="subtask-list-item">
+      ${subtask.subtitle}
+      <img
+        src="./assets/icons/delete.svg"
+        alt="delete"
+        class="subtask-list-img"
+      />
+    </div>`;
+    });
+    return html;
   }
 }
 
