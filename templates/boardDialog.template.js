@@ -91,24 +91,7 @@ function renderDialogTaskEdit(task, contacts) {
                 </div>
                 <div class="dropdown-list">
                   <hr class="dropdown-hr" />
-                  <div class="dropdown-list-item">
-                    <input
-                      type="checkbox"
-                      id="user1"
-                      name="assignedUsers"
-                      value="TestUser"
-                    />
-                    <label for="user1"> Test User</label>
-                  </div>
-                  <div class="dropdown-list-item">
-                    <input
-                      type="checkbox"
-                      id="user2"
-                      name="assignedUsers"
-                      value="TestUser2"
-                    />
-                    <label for="user2"> Test User 2</label>
-                  </div>
+                  ${getListOfUsers(task.assignedTo, contacts)}
                 </div>
               </div>
               <div class="assinged-users" id="assingedUsers">
@@ -285,4 +268,26 @@ function getListOfSubtasks(subtasks, id) {
     });
     return headline;
   }
+}
+
+function getListOfUsers(assignedTo, contacts) {
+  let html = "";
+  contacts.forEach((contact) => {
+    html += `<div class="dropdown-list-item">
+                    <input
+                      type="checkbox"
+                      id="user${contact.id}"
+                      name="assignedUsers"
+                      value="${contact.id}"
+                      ${ifUserAssigned(assignedTo, contact.id)}
+                    />
+                    <label for="user${contact.id}">${contact.name}</label>
+                  </div>`;
+  });
+
+  return html;
+}
+
+function ifUserAssigned(assignedTo, userId) {
+  return assignedTo.includes(userId) ? "checked" : "";
 }

@@ -120,6 +120,11 @@ input[type="name"] {
   display: none;
 }
 
+.dropdown-list {
+  height: 180px;
+  overflow: auto;
+}
+
 .dropdown-list-item {
   margin-top: 10px;
 }
