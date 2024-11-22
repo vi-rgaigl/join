@@ -164,14 +164,6 @@ dialog.hide {
   width: 100%;
 }
 
-.errorMassage {
-  height: 20px;
-  width: 100%;
-  color: red;
-  font-size: 12px;
-  padding-top: 4px;
-}
-
 .radio-btns {
   display: flex;
   justify-content: space-between;
@@ -336,8 +328,4 @@ dialog.hide {
   top: 0;
   font-size: 16px;
   line-height: 1.5;
-}
-
-.inputError {
-  border-color: red;
 }

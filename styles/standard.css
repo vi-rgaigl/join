@@ -166,3 +166,15 @@ input[type="checkbox"]:checked + label {
 input[type="checkbox"]:hover + label {
   background-color: var(--light-grey);
 }
+
+.errorMassage {
+  height: 20px;
+  width: 100%;
+  color: red;
+  font-size: 12px;
+  padding-top: 4px;
+}
+
+.inputError {
+  border-color: red;
+}
