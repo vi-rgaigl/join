@@ -17,6 +17,8 @@
 .button-blue:disabled {
   background-color: var(--grey);
   box-shadow: none;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .button-white {
@@ -99,6 +101,11 @@ input[type="passwordshowtext"] {
 
 input[type="name"] {
   background: url(../assets/icons/person.svg) no-repeat;
+  background-position: 97%;
+}
+
+input[type="phone"] {
+  background: url(../assets/icons/phone.svg) no-repeat;
   background-position: 97%;
 }
 
