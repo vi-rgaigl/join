@@ -271,6 +271,7 @@ function getListOfUsers(assignedTo, contacts) {
                       id="user${contact.id}"
                       name="assignedUsers"
                       value="${contact.id}"
+                      onchange="changeAssignedTo(event)"
                       ${ifUserAssigned(assignedTo, contact.id)}
                     />
                     <label for="user${contact.id}">${contact.name}</label>

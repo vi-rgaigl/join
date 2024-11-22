@@ -190,3 +190,26 @@ function checkIfPast(date) {
 function changePrio(event) {
   editTask.prio = event.target.value;
 }
+
+function changeAssignedTo(event) {
+  let assignedUsersRefs = document.querySelectorAll(
+    "input[type=checkbox][name=assignedUsers]"
+  );
+  let AssignedToIds = Array.from(assignedUsersRefs)
+    .filter((i) => i.checked)
+    .map((i) => i.value);
+  if (AssignedToIds.length > 0) {
+    editTask.assignedTo = AssignedToIds;
+  } else {
+    return false;
+  }
+  renderAssignedTo(editTask);
+}
+
+function renderAssignedTo(task) {
+  let assingedUsersRef = document.getElementById("assingedUsers");
+  assingedUsersRef.innerHTML = getAssignInitialsNameEdit(
+    task.assignedTo,
+    contacts
+  );
+}
