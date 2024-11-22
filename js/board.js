@@ -1,6 +1,7 @@
 let tasks = [];
 let contacts = [];
 let dragginTaskId;
+let editTask;
 
 async function initLoadData() {
   try {
@@ -135,7 +136,8 @@ async function deleteTask(idTask) {
 
 function renderEditTask(id) {
   let boardDialogRef = document.getElementById("boardDialog");
-  boardDialogRef.innerHTML = renderDialogTaskEdit(getTask(id), contacts);
+  editTask = getTask(id);
+  boardDialogRef.innerHTML = renderDialogTaskEdit(editTask, contacts);
 }
 
 function toggleDropdown() {
