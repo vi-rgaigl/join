@@ -27,6 +27,11 @@ body {
   height: 100vh;
 }
 
+input,
+textarea {
+  font-family: "Inter", sans-serif;
+}
+
 .mrg-top-6 {
   margin-top: 6px;
 }
