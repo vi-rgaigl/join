@@ -6,26 +6,11 @@
 }
 
 .contact-list-container {
-    flex: 1;
     padding: 10px;
+    margin: 10px;
+    width: 298px;
     height: 500px;
     overflow-y: auto;
-}
-
-/* Style Scrollbar */
-.contact-list-container::-webkit-scrollbar {
-    width: 8px;
-}
-
-.contact-list-container::-webkit-scrollbar-thumb {
-    background-color: #c1c1c1;
-    border-radius: 6px;
-    border: 2px solid #f0f0f0;
-}
-
-.contact-list-container::-webkit-scrollbar-track {
-    background: #f0f0f0;
-    border-radius: 10px;
 }
 
 .add-contact-button-container {
@@ -44,12 +29,13 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 14px;
-    display: flex;
+    font-size: 16px;
+    display: flex
+;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 245px;
+    width: 250px;
     gap: 10px;
 }
 
