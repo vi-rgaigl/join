@@ -33,17 +33,19 @@ function sortContactsByName(contacts) {
 
 function generateContactListHTML(groupedContacts) {
     let html = "";
+    let overallIndex = 0;
     for (const initial in groupedContacts) {
         html += `<h3>${initial}</h3>`;
-        groupedContacts[initial].forEach((contact, index) => {
+        groupedContacts[initial].forEach((contact) => {
             const initials = getInitials(contact.name);
             const color = contact.color || getRandomColor();
             html += `
-                <div class="contact-item" onclick="showContactDetails(${index})">
+                <div class="contact-item" onclick="showContactDetails(${overallIndex})">
                     <div class="contact-initials" style="background-color:${color}">${initials}</div>
                     <p>${contact.name}</p>
                 </div>
             `;
+            overallIndex++;
         });
         html += `<hr>`;
     }
