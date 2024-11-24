@@ -1,141 +1,159 @@
+/**
+ * Generats the HTML for Dialog Overview
+ * @param {object} task -Object of Task
+ * @param {[]} contacts -List of all contacts
+ * @returns HTMl for Dialog
+ */
 function renderDialogTaskOverview(task, contacts) {
-  return `
-  <div class="dialog-scroll">
-  <div class="dialog-task-overview">
-          <div class="dialog-header">
-          ${getCategory(task.category)}
-            <div class="closeX" onclick="closeDialog()">
+  return `<div class="dialog-scroll">
+            <div class="dialog-task-overview">
+              <div class="dialog-header">
+                ${getCategory(task.category)}
+                <div class="closeX" onclick="closeDialog()">
+                  <img src="./assets/icons/close.svg" alt="closeButton" />
+                </div>
+              </div>
+              <h1>${task.title}</h1>
+              <div>${task.description}</div>
+              <div class="headline">Due date:
+                <p>${formatDate(task.dueDate)}</p>
+              </div>
+              <div class="headline">Priority:
+                ${getPriority(task.prio)}
+              </div>
+              <div>
+              ${getAssignInitialsName(task.assignedTo, contacts)}
+              </div>
+              <div>
+              ${getListOfSubtasks(task.subtasks, task.id)}
+              </div>
+              <div class="dialog-menue">
+                <div class="dialog-menue-points">
+                  <div class="dialog-menue-point" onclick="deleteTask('${
+                    task.id
+                  }')">
+                  <img src="./assets/icons/delete.svg" alt="" /> Delete
+                  </div>
+                  <div class="dialog-menue-poinsts-seperator"></div>
+                  <div class="dialog-menue-point" onclick="renderEditTask('${
+                    task.id
+                  }')">
+                    <img src="./assets/icons/edit.svg" alt="" /> Edit
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>`;
+}
+
+/**
+ * Generats the HTML for Dialog Edit
+ * @param {object} task -Object of Task
+ * @param {[]} contacts -List of all contacts
+ * @returns HTMl for Dialog
+ */
+function renderDialogTaskEdit(task, contacts) {
+  return `<div class="dialog-header flex-end">
+            <div class="closeX" onclick="closeDialogEdit()">
               <img src="./assets/icons/close.svg" alt="closeButton" />
             </div>
           </div>
-          <h1>${task.title}</h1>
-          <div>${task.description}</div>
-          <div class="headline">
-            Due date:
-            <p>${formatDate(task.dueDate)}</p>
-          </div>
-          <div class="headline">
-            Priority:
-${getPriority(task.prio)}
-          </div>
-          <div>
-            ${getAssignInitialsName(task.assignedTo, contacts)}
-            
-          </div>
-          <div>
-            ${getListOfSubtasks(task.subtasks, task.id)}
-                      </div>
-          <div class="dialog-menue">
-            <div class="dialog-menue-points">
-              <div class="dialog-menue-point" onclick="deleteTask('${
-                task.id
-              }')">
-                <img src="./assets/icons/delete.svg" alt="" /> Delete
-              </div>
-              <div class="dialog-menue-poinsts-seperator"></div>
-              <div class="dialog-menue-point" onclick="renderEditTask('${
-                task.id
-              }')">
-                <img src="./assets/icons/edit.svg" alt="" /> Edit
-              </div>
-            </div>
-          </div>
-          </div>
-        </div>`;
-}
-
-function renderDialogTaskEdit(task, contacts) {
-  return `<div class="dialog-header flex-end">
-          <div class="closeX" onclick="closeDialogEdit()">
-            <img src="./assets/icons/close.svg" alt="closeButton" />
-          </div>
-        </div>
-        <div class="formBoard">
-          <div class="dialog-scroll dialog-scroll-edit w-100">
-            <div class="input-row">
-              <label for="inputTitle" class="lable">Title<p class="lableRequiert">*</p></label>
-              <input type="text" class="input" id="inputTitle" value="${
-                task.title
-              }" oninput="changeTitle(event)"/>
-              <div id="errorTitle" class="errorMassage">
-              </div>
-            </div>
-            <div class="input-row">
-              <label for="inputDescription" class="lable">Description</label>
-              <textarea class="input" id="inputDescription" rows="4" oninput="changeDescription(event)">${
-                task.description
-              }</textarea>
-              <div id="errorDescription" class="errorMassage">
-              </div>
-            </div>
-            <div class="input-row">
-              <label for="inputDueDate" class="lable">Due Date<p class="lableRequiert">*</p></label>
-              <input type="date" class="input" id="inputDueDate" value="${
-                task.dueDate
-              }" oninput="changeDueDate(event)"/>
-              <div id="errorDueDate" class="errorMassage">
-              </div>
-            </div>
-            <div class="input-row">
-              <label for="inputPriority" class="lable">Priority<p class="lableRequiert">*</p></label>
-              <div class="radio-btns">
-                ${getPriorityEdit(task.prio)}
-              </div>
-            </div>
-            <div class="input-row">
-              <label class="lable">Assinged to</label>
-              <div class="input dropdown select-arrow" id="dropdownAssinged">
-                <div class="dropdown-click" onclick="toggleDropdown()">
-                  Select contacts to assign
-                </div>
-                <div class="dropdown-list">
-                  <hr class="dropdown-hr" />
-                  ${getListOfUsers(task.assignedTo, contacts)}
+          <div class="formBoard">
+            <div class="dialog-scroll dialog-scroll-edit w-100">
+              <div class="input-row">
+                <label for="inputTitle" class="lable">Title<p class="lableRequiert">*</p></label>
+                <input type="text" class="input" id="inputTitle" value="${
+                  task.title
+                }" oninput="changeTitle(event)"/>
+                <div id="errorTitle" class="errorMassage">
                 </div>
               </div>
-              <div class="assinged-users" id="assingedUsers">
-              ${getAssignInitialsNameEdit(task.assignedTo, contacts)}
+              <div class="input-row">
+                <label for="inputDescription" class="lable">Description</label>
+                <textarea class="input" id="inputDescription" rows="4" oninput="changeDescription(event)">${
+                  task.description
+                }</textarea>
+                <div id="errorDescription" class="errorMassage">
+                </div>
               </div>
-            </div>
-            <div class="input-row">
-              <label for="inputSubtasks" class="lable">Subtasks</label>
-              <div class="input-group">
-                <input
+              <div class="input-row">
+                <label for="inputDueDate" class="lable">Due Date<p class="lableRequiert">*</p></label>
+                <input type="date" class="input" id="inputDueDate" value="${
+                  task.dueDate
+                }" oninput="changeDueDate(event)"/>
+                <div id="errorDueDate" class="errorMassage">
+                </div>
+              </div>
+              <div class="input-row">
+                <label for="inputPriority" class="lable">Priority<p class="lableRequiert">*</p></label>
+                <div class="radio-btns">
+                  ${getPriorityEdit(task.prio)}
+                </div>
+              </div>
+              <div class="input-row">
+                <label class="lable">Assinged to</label>
+                <div class="input dropdown select-arrow" id="dropdownAssinged">
+                  <div class="dropdown-click" onclick="toggleDropdown()">
+                    Select contacts to assign
+                  </div>
+                  <div class="dropdown-list">
+                    <hr class="dropdown-hr" />
+                    ${getListOfUsers(task.assignedTo, contacts)}
+                  </div>
+                </div>
+                <div class="assinged-users" id="assingedUsers">
+                ${getAssignInitialsNameEdit(task.assignedTo, contacts)}
+                </div>
+              </div>
+              <div class="input-row">
+                <label for="inputSubtasks" class="lable">Subtasks</label>
+                <div class="input-group">
+                  <input
                   type="text"
                   class="input-subtasks"
                   id="inputSubtasks"
                   placeholder="Add new Subtasks"
                   oninput="changeVisibilityButton(event)"
-                />
-                <img
+                  />
+                  <img
                   src="./assets/icons/checkWithoutCircle.svg"
                   alt="check"
                   class="subtaskCheckBtn"
                   onclick="addNewSubtask()"
                   id="subtaskCheckBtn"
-                />
-              </div>
-              <div class="listSubtasks" id="listSubtasks">
-              ${getListOfSubtasksEdit(task.subtasks)}
+                  />
+                </div>
+                <div class="listSubtasks" id="listSubtasks">
+                ${getListOfSubtasksEdit(task.subtasks)}
+                </div>
               </div>
             </div>
-          </div>
-          <div class="input-row form-submit-btn">
-          <div>
-          <p class="lableRequiert">*</p>This field is required</div>
-            <button onclick="submitEditTask('${
-              task.id
-            }')" id="btnSubmitEditTask" class="button-blue button-check">
-              OK <img src="./assets/icons/checkWithoutCircle.svg" alt="check" />
-            </button>
-          </div>
-        </div>`;
+            <div class="input-row form-submit-btn">
+              <div>
+              <p class="lableRequiert">*</p>This field is required</div>
+              <button onclick="submitEditTask('${
+                task.id
+              }')" id="btnSubmitEditTask" class="button-blue button-check">
+                OK <img src="./assets/icons/checkWithoutCircle.svg" alt="check" />
+              </button>
+            </div>
+          </div>`;
 }
 
+/**
+ * Formats the date to the new format
+ * @param {string} date -date in format YYYY-MM-DD
+ * @returns date in format DD/MM/YYY
+ */
 function formatDate(date) {
   return date.split("-").reverse().join("/");
 }
 
+/**
+ * Generats the HTML for Prio IMG
+ * @param {string} prio name of prio
+ * @returns HTML of prio Img
+ */
 function getPriority(prio) {
   let namePrio = prio.charAt(0).toUpperCase() + prio.slice(1);
   return `<p>${namePrio}</p>
@@ -143,6 +161,7 @@ function getPriority(prio) {
           alt="prio-${prio}"/>`;
 }
 
+// TODO Funktion kürzen
 function getPriorityEdit(prio) {
   let inputPriorityUrgent = "";
   let inputPriorityMedium = "";
@@ -195,6 +214,7 @@ function getPriorityEdit(prio) {
                 </div>`;
 }
 
+// TODO Prüfen ob Funktionen zusammen gelegt werden können
 function getAssignInitialsName(listOfAssign, contacts) {
   let beginn = `<div class="headline">Assigned To:</div>`;
   if (listOfAssign !== false) {
@@ -268,25 +288,37 @@ function getListOfSubtasksEdit(subtasks) {
   }
 }
 
+/**
+ * Generats the HTML for dropdown
+ * @param {[]} assignedTo -List of assigned contacts
+ * @param {[]} contacts -List of all contacts
+ * @returns HTML for dropdown
+ */
 function getListOfUsers(assignedTo, contacts) {
   let html = "";
   contacts.forEach((contact) => {
     html += `<div class="dropdown-list-item">
-                    <input
-                      type="checkbox"
-                      id="user${contact.id}"
-                      name="assignedUsers"
-                      value="${contact.id}"
-                      onchange="changeAssignedTo(event)"
-                      ${ifUserAssigned(assignedTo, contact.id)}
-                    />
-                    <label for="user${contact.id}">${contact.name}</label>
-                  </div>`;
+              <input
+                type="checkbox"
+                id="user${contact.id}"
+                name="assignedUsers"
+                value="${contact.id}"
+                onchange="changeAssignedTo(event)"
+                ${ifUserAssigned(assignedTo, contact.id)}
+                />
+              <label for="user${contact.id}">${contact.name}</label>
+            </div>`;
   });
 
   return html;
 }
 
+/**
+ * Checked if contact assigned
+ * @param {[]} assignedTo -List of assigned contacts
+ * @param {string} userId -ID of contact
+ * @returns checked if assigned
+ */
 function ifUserAssigned(assignedTo, userId) {
   return assignedTo.includes(userId) ? "checked" : "";
 }

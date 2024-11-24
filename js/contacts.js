@@ -40,9 +40,9 @@ function generateContactListHTML(groupedContacts) {
             const initials = getInitials(contact.name);
             const color = contact.color || getRandomColor();
             html += `
-                <div class="contact-item" onclick="showContactDetails(${overallIndex})">
+                <div class="contact-item">
                     <div class="contact-initials" style="background-color:${color}">${initials}</div>
-                    <p>${contact.name}</p>
+                    <p onclick="editContact(${overallIndex})">${contact.name}</p>
                 </div>
             `;
             overallIndex++;
@@ -143,6 +143,49 @@ function closeDialog() {
     }
 }
 
+function editContact(index) {
+    currentContactIndex = index;
+    const contact = contactsList[index];
+    if (!contact) {
+        console.error("Kontakt nicht gefunden.");
+        return;
+    }
+
+    const nameElement = document.getElementById("name");
+    const emailElement = document.getElementById("email");
+    const phoneElement = document.getElementById("phone");
+
+    if (nameElement && emailElement && phoneElement) {
+        nameElement.value = contact.name;
+        emailElement.value = contact.email;
+        phoneElement.value = contact.phone;
+    } else {
+        console.error("Ein oder mehrere Formularelemente fehlen.");
+        return;
+    }
+
+    openAddContactDialog();
+}
+
+async function saveContact() {
+    if (currentContactIndex === null || !contactsList[currentContactIndex]) return;
+    const updatedContact = {
+        id: contactsList[currentContactIndex].id,
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        color: contactsList[currentContactIndex].color
+    };
+
+    try {
+        await changeData("contacts", updatedContact);
+        await renderContactList();
+        closeDialog();
+    } catch (error) {
+        console.error("Fehler beim Speichern des Kontakts:", error);
+    }
+}
+
 function clearDialogFields() {
     document.getElementById("name").value = "";
     document.getElementById("email").value = "";
@@ -174,51 +217,6 @@ async function saveNewContact() {
     } catch (error) {
         console.error("Error saving new contact:", error);
         alert("Failed to save the contact. Please try again.");
-    }
-}
-
-function editContact() {
-    if (currentContactIndex === null || !contactsList[currentContactIndex]) return;
-    const contact = contactsList[currentContactIndex];
-
-    const nameElement = document.getElementById("name");
-    const emailElement = document.getElementById("email");
-    const phoneElement = document.getElementById("phone");
-
-    if (nameElement && emailElement && phoneElement) {
-        nameElement.value = contact.name;
-        emailElement.value = contact.email;
-        phoneElement.value = contact.phone;
-
-        let saveButton = document.getElementById("saveButton");
-        if (!saveButton) {
-            saveButton = document.createElement("button");
-            saveButton.id = "saveButton";
-            saveButton.innerHTML = "Save";
-            saveButton.onclick = saveContact;
-            document.getElementById("contactForm").appendChild(saveButton);
-        }
-    } else {
-        console.error("Ein oder mehrere Formularelemente fehlen.");
-    }
-}
-
-async function saveContact() {
-    if (currentContactIndex === null || !contactsList[currentContactIndex])
-        return;
-    const updatedContact = {
-        id: contactsList[currentContactIndex].id,
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        phone: document.getElementById("phone").value,
-    };
-
-    try {
-        await changeData("contacts", updatedContact);
-        await renderContactList();
-        showContactDetails(currentContactIndex);
-    } catch (error) {
-        console.error("Fehler beim Speichern des Kontakts:", error);
     }
 }
 
