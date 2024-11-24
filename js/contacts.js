@@ -144,25 +144,23 @@ function closeDialog() {
 }
 
 function clearDialogFields() {
-    document.getElementById("firstName").value = "";
-    document.getElementById("lastName").value = "";
+    document.getElementById("name").value = "";
     document.getElementById("email").value = "";
     document.getElementById("phone").value = "";
 }
 
 async function saveNewContact() {
-    const firstName = document.getElementById("firstName").value.trim();
-    const lastName = document.getElementById("lastName").value.trim();
+    const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
     const phone = document.getElementById("phone").value.trim();
 
-    if (!firstName || !lastName || !email || !phone) {
+    if (!name || !email || !phone) {
         alert("Please fill out all fields.");
         return;
     }
 
     const newContact = {
-        name: `${firstName} ${lastName}`,
+        name: `${name}`,
         email: email,
         phone: phone,
         color: getRandomColor(),
@@ -184,14 +182,12 @@ function editContact() {
         return;
     const contact = contactsList[currentContactIndex];
 
-    const firstNameElement = document.getElementById("firstName");
-    const lastNameElement = document.getElementById("lastName");
+    const nameElement = document.getElementById("name");
     const emailElement = document.getElementById("email");
     const phoneElement = document.getElementById("phone");
 
-    if (firstNameElement && lastNameElement && emailElement && phoneElement) {
-        firstNameElement.value = contact.name.split(" ")[0];
-        lastNameElement.value = contact.name.split(" ")[1];
+    if (nameElement && emailElement && phoneElement) {
+        nameElement.value = contact.name.split(" ")[0];
         emailElement.value = contact.email;
         phoneElement.value = contact.phone;
 
@@ -241,13 +237,11 @@ async function deleteContact() {
 }
 
 function clearForm() {
-    const firstNameElement = document.getElementById("firstName");
-    const lastNameElement = document.getElementById("lastName");
+    const nameElement = document.getElementById("name");
     const emailElement = document.getElementById("email");
     const phoneElement = document.getElementById("phone");
 
-    if (firstNameElement) firstNameElement.value = "";
-    if (lastNameElement) lastNameElement.value = "";
+    if (nameElement) nameElement.value = "";
     if (emailElement) emailElement.value = "";
     if (phoneElement) phoneElement.value = "";
 }
