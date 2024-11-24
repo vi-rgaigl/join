@@ -160,7 +160,7 @@ async function saveNewContact() {
     }
 
     const newContact = {
-        name: `${name}`,
+        name: name,
         email: email,
         phone: phone,
         color: getRandomColor(),
@@ -178,8 +178,7 @@ async function saveNewContact() {
 }
 
 function editContact() {
-    if (currentContactIndex === null || !contactsList[currentContactIndex])
-        return;
+    if (currentContactIndex === null || !contactsList[currentContactIndex]) return;
     const contact = contactsList[currentContactIndex];
 
     const nameElement = document.getElementById("name");
@@ -187,14 +186,17 @@ function editContact() {
     const phoneElement = document.getElementById("phone");
 
     if (nameElement && emailElement && phoneElement) {
-        nameElement.value = contact.name.split(" ")[0];
+        nameElement.value = contact.name;
         emailElement.value = contact.email;
         phoneElement.value = contact.phone;
 
-        if (!document.getElementById("saveButton")) {
-            document.getElementById(
-                "contactForm"
-            ).innerHTML += `<button id="saveButton" onclick="saveContact()">Speichern</button>`;
+        let saveButton = document.getElementById("saveButton");
+        if (!saveButton) {
+            saveButton = document.createElement("button");
+            saveButton.id = "saveButton";
+            saveButton.innerHTML = "Save";
+            saveButton.onclick = saveContact;
+            document.getElementById("contactForm").appendChild(saveButton);
         }
     } else {
         console.error("Ein oder mehrere Formularelemente fehlen.");
@@ -206,10 +208,7 @@ async function saveContact() {
         return;
     const updatedContact = {
         id: contactsList[currentContactIndex].id,
-        name:
-            document.getElementById("firstName").value +
-            " " +
-            document.getElementById("lastName").value,
+        name: document.getElementById("name").value,
         email: document.getElementById("email").value,
         phone: document.getElementById("phone").value,
     };
