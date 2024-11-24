@@ -40,9 +40,9 @@ function generateContactListHTML(groupedContacts) {
             const initials = getInitials(contact.name);
             const color = contact.color || getRandomColor();
             html += `
-                <div class="contact-item">
+                <div class="contact-item" onclick="showContactDetails(${overallIndex})">
                     <div class="contact-initials" style="background-color:${color}">${initials}</div>
-                    <p onclick="editContact(${overallIndex})">${contact.name}</p>
+                    <p>${contact.name}</p>
                 </div>
             `;
             overallIndex++;
@@ -95,7 +95,9 @@ function showContactDetails(index) {
         return;
     }
 
-    document.getElementById("current-contact").innerHTML = generateContactDetailsHTML(contact);
+    const contactDetailsHTML = generateContactDetailsHTML(contact);
+
+    document.getElementById("current-contact").innerHTML = contactDetailsHTML;
     document.getElementById("contactDetailsContainer").classList.add("active");
 }
 
