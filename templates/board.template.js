@@ -1,3 +1,10 @@
+/**
+ * Generats the HTML Code for renderign
+ * @param {string} list -Name of list
+ * @param {[]} tasks -List of tasks
+ * @param {[]} contacts -List of contacts
+ * @returns HTML for rendering
+ */
 function getTemplateCards(list, tasks, contacts) {
   let templateDragArea = `<div id="${list}-drag-area" class="drag-area"></div>`;
   let tasksOfList = findTasks(list, tasks);
@@ -12,44 +19,62 @@ function getTemplateCards(list, tasks, contacts) {
   }
 }
 
+/**
+ * Filter all tasks with the name of list
+ * @param {string} list -Name of list
+ * @param {[]} tasks -List of tasks
+ * @returns List of filters tasks
+ */
 function findTasks(list, tasks) {
   return tasks.filter((task) => {
     return task.status === list;
   });
 }
 
+/**
+ * Generat the HTML of Task
+ * @param {[]} task -Task for rendering
+ * @param {[]} contacts -List of contacts
+ * @returns HTML of Task
+ */
 function getTemplateCard(task, contacts) {
   return `<div class="cardTask" id="${task.id}" ondragstart="startDragging('${
     task.id
   }')" ondragend="endDragging('${
     task.id
   }')" draggable="true" onclick="openDialog('${task.id}')">
-                ${getCategory(task.category)}
-                <div class="card-title">
-                  ${task.title}
-                  <div class="card-description">
-                    ${getDescription(task.description)}
-                  </div>
-                </div>
-                
-                  ${getSubtasksBar(task.subtasks)}
-                
-                <div class="card-footer">
-  ${getAssignInitials(task.assignedTo, contacts)}
-                  <div class="card-footer-prio">
-                  <img
-                      src="./assets/icons/${task.prio}-priority-small-color.svg"
-                      alt="prio-${task.prio}"
-                    />
-                  </div>
-                </div>
-              </div>`;
+            ${getCategory(task.category)}
+            <div class="card-title">
+              ${task.title}
+              <div class="card-description">
+              ${getDescription(task.description)}
+              </div>
+            </div>
+            ${getSubtasksBar(task.subtasks)}
+            <div class="card-footer">
+            ${getAssignInitials(task.assignedTo, contacts)}
+              <div class="card-footer-prio">
+                <img src="./assets/icons/${task.prio}-priority-small-color.svg"
+                  alt="prio-${task.prio}"/>
+              </div>
+            </div>
+          </div>`;
 }
 
+/**
+ * Skip the text if there length more then 50 letters
+ * @param {string} text -Text to skip
+ * @returns skiped text
+ */
 function getDescription(text) {
   return text.length > 50 ? text.slice(0, 45) + "..." : text;
 }
 
+/**
+ * Generats HTML with Processbar and numbers of Subtasks
+ * @param {[]} subtasks -List of subtask
+ * @returns HTML for Subtask
+ */
 function getSubtasksBar(subtasks) {
   if (subtasks === false) {
     return "";
@@ -57,13 +82,18 @@ function getSubtasksBar(subtasks) {
     let numbersSubtasks = subtasks.length;
     let numbersSubtasksDone = getNumbersOfDoneTasks(subtasks);
     let percent = (numbersSubtasksDone / numbersSubtasks) * 100;
-    return /*HTML*/ `<div class="card-subtasks"><div class="progressContainer">
-                    <div class="progressBar" style="width: ${percent}%"></div>
-                  </div>
-                  <p class="card-subtasks-text">${numbersSubtasksDone}/${numbersSubtasks} Subtasks</p></div>`;
+    return `<div class="card-subtasks"><div class="progressContainer">
+              <div class="progressBar" style="width: ${percent}%"></div>
+            </div>
+            <p class="card-subtasks-text">${numbersSubtasksDone}/${numbersSubtasks} Subtasks</p></div>`;
   }
 }
 
+/**
+ * Calculat the numbers of done Task
+ * @param {[]} subtasks List of subtask
+ * @returns number of done task
+ */
 function getNumbersOfDoneTasks(subtasks) {
   let numbersSubtasksDone = 0;
   subtasks.forEach((subtask) => {
@@ -74,6 +104,11 @@ function getNumbersOfDoneTasks(subtasks) {
   return numbersSubtasksDone;
 }
 
+/**
+ * Generats the HTML for category
+ * @param {string} category -Name of category
+ * @returns HTML for category
+ */
 function getCategory(category) {
   switch (category) {
     case "user-story":
@@ -85,6 +120,12 @@ function getCategory(category) {
   }
 }
 
+/**
+ * Generats the HTML of assign contacts
+ * @param {[]} listOfAssign -List of assign contacts
+ * @param {[]} contacts -List of all contatcs
+ * @returns HTML of assign contacts
+ */
 function getAssignInitials(listOfAssign, contacts) {
   let beginn = `<div class="card-footer-assign">`;
   let end = `</div>`;
@@ -97,6 +138,12 @@ function getAssignInitials(listOfAssign, contacts) {
   return beginn + end;
 }
 
+/**
+ * Find the Object of contact
+ * @param {string} assignId -ID of assigned contacts
+ * @param {[]} contacts -List of all contatcs
+ * @returns Object of contact
+ */
 function getAssignedContact(assignId, contacts) {
   return contacts.find((contact) => {
     return contact.id === assignId;
