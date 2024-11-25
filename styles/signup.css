@@ -48,7 +48,7 @@
 
 .show-hidden-password-signup {
     position: relative;
-    bottom: 29%;
+    bottom: 32%;
     right: -86%;
     height: 140px;
     width: 96px;
@@ -56,7 +56,7 @@
 }
 
 .check-box-line {
-    margin-top: -9vh;
+    margin-top: -26%;
 }
 
 
@@ -158,7 +158,7 @@
         width: 78px;
     }
     .check-box-line {
-        margin-top: -14vh;
+        margin-top: -30%;
     }
 }
 
@@ -177,5 +177,8 @@
     }
     .show-hidden-password-signup {
         width: 58px;
+    }
+    .check-box-line {
+        margin-top: -54%;
     }
 }

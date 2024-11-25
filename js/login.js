@@ -51,11 +51,13 @@ function login() {
     if (!formData) return; 
     let user = getUserByEmail(formData.email);
     if (!user || user.password !== formData.password) {
-        setErrorMessage('error-login-message', 'Email or password not correct.');
+        setErrorMessage('error-login-email', 'Email or password not correct.');
+        setErrorMessage('error-login-password', 'Email or password not correct.');
         clearLoginForm();
         return;
     } else {
-        clearErrorMessage('error-login-message');
+        clearErrorMessage('error-login-email');
+        clearErrorMessage('error-login-password');
     }
     if (getRemembermeCheckbox()) {
         setRememberme(user);

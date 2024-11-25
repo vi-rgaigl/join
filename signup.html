@@ -43,14 +43,15 @@
                     </div>
                     <div class="input-line">
                         <input class="input input-login-text mrg-top-32" type="name" id="signup-name" placeholder="Name">
-                        <div id="error-signup-name" class="login-signup-warning"></div>
-                        <input class="input input-login-email" type="email" id="signup-email" placeholder="Email" autocomplete="email">
-                        <div id="error-signup-email" class="login-signup-warning"></div>
-                        <input class="input input-login-password" type="password" id="signup-password"
+                        <div id="error-signup-name" class="errorMassage"></div>
+                        <input class="input input-login-email mrg-top-12" type="email" id="signup-email" placeholder="Email" autocomplete="email">
+                        <div id="error-signup-email" class="errorMassage"></div>
+                        <input class="input input-login-password mrg-top-12" type="password" id="signup-password"
                             placeholder="Password" autocomplete="new-password">
-                        <div id="error-signup-password" class="login-signup-warning"></div>
-                            <input class="input input-login-password" type="password" id="confirm-password"
+                        <div id="error-signup-password" class="errorMassage"></div>
+                        <input class="input input-login-password mrg-top-12" type="password" id="confirm-password"
                             placeholder="Confirm Password" autocomplete="new-password">
+                        <div id="error-signup-password-confirm" class="errorMassage"></div>
                         <div id="show-hidden-password-signup" class="show-hidden-password-signup">
                             <div  onmousedown="togglePasswordVisibilitySignup('signup')" style="width: 100%; height: 50%;"></div>
                             <div  onmousedown="togglePasswordVisibilitySignup('confirm')" style="width: 100%; height: 50%;"></div>
@@ -63,7 +64,7 @@
                     </div>
                     <div>
                         <input type="submit" class="button-blue mrg-top-32" id="signup_button" value="Sign up"
-                            onclick="setSignupRedirect()"/>
+                            onclick="setSignupRedirect()" disabled/>
                     </div>
                 </form>
             </div>
