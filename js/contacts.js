@@ -73,16 +73,20 @@ function generateContactDetailsHTML(contact) {
                 </div>
                 <div class="contact-actions-container">
                     <div class="contact-actions">
-                        <img onclick="editContact(${currentContactIndex})" src="./assets/icons/edit.svg"><p>Edit</p>
-                        <img onclick="deleteContact(${currentContactIndex})" src="./assets/icons/delete.svg"><p>Delete</p>
+                        <div class="action-item" onclick="editContact(${currentContactIndex})">
+                            <img src="./assets/icons/edit.svg" alt="Edit"> <span>Edit</span>
+                        </div>
+                        <div class="action-item" onclick="deleteContact(${currentContactIndex})">
+                            <img src="./assets/icons/delete.svg" alt="Delete"> <span>Delete</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <p>Contact Information</p>
         <div class="contact-infos">
-            <p><b>Email</b> ${contact.email}</p>
-            <p><b>Phone</b> ${contact.phone}</p>
+            <p><b>Email:</b> ${contact.email}</p>
+            <p><b>Phone:</b> ${contact.phone}</p>
         </div>
     `;
 }
