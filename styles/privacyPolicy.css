@@ -1,0 +1,66 @@
+.privacy-policy-content {
+    height: calc(100vh - 96px);
+    overflow-y: scroll;
+    padding-top: 72px;
+    padding-left: 64px;
+    padding-right: 64px;
+    width: 100%;
+}
+
+
+.privacy-headline {
+    margin: 0;
+    font-size: 61px;
+    font-weight: 700;
+}
+
+
+.privacy-subheadline {
+    font-size: 27px;
+    font-weight: 700;
+}
+
+
+.wrapHead {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 64px;
+}
+
+
+.arrowBack {
+    width: 37px;
+    height: 37px;
+    background-image: url('../assets/icons/arrow-left-line.svg');
+    background-size: 24px 24px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.arrowBack:hover {
+    cursor: pointer;
+}
+
+
+@media (max-width: 1100px) {
+    .privacy-policy-content {
+       margin-left: 0px !important;
+    }
+}
+
+
+@media (max-width: 580px) {
+    .privacy-headline {
+        font-size: 48px;
+    }
+    
+
+    .privacy-policy-content {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+        margin-bottom: 100px;
+    }
+}
