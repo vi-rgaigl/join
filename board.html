@@ -27,7 +27,13 @@
           <div class="content-top-menue mx-64">
             <h1>Board</h1>
             <div class="content-top-menue-right">
-              <input class="input input-search" type="text" />
+              <input
+                class="input input-search"
+                type="text"
+                placeholder="Find Task"
+                id="inputSearch"
+                oninput="renderTasks()"
+              />
               <button class="button-blue button-add">
                 Add Task
                 <img

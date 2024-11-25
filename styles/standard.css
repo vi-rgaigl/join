@@ -109,11 +109,6 @@ input[type="phone"] {
   background-position: 97%;
 }
 
-input[type="search"] {
-  background: url(../assets/icons/search.svg) no-repeat;
-  background-position: 97%;
-}
-
 .select-arrow {
   appearance: none;
   background-image: url(../assets/icons/select-arrow.svg);

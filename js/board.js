@@ -33,18 +33,51 @@ async function loadData() {
  * Render the Task overview
  */
 function renderTasks() {
+  let filtersTask = filterTask(tasks);
   let rowToDoRef = document.getElementById("to-do");
   let rowInProgessRef = document.getElementById("in-progress");
   let rowAwaitFeedbackRef = document.getElementById("await-feedback");
   let rowDoneRef = document.getElementById("done");
-  rowToDoRef.innerHTML = getTemplateCards("to-do", tasks, contacts);
-  rowInProgessRef.innerHTML = getTemplateCards("in-progress", tasks, contacts);
-  rowAwaitFeedbackRef.innerHTML = getTemplateCards(
-    "await-feedback",
-    tasks,
+  rowToDoRef.innerHTML = getTemplateCards("to-do", filtersTask, contacts);
+  rowInProgessRef.innerHTML = getTemplateCards(
+    "in-progress",
+    filtersTask,
     contacts
   );
-  rowDoneRef.innerHTML = getTemplateCards("done", tasks, contacts);
+  rowAwaitFeedbackRef.innerHTML = getTemplateCards(
+    "await-feedback",
+    filtersTask,
+    contacts
+  );
+  rowDoneRef.innerHTML = getTemplateCards("done", filtersTask, contacts);
+}
+
+/**
+ * Filter the Tasks by Serache input
+ * @param {[]} tasks -List of all tasks
+ * @returns Filtered list
+ */
+function filterTask(tasks) {
+  let filterWord = document.getElementById("inputSearch").value;
+  if (filterWord.length > 0) {
+    return tasks.filter((task) => filterByKeyword(task, filterWord));
+  } else {
+    return tasks;
+  }
+}
+
+/**
+ * Filterfunction for filtering by filterword
+ * @param {object} data -for filter
+ * @param {string} filterWord -word for filtering
+ */
+function filterByKeyword(data, filterWord) {
+  const { title, description } = data;
+  const keyword = filterWord.toLowerCase();
+  return (
+    (title && title.toLowerCase().includes(keyword)) ||
+    (description && description.toLowerCase().includes(keyword))
+  );
 }
 
 /**

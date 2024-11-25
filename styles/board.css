@@ -63,6 +63,8 @@
 
 .input-search {
   width: 312px;
+  background: url(../assets/icons/search.svg) no-repeat;
+  background-position: 97%;
 }
 
 .button-add {
