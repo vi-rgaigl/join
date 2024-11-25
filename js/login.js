@@ -1,5 +1,6 @@
 let users =[];
 
+
 /**
  * Initializes the login page with the logo animation. Loads users from remote storage and set user inactive.
  */
@@ -13,6 +14,7 @@ async function initLogin() {
     isUserRemembered();
 }
 
+
 /**
  * Fetches users from remote storage.
  */
@@ -21,15 +23,12 @@ async function getUsers() {
     console.log(users);
 }
 
+
 document.addEventListener('DOMContentLoaded', function() {
     let loginButton = document.getElementById('login-button');
     let emailInput = document.getElementById('login-email');
     let passwordInput = document.getElementById('login-password');
-    let signupForm = document.querySelector('#login-form');
-    // signupForm.setAttribute('novalidate', true);
-    // signupForm.addEventListener('submit', function(event) {
-    //     event.preventDefault();
-    // });   
+
     function isFormFilled() {    
         if (emailInput.value && passwordInput.value) {
             loginButton.disabled = false;
@@ -40,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
     emailInput.addEventListener('input', isFormFilled);
     passwordInput.addEventListener('input', isFormFilled);
 });
+
 
 /**
  * Handles the login process by validating the form, checking user credentials,
@@ -65,6 +65,7 @@ function login() {
     window.open('./summaryUser.html', '_self');
 }
 
+
 /**
  * Logs in as a guest user and redirects to summaryUser.html.
  */
@@ -75,6 +76,7 @@ function guestLogin() {
     window.location.href = './summaryUser.html';
 }
 
+
 /**
  * Finds a user by their email address.
  * 
@@ -84,6 +86,7 @@ function guestLogin() {
 function getUserByEmail(email) {
     return users.find(user => user.email === email);
 }
+
 
 /**
  * Validates the login form and returns the form data if valid.
@@ -107,6 +110,7 @@ function validateLoginForm() {
     };
 }
 
+
 /**
  * Gets the state of the "Remember me" checkbox.
  * 
@@ -116,6 +120,7 @@ function getRemembermeCheckbox() {
     return document.getElementById('login-checkbox').checked;
 }
 
+
 /**
  * Sets the user data in localStorage to remember the user.
  * 
@@ -124,6 +129,7 @@ function getRemembermeCheckbox() {
 function setRememberme(user) {
     setToLocalStorage('join393', user);
 }
+
 
 /**
  * Checks if a user is remembered in localStorage, fills in the form, and enables the login button if found.
@@ -145,6 +151,7 @@ function isUserRemembered() {
     }
 }
 
+
 /**
  * Sets the user as active in localStorage.
  */
@@ -152,12 +159,14 @@ function setUserActive() {
     setToLocalStorage('join393active', {});
 }
 
+
 /**
  * Sets the user as inactive by removing the active status from localStorage.
  */
 function setUserInactive() {
     removeFromLocalStorage('join393active');
 }
+
 
 /**
  * Clears the login form inputs and disables the login button.
@@ -168,6 +177,7 @@ function clearLoginForm() {
     document.getElementById('login-checkbox').checked = false;
     document.getElementById('login-button').disabled = true;
 }
+
 
 /**
  * Toggles the visibility of the login password.
@@ -181,15 +191,35 @@ function togglePasswordVisibility() {
     }
 }
 
+
+/**
+ * Sets an error message for a specified element.
+ * 
+ * @param {string} id - The ID of the element where the error message will be displayed.
+ * @param {string} message - The error message to display.
+ */
 function setErrorMessage(id, message) {
     let errorMessage = document.getElementById(id);
     errorMessage.innerHTML = message;
 }
 
+
+/**
+ * Sets an error message for a specified element.
+ * 
+ * @param {string} elementId - The ID of the element where the error message will be displayed.
+ * @param {string} message - The error message to display.
+ */
 function setErrorMessage(elementId, message) {
     document.getElementById(elementId).textContent = message;
 }
 
+
+/**
+ * Clears the error message for a specified element.
+ * 
+ * @param {string} elementId - The ID of the element where the error message will be cleared.
+ */
 function clearErrorMessage(elementId) {
     document.getElementById(elementId).textContent = '';
 }

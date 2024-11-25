@@ -19,9 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     passwordInput.addEventListener('input', isFormFilled);
     confirmPasswordInput.addEventListener('input', isFormFilled);
 
-    signupForm.addEventListener('submit', function(event) {
-        signupUser();
-    });
+    signupForm.addEventListener('submit', (event) => signupUser());
 });
 
 
@@ -29,6 +27,10 @@ async function signupUser() {
     let formData = getFormData();
     if (validateSignupForm(formData)) {
         if (formData.policyCheckbox) {
+            if (await isUserExists(formData.email)) {
+                setErrorMessage('error-signup-email', 'A user with this email already exists.');
+                return;
+            }
             let userItem = {
                 email: formData.email,
                 initials: getInitials(formData.name),
@@ -37,11 +39,25 @@ async function signupUser() {
             };
             await pushData('users', userItem);
             setSignupRedirect();
+            clearSignupForm();
         } else {
             setErrorMessage('error-signup-policy', 'Please accept the privacy policy.');
         }
     }
 }
+
+/**
+ * Checks if a user with the given email already exists.
+ * 
+ * @param {string} email - The email address to check.
+ * @returns {Promise<boolean>} True if the user exists, false otherwise.
+ */
+async function isUserExists(email) {
+    let users = await getData('users');
+    return users.some(user => user.email === email);
+}
+
+
 
 function validateSignupForm(formData) {
     let isValid = true;
@@ -123,4 +139,13 @@ function togglePasswordVisibilitySignup(item) {
 
 function getInitials(name) {
     return name.split(' ').map((n) => n[0]).join('').toUpperCase();
+}
+
+function clearSignupForm() {
+    document.getElementById('signup-name').value = '';
+    document.getElementById('signup-email').value = '';
+    document.getElementById('signup-password').value = '';
+    document.getElementById('confirm-password').value = '';
+    document.getElementById('policy-checkbox').checked = false;
+    document.getElementById('signup-button').disabled = true;
 }
