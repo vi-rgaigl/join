@@ -22,3 +22,12 @@ function setMonogram() {
     let user = getFromLocalStorage('join393');
     return user ? user.initials : '';
 }
+
+/**
+ * 
+ * changes the visibility of the popup menu when clicking on the usermongram
+ * 
+ */
+function openUserMenu() {
+    document.getElementById('popup-user').classList.toggle('d-flex');
+}
