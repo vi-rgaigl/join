@@ -12,9 +12,7 @@ async function initLoadData() {
     tasks = await getData("tasks");
     contacts = await getData("contacts");
     renderTasks();
-  } catch (error) {
-    console.warn(error);
-  }
+  } catch (error) {}
 }
 
 /**
@@ -24,9 +22,7 @@ async function loadData() {
   try {
     tasks = await getData("tasks");
     renderTasks();
-  } catch (error) {
-    console.warn(error);
-  }
+  } catch (error) {}
 }
 
 /**
@@ -36,7 +32,6 @@ function renderTasks() {
   let filtersTask = filterTask(tasks);
   let listOfRows = ["to-do", "in-progress", "await-feedback", "done"];
   for (let i = 0; i < listOfRows.length; i++) {
-    const element = listOfRows[i];
     let rowRef = document.getElementById(listOfRows[i]);
     rowRef.innerHTML = getTemplateCards(listOfRows[i], filtersTask, contacts);
   }
@@ -93,9 +88,7 @@ async function moveTo(newStatus) {
   try {
     await changeData("tasks", task);
     loadData();
-  } catch (error) {
-    console.warn(error);
-  }
+  } catch (error) {}
 }
 
 /**
@@ -160,9 +153,7 @@ async function subtasktChangeDone(idSubtask, idTask) {
     tasks = await getData("tasks");
     renderTasks();
     openDialog(idTask);
-  } catch (error) {
-    console.warn(error);
-  }
+  } catch (error) {}
 }
 
 /**
@@ -175,9 +166,7 @@ async function deleteTask(idTask) {
     await deleteData("tasks", currentTask);
     loadData();
     closeDialog();
-  } catch (error) {
-    console.warn(error);
-  }
+  } catch (error) {}
 }
 
 /**
@@ -389,7 +378,5 @@ async function submitEditTask(id) {
     await changeData("tasks", editTask);
     await loadData();
     renderOverviewTask(id);
-  } catch (error) {
-    console.warn(error);
-  }
+  } catch (error) {}
 }
