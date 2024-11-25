@@ -30,7 +30,7 @@
         <div id="login_body" class="login-body">
 
             <div class="signup-form-box signup-form-pad-wd">
-                <form id="signup-form" onsubmit="return false;">
+                <form id="signup-form" onsubmit="return false;" novalidate>
                     <div class="form-header-signup">
                         <div class="back-to-login">
                             <a href="./index.html"><img class="back-to-login-img"
@@ -62,9 +62,9 @@
                         <label for="privacy">I accept the <a href="./privacyPolicyNoLogin.html" class="info-link-static" id="confirm_privacy_link">Privacy
                                 Policy</a></label>
                     </div>
+                    <div id="error-signup-policy" class="errorMassage"></div>
                     <div>
-                        <input type="submit" class="button-blue mrg-top-32" id="signup_button" value="Sign up"
-                            onclick="setSignupRedirect()" disabled/>
+                        <input type="submit" class="button-blue mrg-top-12" id="signup-button" value="Sign up" disabled/>
                     </div>
                 </form>
             </div>

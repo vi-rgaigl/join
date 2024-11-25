@@ -26,11 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
     let emailInput = document.getElementById('login-email');
     let passwordInput = document.getElementById('login-password');
     let signupForm = document.querySelector('#login-form');
-    signupForm.setAttribute('novalidate', true);
-    signupForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-    });
-    
+    // signupForm.setAttribute('novalidate', true);
+    // signupForm.addEventListener('submit', function(event) {
+    //     event.preventDefault();
+    // });   
     function isFormFilled() {    
         if (emailInput.value && passwordInput.value) {
             loginButton.disabled = false;

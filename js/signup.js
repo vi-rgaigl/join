@@ -1,53 +1,73 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     let signupForm = document.querySelector('#signup-form');
-    signupForm.setAttribute('novalidate', true);
+    let signupButton = document.getElementById('signup-button');
+    let nameInput = document.getElementById('signup-name');
+    let emailInput = document.getElementById('signup-email');
+    let passwordInput = document.getElementById('signup-password');
+    let confirmPasswordInput = document.getElementById('confirm-password');
+
+    function isFormFilled() {
+        if (nameInput.value && emailInput.value && passwordInput.value && confirmPasswordInput.value) {
+            signupButton.disabled = false;
+        } else {
+            signupButton.disabled = true;
+        }
+    }
+
+    nameInput.addEventListener('input', isFormFilled);
+    emailInput.addEventListener('input', isFormFilled);
+    passwordInput.addEventListener('input', isFormFilled);
+    confirmPasswordInput.addEventListener('input', isFormFilled);
+
     signupForm.addEventListener('submit', function(event) {
-        event.preventDefault();
         signupUser();
     });
 });
 
 
-function signupUser() {
+async function signupUser() {
     let formData = getFormData();
     if (validateSignupForm(formData)) {
-        console.log('Form is valid and ready for submission.');
-        userItem = {
-            email: formData.email,
-            initials: getInitials(formData.name),
-            password: formData.password,
-            user: formData.name
+        if (formData.policyCheckbox) {
+            let userItem = {
+                email: formData.email,
+                initials: getInitials(formData.name),
+                password: formData.password,
+                user: formData.name
+            };
+            await pushData('users', userItem);
+            setSignupRedirect();
+        } else {
+            setErrorMessage('error-signup-policy', 'Please accept the privacy policy.');
         }
-        pushData('users', userItem);
     }
 }
 
 function validateSignupForm(formData) {
     let isValid = true;
-
     if (!formData.name) {
         setErrorMessage('error-signup-name', 'Name is required.');
         isValid = false;
     } else {
         clearErrorMessage('error-signup-name');
     }
-
     if (!checkEmailRegex(formData.email)) {
         setErrorMessage('error-signup-email', 'Please enter a valid email address.');
         isValid = false;
     } else {
         clearErrorMessage('error-signup-email');
     }
-
     if (!checkPasswordRegex(formData.password)) {
         setErrorMessage('error-signup-password', 'At least 8 chars, 1 uppercase, 1 digit, 1 special char.');
         isValid = false;
-    } else if (formData.password !== formData.confirmPassword) {
-        setErrorMessage('error-signup-password', 'Passwords do not match.');
-        isValid = false;
     } else {
         clearErrorMessage('error-signup-password');
+    }
+    if (formData.password !== formData.confirmPassword) {
+        setErrorMessage('error-signup-password-confirm', 'Passwords do not match.');
+        isValid = false;
+    } else {
+        clearErrorMessage('error-signup-password-confirm');
     }
     return isValid;
 }
@@ -77,12 +97,8 @@ function getPolicyCheckbox() {
     return document.getElementById('policy-checkbox').checked;
 }
 
-function setSignupRedirect(item) {
-    if(item) {
-        window.location.href='./login.html'
-    } else {
-        
-    }
+function setSignupRedirect() {
+    window.location.href='./index.html'
 }
 
 function setErrorMessage(elementId, message) {
