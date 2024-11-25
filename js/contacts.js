@@ -73,16 +73,20 @@ function generateContactDetailsHTML(contact) {
                 </div>
                 <div class="contact-actions-container">
                     <div class="contact-actions">
-                        <img onclick="editContact()" src="./assets/icons/edit.svg"><p>Edit</p>
-                        <img onclick="deleteContact()" src="./assets/icons/delete.svg"><p>Delete</p>
+                        <div class="action-item" onclick="editContact(${currentContactIndex})">
+                            <img src="./assets/icons/edit.svg" alt="Edit"> <span>Edit</span>
+                        </div>
+                        <div class="action-item" onclick="deleteContact(${currentContactIndex})">
+                            <img src="./assets/icons/delete.svg" alt="Delete"> <span>Delete</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <p>Contact Information</p>
         <div class="contact-infos">
-            <p><b>Email</b> ${contact.email}</p>
-            <p><b>Phone</b> ${contact.phone}</p>
+            <p><b>Email:</b> ${contact.email}</p>
+            <p><b>Phone:</b> ${contact.phone}</p>
         </div>
     `;
 }
@@ -153,9 +157,9 @@ function editContact(index) {
         return;
     }
 
-    const nameElement = document.getElementById("name");
-    const emailElement = document.getElementById("email");
-    const phoneElement = document.getElementById("phone");
+    const nameElement = document.getElementById("edit-name");
+    const emailElement = document.getElementById("edit-email");
+    const phoneElement = document.getElementById("edit-phone");
 
     if (nameElement && emailElement && phoneElement) {
         nameElement.value = contact.name;
@@ -166,7 +170,48 @@ function editContact(index) {
         return;
     }
 
-    openAddContactDialog();
+    openEditContactDialog();
+}
+
+function openEditContactDialog() {
+    const dialog = document.getElementById("editContactDialog");
+    if (dialog) {
+        dialog.style.display = "flex";
+    }
+}
+
+function closeEditDialog() {
+    const dialog = document.getElementById("editContactDialog");
+    if (dialog) {
+        dialog.style.display = "none";
+        clearEditDialogFields();
+    }
+}
+
+function clearEditDialogFields() {
+    document.getElementById("edit-name").value = "";
+    document.getElementById("edit-email").value = "";
+    document.getElementById("edit-phone").value = "";
+}
+
+async function saveEditedContact() {
+    if (currentContactIndex === null || !contactsList[currentContactIndex]) return;
+    const updatedContact = {
+        id: contactsList[currentContactIndex].id,
+        name: document.getElementById("edit-name").value,
+        email: document.getElementById("edit-email").value,
+        phone: document.getElementById("edit-phone").value,
+        color: contactsList[currentContactIndex].color
+    };
+
+    try {
+        await changeData("contacts", updatedContact);
+        await renderContactList();
+        closeEditDialog();
+        showContactDetails(currentContactIndex);
+    } catch (error) {
+        console.error("Fehler beim Speichern des Kontakts:", error);
+    }
 }
 
 async function saveContact() {
