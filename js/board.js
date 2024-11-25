@@ -34,22 +34,12 @@ async function loadData() {
  */
 function renderTasks() {
   let filtersTask = filterTask(tasks);
-  let rowToDoRef = document.getElementById("to-do");
-  let rowInProgessRef = document.getElementById("in-progress");
-  let rowAwaitFeedbackRef = document.getElementById("await-feedback");
-  let rowDoneRef = document.getElementById("done");
-  rowToDoRef.innerHTML = getTemplateCards("to-do", filtersTask, contacts);
-  rowInProgessRef.innerHTML = getTemplateCards(
-    "in-progress",
-    filtersTask,
-    contacts
-  );
-  rowAwaitFeedbackRef.innerHTML = getTemplateCards(
-    "await-feedback",
-    filtersTask,
-    contacts
-  );
-  rowDoneRef.innerHTML = getTemplateCards("done", filtersTask, contacts);
+  let listOfRows = ["to-do", "in-progress", "await-feedback", "done"];
+  for (let i = 0; i < listOfRows.length; i++) {
+    const element = listOfRows[i];
+    let rowRef = document.getElementById(listOfRows[i]);
+    rowRef.innerHTML = getTemplateCards(listOfRows[i], filtersTask, contacts);
+  }
 }
 
 /**
