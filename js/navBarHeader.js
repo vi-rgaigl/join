@@ -13,6 +13,7 @@ function setAktivItemBackground(mobile, index) {
     }
 }
 
+
 /**
  * Sets the monogram (initials) of the user from localStorage.
  * 
@@ -23,6 +24,7 @@ function setMonogram() {
     return user ? user.initials : '';
 }
 
+
 /**
  * 
  * changes the visibility of the popup menu when clicking on the usermongram
@@ -30,4 +32,22 @@ function setMonogram() {
  */
 function openUserMenu() {
     document.getElementById('popup-user').classList.toggle('d-flex');
+}
+
+
+/**
+ * Logs the user out by removing the user from localStorage and redirecting to the login page.
+ */
+async function logout() {
+    setUserInactive();
+    await removeFromLocalStorage('join393');
+    window.location.href = './index.html';
+}
+
+
+/**
+ * Sets the user as inactive by removing the active status from localStorage.
+ */
+function setUserInactive() {
+    removeFromLocalStorage('join393active');
 }

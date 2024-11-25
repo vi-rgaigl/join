@@ -132,22 +132,13 @@ function setRememberme(user) {
 
 
 /**
- * Checks if a user is remembered in localStorage, fills in the form, and enables the login button if found.
+ * Checks if a user is remembered in localStorage, redirects to summaryUser.html if true.
  */
 function isUserRemembered() {
     let storedUser = getFromLocalStorage('join393');
     if (storedUser) {
-        let loginButton = document.getElementById('login-button');
-        let emailInput = document.getElementById('login-email');
-        let passwordInput = document.getElementById('login-password');
-        let rememberCheckbox = document.getElementById('login-checkbox');
-        let user = getUserByEmail(storedUser.email);
-        if (user) {
-            emailInput.value = user.email;
-            passwordInput.value = user.password;
-            rememberCheckbox.checked = true;
-            loginButton.disabled = false;
-        }
+        window.location.href = './summaryUser.html';
+        setUserActive();
     }
 }
 
@@ -157,14 +148,6 @@ function isUserRemembered() {
  */
 function setUserActive() {
     setToLocalStorage('join393active', {});
-}
-
-
-/**
- * Sets the user as inactive by removing the active status from localStorage.
- */
-function setUserInactive() {
-    removeFromLocalStorage('join393active');
 }
 
 
@@ -223,3 +206,5 @@ function setErrorMessage(elementId, message) {
 function clearErrorMessage(elementId) {
     document.getElementById(elementId).textContent = '';
 }
+
+
