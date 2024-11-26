@@ -45,7 +45,9 @@
             </div>
           </div>
         </div>
-        <div class="layout-rows content-data flex-1 overflow-hidden">
+        <div
+          class="layout-rows content-data flex-1 overflow-hidden overflow-moblie"
+        >
           <div class="content-data-row">
             <div class="data-row-title">
               To do
@@ -57,7 +59,7 @@
             </div>
             <div
               id="to-do"
-              class="content-data-row overflow-auto"
+              class="content-data-row overflow-auto content-data-mobile-view overflow-moblie"
               ondrop="moveTo('to-do')"
               ondragleave="removeHighlight('to-do')"
               ondragover="allowDrop(event); highlight('to-do')"
@@ -74,7 +76,7 @@
             </div>
             <div
               id="in-progress"
-              class="content-data-row overflow-auto"
+              class="content-data-row overflow-auto content-data-mobile-view overflow-moblie"
               ondrop="moveTo('in-progress')"
               ondragleave="removeHighlight('in-progress')"
               ondragover="allowDrop(event); highlight('in-progress')"
@@ -91,7 +93,7 @@
             </div>
             <div
               id="await-feedback"
-              class="content-data-row overflow-auto"
+              class="content-data-row overflow-auto content-data-mobile-view overflow-moblie"
               ondrop="moveTo('await-feedback')"
               ondragleave="removeHighlight('await-feedback')"
               ondragover="allowDrop(event); highlight('await-feedback')"
@@ -101,7 +103,7 @@
             <div class="data-row-title">Done</div>
             <div
               id="done"
-              class="content-data-row overflow-auto"
+              class="content-data-row overflow-auto content-data-mobile-view overflow-moblie"
               ondrop="moveTo('done')"
               ondragleave="removeHighlight('done')"
               ondragover="allowDrop(event); highlight('done')"

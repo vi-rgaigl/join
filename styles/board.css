@@ -145,6 +145,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   border: 1px dashed #a8a8a8;
   border-radius: 10px;
   box-shadow: 0px 0px 4px 0px #00000029;
@@ -286,5 +287,48 @@
   dialog,
   .overflow-auto {
     scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
+
+@media (max-width: 1120px) {
+  .mx-64 {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+
+  .content-data {
+    padding: 16px 24px;
+  }
+}
+
+@media (max-width: 990px) {
+  .content-data {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .content-data-mobile-view {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .overflow-moblie {
+    overflow: auto;
+  }
+
+  .cardTask,
+  .cardNoTask {
+    max-width: 300px;
+    min-width: 200px;
+  }
+
+  .cardTask {
+    height: 300px;
+  }
+
+  .application-main-content {
+    margin-bottom: 80px;
   }
 }
