@@ -58,3 +58,21 @@ textarea {
 .application-main-content {
   width: calc(100% - var(--navbar-width));
 }
+
+
+.popup-message {
+  display: none;
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background-color: var(--dark-blue);
+  color: var(--grey);
+  padding: 15px;
+  border-radius: 8px;
+  z-index: 10;
+  box-shadow: var(--box-shadow);
+}
+
+.popup-message.show {
+  display: block;
+}

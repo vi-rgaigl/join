@@ -40,9 +40,11 @@ async function signupUser() {
                 password: formData.password,
                 user: formData.name
             };
-            await pushData('users', userItem);
-            setSignupRedirect();
+            await pushData('users', userItem);       
+            await showPopupMessage('signup-popup-message', 'You signed up successfully!');                        
             clearSignupForm();
+            setSignupRedirect(); 
+            
         } else {
             setErrorMessage('error-signup-policy', 'Please accept the privacy policy.');
         }

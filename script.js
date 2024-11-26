@@ -45,3 +45,22 @@ function renderHeaderAndNavbarNoLogin() {
 function getUserActive() {
     return getFromLocalStorage('join393active');   
 }
+
+
+/**
+ * Shows a popup message and returns a Promise that resolves after the message is shown.
+ * 
+ * @param {string} message - The message to display in the popup.
+ * @returns {Promise} A Promise that resolves after the message is shown.
+ */
+function showPopupMessage(elementId, message) {
+    return new Promise((resolve) => {
+        let popup = document.getElementById(elementId);
+        popup.innerHTML = `<span>${message}</span>`;
+        popup.classList.add('show');
+        setTimeout(() => {
+            popup.classList.remove('show');
+            resolve();
+        }, 3000); // Show the popup for 3 seconds
+    });
+}
