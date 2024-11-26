@@ -2,13 +2,14 @@
  * Sets a value in localStorage.
  * 
  * @param {string} key - The key under which the value is stored.
- * @param {*} value - The value to store. It will be stringified to JSON.
+ * @param {Object} value - The value to store. It will be stringified to JSON.
+ * @param {boolean} [rememberMe=false] - A flag indicating whether to remember the user.
  */
-function setToLocalStorage(key, value) {
+function setToLocalStorage(key, value, rememberMe=false) {
     let toStoreItem = {
         user: value.user,
         initials: value.initials,
-        email: value.email
+        rememberMe: rememberMe
     }
     try {
         localStorage.setItem(key, JSON.stringify(toStoreItem));

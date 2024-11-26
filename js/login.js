@@ -59,8 +59,10 @@ function login() {
         clearErrorMessage('error-login-password');
     }
     if (getRemembermeCheckbox()) {
-        setRememberme(user);
-    }  
+        setRememberme(user, true);
+    }  else {
+        setRememberme(user, false);
+    }
     setUserActive();
     window.open('./summaryUser.html', '_self');
 }
@@ -71,7 +73,7 @@ function login() {
  */
 function guestLogin() {
     let user = getUserByEmail('guest@guest.example');
-    setToLocalStorage('join393', user);
+    setToLocalStorage('join393', user, true);
     setUserActive();
     window.location.href = './summaryUser.html';
 }
@@ -125,20 +127,21 @@ function getRemembermeCheckbox() {
  * Sets the user data in localStorage to remember the user.
  * 
  * @param {Object} user - The user object to store in localStorage.
+ * @param {boolean} remember - A flag indicating whether to remember the user.
  */
-function setRememberme(user) {
-    setToLocalStorage('join393', user);
+function setRememberme(user, remember) {
+    setToLocalStorage('join393', user, remember);
 }
 
 
 /**
- * Checks if a user is remembered in localStorage, redirects to summaryUser.html if true.
+ * Checks if the user is remembered in localStorage and redirects to summaryUser.html if true.
  */
 function isUserRemembered() {
     let storedUser = getFromLocalStorage('join393');
-    if (storedUser) {
-        window.location.href = './summaryUser.html';
+    if (storedUser && storedUser.rememberMe) {
         setUserActive();
+        window.location.href = './summaryUser.html';
     }
 }
 
