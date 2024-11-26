@@ -14,6 +14,16 @@
     left: 77px;
 }
 
+.signup-body {
+    height: 100vh;
+    margin-top: 22vh;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .signup-form-box {
     max-width: 800px;
     max-height: 640px;
@@ -71,8 +81,8 @@
         height: 70vh;
     }
 }
-@media (max-height: 860px) {
-    .login-body {
+@media (max-height: 920px) {
+    .signup-body {
         margin-top: 16vh;
     }
     .signup-form-box {

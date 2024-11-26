@@ -168,10 +168,7 @@
         height: 55vh;
     }
 }
-@media (max-height: 860px) {
-    .login-body {
-        margin-top: 16vh;
-    }
+@media (max-height: 920px) {
     .login-form-box {
         height: 63vh;
     }
