@@ -74,6 +74,14 @@
   padding: 8px 16px;
 }
 
+.button-add-mobile {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  height: 48px;
+}
+
 .button-add-img {
   height: 18px;
   width: 18px;
@@ -320,7 +328,8 @@
   }
 
   .cardTask,
-  .cardNoTask {
+  .cardNoTask,
+  .drag-area-active {
     max-width: 300px;
     min-width: 200px;
   }
@@ -331,5 +340,38 @@
 
   .application-main-content {
     margin-bottom: 96px;
+  }
+
+  .content-top {
+    padding-top: 40px;
+  }
+
+  .content-top-menue {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .content-top-menue-left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .content-top-menue-right {
+    width: 100%;
+  }
+
+  .input-search {
+    width: 100%;
+  }
+
+  .button-add {
+    display: none;
+  }
+
+  .button-add-mobile {
+    display: flex;
   }
 }
