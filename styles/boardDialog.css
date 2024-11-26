@@ -344,6 +344,8 @@ dialog.hide {
   #boardDialog,
   .input,
   .lable,
+  .lableRequiert,
+  .form-submit-btn div,
   ::placeholder {
     font-size: 16px;
   }
@@ -355,15 +357,6 @@ dialog.hide {
   .subtask-list-img {
     display: block;
   }
-
-  /* .radio-container label {
-    width: 80px;
-    padding: 6px 6px;
-    font-size: 12px;
-  }
-  .radio-container label {
-    background-size: 12px;
-  } */
 }
 
 @media (max-width: 500px) {
