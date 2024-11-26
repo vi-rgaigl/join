@@ -5,14 +5,9 @@
  * @param {Object} value - The value to store. It will be stringified to JSON.
  * @param {boolean} [rememberMe=false] - A flag indicating whether to remember the user.
  */
-function setToLocalStorage(key, value, rememberMe=false) {
-    let toStoreItem = {
-        user: value.user,
-        initials: value.initials,
-        rememberMe: rememberMe
-    }
+function setToLocalStorage(key, value) {
     try {
-        localStorage.setItem(key, JSON.stringify(toStoreItem));
+        localStorage.setItem(key, JSON.stringify(value));
     } catch (error) {
         console.error('Error setting to localStorage', error);
     }

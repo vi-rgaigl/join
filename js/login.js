@@ -50,13 +50,13 @@ function login() {
     if (!formData) return; 
     let user = getUserByEmail(formData.email);
     if (!user || user.password !== formData.password) {
-        setErrorMessage('error-login-email', 'Email or password not correct.');
-        setErrorMessage('error-login-password', 'Email or password not correct.');
+        setErrorMessage('email', 'Email or password not correct.');
+        setErrorMessage('password', 'Email or password not correct.');
         clearLoginForm();
         return;
     } else {
-        clearErrorMessage('error-login-email');
-        clearErrorMessage('error-login-password');
+        clearErrorMessage('email');
+        clearErrorMessage('password');
     }
     if (getRemembermeCheckbox()) {
         setRememberme(user, true);
@@ -73,7 +73,12 @@ function login() {
  */
 function guestLogin() {
     let user = getUserByEmail('guest@guest.example');
-    setToLocalStorage('join393', user);
+    let itemToStore = {
+        user: user.user,
+        initials: user.initials,
+        rememberme: false
+    };
+    setToLocalStorage('join393', itemToStore);
     setUserActive();
     window.location.href = './summaryUser.html';
 }
@@ -130,7 +135,12 @@ function getRemembermeCheckbox() {
  * @param {boolean} remember - A flag indicating whether to remember the user.
  */
 function setRememberme(user, remember) {
-    setToLocalStorage('join393', user, remember);
+    let itemToStore = {
+        user: user.user,
+        initials: user.initials,
+        rememberme: remember
+    };
+    setToLocalStorage('join393', itemToStore);
 }
 
 
@@ -139,7 +149,7 @@ function setRememberme(user, remember) {
  */
 function isUserRemembered() {
     let storedUser = getFromLocalStorage('join393');
-    if (storedUser && storedUser.rememberMe) {
+    if (storedUser && storedUser.rememberme) {
         setUserActive();
         window.location.href = './summaryUser.html';
     }
@@ -185,19 +195,10 @@ function togglePasswordVisibility() {
  * @param {string} message - The error message to display.
  */
 function setErrorMessage(id, message) {
-    let errorMessage = document.getElementById(id);
-    errorMessage.innerHTML = message;
-}
-
-
-/**
- * Sets an error message for a specified element.
- * 
- * @param {string} elementId - The ID of the element where the error message will be displayed.
- * @param {string} message - The error message to display.
- */
-function setErrorMessage(elementId, message) {
-    document.getElementById(elementId).textContent = message;
+    let errorMessage = document.getElementById(`error-login-${id}`);
+    let errorBorder = document.getElementById(`login-${id}`);
+    errorMessage.textContent = message;
+    errorBorder.classList.add('inputError');
 }
 
 
@@ -206,8 +207,9 @@ function setErrorMessage(elementId, message) {
  * 
  * @param {string} elementId - The ID of the element where the error message will be cleared.
  */
-function clearErrorMessage(elementId) {
-    document.getElementById(elementId).textContent = '';
+function clearErrorMessage(id) {
+    document.getElementById(`error-login-${id}`).textContent = '';
+    document.getElementById(`login-${id}`).classList.remove('inputError');
 }
 
 

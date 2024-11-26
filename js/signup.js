@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let nameInput = document.getElementById('signup-name');
     let emailInput = document.getElementById('signup-email');
     let passwordInput = document.getElementById('signup-password');
-    let confirmPasswordInput = document.getElementById('confirm-password');
+    let confirmPasswordInput = document.getElementById('signup-confirm');
 
     function isFormFilled() {
         if (nameInput.value && emailInput.value && passwordInput.value && confirmPasswordInput.value) {
@@ -30,8 +30,9 @@ async function signupUser() {
     let formData = getFormData();
     if (validateSignupForm(formData)) {
         if (formData.policyCheckbox) {
+            clearErrorMessage('policy');
             if (await isUserExists(formData.email)) {
-                setErrorMessage('error-signup-email', 'A user with this email already exists.');
+                setErrorMessage('email', 'A user with this email already exists.');
                 return;
             }
             let userItem = {
@@ -46,7 +47,7 @@ async function signupUser() {
             setSignupRedirect(); 
             
         } else {
-            setErrorMessage('error-signup-policy', 'Please accept the privacy policy.');
+            setErrorMessage('policy', 'Please accept the privacy policy.');
         }
     }
 }
@@ -73,28 +74,28 @@ async function isUserExists(email) {
 function validateSignupForm(formData) {
     let isValid = true;
     if (!formData.name) {
-        setErrorMessage('error-signup-name', 'Name is required.');
+        setErrorMessage('name', 'Name is required.');
         isValid = false;
     } else {
-        clearErrorMessage('error-signup-name');
+        clearErrorMessage('name');
     }
     if (!checkEmailRegex(formData.email)) {
-        setErrorMessage('error-signup-email', 'Please enter a valid email address.');
+        setErrorMessage('email', 'Please enter a valid email address.');
         isValid = false;
     } else {
-        clearErrorMessage('error-signup-email');
+        clearErrorMessage('email');
     }
     if (!checkPasswordRegex(formData.password)) {
-        setErrorMessage('error-signup-password', 'At least 8 chars, 1 uppercase, 1 digit, 1 special char.');
+        setErrorMessage('password', 'At least 8 chars, 1 uppercase, 1 digit, 1 special char.');
         isValid = false;
     } else {
-        clearErrorMessage('error-signup-password');
+        clearErrorMessage('password');
     }
     if (formData.password !== formData.confirmPassword) {
-        setErrorMessage('error-signup-password-confirm', 'Passwords do not match.');
+        setErrorMessage('confirm', 'Passwords do not match.');
         isValid = false;
     } else {
-        clearErrorMessage('error-signup-password-confirm');
+        clearErrorMessage('confirm');
     }
     return isValid;
 }
@@ -110,7 +111,7 @@ function getFormData() {
         name: document.getElementById('signup-name').value,
         email: document.getElementById('signup-email').value,
         password: document.getElementById('signup-password').value,
-        confirmPassword: document.getElementById('confirm-password').value,
+        confirmPassword: document.getElementById('signup-confirm').value,
         policyCheckbox: getPolicyCheckbox()
     };
     return formData;
@@ -165,8 +166,12 @@ function setSignupRedirect() {
  * @param {string} elementId - The ID of the element where the error message will be displayed.
  * @param {string} message - The error message to display.
  */
-function setErrorMessage(elementId, message) {
-    document.getElementById(elementId).textContent = message;
+function setErrorMessage(id, message) {
+    let errorMessage = document.getElementById(`error-signup-${id}`);
+    errorMessage.textContent = message;
+    if(errorBorder = document.getElementById(`signup-${id}`)) {
+        errorBorder.classList.add('inputError');
+    }  
 }
 
 
@@ -175,8 +180,12 @@ function setErrorMessage(elementId, message) {
  * 
  * @param {string} elementId - The ID of the element where the error message will be cleared.
  */
-function clearErrorMessage(elementId) {
-    document.getElementById(elementId).textContent = '';
+function clearErrorMessage(id) {
+    document.getElementById(`error-signup-${id}`).textContent = '';
+    if (errorBorder = document.getElementById(`signup-${id}`)) {
+        errorBorder.classList.remove('inputError');
+    }
+    
 }
 
 
@@ -211,7 +220,7 @@ function clearSignupForm() {
     document.getElementById('signup-name').value = '';
     document.getElementById('signup-email').value = '';
     document.getElementById('signup-password').value = '';
-    document.getElementById('confirm-password').value = '';
+    document.getElementById('signup-confirm').value = '';
     document.getElementById('policy-checkbox').checked = false;
     document.getElementById('signup-button').disabled = true;
 }
