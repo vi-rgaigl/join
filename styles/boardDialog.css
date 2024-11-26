@@ -236,6 +236,7 @@ dialog.hide {
   display: flex;
   margin-top: 8px;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .form-submit-btn {
@@ -278,6 +279,7 @@ dialog.hide {
   font-size: 20px;
   font-weight: 400;
   flex: 1;
+  width: 100%;
 }
 
 .input-subtasks:focus-visible {
@@ -328,4 +330,49 @@ dialog.hide {
   top: 0;
   font-size: 16px;
   line-height: 1.5;
+}
+
+@media (max-width: 440px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  .input {
+    padding: 12px 12px;
+  }
+
+  #boardDialog,
+  .input,
+  .lable,
+  ::placeholder {
+    font-size: 16px;
+  }
+
+  .dropdown-list input[type="checkbox"] + label {
+    padding-left: 4px;
+  }
+
+  .subtask-list-img {
+    display: block;
+  }
+
+  /* .radio-container label {
+    width: 80px;
+    padding: 6px 6px;
+    font-size: 12px;
+  }
+  .radio-container label {
+    background-size: 12px;
+  } */
+}
+
+@media (max-width: 500px) {
+  .radio-btns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .radio-container label {
+    width: 200px;
+  }
 }
