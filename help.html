@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./styles/navBarHeader.css">
+    <link rel="stylesheet" href="./styles/help.css">
 
     <script src="./js/remoteStorage.js"></script>
     <script src="./js/localStorage.js"></script>
@@ -19,7 +20,7 @@
 
 </head>
 
-<body onload="init(1);">
+<body onload="init(0);">
 
 
     <div class="application-main">
@@ -28,10 +29,61 @@
         <div class="application-main-content">
             <header id="header-container" class="header"></header>
 
-            <div id="application-content">
+            <div id="application-content" class="help-content">
 
-                <h1>Help</h1>
-                <!-- TODO -->
+                <div class="wrapHead">
+                    <h1>Help</h1>
+                    <a class="arrowBack" onclick="history.back()"></a>
+                 </div>
+                 <p>Welcome to the help page for Join, your guide to using our kanban project management tool.</p>
+                 <h2>What is Join?</h2>
+                 <p>Join is a kanban-based project management tool designed and built by a group of dedicated students as part of
+                    their web development education at the Developer Akademie.
+                    <br><br>
+                    It is important to note that Join is designed as an educational exercise and is not intended for extensive
+                    business usage. While we strive to ensure the best possible user experience, we cannot guarantee consistent
+                    availability, reliability, accuracy, or other aspects of quality regarding Join.
+                 </p>
+                 <h2>How to use it</h2>
+                 <p>Here is a step-by-step guide on how to use Join:</p>
+                 <h3>1.
+                    Exploring the Project</h3>
+                 When you log in to Join, you'll find a default summary board. T
+                 <h3>2.
+                    The Board</h3>
+                    This board represents your project and contains four default lists: "To Do", "In Progress", “Await feedback” and "Done".
+                 <h3>3.
+                    Adding Cards</h3>
+                 Now that you've added your contacts, you can start adding cards. Cards represent individual tasks. Click the "+"
+                 button under the appropriate list to create a new card. Fill in the task details in the card, like task name,
+                 description, due date, assignees, etc.
+                 <h3>4.
+                    Moving Cards</h3>
+                 As the task moves from one stage to another, you can reflect that on the board by dragging and dropping the card
+                 from one list to another.
+                 <h3>5.
+                    Deleting Cards</h3>
+                 Once a task is completed, you can either move it to the "Done" list or delete it. Deleting a card will permanently
+                 remove it from the board. Please exercise caution when deleting cards, as this action is irreversible.
+                 <br><br>
+                 <h3>6.
+                    Creating Contacts</h3>
+                 In Join, you can add contacts to collaborate on your projects. Go to the "Contacts" section, click on "New
+                 contact", and fill in the required information. Once added, these contacts can be assigned tasks and they can
+                 interact with the tasks on the board.
+                 <br><br>
+                 Remember that using Join effectively requires consistent updates from you and your team to ensure the board
+                 reflects the current state of your project.
+                 <br><br>
+                 Have more questions about Join? Feel free to contact us at <a class="highlight-join clickable"
+                    href="mailto:regina.apfel1977@gmail.com">regina.apfel1977@gmail.com</a>. We're here to help you!
+                 <br><br>
+                 Enjoy using Join!
+                 <br><br>
+                 Kind regards your Join-Team
+                 <br>
+                 Regina, Niko, Wolfgang, Serdar
+                 <br><br>
 
             </div>
         </div>
