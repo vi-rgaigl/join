@@ -73,7 +73,7 @@ function login() {
  */
 function guestLogin() {
     let user = getUserByEmail('guest@guest.example');
-    setToLocalStorage('join393', user, true);
+    setToLocalStorage('join393', user);
     setUserActive();
     window.location.href = './summaryUser.html';
 }
