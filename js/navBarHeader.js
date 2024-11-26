@@ -5,9 +5,7 @@
  * @param {number} index - The index of the navbar item to activate.
  */
 function setAktivItemBackground(mobile, index) {
-    if(index == 0) {
-        return;
-    }
+    if(index == 0) { return }
     document.getElementById(`navbar-menu-${mobile}${index}`).classList.add('navbar-menu-item-aktiv');
     for (let i = 1; i <= 6; i++) {
         if (i != index) {

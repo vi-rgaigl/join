@@ -5,7 +5,7 @@
  * @param {number} page - The index of the page to set as active in the navbar.
  */
 function init(page) {
-    // if (getUserActive()) {  // Wenn alles fertig ist -> aktivieren!!!
+//     if (getUserActive()) {  // Wenn alles fertig ist -> aktivieren!!!
         renderHeaderAndNavbar();
         setAktivItemBackground('', page);
         setAktivItemBackground('mobile', page);
@@ -14,6 +14,7 @@ function init(page) {
 //         window.location.href = "./index.html";
 //     }
 }
+
 
 /**
  * Renders the header and navbar for the logged-in state.
@@ -27,6 +28,7 @@ function renderHeaderAndNavbar() {
     navContainerMobile.innerHTML = getNavbarTemplate('mobile');
 }
 
+
 /**
  * Renders the header and navbar for the non-logged-in state.
  */
@@ -36,6 +38,7 @@ function renderHeaderAndNavbarNoLogin() {
     headerContainer.innerHTML = getHeaderNoLoginTemplate();
     navContainer.innerHTML = getNavbarNoLoginTemplate();
 }
+
 
 /**
  * Gets the active user status from localStorage.
