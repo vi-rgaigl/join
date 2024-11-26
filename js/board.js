@@ -351,7 +351,11 @@ function renderSubtasks(task) {
  * @param {number} indexOfSubtak - index of Subtask
  */
 function deleteSubtask(indexOfSubtak) {
-  editTask.subtasks.splice(indexOfSubtak, 1);
+  if (editTask.subtasks.length > 1) {
+    editTask.subtasks.splice(indexOfSubtak, 1);
+  } else {
+    editTask.subtasks = false;
+  }
   renderSubtasks(editTask);
 }
 
