@@ -20,7 +20,6 @@ async function initLogin() {
  */
 async function getUsers() {
     users = await getData('users');
-    console.log(users);
 }
 
 
