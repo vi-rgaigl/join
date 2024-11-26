@@ -89,6 +89,11 @@ input[type="email"] {
   background-position: 97%;
 }
 
+input[type="passwordlock"] {
+  background: url(../assets/icons/lock.svg) no-repeat;
+  background-position: 97%;
+}
+
 input[type="password"] {
   background: url(../assets/icons/eye-no.svg) no-repeat;
   background-position: 97%;
@@ -104,7 +109,7 @@ input[type="name"] {
   background-position: 97%;
 }
 
-input[type="phone"] {
+input[type="call"] {
   background: url(../assets/icons/phone.svg) no-repeat;
   background-position: 97%;
 }
