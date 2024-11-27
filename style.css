@@ -32,6 +32,10 @@ textarea {
   font-family: "Inter", sans-serif;
 }
 
+textarea {
+  resize: none;
+}
+
 .mrg-top-6 {
   margin-top: 6px;
 }
@@ -58,7 +62,6 @@ textarea {
 .application-main-content {
   width: calc(100% - var(--navbar-width));
 }
-
 
 .popup-message {
   display: none;
