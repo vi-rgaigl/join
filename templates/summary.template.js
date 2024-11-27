@@ -1,4 +1,4 @@
-function getTemplateSummary(tasks) {
+function getTemplateSummary(tasks, user) {
   return `<div class="summary-data-left">
               <div class="summary-data-row">
                 <a class="summary-data-card card-m" href="./board.html">
@@ -60,7 +60,15 @@ function getTemplateSummary(tasks) {
               </div>
             </div>
             <div class="summary-data-rigth">
-              <div class="summary-data-text">Good morning,</div>
-              <div class="summary-data-name">Sofia Müller</div>
+            ${getGreacing(user)}
             </div>`;
+}
+
+function getGreacing(user) {
+  if (user == "guest") {
+    return `<div class="summary-data-text">Good morning</div>`;
+  } else {
+    return `<div class="summary-data-text">Good morning,</div>
+              <div class="summary-data-name">${user}</div>`;
+  }
 }
