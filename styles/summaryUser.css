@@ -27,7 +27,7 @@
   font-size: 27px;
 }
 
-.summary-data {
+#summary-data {
   display: flex;
   flex: 1;
 }
