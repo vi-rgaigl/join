@@ -1,66 +1,62 @@
-.legal-notice-content {
-    height: calc(100vh - 96px);
-    overflow-y: scroll;
-    padding-top: 72px;
-    padding-left: 64px;
-    padding-right: 64px;
-    width: 100%;
+.application-main {
+  overflow: hidden;
 }
 
+.legal-notice-content {
+  height: calc(100vh - 96px);
+  overflow-y: scroll;
+  padding-top: 72px;
+  padding-left: 64px;
+  padding-right: 64px;
+  width: 100%;
+}
 
 .legal-notice-headline {
-    margin: 0;
-    font-size: 61px;
-    font-weight: 700;
+  margin: 0;
+  font-size: 61px;
+  font-weight: 700;
 }
-
 
 .legal-subheadline {
-    font-size: 27px;
-    font-weight: 700;
+  font-size: 27px;
+  font-weight: 700;
 }
-
 
 .wrapHead {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 64px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 64px;
 }
-
 
 .arrowBack {
-    width: 37px;
-    height: 37px;
-    background-image: url('../assets/icons/arrow-left-line.svg');
-    background-size: 24px 24px;
-    background-position: center;
-    background-repeat: no-repeat;
+  width: 37px;
+  height: 37px;
+  background-image: url("../assets/icons/arrow-left-line.svg");
+  background-size: 24px 24px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-
 
 .arrowBack:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
-
-
 
 @media (max-width: 1100px) {
-    .legal-notice-content {
-        margin-left: 0px !important;
-    }
+  .legal-notice-content {
+    margin-left: 0px !important;
+  }
 }
 
-
 @media (max-width: 580px) {
-    .legal-notice-headline {
-        font-size: 48px;
-    }
+  .legal-notice-headline {
+    font-size: 48px;
+  }
 
-    .legal-notice-content {
-        padding-left: 8px !important;
-        padding-right: 8px !important;
-        margin-bottom: 100px;
-    }
+  .legal-notice-content {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    margin-bottom: 100px;
+  }
 }

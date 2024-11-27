@@ -1,43 +1,42 @@
-.help-content {
-    height: calc(100vh - 96px);
-    overflow-y: scroll;
-    padding-top: 72px;
-    padding-left: 64px;
-    padding-right: 64px;
-    width: 100%;
+.application-main {
+  overflow: hidden;
 }
 
+.help-content {
+  height: calc(100vh - 96px);
+  overflow-y: scroll;
+  padding-top: 72px;
+  padding-left: 64px;
+  padding-right: 64px;
+  width: 100%;
+}
 
 .highlight-join {
-    color: rgb(41, 171, 226);
+  color: rgb(41, 171, 226);
 }
-
 
 .wrapHead {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-
 
 .arrowBack {
-    width: 37px;
-    height: 37px;
-    background-image: url('../assets/icons/');
-    background-size: 24px 24px;
-    background-position: center;
-    background-repeat: no-repeat;
+  width: 37px;
+  height: 37px;
+  background-image: url("../assets/icons/");
+  background-size: 24px 24px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-
 
 .arrowBack:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-
-@media (max-width:1100px) {
-    main {
-        margin-left: unset;
-    }
+@media (max-width: 1100px) {
+  main {
+    margin-left: unset;
+  }
 }
