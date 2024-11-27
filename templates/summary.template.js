@@ -6,7 +6,7 @@ function getTemplateSummary(tasks, user) {
                     <img src="./assets/icons/edit.svg" alt="icon_todo" />
                   </div>
                   <div class="card-number">
-                    1
+                  ${getNumbersOfList(tasks, "to-do")}
                     <div class="card-number-name">To-Do</div>
                   </div>
                 </a>
@@ -19,7 +19,7 @@ function getTemplateSummary(tasks, user) {
                     />
                   </div>
                   <div class="card-number">
-                    1
+                  ${getNumbersOfList(tasks, "done")}
                     <div class="card-number-name">Done</div>
                   </div>
                 </a>
@@ -41,19 +41,19 @@ function getTemplateSummary(tasks, user) {
               <div class="summary-data-row">
                 <a class="summary-data-card card-s" href="./board.html">
                   <div class="card-number">
-                    5
+                    ${tasks.length}
                     <div class="card-number-name">Task in Board</div>
                   </div>
                 </a>
                 <a class="summary-data-card card-s" href="./board.html">
                   <div class="card-number">
-                    2
+                    ${getNumbersOfList(tasks, "in-progress")}
                     <div class="card-number-name">Task in Progess</div>
                   </div>
                 </a>
                 <a class="summary-data-card card-s" href="./board.html">
                   <div class="card-number">
-                    3
+                  ${getNumbersOfList(tasks, "await-feedback")}
                     <div class="card-number-name">Awaiting Feedback</div>
                   </div>
                 </a>
@@ -71,4 +71,11 @@ function getGreacing(user) {
     return `<div class="summary-data-text">Good morning,</div>
               <div class="summary-data-name">${user}</div>`;
   }
+}
+
+function getNumbersOfList(tasks, listName) {
+  let tasksOfList = tasks.filter((task) => {
+    return task.status === listName;
+  });
+  return tasksOfList.length;
 }
