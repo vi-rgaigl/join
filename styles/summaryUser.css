@@ -1,11 +1,41 @@
+.application-main {
+  overflow: hidden;
+}
+
+#application-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 80px 40px;
+}
+
 .summary-head {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+}
+
+.summary-seperator {
+  border: 2px solid var(--light-blue);
+  height: 80%;
+}
+
+.summary-head-text {
+  font-size: 27px;
 }
 
 .summary-data {
+  display: flex;
 }
 
 .summary-data-left {
+  width: 50%;
+  background-color: brown;
 }
 
 .summary-data-rigth {
+  width: 50%;
+  background-color: green;
 }
