@@ -28,12 +28,12 @@ function getTemplateSummary(tasks, user) {
                 <a class="summary-data-card card-l" href="./board.html">
                   <div class="card-prio card-prio-urgent"></div>
                   <div class="card-number">
-                    1
+                    ${getNumbersOfPrio(tasks, "urgent")}
                     <div class="card-number-name">Urgent</div>
                   </div>
                   <div class="card-seperator"></div>
                   <div class="card-date">
-                    October 16, 2022
+                  ${getDateOfPrio(tasks, "urgent")}
                     <div class="card-date-name">Upcoming Deadline</div>
                   </div>
                 </a>
@@ -78,4 +78,33 @@ function getNumbersOfList(tasks, listName) {
     return task.status === listName;
   });
   return tasksOfList.length;
+}
+
+function getNumbersOfPrio(tasks, listName) {
+  let tasksOfList = tasks.filter((task) => {
+    return task.prio === listName;
+  });
+  return tasksOfList.length;
+}
+
+function getDateOfPrio(tasks, listName) {
+  let listOfFilteredTasks = tasks.filter((task) => {
+    return task.prio === listName;
+  });
+  listOfSortedTasks = sortByDate(listOfFilteredTasks);
+  console.log(listOfSortedTasks);
+  return fromatDate(listOfSortedTasks[0].dueDate);
+}
+
+function sortByDate(tasks) {
+  return tasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+}
+
+function fromatDate(dateString) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "2-digit",
+  });
 }
