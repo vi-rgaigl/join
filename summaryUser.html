@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>myJoin</title>
-    <link rel="shortcut icon" href="./assets/icons/logo-blue-small.svg" type="image/x-icon">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./styles/standard.css">
-    <link rel="stylesheet" href="./styles/navBarHeader.css">
-    <link rel="stylesheet" href="./styles/summaryUser.css">
+    <link
+      rel="shortcut icon"
+      href="./assets/icons/logo-blue-small.svg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./styles/standard.css" />
+    <link rel="stylesheet" href="./styles/navBarHeader.css" />
+    <link rel="stylesheet" href="./styles/summaryUser.css" />
+  </head>
+
+  <body onload="init(1);">
+    <div class="application-main">
+      <div id="navbar-container" class="navbar-container"></div>
+
+      <div class="application-main-content">
+        <header id="header-container" class="header"></header>
+
+        <div id="application-content">
+          <div class="summary-head"></div>
+          <div class="summary-data">
+            <div class="summary-data-left"></div>
+            <div class="summary-data-rigth"></div>
+          </div>
+        </div>
+      </div>
+      <div id="navbar-container-mobile" class="navbar-container-mobile"></div>
+    </div>
 
     <script src="./js/remoteStorage.js"></script>
     <script src="./js/localStorage.js"></script>
@@ -18,28 +40,5 @@
     <script src="./js/navBarHeader.js"></script>
     <script src="./js/summaryUser.js"></script>
     <script src="./script.js"></script>
-
-</head>
-
-<body onload="init(1);">
-
-
-    <div class="application-main">
-        <div id="navbar-container" class="navbar-container"></div>
-
-        <div class="application-main-content">
-            <header id="header-container" class="header"></header>
-
-            <div id="application-content">
-
-                <h1>Summary</h1>
-                <!-- TODO -->
-
-            </div>
-        </div>
-        <div id="navbar-container-mobile" class="navbar-container-mobile"></div>
-    </div>
-
-</body>
-
+  </body>
 </html>
