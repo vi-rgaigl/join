@@ -48,14 +48,47 @@
                             <option></option>
                         </select>
                     </div>
+
                     <div class="separator"></div>
+
                     <div class="second-column">
                         <label for="duedate" required>Due date</label>
                         <input class="date-picker" type="date">
                         <label for="prio">Prio</label>
-                        <div class="input-button">
-                            <input class="input-button-solo" type="button" value="Urgent"><input class="input-button-solo" type="button" value="Medium"><input class="input-button-solo" type="button" value="Low">
+
+                        <div class="radio-btns">   
+                        <div class="radio-container radio-urgent">
+                        <input
+                            type="radio"
+                            id="inputPriorityUrgent"
+                            name="inputPriority"
+                            value="urgent"
+                            oninput="changePrio(event)"
+                        />
+                        <label for="inputPriorityUrgent">Urgent</label>
                         </div>
+                        <div class="radio-container radio-medium">
+                        <input
+                            type="radio"
+                            id="inputPriorityMedium"
+                            name="inputPriority"
+                            value="medium"
+                            oninput="changePrio(event)"
+                        />
+                        <label for="inputPriorityMedium">Medium</label>
+                        </div>
+                        <div class="radio-container radio-low">
+                        <input
+                            type="radio"
+                            id="inputPriorityLow"
+                            name="inputPriority"
+                            value="low"
+                            oninput="changePrio(event)"checked
+                        />
+                        <label for="inputPriorityLow">Low</label>
+                        </div>
+                        </div>
+
                         <label for="category" required>Category</label>
                         <select name="" id="">
                             <option>Select task category</option>
