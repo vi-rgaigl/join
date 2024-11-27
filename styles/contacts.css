@@ -59,14 +59,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 20px;
     color: white;
     background-color: #2A3647;
     border-top-left-radius: 24px;
     border-bottom-left-radius: 24px;
-}
-
-.img-add-contact {
-
 }
 
 .contact-add-form-area h2 {
@@ -79,9 +76,15 @@
     font-size: 16px;
 }
 
+.img-logo-add-contact {
+    display: flex;
+    align-items: flex-start;
+    width: 55px;
+    height: 66px;
+}
+
 .form-content-add-contact {
     display: flex;
-    flex-direction: column;
     align-items: center;
 }
 
@@ -94,11 +97,11 @@
 }
 
 .input-text {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    border-radius: 6px;
+    margin-bottom: 16px;
 }
 
 .btn-add-contact {
