@@ -1,4 +1,4 @@
-let databaseURL = "https://join-a8a87-default-rtdb.europe-west1.firebasedatabase.app/";
+//let databaseURL = "https://join-a8a87-default-rtdb.europe-west1.firebasedatabase.app/";
 let contactsList = [];
 let currentContactIndex = null;
 

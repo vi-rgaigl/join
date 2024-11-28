@@ -6,6 +6,8 @@
   border: unset;
   border-radius: 8px;
   padding: 14px 24px;
+  display: flex;
+  align-items: center;
   cursor: pointer;
 }
 
