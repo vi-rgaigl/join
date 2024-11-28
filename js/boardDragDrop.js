@@ -37,3 +37,31 @@ function removeHighlight(status) {
     .getElementById(status + "-drag-area")
     .classList.remove("drag-area-active-highlight");
 }
+
+/**
+ * Set the status of dragging task to newStatus and load data new.
+ * @param {string} newStatus - New status of the dragging Task
+ */
+async function moveTo(newStatus) {
+  let task = tasks.find((task) => task.id === dragginTaskId);
+  task.status = newStatus;
+  try {
+    await changeData("tasks", task);
+    loadData();
+  } catch (error) {
+    console.warn(error);
+  }
+}
+
+/**
+ * Save the id of the dragging Obj and activate the dragging area
+ * @param {string} id - of the dragging task
+ */
+function startDragging(id) {
+  document.getElementById(id).classList.add("on-dragging");
+  let draggingAreas = document.getElementsByClassName("drag-area");
+  for (let i = 0; i < draggingAreas.length; i++) {
+    draggingAreas[i].classList.add("drag-area-active");
+  }
+  dragginTaskId = id;
+}
