@@ -12,7 +12,9 @@ async function initLoadData() {
     tasks = await getData("tasks");
     contacts = await getData("contacts");
     renderTasks();
-  } catch (error) {}
+  } catch (error) {
+    console.warn(error);
+  }
 }
 
 /**
@@ -22,7 +24,9 @@ async function loadData() {
   try {
     tasks = await getData("tasks");
     renderTasks();
-  } catch (error) {}
+  } catch (error) {
+    console.warn(error);
+  }
 }
 
 /**
@@ -88,7 +92,9 @@ async function moveTo(newStatus) {
   try {
     await changeData("tasks", task);
     loadData();
-  } catch (error) {}
+  } catch (error) {
+    console.warn(error);
+  }
 }
 
 /**
@@ -153,7 +159,9 @@ async function subtasktChangeDone(idSubtask, idTask) {
     tasks = await getData("tasks");
     renderTasks();
     openDialog(idTask);
-  } catch (error) {}
+  } catch (error) {
+    console.warn(error);
+  }
 }
 
 /**
@@ -166,7 +174,9 @@ async function deleteTask(idTask) {
     await deleteData("tasks", currentTask);
     loadData();
     closeDialog();
-  } catch (error) {}
+  } catch (error) {
+    console.warn(error);
+  }
 }
 
 /**
@@ -382,5 +392,7 @@ async function submitEditTask(id) {
     await changeData("tasks", editTask);
     await loadData();
     renderOverviewTask(id);
-  } catch (error) {}
+  } catch (error) {
+    console.warn(error);
+  }
 }

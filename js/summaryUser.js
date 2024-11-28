@@ -6,7 +6,9 @@ async function loadSummary() {
     loadDataFromLocalStorage();
     renderSummary();
     renderMobileGreasing();
-  } catch (error) {}
+  } catch (error) {
+    console.warn(error);
+  }
 }
 
 function renderSummary() {
