@@ -35,14 +35,24 @@ async function signupUser() {
                 setErrorMessage('email', 'A user with this email already exists.');
                 return;
             }
+            let color = getRandomColor();
+            let initial = getInitials(formData.name);
             let userItem = {
-                color: getRandomColor(),
+                color: color,
                 email: formData.email,
-                initials: getInitials(formData.name),
+                initials: initial,
                 password: formData.password,
                 user: formData.name
             };
-            await pushData('users', userItem);       
+            let contactItem = {
+                color: color,
+                email: formData.email,
+                initials: initial,
+                name: formData.name,
+                phone: ""
+            }
+            await pushData('users', userItem);
+            await pushData('contacts', contactItem); 
             await showPopupMessage('signup-popup-message', 'You signed up successfully!');                        
             clearSignupForm();
             setSignupRedirect(); 
