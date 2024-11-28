@@ -79,6 +79,7 @@
 .summary-data-card:hover {
   background-color: var(--dark-blue);
   color: white;
+  transform: scale(1.1);
 }
 
 .card-s {
