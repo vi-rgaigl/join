@@ -46,6 +46,7 @@
     font-weight: 400;
     margin-top: 80px;
     margin-right: 77px;
+    z-index: 2;
 }
 
 .signup-line-mobile {
@@ -169,6 +170,9 @@
     }
 }
 @media (max-height: 920px) {
+    .login-body {
+        margin-top: 20vh;
+    }
     .login-form-box {
         height: 63vh;
     }
@@ -211,6 +215,7 @@
         gap: 35px;
         font-size: 20px;
         font-weight: 400;
+        z-index: 2;
     }
     .logo-login {
         height: 120px;
@@ -240,7 +245,7 @@
     }
     .login-form-box {
         width: 90vw;
-        height: 56vh;
+        height: 75vh;
     }
     .login-form-pad-wd {
         padding: 28px 24px;
@@ -265,6 +270,9 @@
 }
 
 @media (max-width: 360px) {
+    .login-body {
+        margin-top: 14vh;
+    }
     .login-form-box {
         width: 86vw;
         height: 64vh;

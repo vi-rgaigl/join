@@ -57,6 +57,7 @@
 }
 
 .header-avatar {
+  background-color: var(--silk);
   height: 56px;
   width: 56px;
   display: flex;

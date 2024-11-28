@@ -74,6 +74,7 @@ function guestLogin() {
     let user = getUserByEmail('guest@guest.example');
     let itemToStore = {
         user: user.user,
+        color: user.color,
         initials: user.initials,
         rememberme: false
     };
