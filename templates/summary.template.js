@@ -92,7 +92,6 @@ function getDateOfPrio(tasks, listName) {
     return task.prio === listName;
   });
   listOfSortedTasks = sortByDate(listOfFilteredTasks);
-  console.log(listOfSortedTasks);
   return fromatDate(listOfSortedTasks[0].dueDate);
 }
 
