@@ -66,9 +66,9 @@ function getTemplateSummary(tasks, user) {
 
 function getGreacing(user) {
   if (user == "guest") {
-    return `<div class="summary-data-text">Good morning</div>`;
+    return `<div class="summary-data-text">${getGreacingText()}</div>`;
   } else {
-    return `<div class="summary-data-text">Good morning,</div>
+    return `<div class="summary-data-text">${getGreacingText()},</div>
               <div class="summary-data-name">${user}</div>`;
   }
 }
@@ -107,4 +107,18 @@ function fromatDate(dateString) {
     month: "long",
     day: "2-digit",
   });
+}
+
+function getGreacingText() {
+  const now = new Date();
+  const hour = now.getHours();
+  if (hour >= 5 && hour < 12) {
+    return "Good Morning";
+  } else if (hour >= 12 && hour < 15) {
+    return "Good Day";
+  } else if (hour >= 15 && hour < 20) {
+    return "Good Evening";
+  } else {
+    return "Good Night";
+  }
 }
