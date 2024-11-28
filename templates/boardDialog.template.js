@@ -274,7 +274,7 @@ function getListOfSubtasksEdit(subtasks) {
     return "";
   } else {
     subtasks.forEach((subtask, index) => {
-      html += `<div class="subtask-list-item">
+      html += `<div class="subtask-list-item" data-done="${subtask.done}">
       ${subtask.subtitle}
       <img
         src="./assets/icons/delete.svg"

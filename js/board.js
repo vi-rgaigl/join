@@ -178,6 +178,7 @@ function toggleDropdown() {
   dropdownAssignedRef.classList.toggle("dropdown-open");
 }
 
+//    TODO Check
 /**
  * validate the title and change in the task
  * @param {event} event - input event
@@ -201,6 +202,7 @@ function changeDescription(event) {
   editTask.description = event.target.value;
 }
 
+//    TODO Check
 /**
  * validate the due date and change in the task
  * @param {event} event - input event
@@ -218,6 +220,7 @@ function changeDueDate(event) {
   editTask.dueDate = dueDate;
 }
 
+//    TODO Check
 /**
  * Set the error to the input field
  * @param {string} text - Error massage to render
@@ -237,6 +240,7 @@ function errorMassage(text, field) {
   }
 }
 
+//    TODO Check
 /**
  * Check if the Date is past
  * @param {string} date - in format YYYY-MM-DD
@@ -257,6 +261,7 @@ function changePrio(event) {
   editTask.prio = event.target.value;
 }
 
+//    TODO Check
 /**
  * Change the assignedTo in the task
  * @param {event} event - input event
@@ -276,6 +281,7 @@ function changeAssignedTo(event) {
   renderAssignedTo(editTask);
 }
 
+//    TODO Check
 /**
  * rendered the Names of assigned contacs
  * @param {object} task - set the assigned Names
