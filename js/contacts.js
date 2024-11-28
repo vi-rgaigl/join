@@ -34,7 +34,7 @@ function sortContactsByName(contacts) {
 function generateContactListHTML(groupedContacts) {
     let html = "";
     let overallIndex = 0;
-    for (const initial in groupedContacts) {
+    for (let initial in groupedContacts) {
         html += `<h3>${initial}</h3>`;
         groupedContacts[initial].forEach((contact) => {
             let initials = getInitials(contact.name);
@@ -103,18 +103,6 @@ function showContactDetails(index) {
 
     document.getElementById("current-contact").innerHTML = contactDetailsHTML;
     document.getElementById("contactDetailsContainer").classList.add("active");
-}
-
-function getInitials(name) {
-    if (!name) return "";
-    let parts = name.split(" ");
-    let initials = parts.map((part) => part[0]).join("");
-    return initials.toUpperCase();
-}
-
-function getRandomColor() {
-    let colors = ["#FF5733", "#33FF57", "#3357FF", "#FF33A6", "#A633FF", "#33FFF5", "#FFBB33"];
-    return colors[Math.floor(Math.random() * colors.length)];
 }
 
 async function addContact() {
@@ -188,12 +176,6 @@ function closeEditDialog() {
     }
 }
 
-function clearEditDialogFields() {
-    document.getElementById("edit-name").value = "";
-    document.getElementById("edit-email").value = "";
-    document.getElementById("edit-phone").value = "";
-}
-
 async function saveEditedContact() {
     if (currentContactIndex === null || !contactsList[currentContactIndex]) return;
     let updatedContact = {
@@ -231,12 +213,6 @@ async function saveContact() {
     } catch (error) {
         console.error("Fehler beim Speichern des Kontakts:", error);
     }
-}
-
-function clearDialogFields() {
-    document.getElementById("name").value = "";
-    document.getElementById("email").value = "";
-    document.getElementById("phone").value = "";
 }
 
 async function saveNewContact() {
