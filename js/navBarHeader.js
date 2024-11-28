@@ -64,3 +64,27 @@ async function logout() {
 function setUserInactive() {
     removeFromLocalStorage('join393active');
 }
+
+
+/**
+ * Redirects the user to the help page.
+ */
+function openHelp() {
+    window.location.href = './help.html';
+}
+
+
+/**
+ * Redirects the user to the legal notice page.
+ */
+function openLegalNotice() {
+    window.location.href = './legalNotice.html';
+}
+
+
+/**
+ * Redirects the user to the privacy policy page.
+ */
+function openPrivacyPolicy() {
+    window.location.href = './privacyPolicy.html';
+}

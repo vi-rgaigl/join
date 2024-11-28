@@ -1,5 +1,5 @@
-function getHeaderTemplate(){
-    return /*html*/ `
+function getHeaderTemplate() {
+  return /*html*/ `
         <div class="header-group">
             <div class="header-group-left">
                 <div class="header-group-logo"></div>
@@ -9,17 +9,17 @@ function getHeaderTemplate(){
                 <div class="help-icon-mobile"><a href="./help.html"><img class="header-help-icon" src="./assets/icons/help-icon.svg" alt="Help"></a></div>
                 <div id="header_avatar" class="header-avatar" onclick="openUserMenu()">${setMonogram()}</div>
                 <div class="popup-user" id="popup-user">
-                    <div class="link-box">
-                        <a href="./help.html">Help</a>
+                    <div class="link-box" onclick="openHelp()">
+                        <span>Help</span>
                     </div>
-                    <div class="link-box">
-                        <a href='./legalNotice.html'>Legal Notice</a>
+                    <div class="link-box" onclick="openLegalNotice()">
+                        <span>Legal Notice</span>
                     </div>
-                    <div class="link-box">
-                        <a  href='./privacyPolicy.html'>Privacy Policy</a>
+                    <div class="link-box" onclick="openPrivacyPolicy()">
+                        <span>Privacy Policy</span>
                     </div>
                     <div class="link-box" onclick="logout()">
-                        <a>Log out</a>
+                        <span>Log out</span>
                     </div>
                 </div>
             </div>
@@ -27,8 +27,8 @@ function getHeaderTemplate(){
     `;
 }
 
-function getHeaderNoLoginTemplate(){
-    return /*html*/ `
+function getHeaderNoLoginTemplate() {
+  return /*html*/ `
     <div class="header-group-left">
         <div class="header-group-logo"></div>
         <div class="header-headline-text">Kanban Project Management Tool</div>
