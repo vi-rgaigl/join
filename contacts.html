@@ -30,30 +30,27 @@
         <div class="application-main-content">
             <header id="header-container" class="header"></header>
 
-            <div id="application-content">
-
-                <div class="contacts-container d-flex">
-                    <!-- Left container: contact-list -->
-                    <div id="contactListContainer" class="contact-list-container">
-                        <div class="add-contact-button-container">
-                            <button id="addContact" type="button" onclick="openAddContactDialog()"
-                                class="add-new-contact-btn">
-                                <h4 class="newContact">Add new Contact</h4>
-                                <img id="addPerson" src="./assets/icons/person-add.svg" class="icon">
-                            </button>
-                        </div>
-                        <div id="contactList" class="contact-list"></div>
+            <div class="contacts-container d-flex">
+                <!-- Left container: contact-list -->
+                <div id="contactListContainer" class="contact-list-container">
+                    <div class="add-contact-button-container">
+                        <button id="addContact" type="button" onclick="openAddContactDialog()"
+                            class="button-blue add-new-contact-btn">
+                            Add new Content
+                            <img id="addPerson" src="./assets/icons/person-add.svg" class="icon">
+                        </button>
                     </div>
-                    <!-- Right container: Contact details -->
-                    <div id="contactDetailsContainer" class="contact-details-container">
-                        <div class="contact-title">
-                            <h1>Contacts</h1>
-                            <div class="contact-vertical-line"></div>
-                            <p class="contact-text">Better with a team</p>
-                        </div>
-                        <!-- contact details are displayed here -->
-                        <div id="current-contact" class="current-contact"></div>
+                    <div id="contactList" class="contact-list"></div>
+                </div>
+                <!-- Right container: Contact details -->
+                <div id="contactDetailsContainer" class="contact-details-container">
+                    <div class="contact-title">
+                        <h1>Contacts</h1>
+                        <div class="contact-vertical-line"></div>
+                        <p class="contact-text">Better with a team</p>
                     </div>
+                    <!-- contact details are displayed here -->
+                    <div id="current-contact" class="current-contact"></div>
                 </div>
             </div>
         </div>
@@ -61,28 +58,28 @@
     <div id="navbar-container-mobile" class="navbar-container-mobile"></div>
 
     <div id="overlay" class="overlay">
-    <div id="addContactDialog" class="dialog" style="display: none;">
-        <div class="contact-add-form-area">
-            <img class="img-logo-add-contact" src="./assets/icons/logo-white-welcome.svg">
-            <h2>Add contact</h2>
-            <p>Tasks are better with a team!</p>
-            <div class="blue-underline"></div>
-        </div>
+        <div id="addContactDialog" class="dialog" style="display: none;">
+            <div class="contact-add-form-area">
+                <img class="img-logo-add-contact" src="./assets/icons/logo-white-welcome.svg">
+                <h2>Add contact</h2>
+                <p>Tasks are better with a team!</p>
+                <div class="blue-underline"></div>
+            </div>
 
-        <div class="form-content-add-contact">  
-            <img class="img-add-contact" src="./assets/icons/avatar.svg">
-        <div id="contactForm">
-            <input class="input-text" id="name" type="name" placeholder="Name" required="" value="">
-            <input class="input-text" id="email" type="email" placeholder="Email" required="" value="">
-            <input class="input-text" id="phone" type="call" placeholder="Phone" required="" value="">
-        
-        <div class="btn-add-contact">
-            <button class="btn-cancel" onclick="closeDialog()">Cancel</button>
-            <button class="btn-create-contact" onclick="saveNewContact()">Create contact</button>
+            <div class="form-content-add-contact">
+                <img class="img-add-contact" src="./assets/icons/avatar.svg">
+                <div id="contactForm">
+                    <input class="input-text" id="name" type="name" placeholder="Name" required="" value="">
+                    <input class="input-text" id="email" type="email" placeholder="Email" required="" value="">
+                    <input class="input-text" id="phone" type="call" placeholder="Phone" required="" value="">
+
+                    <div class="btn-add-contact">
+                        <button class="btn-cancel" onclick="closeDialog()">Cancel</button>
+                        <button class="btn-create-contact" onclick="saveNewContact()">Create contact</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        </div>  
-        </div>
-    </div>
     </div>
     <!-- dialog for editing the contact -->
     <div id="edit-overlay-bg" class="overlay">
@@ -103,10 +100,10 @@
                 <div class="btn-add-contact">
                     <button class="btn-cancel" onclick="closeEditDialog()">Delete</button>
                     <button class="btn-create-contact" onclick="saveEditedContact()">Save</button>
-                </div>    
+                </div>
             </div>
         </div>
-    </div>    
+    </div>
 </body>
 
 </html>
