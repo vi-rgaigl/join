@@ -18,8 +18,8 @@ function getHeaderTemplate(){
                     <div class="link-box">
                         <a  href='./privacyPolicy.html'>Privacy Policy</a>
                     </div>
-                    <div class="link-box">
-                        <a onclick="logout()">Log out</a>
+                    <div class="link-box" onclick="logout()">
+                        <a>Log out</a>
                     </div>
                 </div>
             </div>
