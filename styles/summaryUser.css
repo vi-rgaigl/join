@@ -23,6 +23,11 @@
   height: 80%;
 }
 
+.summary-seperator-mobile {
+  display: none;
+  border: 2px solid var(--light-blue);
+}
+
 .summary-head-text {
   font-size: 27px;
 }
@@ -30,10 +35,16 @@
 #summary-data {
   display: flex;
   flex: 1;
+  width: 100%;
 }
 
 .summary-data-left {
-  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  margin-right: 80px;
+  max-width: 660px;
 }
 
 .summary-data-rigth {
@@ -41,6 +52,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  width: 60%;
 }
 .summary-data-text {
   color: var(--dark-blue);
@@ -50,14 +62,6 @@
 .summary-data-name {
   color: var(--light-blue);
   font-size: 64px;
-}
-
-.summary-data-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 32px;
-  margin-right: 80px;
 }
 
 .summary-data-row {
@@ -74,23 +78,13 @@
   justify-content: center;
   align-items: center;
   gap: 18px;
+  width: 100%;
 }
 
 .summary-data-card:hover {
   background-color: var(--dark-blue);
   color: white;
   transform: scale(1.1);
-}
-
-.card-s {
-  width: 33%;
-}
-
-.card-m {
-  width: 50%;
-}
-.card-l {
-  width: 100%;
 }
 
 .data-card-img {
@@ -183,9 +177,103 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 .card-date-name {
   font-size: 16px;
   font-weight: 400;
+}
+
+@media (max-width: 1200px) {
+  #application-content {
+    padding: 80px 40px;
+  }
+
+  .summary-data-left {
+    margin-right: 40px;
+  }
+}
+
+@media (max-width: 990px) {
+  .summary-data-card {
+    padding: 19px 24px;
+  }
+
+  .data-card-img,
+  .card-prio {
+    height: 49px;
+    width: 49px;
+  }
+
+  .card-number {
+    font-size: 44px;
+  }
+
+  .card-date,
+  .card-date-name,
+  .card-number-name {
+    font-size: 12px;
+  }
+
+  .card-seperator {
+    margin: 0 16px;
+  }
+
+  h1 {
+    font-size: 47px;
+  }
+
+  .summary-head-text {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 860px) {
+  .summary-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .summary-seperator {
+    display: none;
+  }
+
+  .summary-seperator-mobile {
+    display: block;
+    width: 90px;
+  }
+
+  #summary-data {
+    flex: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    width: auto;
+  }
+
+  .summary-data-rigth {
+    display: none;
+  }
+
+  .summary-data-left {
+    margin: 0;
+    max-width: fit-content;
+    width: 100%;
+  }
+}
+
+@media (max-width: 530px) {
+  #application-content {
+    padding: 40px 16px;
+  }
+
+  .summary-data-row {
+    gap: 16px;
+  }
+
+  .summary-data-card {
+    padding: 8px 16px;
+  }
 }
