@@ -5,6 +5,7 @@ async function loadSummary() {
     tasks = await getData("tasks");
     loadDataFromLocalStorage();
     renderSummary();
+    renderMobileGreasing();
   } catch (error) {}
 }
 
@@ -16,4 +17,9 @@ function renderSummary() {
 function loadDataFromLocalStorage() {
   let respons = getFromLocalStorage("join393");
   user = respons.user;
+}
+
+function renderMobileGreasing() {
+  let greasingRef = document.getElementById("summary-greacing-mobile");
+  greasingRef.innerHTML = getGreacing(user);
 }
