@@ -25,7 +25,7 @@
 }
 
 .add-new-contact-btn {
-    background-color: #2A3647;
+    background-color: var(--dark-blue);
     color: white;
     border: none;
     border-radius: 5px;
@@ -45,7 +45,7 @@
     flex-direction: row;
     height: 500px;
     width: 950px;
-    background-color: #ffffff;
+    background-color: white;
     border-radius: 24px;
     position: absolute;
     top: 50%;
@@ -62,7 +62,7 @@
     align-items: center;
     padding: 20px;
     color: white;
-    background-color: #2A3647;
+    background-color: var(--dark-blue);
     border-top-left-radius: 24px;
     border-bottom-left-radius: 24px;
 }
@@ -125,14 +125,14 @@
 
 .btn-cancel {
     background-color: white;
-    color: #2A3647;
-    border: 1px solid #2A3647;
+    color: var(--dark-blue);
+    border: 1px solid var(--dark-blue);
     margin-right: 20px;
 }
 
 .btn-create-contact {
     padding: 10px 20px;
-    background-color: #2A3647;
+    background-color: var(--dark-blue);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -141,7 +141,7 @@
 .blue-underline {
     width: 100%;
     height: 3px;
-    background-color: #0000FF; 
+    background-color: var(--light-blue); 
     margin: 10px 0;
 }
 
@@ -161,8 +161,8 @@
     transform: scale(1.02);
     border: 1px solid #ddd;
     border-radius: 8px;
-    color: #fffefe;
-    background-color: #2A3647;
+    color: var(--silk);
+    background-color: var(--dark-blue);
 }
 
 .contact-item .contact-initials {
