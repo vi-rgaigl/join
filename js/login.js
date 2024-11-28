@@ -137,6 +137,7 @@ function getRemembermeCheckbox() {
 function setRememberme(user, remember) {
     let itemToStore = {
         user: user.user,
+        color: user.color,
         initials: user.initials,
         rememberme: remember
     };

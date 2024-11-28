@@ -129,8 +129,7 @@
 }
 
 .navbar-main-nologin {
-  height: 61vh;
-  padding-top: 32vh;
+  height: 100%;
   padding-bottom: 4vh;
   display: flex;
   flex-direction: column;
