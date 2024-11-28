@@ -1,5 +1,6 @@
 /* Container-Style */
 .contacts-container {
+    max-width: var(--app-max-width);
     display: flex;
     gap: 20px;
     margin-top: 20px;
