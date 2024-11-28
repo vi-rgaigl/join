@@ -26,6 +26,12 @@ function setMonogram() {
 }
 
 
+function setMonogramBackground() {
+    let user = getFromLocalStorage('join393');
+    document.getElementById('header_avatar').style.backgroundColor = user.color;
+}
+
+
 /**
  * 
  * changes the visibility of the popup menu when clicking on the usermongram

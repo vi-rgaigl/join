@@ -24,6 +24,7 @@ function renderHeaderAndNavbar() {
     let navContainer = document.getElementById('navbar-container');
     let navContainerMobile = document.getElementById('navbar-container-mobile');
     headerContainer.innerHTML = getHeaderTemplate();
+    setMonogramBackground();
     navContainer.innerHTML = getNavbarTemplate('');
     navContainerMobile.innerHTML = getNavbarTemplate('mobile');
 }

@@ -83,6 +83,16 @@
     height: 66px;
 }
 
+.close-btn {
+    position: absolute;
+    top: 48px;
+    right: 30px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
 .form-content-add-contact {
     display: flex;
     align-items: center;
@@ -167,8 +177,8 @@
     align-items: center;
     justify-content: center;
     color: white;
-    font-weight: bold;
     font-size: 18px;
+    margin-top: 8px;
 }
 
 /* contakt-details */
@@ -179,7 +189,7 @@
 }
 
 .contact-details-container h2 {
-    font-size: 24px;
+    font-size: 34px;
     color: #333;
     margin-bottom: 10px;
 }
@@ -205,8 +215,8 @@
 }
 
 .contact-header .contact-initials {
-    width: 130px;
-    height: 130px;
+    width: 110px;
+    height: 110px;
     font-size: 48px;
     border: solid 2px white;
 }
@@ -215,19 +225,24 @@
 }
 
 .contact-name {
-    margin-bottom: 10px;
+    margin-bottom: 4px;
 }
 
 .contact-actions-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-size: 16px;
 }
 
 .contact-actions {
     display: flex;
+    gap: 16px;
+    cursor: pointer;
+}
+
+.action-item {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
 }
 
 .contact-actions img {
@@ -243,11 +258,11 @@
 .contact-infos {
     display: table-caption;
     flex-direction: column;
-    margin-top: 60px;
+    margin-top: 40px;
 }
 
 .contact-infos p {
-    margin: 5px 0;
+    margin: 10px 0;
 }
 
 /* Action buttons */
