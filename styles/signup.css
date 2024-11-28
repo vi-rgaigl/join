@@ -1,6 +1,7 @@
 .header-signup {
     position: absolute;
     top: 0;
+    left: 0;
     width: 100vw;
     display: flex;
     justify-content: start;
@@ -58,7 +59,7 @@
 
 .show-hidden-password-signup {
     position: relative;
-    bottom: 32%;
+    bottom: 156px;
     right: -86%;
     height: 140px;
     width: 96px;
@@ -66,7 +67,7 @@
 }
 
 .check-box-line {
-    margin-top: -26%;
+    margin-top: -128px;
 }
 
 

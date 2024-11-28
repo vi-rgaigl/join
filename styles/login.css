@@ -21,7 +21,9 @@
 .header-login {
     position: absolute;
     top: 0;
-    width: 100vw;
+    left: 0;
+    right: 0;
+    max-width: var(--desktop-max-width);
     height: 100vh;
     display: flex;
     justify-content: end;
@@ -120,7 +122,7 @@
 
 .show-hidden-password {
     position: relative;
-    bottom: 34%;
+    bottom: 70px;
     right: -93%;
     height: 50px;
     width: 70px;
@@ -131,7 +133,7 @@
     width: 80%;
     display: flex;
     justify-content: start;
-    margin-top: -5%;
+    margin-top: -32px;
 }
 
 .button-line {
