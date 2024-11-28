@@ -92,12 +92,12 @@ function renderDialogTaskEdit(task, contacts) {
               </div>
               <div class="input-row">
                 <label class="lable">Assinged to</label>
-                <div class="input dropdown select-arrow" id="dropdownAssinged">
-                  <div class="dropdown-click" onclick="toggleDropdown()">
+                <div class="input dropdown select-arrow" id="dropdownAssinged" data-dropdown=true>
+                  <div class="dropdown-click" onclick="toggleDropdown()" data-dropdown=true>
                     Select contacts to assign
                   </div>
-                  <div class="dropdown-list">
-                    <hr class="dropdown-hr" />
+                  <div class="dropdown-list" data-dropdown=true>
+                    <hr class="dropdown-hr" data-dropdown=true/>
                     ${getListOfUsers(task.assignedTo, contacts)}
                   </div>
                 </div>
@@ -220,7 +220,7 @@ function getAssignInitialsName(listOfAssign, contacts) {
   if (listOfAssign !== false) {
     listOfAssign.forEach((assignId) => {
       let assignedContact = getAssignedContact(assignId, contacts);
-      beginn += `<div class="dialog-assigned">
+      beginn += `<div class="dialog-assigned" >
               <div
                 class="assign-name"
                 style="background-color: ${assignedContact.color}"
@@ -297,8 +297,9 @@ function getListOfSubtasksEdit(subtasks) {
 function getListOfUsers(assignedTo, contacts) {
   let html = "";
   contacts.forEach((contact) => {
-    html += `<div class="dropdown-list-item">
+    html += `<div class="dropdown-list-item" data-dropdown=true>
               <input
+                data-dropdown=true
                 type="checkbox"
                 id="user${contact.id}"
                 name="assignedUsers"
@@ -306,7 +307,9 @@ function getListOfUsers(assignedTo, contacts) {
                 onchange="changeAssignedTo(event)"
                 ${ifUserAssigned(assignedTo, contact.id)}
                 />
-              <label for="user${contact.id}">${contact.name}</label>
+              <label for="user${contact.id}" data-dropdown=true>${
+      contact.name
+    }</label>
             </div>`;
   });
 

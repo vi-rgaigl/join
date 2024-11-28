@@ -374,3 +374,15 @@ async function submitEditTask(id) {
     console.warn(error);
   }
 }
+
+/**
+ * Close dropdown if click not on the dropdown
+ */
+document.getElementById("boardDialog").addEventListener("click", (event) => {
+  let dropdownRef = document.getElementById("dropdownAssinged");
+  if (dropdownRef !== null) {
+    if (event.target.dataset.dropdown !== "true") {
+      dropdownRef.classList.remove("dropdown-open");
+    }
+  }
+});
