@@ -6,7 +6,7 @@ function getHeaderTemplate(){
                 <div class="header-headline-text">Kanban Project Management Tool</div>
             </div>
             <div class="header-group-right">
-                <div class="help-icon-mobile"><a href="./help.html"><img src="./assets/icons/help-icon.svg" alt="Help"></a></div>
+                <div class="help-icon-mobile"><a href="./help.html"><img class="header-help-icon" src="./assets/icons/help-icon.svg" alt="Help"></a></div>
                 <div id="header_avatar" class="header-avatar" onclick="openUserMenu()">${setMonogram()}</div>
                 <div class="popup-user" id="popup-user">
                     <div class="link-box">

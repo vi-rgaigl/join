@@ -13,6 +13,8 @@
   --orange: #ff3d00;
   --box-shadow: 0px 6px 7px -3px #949494;
   --navbar-width: 232px;
+  --desktop-max-width: 1920px;
+  --app-max-width: calc(var(--desktop-max-width) - var(--navbar-width));
 }
 
 * {
@@ -53,7 +55,6 @@ textarea {
 }
 
 .application-main {
-  /* max-width: 1920px; */
   width: 100%;
   height: 100%;
   display: flex;

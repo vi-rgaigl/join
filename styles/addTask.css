@@ -1,4 +1,5 @@
 .application-content {
+    max-width: var(--app-max-width);
     margin-left: 64px;
     margin-top: 80px;
 }

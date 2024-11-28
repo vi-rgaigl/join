@@ -45,6 +45,7 @@
 }
 
 .content-top {
+  max-width: var(--app-max-width);
   padding-top: 80px;
 }
 
@@ -94,6 +95,7 @@
 }
 
 .content-data {
+  max-width: var(--app-max-width);
   padding: 16px 64px;
 }
 
