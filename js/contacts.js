@@ -4,7 +4,7 @@ let currentContactIndex = null;
 
 async function fetchContactsData() {
     try {
-        const contacts = await getData("contacts");
+        let contacts = await getData("contacts");
         if (!contacts || contacts.length === 0) {
             console.error("Die Kontaktliste ist leer.");
             return [];
@@ -18,7 +18,7 @@ async function fetchContactsData() {
 
 function groupContactsByInitial(contacts) {
     return contacts.reduce((grouped, contact) => {
-        const initial = contact.name.charAt(0).toUpperCase();
+        let initial = contact.name.charAt(0).toUpperCase();
         if (!grouped[initial]) {
             grouped[initial] = [];
         }
@@ -37,8 +37,8 @@ function generateContactListHTML(groupedContacts) {
     for (const initial in groupedContacts) {
         html += `<h3>${initial}</h3>`;
         groupedContacts[initial].forEach((contact) => {
-            const initials = getInitials(contact.name);
-            const color = contact.color || getRandomColor();
+            let initials = getInitials(contact.name);
+            let color = contact.color || getRandomColor();
             html += `
                 <div class="contact-item" onclick="showContactDetails(${overallIndex})">
                     <div class="contact-initials" style="background-color:${color}">${initials}</div>
@@ -53,17 +53,17 @@ function generateContactListHTML(groupedContacts) {
 }
 
 async function renderContactList() {
-    const contactListElement = document.getElementById("contactList");
+    let contactListElement = document.getElementById("contactList");
     contactListElement.innerHTML = "";
     contactsList = await fetchContactsData();
     if (!contactsList.length) return;
-    const sortedContacts = sortContactsByName(contactsList);
-    const groupedContacts = groupContactsByInitial(sortedContacts);
+    let sortedContacts = sortContactsByName(contactsList);
+    let groupedContacts = groupContactsByInitial(sortedContacts);
     contactListElement.innerHTML = generateContactListHTML(groupedContacts);
 }
 
 function generateContactDetailsHTML(contact) {
-    const initials = getInitials(contact.name);
+    let initials = getInitials(contact.name);
     return `
         <div class="contact-header">
             <div class="contact-initials" style="background-color:${contact.color || getRandomColor()}">${initials}</div>
@@ -93,13 +93,13 @@ function generateContactDetailsHTML(contact) {
 
 function showContactDetails(index) {
     currentContactIndex = index;
-    const contact = contactsList[index];
+    let contact = contactsList[index];
     if (!contact) {
         console.error("Kontakt nicht gefunden.");
         return;
     }
 
-    const contactDetailsHTML = generateContactDetailsHTML(contact);
+    let contactDetailsHTML = generateContactDetailsHTML(contact);
 
     document.getElementById("current-contact").innerHTML = contactDetailsHTML;
     document.getElementById("contactDetailsContainer").classList.add("active");
@@ -107,18 +107,18 @@ function showContactDetails(index) {
 
 function getInitials(name) {
     if (!name) return "";
-    const parts = name.split(" ");
-    const initials = parts.map((part) => part[0]).join("");
+    let parts = name.split(" ");
+    let initials = parts.map((part) => part[0]).join("");
     return initials.toUpperCase();
 }
 
 function getRandomColor() {
-    const colors = ["#FF5733", "#33FF57", "#3357FF", "#FF33A6", "#A633FF", "#33FFF5", "#FFBB33"];
+    let colors = ["#FF5733", "#33FF57", "#3357FF", "#FF33A6", "#A633FF", "#33FFF5", "#FFBB33"];
     return colors[Math.floor(Math.random() * colors.length)];
 }
 
 async function addContact() {
-    const newContact = {
+    let newContact = {
         name: document.getElementById("name").value,
         email: document.getElementById("email").value,
         phone: document.getElementById("phone").value,
@@ -135,14 +135,14 @@ async function addContact() {
 }
 
 function openAddContactDialog() {
-    const dialog = document.getElementById("addContactDialog");
+    let dialog = document.getElementById("addContactDialog");
     if (dialog) {
         dialog.style.display = "flex";
     }
 }
 
 function closeDialog() {
-    const dialog = document.getElementById("addContactDialog");
+    let dialog = document.getElementById("addContactDialog");
     if (dialog) {
         dialog.style.display = "none";
         clearDialogFields();
@@ -151,15 +151,15 @@ function closeDialog() {
 
 function editContact(index) {
     currentContactIndex = index;
-    const contact = contactsList[index];
+    let contact = contactsList[index];
     if (!contact) {
         console.error("Kontakt nicht gefunden.");
         return;
     }
 
-    const nameElement = document.getElementById("edit-name");
-    const emailElement = document.getElementById("edit-email");
-    const phoneElement = document.getElementById("edit-phone");
+    let nameElement = document.getElementById("edit-name");
+    let emailElement = document.getElementById("edit-email");
+    let phoneElement = document.getElementById("edit-phone");
 
     if (nameElement && emailElement && phoneElement) {
         nameElement.value = contact.name;
@@ -174,14 +174,14 @@ function editContact(index) {
 }
 
 function openEditContactDialog() {
-    const dialog = document.getElementById("editContactDialog");
+    let dialog = document.getElementById("editContactDialog");
     if (dialog) {
         dialog.style.display = "flex";
     }
 }
 
 function closeEditDialog() {
-    const dialog = document.getElementById("editContactDialog");
+    let dialog = document.getElementById("editContactDialog");
     if (dialog) {
         dialog.style.display = "none";
         clearEditDialogFields();
@@ -196,7 +196,7 @@ function clearEditDialogFields() {
 
 async function saveEditedContact() {
     if (currentContactIndex === null || !contactsList[currentContactIndex]) return;
-    const updatedContact = {
+    let updatedContact = {
         id: contactsList[currentContactIndex].id,
         name: document.getElementById("edit-name").value,
         email: document.getElementById("edit-email").value,
@@ -216,7 +216,7 @@ async function saveEditedContact() {
 
 async function saveContact() {
     if (currentContactIndex === null || !contactsList[currentContactIndex]) return;
-    const updatedContact = {
+    let updatedContact = {
         id: contactsList[currentContactIndex].id,
         name: document.getElementById("name").value,
         email: document.getElementById("email").value,
@@ -240,16 +240,16 @@ function clearDialogFields() {
 }
 
 async function saveNewContact() {
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const phone = document.getElementById("phone").value.trim();
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let phone = document.getElementById("phone").value.trim();
 
     if (!name || !email || !phone) {
         alert("Please fill out all fields.");
         return;
     }
 
-    const newContact = {
+    let newContact = {
         name: name,
         email: email,
         phone: phone,
@@ -270,7 +270,7 @@ async function saveNewContact() {
 async function deleteContact() {
     if (currentContactIndex === null || !contactsList[currentContactIndex])
         return;
-    const contactId = contactsList[currentContactIndex].id;
+    let contactId = contactsList[currentContactIndex].id;
     try {
         await deleteData("contacts", { id: contactId });
         contactsList.splice(currentContactIndex, 1);
@@ -281,9 +281,9 @@ async function deleteContact() {
 }
 
 function clearForm() {
-    const nameElement = document.getElementById("name");
-    const emailElement = document.getElementById("email");
-    const phoneElement = document.getElementById("phone");
+    let nameElement = document.getElementById("name");
+    let emailElement = document.getElementById("email");
+    let phoneElement = document.getElementById("phone");
 
     if (nameElement) nameElement.value = "";
     if (emailElement) emailElement.value = "";
