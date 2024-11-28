@@ -101,36 +101,16 @@
     margin: 0px 48px;
 }
 
-.input-text {
-    width: 80%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    margin-bottom: 16px;
-}
-
 .btn-add-contact {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    gap: 12px;
     width: 350px;
     margin-top: 24px;
     cursor: pointer;
 }
 
-.btn-cancel {
-    background-color: white;
-    color: var(--dark-blue);
-    border: 1px solid var(--dark-blue);
-    margin-right: 20px;
-}
-
-.btn-create-contact {
-    padding: 10px 20px;
-    background-color: var(--dark-blue);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-}
 /* underline for the dialog */
 .blue-underline {
     width: 100%;

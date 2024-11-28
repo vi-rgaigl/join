@@ -69,13 +69,16 @@
             <div class="form-content-add-contact">
                 <img class="img-add-contact" src="./assets/icons/avatar.svg">
                 <div id="contactForm">
-                    <input class="input-text" id="name" type="name" placeholder="Name" required="" value="">
-                    <input class="input-text" id="email" type="email" placeholder="Email" required="" value="">
-                    <input class="input-text" id="phone" type="call" placeholder="Phone" required="" value="">
+                    <input class="input width-100" id="name" type="name" placeholder="Name">
+                    <div id="error-contact-name" class="errorMassage"></div>
+                    <input class="input width-100" id="email" type="email" placeholder="Email">
+                    <div id="error-contact-email" class="errorMassage"></div>
+                    <input class="input width-100" id="phone" type="call" placeholder="Phone">
+                    <div id="error-contact-phone" class="errorMassage"></div>
 
                     <div class="btn-add-contact">
-                        <button class="btn-cancel" onclick="closeDialog()">Cancel</button>
-                        <button class="btn-create-contact" onclick="saveNewContact()">Create contact</button>
+                        <button class="button-white" onclick="closeDialog()">Cancel</button>
+                        <button class="button-blue" onclick="saveNewContact()">Create contact</button>
                     </div>
                 </div>
             </div>
