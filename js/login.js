@@ -28,12 +28,16 @@ async function initLogin() {
         setUserActive();
         window.location.href = './summaryUser.html';
     } else {
-        let logoOverlay = document.getElementById('logo-overlay');
-        logoOverlay.classList.add('logo-overlay');
-        setTimeout(() => {
-            logoOverlay.classList.add('z-index-1');
-        }, 2000);
+        setOverlayZIndex()
     }
+}
+
+function setOverlayZIndex() {
+    let logoOverlay = document.getElementById('logo-overlay');
+    logoOverlay.classList.add('logo-overlay');
+    setTimeout(() => {
+        logoOverlay.classList.add('z-index-1');
+    }, 2000);
 }
 
 
