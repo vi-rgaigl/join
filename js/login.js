@@ -1,28 +1,6 @@
 let users =[];
 
 
-/**
- * Initializes the login page with the logo animation. Loads users from remote storage and set user inactive.
- */
-async function initLogin() {
-    // document.getElementById('body').classList.add('dark-dawn');
-    // document.getElementById('login-form-box').classList.add('dawn');
-    // document.getElementById('header-login').classList.add('dawn'); 
-    // document.getElementById('logo-login').classList.add('logo-position');
-    await getUsers();
-    removeFromLocalStorage('join393active');
-    isUserRemembered();
-}
-
-
-/**
- * Fetches users from remote storage.
- */
-async function getUsers() {
-    users = await getData('users');
-}
-
-
 document.addEventListener('DOMContentLoaded', function() {
     let loginButton = document.getElementById('login-button');
     let emailInput = document.getElementById('login-email');
@@ -38,6 +16,33 @@ document.addEventListener('DOMContentLoaded', function() {
     emailInput.addEventListener('input', isFormFilled);
     passwordInput.addEventListener('input', isFormFilled);
 });
+
+
+/**
+ * Initializes the login page with the logo animation. Loads users from remote storage and set user inactive.
+ */
+async function initLogin() {
+    await getUsers();
+    removeFromLocalStorage('join393active');
+    if (isUserRemembered()) {
+        setUserActive();
+        window.location.href = './summaryUser.html';
+    } else {
+        let logoOverlay = document.getElementById('logo-overlay');
+        logoOverlay.classList.add('logo-overlay');
+        setTimeout(() => {
+            logoOverlay.classList.add('z-index-1');
+        }, 2000);
+    }
+}
+
+
+/**
+ * Fetches users from remote storage.
+ */
+async function getUsers() {
+    users = await getData('users');
+}
 
 
 /**
@@ -151,9 +156,9 @@ function setRememberme(user, remember) {
 function isUserRemembered() {
     let storedUser = getFromLocalStorage('join393');
     if (storedUser && storedUser.rememberme) {
-        setUserActive();
-        window.location.href = './summaryUser.html';
+        return true;
     }
+    return false;
 }
 
 
