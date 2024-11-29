@@ -31,44 +31,81 @@ function sortContactsByName(contacts) {
     return contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
-function generateContactListHTML() {
-    html += `
-    <div class="contact-item" onclick="showContactDetails(${overallIndex})">
-        <div class="contact-initials" style="background-color:${contact.color}">${contact.initials}</div>
-        <p>${contact.name}</p>
-    </div>
-`; 
-}
+function generateContactListHTML(groupedContacts) {
+    let html = "";
+    let overallIndex = 0;
 
-async function renderContactList() {
-
-        let contacts = await fetchContactsData();
-    
-        let contactListHTML = '';
-        contacts.forEach(contact => {
-            contactListHTML += `
-                <div class="contact-item" onclick="showContactDetails(${contact.id})">
-                    <div class="contact-initials" style="background-color:${contact.color}">${contact.initials}</div>
+    for (const initial in groupedContacts) {
+        html += `<h3>${initial}</h3>`;
+        groupedContacts[initial].forEach((contact) => {
+            let initials = getInitials(contact.name);
+            let color = contact.color || getRandomColor();
+            html += `
+                <div class="contact-item" onclick="showContactDetails('${contact.id}')">
+                    <div class="contact-initials" style="background-color:${color}">${initials}</div>
                     <p>${contact.name}</p>
                 </div>
             `;
+            overallIndex++;
         });
+        html += `<hr>`;
+    }
+    return html;
+}
+
+async function renderContactList() {
+    let contacts = await fetchContactsData();
     
-        document.getElementById("contactList").innerHTML = contactListHTML;
+    let contactListHTML = '';
+        contacts.forEach(contact => {
+        contactListHTML += `
+            <div class="contact-item" onclick="showContactDetails(${contact.id})">
+                <div class="contact-initials" style="background-color:${contact.color}">${contact.initials}</div>
+                <p>${contact.name}</p>
+            </div>
+        `;
+    });
+    document.getElementById("contactList").innerHTML = contactListHTML;
 }
 
 function generateContactDetailsHTML(contact) {
+    let initials = getInitials(contact.name);
     return `
-    <div class="contact-header">
-        <div class="contact-initials" style="background-color:${contact.color}">${contact.initials}</div>
-        ...
-    </div>
-`;
+        <div class="contact-header">
+            <div class="contact-initials" style="background-color:${contact.color || getRandomColor()}">${initials}</div>
+            <div class="contact-name-section">
+                <div class="contact-name">
+                    <h2>${contact.name}</h2>
+                </div>
+                <div class="contact-actions-container">
+                    <div class="contact-actions">
+                        <div class="action-item" onclick="editContact('${contact.id}')">
+                            <img src="./assets/icons/edit.svg" alt="Edit"> <span>Edit</span>
+                        </div>
+                        <div class="action-item" onclick="deleteContact('${contact.id}')">
+                            <img src="./assets/icons/delete.svg" alt="Delete"> <span>Delete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p>Contact Information</p>
+        <div class="contact-infos">
+            <p><b>Email:</b> ${contact.email}</p>
+            <p><b>Phone:</b> ${contact.phone}</p>
+        </div>
+    `;
 }
 
-function showContactDetails(index) {
-    currentContactIndex = index;
-    let contact = contactsList[index];
+function showContactDetails(id) {
+    for (let i = 0; i < contactsList.length; i++) {
+        if (contactsList[i].id === id) {
+            currentContactIndex = i;
+            break;
+        }
+    }
+
+    let contact = contactsList[currentContactIndex];
     if (!contact) {
         console.error("Kontakt nicht gefunden.");
         return;
@@ -76,8 +113,13 @@ function showContactDetails(index) {
 
     let contactDetailsHTML = generateContactDetailsHTML(contact);
 
-    document.getElementById("current-contact").innerHTML = contactDetailsHTML;
-    document.getElementById("contactDetailsContainer").classList.add("active");
+    let contactDetailsContainer = document.getElementById("current-contact");
+    if (contactDetailsContainer) {
+        contactDetailsContainer.innerHTML = contactDetailsHTML;
+        document.getElementById("contactDetailsContainer").classList.add("active");
+    } else {
+        console.error("Element mit ID 'current-contact' nicht gefunden.");
+    }
 }
 
 async function addContact() {
@@ -118,9 +160,16 @@ function closeDialog() {
     document.getElementById("color").value = "";
 }
 
-function editContact(index) {
-    currentContactIndex = index;
-    let contact = contactsList[index];
+function editContact(id) {
+    // Durchsuche die Liste nach dem Kontakt mit der angegebenen ID
+    for (let i = 0; i < contactsList.length; i++) {
+        if (contactsList[i].id === id) {
+            currentContactIndex = i;
+            break;
+        }
+    }
+
+    let contact = contactsList[currentContactIndex];
     if (!contact) {
         console.error("Kontakt nicht gefunden.");
         return;
@@ -153,7 +202,6 @@ function closeEditDialog() {
     let dialog = document.getElementById("editContactDialog");
     if (dialog) {
         dialog.style.display = "none";
-        clearEditDialogFields();
     }
 }
 
@@ -224,9 +272,14 @@ async function saveNewContact() {
     }
 }
 
-async function deleteContact() {
-    if (currentContactIndex === null || !contactsList[currentContactIndex])
-        return;
+async function deleteContact(id) {
+    for (let i = 0; i < contactsList.length; i++) {
+        if (contactsList[i].id === id) {
+            currentContactIndex = i;
+            break;
+        }
+    }
+
     let contactId = contactsList[currentContactIndex].id;
     try {
         await deleteData("contacts", { id: contactId });
