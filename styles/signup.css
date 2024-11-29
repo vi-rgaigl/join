@@ -66,6 +66,8 @@
 }
 
 .check-box-line {
+    display: flex;
+    align-items: center;
     margin-top: -128px;
 }
 

@@ -129,13 +129,6 @@
     cursor: pointer;
 }
 
-.checkbox-line {
-    width: 80%;
-    display: flex;
-    justify-content: start;
-    margin-top: -32px;
-}
-
 .button-line {
     display: flex;
     gap: 16px;
@@ -159,6 +152,22 @@
     color: var(--light-blue);
     font-weight: bold;
 }
+
+.checkbox-line {
+    width: 80%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: -32px;
+}
+
+input[type="checkbox"] {
+    height: 20px;
+    width: 20px;
+    margin-right: 8px;
+    z-index: 2;
+}
+
 
 /* Media queries for different screen sizes */
 @media (max-height: 920px) {
