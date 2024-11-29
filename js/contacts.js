@@ -31,64 +31,39 @@ function sortContactsByName(contacts) {
     return contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
-function generateContactListHTML(groupedContacts) {
-    let html = "";
-    let overallIndex = 0;
-    for (let initial in groupedContacts) {
-        html += `<h3>${initial}</h3>`;
-        groupedContacts[initial].forEach((contact) => {
-            let initials = getInitials(contact.name);
-            let color = contact.color || getRandomColor();
-            html += `
-                <div class="contact-item" onclick="showContactDetails(${overallIndex})">
-                    <div class="contact-initials" style="background-color:${color}">${initials}</div>
-                    <p>${contact.name}</p>
-                </div>
-            `;
-            overallIndex++;
-        });
-        html += `<hr>`;
-    }
-    return html;
+function generateContactListHTML() {
+    html += `
+    <div class="contact-item" onclick="showContactDetails(${overallIndex})">
+        <div class="contact-initials" style="background-color:${contact.color}">${contact.initials}</div>
+        <p>${contact.name}</p>
+    </div>
+`; 
 }
 
 async function renderContactList() {
-    let contactListElement = document.getElementById("contactList");
-    contactListElement.innerHTML = "";
-    contactsList = await fetchContactsData();
-    if (!contactsList.length) return;
-    let sortedContacts = sortContactsByName(contactsList);
-    let groupedContacts = groupContactsByInitial(sortedContacts);
-    contactListElement.innerHTML = generateContactListHTML(groupedContacts);
+
+        let contacts = await fetchContactsData();
+    
+        let contactListHTML = '';
+        contacts.forEach(contact => {
+            contactListHTML += `
+                <div class="contact-item" onclick="showContactDetails(${contact.id})">
+                    <div class="contact-initials" style="background-color:${contact.color}">${contact.initials}</div>
+                    <p>${contact.name}</p>
+                </div>
+            `;
+        });
+    
+        document.getElementById("contactList").innerHTML = contactListHTML;
 }
 
 function generateContactDetailsHTML(contact) {
-    let initials = getInitials(contact.name);
     return `
-        <div class="contact-header">
-            <div class="contact-initials" style="background-color:${contact.color || getRandomColor()}">${initials}</div>
-            <div class="contact-name-section">
-                <div class="contact-name">
-                    <h2>${contact.name}</h2>
-                </div>
-                <div class="contact-actions-container">
-                    <div class="contact-actions">
-                        <div class="action-item" onclick="editContact(${currentContactIndex})">
-                            <img src="./assets/icons/edit.svg" alt="Edit"> <span>Edit</span>
-                        </div>
-                        <div class="action-item" onclick="deleteContact(${currentContactIndex})">
-                            <img src="./assets/icons/delete.svg" alt="Delete"> <span>Delete</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <p>Contact Information</p>
-        <div class="contact-infos">
-            <p><b>Email:</b> ${contact.email}</p>
-            <p><b>Phone:</b> ${contact.phone}</p>
-        </div>
-    `;
+    <div class="contact-header">
+        <div class="contact-initials" style="background-color:${contact.color}">${contact.initials}</div>
+        ...
+    </div>
+`;
 }
 
 function showContactDetails(index) {
@@ -133,8 +108,14 @@ function closeDialog() {
     let dialog = document.getElementById("addContactDialog");
     if (dialog) {
         dialog.style.display = "none";
-        clearDialogFields();
+    } else {
+        console.error
     }
+
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("color").value = "";
 }
 
 function editContact(index) {
@@ -229,7 +210,6 @@ async function saveNewContact() {
         name: name,
         email: email,
         phone: phone,
-        color: getRandomColor(),
     };
 
     try {
