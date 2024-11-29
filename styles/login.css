@@ -86,7 +86,7 @@
 /* login - register form */
 .login-form-box {
     max-width: 800px;
-    max-height: 500px;
+    /* max-height: 500px; */
     background-color: white;
     border-radius: 30px;
     box-shadow: 0 0 14px 3px rgba(0, 0, 0, 0.04);
@@ -94,7 +94,7 @@
     flex-direction: column;
     align-items: center;
     width: 45vw;
-    height: 45vh;
+    height: 490px;
 }
 
 .login-form-pad-wd {
@@ -161,22 +161,15 @@
 }
 
 /* Media queries for different screen sizes */
-@media (max-height: 1120px) {
-    .login-form-box {
-        height: 44vh;
-    }
-}
-@media (max-height: 1090px) {
-    .login-form-box {
-        height: 55vh;
-    }
-}
 @media (max-height: 920px) {
     .login-body {
         margin-top: 20vh;
     }
+}
+
+@media (max-height: 740px) {
     .login-form-box {
-        height: 63vh;
+        height: 450px;
     }
 }
 
@@ -231,7 +224,6 @@
     }
     .login-form-box {
         width: 72vw;
-        height: 41vh;
     }
     .login-form-pad-wd {
         padding: 32px 72px;
@@ -247,7 +239,6 @@
     }
     .login-form-box {
         width: 90vw;
-        height: 75vh;
     }
     .login-form-pad-wd {
         padding: 28px 24px;
@@ -277,7 +268,6 @@
     }
     .login-form-box {
         width: 86vw;
-        height: 64vh;
         border-radius: 16px;
     }
     .login-form-pad-wd {
@@ -292,6 +282,9 @@
         height: 60px;
         top: 20px;
         left: 0px;
+    }
+    .signup-line-mobile {
+        gap: 8px;
     }
     .footer-login {
         bottom: 12px;

@@ -27,7 +27,6 @@
 
 .signup-form-box {
     max-width: 800px;
-    max-height: 640px;
     background-color: white;
     border-radius: 30px;
     box-shadow: 0 0 14px 3px rgba(0, 0, 0, 0.04);
@@ -35,7 +34,7 @@
     flex-direction: column;
     align-items: center;
     width: 45vw;
-    height: 55vh;
+    height: 640px;
 }
 
 .signup-form-pad-wd {
@@ -72,27 +71,14 @@
 
 
 /* Media queries for different screen sizes */
-@media (max-height: 1120px) {
-    .signup-form-box {
-        height: 44vh;
-    }
-}
-@media (max-height: 1090px) {
-    .signup-form-box {
-        height: 70vh;
-    }
-}
 @media (max-height: 920px) {
     .signup-body {
         margin-top: 16vh;
     }
-    .signup-form-box {
-        height: 70vh;
-    }
 }
 @media (max-height: 760px) {
     .signup-form-box {
-        height: 76vh;
+        height: 600px;
     }
 }
 
@@ -124,16 +110,6 @@
 }
 
 @media (max-width: 860px) {
-    .signup-line {
-        display: none;
-    }
-    .signup-line-mobile {
-        display: flex;
-        align-items: center;
-        gap: 35px;
-        font-size: 20px;
-        font-weight: 400;
-    }
     .logo-signup {
         height: 120px;
         top: 70px;
@@ -153,6 +129,7 @@
     }
     .signup-form-box {
         width: 90vw;
+        height: 580px;
     }
     .signup-form-pad-wd {
         padding: 14px 24px 51px 24px;
@@ -168,15 +145,19 @@
     .show-hidden-password-signup {
         width: 78px;
     }
-    .check-box-line {
-        margin-top: -30%;
-    }
 }
 
 @media (max-width: 360px) {
+    .signup-title {
+        font-size: 46px;
+    }
     .signup-form-box {
-        width: 86vw;
+        width: 90vw;
+        height: 520px;
         border-radius: 16px;
+    }
+    .mrg-top-signup-mobile {
+        margin-top: 16px;
     }
     .logo-signup {
         height: 60px;
@@ -190,6 +171,12 @@
         width: 58px;
     }
     .check-box-line {
-        margin-top: -54%;
+        margin-top: -146px;
+    }
+    .signup-button-mobile {
+        margin-top: -12px;
+    }
+    .footer-login {
+        width: 218px;
     }
 }
