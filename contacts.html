@@ -70,11 +70,11 @@
                 <img class="close-btn" src="./assets/icons/close.svg">
                 <img class="img-add-contact" src="./assets/icons/avatar.svg">
                 <div id="contactForm">
-                    <input class="input width-100" id="name" type="name" placeholder="Name">
+                    <input id="error-contact-name-input" class="input width-100" id="name" type="name" placeholder="Name">
                     <div id="error-contact-name" class="errorMassage"></div>
-                    <input class="input width-100" id="email" type="email" placeholder="Email">
+                    <input id="error-contact-email-input" class="input width-100" id="email" type="email" placeholder="Email">
                     <div id="error-contact-email" class="errorMassage"></div>
-                    <input class="input width-100" id="phone" type="call" placeholder="Phone">
+                    <input id="error-contact-phone-input" class="input width-100" id="phone" type="call" placeholder="Phone">
                     <div id="error-contact-phone" class="errorMassage"></div>
 
                     <div class="btn-add-contact">
@@ -97,9 +97,13 @@
                 <img class="close-btn" src="./assets/icons/close.svg">
                 <img class="img-add-contact" src="./assets/icons/contacts-icon.svg">
                 <div id="editContactForm">
-                    <input class="input-text" id="edit-name" type="text" placeholder="Name" required="" value="">
-                    <input class="input-text" id="edit-email" type="email" placeholder="Email" required="" value="">
-                    <input class="input-text" id="edit-phone" type="text" placeholder="Phone" required="" value="">
+                    <input id="error-contact-edit-name-input" class="input width-100" id="name" type="name" placeholder="Name">
+                    <div id="error-contact-edit-name" class="errorMassage"></div>
+                    <input id="error-contact-edit-email-input" class="input width-100" id="email" type="email" placeholder="Email">
+                    <div id="error-contact-edit-email" class="errorMassage"></div>
+                    <input id="error-contact-edit-phone-input" class="input width-100" id="phone" type="call" placeholder="Phone">
+                    <div id="error-contact-edit-phone" class="errorMassage"></div>
+
                 </div>
                 <div class="btn-add-contact">
                     <button class="btn-cancel" onclick="closeEditDialog()">Delete</button>

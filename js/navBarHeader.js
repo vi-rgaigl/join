@@ -31,6 +31,19 @@ function setMonogram() {
 
 
 /**
+ * Generates a random bright RGB color.
+ * 
+ * @returns {string} The RGB color code in the format 'rgb(r, g, b)'.
+ */
+function getRandomColor() {
+    let r = Math.floor(Math.random() * 128) + 128; // Random value between 128 and 255
+    let g = Math.floor(Math.random() * 128) + 128;
+    let b = Math.floor(Math.random() * 128) + 128;
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
+
+/**
  * 
  * changes the visibility of the popup menu when clicking on the usermongram
  * 

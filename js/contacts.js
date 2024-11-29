@@ -1,4 +1,3 @@
-//let databaseURL = "https://join-a8a87-default-rtdb.europe-west1.firebasedatabase.app/";
 let contactsList = [];
 let currentContactIndex = null;
 
@@ -59,7 +58,7 @@ async function renderContactList() {
     let contactListHTML = '';
         contacts.forEach(contact => {
         contactListHTML += `
-            <div class="contact-item" onclick="showContactDetails(${contact.id})">
+            <div class="contact-item" onclick="showContactDetails('${contact.id}')">
                 <div class="contact-initials" style="background-color:${contact.color}">${contact.initials}</div>
                 <p>${contact.name}</p>
             </div>
@@ -69,10 +68,10 @@ async function renderContactList() {
 }
 
 function generateContactDetailsHTML(contact) {
-    let initials = getInitials(contact.name);
+    // let initials = getInitials(contact.name); //brauchst du nicht mehr, da die Initials schon in der Datenbank gespeichert
     return `
         <div class="contact-header">
-            <div class="contact-initials" style="background-color:${contact.color || getRandomColor()}">${initials}</div>
+            <div class="contact-initials" style="background-color:${contact.color}">${contact.initials}</div>
             <div class="contact-name-section">
                 <div class="contact-name">
                     <h2>${contact.name}</h2>
@@ -97,15 +96,15 @@ function generateContactDetailsHTML(contact) {
     `;
 }
 
-function showContactDetails(id) {
-    for (let i = 0; i < contactsList.length; i++) {
-        if (contactsList[i].id === id) {
-            currentContactIndex = i;
-            break;
-        }
-    }
-
-    let contact = contactsList[currentContactIndex];
+async function showContactDetails(id) {
+    // for (let i = 0; i < contactsList.length; i++) {
+    //     if (contactsList[i].id === id) {
+    //         currentContactIndex = i;
+    //         break;
+    //     }
+    // }
+    let contact = await getContactById(id);  //siehe nächste Funktion, eine standard Funktion für suche
+    // let contact = contactsList[currentContactIndex];
     if (!contact) {
         console.error("Kontakt nicht gefunden.");
         return;
@@ -120,6 +119,12 @@ function showContactDetails(id) {
     } else {
         console.error("Element mit ID 'current-contact' nicht gefunden.");
     }
+}
+
+//neue Suchfunktion in einer JSON Struktur
+async function getContactById(id) {
+    let contacts = await getData("contacts");
+    return contacts.find(contact => contact.id === id);
 }
 
 async function addContact() {
