@@ -210,6 +210,7 @@ async function saveNewContact() {
         name: name,
         email: email,
         phone: phone,
+        color: getRandomColor(),
     };
 
     try {
