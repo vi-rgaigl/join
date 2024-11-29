@@ -61,13 +61,14 @@
 }
 
 .header-avatar {
-  background-color: var(--silk);
+  background-color: white;
+  color: var(--light-blue);
   height: 56px;
   width: 56px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 3px solid var(--dark-blue);
+  border: 2px solid var(--dark-blue);
   border-radius: 50% 50%;
   font-weight: bold;
 }
@@ -206,7 +207,7 @@ a .navbar-footer-link:hover {
   }
 
   .header-group-right {
-    margin-right: 0px;
+    margin-right: 42px;
   }
 
   .navbar-container {

@@ -29,14 +29,6 @@ function setMonogram() {
     return user ? user.initials : '';
 }
 
-/**
- * Sets the background color of the monogram based on the user's color.
- */
-function setMonogramBackground() {
-    let user = getFromLocalStorage('join393');
-    document.getElementById('header_avatar').style.backgroundColor = user.color;
-}
-
 
 /**
  * 

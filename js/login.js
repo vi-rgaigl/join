@@ -1,6 +1,5 @@
 let users =[];
 
-
 document.addEventListener('DOMContentLoaded', function() {
     let loginButton = document.getElementById('login-button');
     let emailInput = document.getElementById('login-email');
@@ -32,6 +31,10 @@ async function initLogin() {
     }
 }
 
+
+/**
+ * Sets the initial overlay class and updates the z-index after a delay.
+ */
 function setOverlayZIndex() {
     let logoOverlay = document.getElementById('logo-overlay');
     logoOverlay.classList.add('logo-overlay');
