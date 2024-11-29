@@ -27,7 +27,7 @@ async function initLogin() {
         setUserActive();
         window.location.href = './summaryUser.html';
     } else {
-        setOverlayZIndex()
+        setOverlayZIndex();
     }
 }
 
@@ -37,10 +37,13 @@ async function initLogin() {
  */
 function setOverlayZIndex() {
     let logoOverlay = document.getElementById('logo-overlay');
+    let indexOverlay = document.getElementById('index-overlay');
     logoOverlay.classList.add('logo-overlay');
+    indexOverlay.classList.add('index-overlay');
     setTimeout(() => {
         logoOverlay.classList.add('z-index-1');
-    }, 2000);
+        indexOverlay.classList.add('z-index-1');
+    }, 1400);
 }
 
 

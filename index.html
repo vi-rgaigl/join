@@ -27,11 +27,13 @@
     <div class="index-body">
 
         <!-- Overlay with logo and animation -->
+        <div id="index-overlay" class="index-overlay index-overlay-mobile">
+        </div>
         <div id="logo-overlay" class="logo-overlay logo-overlay-mobile">
             <div class="logo-overlay-img"></div>
         </div>
+        
 
-        <!-- Header Section -->
         <div id="header-login" class="header-login">
             <img id="logo-login" class="logo-login" src="./assets/icons/logo-blue-small.svg" alt="Join Logo">
             <div class="signup-line">
@@ -52,15 +54,16 @@
                     </div>
 
                     <div class="input-line mrg-top-32">
-                        <input id="login-email" class="input input-login-email" type="email" 
-                            placeholder="Email" autocomplete="username">
+                        <input id="login-email" class="input input-login-email" type="email" placeholder="Email"
+                            autocomplete="username">
                         <div id="error-login-email" class="errorMassage"></div>
                         <input id="login-password" class="input input-login-password mrg-top-12" type="password"
                             placeholder="Password" autocomplete="current-password">
-                        <div id="error-login-password" class="errorMassage"></div>                     
-                        <div id="show-hidden-password" class="show-hidden-password" onmousedown="togglePasswordVisibility()"></div>
-                        </div>
-                    
+                        <div id="error-login-password" class="errorMassage"></div>
+                        <div id="show-hidden-password" class="show-hidden-password"
+                            onmousedown="togglePasswordVisibility()"></div>
+                    </div>
+
                     <div class="checkbox-line">
                         <input type="checkbox" id="login-checkbox" name="rememberme">
                         <label for="rememberme">Remember me</label>
@@ -78,7 +81,8 @@
                     up</button>
             </div>
             <div class="footer-login">
-                <a class="info-link" onclick="window.open('./privacyPolicyNoLogin.html')" class="a-link">Privacy Policy</a>
+                <a class="info-link" onclick="window.open('./privacyPolicyNoLogin.html')" class="a-link">Privacy
+                    Policy</a>
                 <a class="info-link" onclick="window.open('./legalNoticeNoLogin.html')" class="a-link">Legal notice</a>
             </div>
         </div>

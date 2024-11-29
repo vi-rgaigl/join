@@ -160,7 +160,6 @@ input[type="checkbox"] {
     margin-right: 8px;
 }
 
-
 /* Media queries for different screen sizes */
 @media (max-height: 920px) {
     .login-body {
