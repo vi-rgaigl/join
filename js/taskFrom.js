@@ -1,3 +1,23 @@
+/**
+ * Toggel the status of dropdown
+ */
+function toggleDropdown() {
+  let dropdownAssignedRef = document.getElementById("dropdownAssinged");
+  dropdownAssignedRef.classList.toggle("dropdown-open");
+}
+
+/**
+ * Close dropdown if click not on the dropdown
+ */
+function closeDropdown(event) {
+  let dropdownRef = document.getElementById("dropdownAssinged");
+  if (dropdownRef !== null) {
+    if (event.target.dataset.dropdown !== "true") {
+      dropdownRef.classList.remove("dropdown-open");
+    }
+  }
+}
+
 //
 //    TODO Validation
 //    !!!Auchtung nicht fertig!!!
@@ -36,6 +56,7 @@ function changeDueDate(event) {
     errorMassage("", "DueDate");
   }
   checkIfError();
+
   editTask.dueDate = dueDate;
 }
 
