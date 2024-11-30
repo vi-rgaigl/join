@@ -35,7 +35,7 @@ function generateContactListHTML(groupedContacts) {
     let overallIndex = 0;
 
     for (const initial in groupedContacts) {
-        html += `<h3>${initial}</h3>`;
+        html += `<hr><h3>${initial}</h3>`;
         groupedContacts[initial].forEach((contact) => {
             let initials = getInitials(contact.name);
             let color = contact.color || getRandomColor();
@@ -47,7 +47,6 @@ function generateContactListHTML(groupedContacts) {
             `;
             overallIndex++;
         });
-        html += `<hr>`;
     }
     return html;
 }
@@ -68,7 +67,6 @@ async function renderContactList() {
 }
 
 function generateContactDetailsHTML(contact) {
-    // let initials = getInitials(contact.name); //brauchst du nicht mehr, da die Initials schon in der Datenbank gespeichert
     return `
         <div class="contact-header">
             <div class="contact-initials" style="background-color:${contact.color}">${contact.initials}</div>
