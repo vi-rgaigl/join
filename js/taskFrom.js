@@ -9,7 +9,7 @@ let task = {
   subtasks: false,
   title: "",
 };
-let errorTask = { Title: false, DueDate: false };
+let errorTask = { Title: false, DueDate: false, Category: false };
 
 /**
  * Toggel the status of dropdown
@@ -164,4 +164,12 @@ function getAssignedContact(assignId, contacts) {
   return contacts.find((contact) => {
     return contact.id === assignId;
   });
+}
+
+/**
+ * Set submit button initail disable
+ */
+function setButtenDisable() {
+  errorTask = { Title: true, DueDate: true, Category: true };
+  checkIfError();
 }

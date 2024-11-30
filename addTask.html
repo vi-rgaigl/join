@@ -34,6 +34,7 @@
                   type="text"
                   id="inputTitle"
                   placeholder="Enter a title"
+                  oninput="changeTitle(event)"
                 />
                 <div id="errorTitle" class="errorMassage"></div>
                 <label for="description">Description</label>
@@ -138,7 +139,7 @@
                 This field is required
               </div>
               <div class="form-buttons">
-                <button id="btnSubmitEditTask" class="button-white">
+                <button id="btnResetTask" class="button-white">
                   Clear
                   <img src="./assets/icons/close.svg" alt="check" />
                 </button>
