@@ -78,7 +78,8 @@ form {
   font-weight: 400;
 }
 
-.input:focus-visible {
+.input:focus-visible,
+.dropdown-open {
   outline: 1px solid var(--light-blue);
 }
 
