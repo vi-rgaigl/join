@@ -1,15 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>myJoin</title>
-    <link rel="shortcut icon" href="./assets/icons/logo-blue-small.svg" type="image/x-icon">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./styles/standard.css">
-    <link rel="stylesheet" href="./styles/navBarHeader.css">
-    <link rel="stylesheet" href="./styles/addTask.css">
+    <link
+      rel="shortcut icon"
+      href="./assets/icons/logo-blue-small.svg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./styles/standard.css" />
+    <link rel="stylesheet" href="./styles/navBarHeader.css" />
+    <link rel="stylesheet" href="./styles/addTask.css" />
+  </head>
+
+  <body onload="init(2)">
+    <div class="application-main">
+      <div id="navbar-container" class="navbar-container"></div>
+      <div class="application-main-content">
+        <header id="header-container" class="header"></header>
+        <div id="application-content" class="application-content">
+          <div class="addTask-Content">
+            <h1>Add Task</h1>
+            <div class="form">
+              <div class="first-column">
+                <label required for="title">Title</label>
+                <input type="text" placeholder="Enter a title" />
+                <label for="description">Description</label>
+                <textarea
+                  class="input-description"
+                  type="textarea"
+                  placeholder="Enter a Description"
+                ></textarea>
+                <label for="assigned to">Assigned to</label>
+                <select name="" id="">
+                  <option>Select contacts to assign</option>
+                  <option></option>
+                </select>
+              </div>
+
+              <div class="separator"></div>
+
+              <div class="second-column">
+                <label for="duedate" required>Due date</label>
+                <input class="date-picker" type="date" />
+                <label for="prio">Prio</label>
+
+                <div class="radio-btns">
+                  <div class="radio-container radio-urgent">
+                    <input
+                      type="radio"
+                      id="inputPriorityUrgent"
+                      name="inputPriority"
+                      value="urgent"
+                      oninput="changePrio(event)"
+                    />
+                    <label for="inputPriorityUrgent">Urgent</label>
+                  </div>
+                  <div class="radio-container radio-medium">
+                    <input
+                      type="radio"
+                      id="inputPriorityMedium"
+                      name="inputPriority"
+                      value="medium"
+                      oninput="changePrio(event)"
+                    />
+                    <label for="inputPriorityMedium">Medium</label>
+                  </div>
+                  <div class="radio-container radio-low">
+                    <input
+                      type="radio"
+                      id="inputPriorityLow"
+                      name="inputPriority"
+                      value="low"
+                      oninput="changePrio(event)"
+                      checked
+                    />
+                    <label for="inputPriorityLow">Low</label>
+                  </div>
+                </div>
+
+                <label for="category" required>Category</label>
+                <select name="" id="">
+                  <option>Select task category</option>
+                  <option></option>
+                </select>
+                <label for="">Subtasks</label>
+              </div>
+            </div>
+            <div class="form-footer">
+              <div class="text">
+                <p class="lableRequiert">*</p>
+                This field is required
+              </div>
+              <div class="form-buttons">
+                <button id="btnSubmitEditTask" class="button-white">
+                  Clear
+                  <img src="./assets/icons/close.svg" alt="check" />
+                </button>
+                <button id="btnSubmitEditTask" class="button-blue">
+                  Create Task
+                  <img
+                    src="./assets/icons/checkWithoutCircle.svg"
+                    alt="check"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="navbar-container-mobile" class="navbar-container-mobile"></div>
+    </div>
 
     <script src="./js/remoteStorage.js"></script>
     <script src="./js/localStorage.js"></script>
@@ -17,93 +120,8 @@
     <script src="./templates/navBar.template.js"></script>
     <script src="./js/navBarHeader.js"></script>
     <script src="./js/summaryUser.js"></script>
+    <script src="./js/taskFrom.js"></script>
     <script src="./js/addTask.js"></script>
-    <script src="./js/board.js"></script>
-    <script src="./js/contacts.js"></script>
     <script src="./script.js"></script>
-
-</head>
-
-<body onload="init(2)">
-
-
-    <div class="application-main">
-        <div id="navbar-container" class="navbar-container"></div>
-
-        <div class="application-main-content">
-            <header id="header-container" class="header"></header>
-
-            <div id="application-content" class="application-content">
-
-                <h1>Add Task</h1>
-                <form>
-                    <div class="first-column">
-                        <label required for="title">Title</label>
-                        <input type="text" placeholder="Enter a title">
-                        <label for="description">Description</label>
-                        <textarea class="input-description" type="textarea" placeholder="Enter a Description"></textarea>
-                        <label for="assigned to">Assigned to</label>
-                        <select name="" id="">
-                            <option>Select contacts to assign</option>
-                            <option></option>
-                        </select>
-                    </div>
-
-                    <div class="separator"></div>
-
-                    <div class="second-column">
-                        <label for="duedate" required>Due date</label>
-                        <input class="date-picker" type="date">
-                        <label for="prio">Prio</label>
-
-                        <div class="radio-btns">   
-                        <div class="radio-container radio-urgent">
-                        <input
-                            type="radio"
-                            id="inputPriorityUrgent"
-                            name="inputPriority"
-                            value="urgent"
-                            oninput="changePrio(event)"
-                        />
-                        <label for="inputPriorityUrgent">Urgent</label>
-                        </div>
-                        <div class="radio-container radio-medium">
-                        <input
-                            type="radio"
-                            id="inputPriorityMedium"
-                            name="inputPriority"
-                            value="medium"
-                            oninput="changePrio(event)"
-                        />
-                        <label for="inputPriorityMedium">Medium</label>
-                        </div>
-                        <div class="radio-container radio-low">
-                        <input
-                            type="radio"
-                            id="inputPriorityLow"
-                            name="inputPriority"
-                            value="low"
-                            oninput="changePrio(event)"checked
-                        />
-                        <label for="inputPriorityLow">Low</label>
-                        </div>
-                        </div>
-
-                        <label for="category" required>Category</label>
-                        <select name="" id="">
-                            <option>Select task category</option>
-                            <option></option>
-                        </select>
-                        <label for="">Subtasks</label>
-                        
-                    </div>
-                </form>                
-
-            </div>
-        </div>
-        <div id="navbar-container-mobile" class="navbar-container-mobile"></div>
-    </div>
-
-</body>
-
+  </body>
 </html>
