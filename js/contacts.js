@@ -53,17 +53,26 @@ function generateContactListHTML(groupedContacts) {
 
 async function renderContactList() {
     let contacts = await fetchContactsData();
-    
-    let contactListHTML = '';
-        contacts.forEach(contact => {
-        contactListHTML += `
+    if (!contacts.length) return;
+    contactsList.length = 0;
+    contactsList.push(...contacts);
+    contacts.sort((a, b) => a.name.localeCompare(b.name));
+    let html = "";
+    let lastInitial = "";
+    contacts.forEach(contact => {
+        let initial = contact.name.charAt(0).toUpperCase();
+        if (initial !== lastInitial) {
+            html += `<p>${initial}</p><hr>`;
+            lastInitial = initial;
+        }
+        html += `
             <div class="contact-item" onclick="showContactDetails('${contact.id}')">
                 <div class="contact-initials" style="background-color:${contact.color}">${contact.initials}</div>
                 <p>${contact.name}</p>
             </div>
         `;
     });
-    document.getElementById("contactList").innerHTML = contactListHTML;
+    document.getElementById("contactList").innerHTML = html;
 }
 
 function generateContactDetailsHTML(contact) {
