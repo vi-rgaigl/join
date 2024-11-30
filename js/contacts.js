@@ -144,25 +144,35 @@ async function addContact() {
     }
 }
 
+// Funktion zum Öffnen des Dialogs
 function openAddContactDialog() {
     let dialog = document.getElementById("addContactDialog");
     if (dialog) {
         dialog.style.display = "flex";
+        let closeButton = document.getElementById("closeBtn");
+        if (closeButton) {
+            closeButton.addEventListener('click', closeDialog);
+        } else {
+            console.error("Schließen-Symbol nicht gefunden.");
+        }
     }
 }
 
+/**
+ * closes the dialog
+ * 
+ */
 function closeDialog() {
     let dialog = document.getElementById("addContactDialog");
     if (dialog) {
         dialog.style.display = "none";
     } else {
-        console.error
+        console.error("Element mit ID 'addContactDialog' nicht gefunden.");
     }
 
-    document.getElementById("name").value = "";
-    document.getElementById("email").value = "";
-    document.getElementById("phone").value = "";
-    document.getElementById("color").value = "";
+    document.getElementById("error-contact-name-input").value = "";
+    document.getElementById("error-contact-email-input").value = "";
+    document.getElementById("error-contact-phone-input").value = "";
 }
 
 function editContact(id) {
