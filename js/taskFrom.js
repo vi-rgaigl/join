@@ -4,12 +4,12 @@ let task = {
   category: "",
   description: "",
   dueDate: "",
-  prio: "",
-  status: "",
+  prio: "low",
+  status: "to-do",
   subtasks: false,
   title: "",
 };
-let errorTask = { Title: false, DueDate: false };
+let errorTask = { Title: false, DueDate: false, Category: false };
 
 /**
  * Toggel the status of dropdown
@@ -107,6 +107,12 @@ function checkIfPast(date) {
   return dateTask < dateNow;
 }
 
+function changeCategory(event) {
+  task.category = event.target.value;
+  errorMassage("", "Category");
+  checkIfError();
+}
+
 /**
  * Set the error to the input field
  * @param {string} text - Error massage to render
@@ -164,4 +170,32 @@ function getAssignedContact(assignId, contacts) {
   return contacts.find((contact) => {
     return contact.id === assignId;
   });
+}
+
+/**
+ * Set submit button initail disable
+ */
+function setButtenDisable() {
+  errorTask = { Title: true, DueDate: true, Category: true };
+  checkIfError();
+}
+
+function submitNewTask() {
+  console.log(task);
+}
+
+/**
+ * Cahnge the description in the task
+ * @param {event} event - input event
+ */
+function changeDescription(event) {
+  task.description = event.target.value;
+}
+
+/**
+ * Cahnge the prio in the task
+ * @param {event} event - input event
+ */
+function changePrio(event) {
+  task.prio = event.target.value;
 }

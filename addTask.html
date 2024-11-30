@@ -34,6 +34,7 @@
                   type="text"
                   id="inputTitle"
                   placeholder="Enter a title"
+                  oninput="changeTitle(event)"
                 />
                 <div id="errorTitle" class="errorMassage"></div>
                 <label for="description">Description</label>
@@ -41,6 +42,7 @@
                   class="input"
                   type="textarea"
                   placeholder="Enter a Description"
+                  oninput="changeDescription(event)"
                 ></textarea>
                 <div class="errorMassage"></div>
                 <label for="dropdownAssinged">Assigned to</label>
@@ -74,7 +76,12 @@
                   >Due date
                   <p class="lableRequiert">*</p></label
                 >
-                <input class="input" id="inputDueDate" type="date" />
+                <input
+                  class="input"
+                  id="inputDueDate"
+                  type="date"
+                  oninput="changeDueDate(event)"
+                />
                 <div id="errorDueDate" class="errorMassage"></div>
                 <label for="prio">Prio</label>
 
@@ -116,9 +123,16 @@
                   >Category
                   <p class="lableRequiert">*</p></label
                 >
-                <select class="input" id="inputCategory">
-                  <option>Select task category</option>
-                  <option></option>
+                <select
+                  class="input select-arrow"
+                  id="inputCategory"
+                  oninput="changeCategory(event)"
+                >
+                  <option value="" disabled selected>
+                    Select task category
+                  </option>
+                  <option value="user-story">User Story</option>
+                  <option value="technical-task">Technical Task</option>
                 </select>
                 <div id="errorCategory" class="errorMassage"></div>
                 <label for="">Subtasks</label>
@@ -137,11 +151,15 @@
                 This field is required
               </div>
               <div class="form-buttons">
-                <button id="btnSubmitEditTask" class="button-white">
+                <button id="btnResetTask" class="button-white">
                   Clear
                   <img src="./assets/icons/close.svg" alt="check" />
                 </button>
-                <button id="btnSubmitEditTask" class="button-blue">
+                <button
+                  id="btnSubmitEditTask"
+                  class="button-blue"
+                  onclick="submitNewTask()"
+                >
                   Create Task
                   <img
                     src="./assets/icons/checkWithoutCircle.svg"

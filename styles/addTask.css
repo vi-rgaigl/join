@@ -153,3 +153,7 @@ label {
   border-radius: 50%;
   border: 1px solid #ffffff;
 }
+
+select:focus {
+  background-image: url(../assets/icons/select-arrow-up.svg);
+}
