@@ -95,14 +95,7 @@ function generateContactDetailsHTML(contact) {
 }
 
 async function showContactDetails(id) {
-    // for (let i = 0; i < contactsList.length; i++) {
-    //     if (contactsList[i].id === id) {
-    //         currentContactIndex = i;
-    //         break;
-    //     }
-    // }
-    let contact = await getContactById(id);  //siehe nächste Funktion, eine standard Funktion für suche
-    // let contact = contactsList[currentContactIndex];
+    let contact = await getContactById(id);
     if (!contact) {
         console.error("Kontakt nicht gefunden.");
         return;
