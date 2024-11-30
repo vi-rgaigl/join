@@ -50,7 +50,7 @@
                         <p class="contact-text">Better with a team</p>
                     </div>
                     <!-- contact details are displayed here -->
-                    <div id="current-contact" class="current-contact"></div>
+                    <div id="current-contact" class="current-contact slide-in-right"></div>
                 </div>
             </div>
         </div>
@@ -58,32 +58,32 @@
     <div id="navbar-container-mobile" class="navbar-container-mobile"></div>
 
     <div id="overlay" class="overlay">
-        <div id="addContactDialog" class="dialog" style="display: none;">
+        <div id="addContactDialog" class="dialog" style="display: flex;">
             <div class="contact-add-form-area">
                 <img class="img-logo-add-contact" src="./assets/icons/logo-white-welcome.svg">
                 <h2>Add contact</h2>
                 <p>Tasks are better with a team!</p>
                 <div class="blue-underline"></div>
             </div>
-    
+        
             <div class="form-content-add-contact">
                 <img id="closeBtn" class="close-btn" src="./assets/icons/close.svg" alt="Close">
-                <img class="img-add-contact" src="./assets/icons/avatar.svg">
+                <img class="img-add-contact" src="./assets/icons/avatar.svg" alt="Avatar">
                 <div id="contactForm">
-                    <input id="error-contact-name-input" class="input width-100" type="name" placeholder="Name">
+                    <input id="name" class="input width-100" type="text" placeholder="Name">
                     <div id="error-contact-name" class="errorMassage"></div>
-                    <input id="error-contact-email-input" class="input width-100" type="email" placeholder="Email">
+                    <input id="email" class="input width-100" type="email" placeholder="Email">
                     <div id="error-contact-email" class="errorMassage"></div>
-                    <input id="error-contact-phone-input" class="input width-100" type="call" placeholder="Phone">
+                    <input id="phone" class="input width-100" type="tel" placeholder="Phone">
                     <div id="error-contact-phone" class="errorMassage"></div>
-    
+        
                     <div class="btn-add-contact">
                         <button class="button-white" onclick="closeDialog()">Cancel</button>
                         <button class="button-blue" onclick="saveNewContact()">Create contact</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>                
     </div>    
     
     <!-- dialog for editing the contact -->
