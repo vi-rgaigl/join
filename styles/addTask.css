@@ -1,52 +1,49 @@
+.application-main {
+  overflow: hidden;
+}
+
 .application-content {
   max-width: var(--app-max-width);
   margin-left: 64px;
   margin-right: 64px;
-  margin-top: 80px;
+  margin-top: 60px;
+  height: calc(100% - 200px);
 }
 
 .addTask-Content {
-  max-width: 900px;
+  max-width: 1000px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .form {
   margin-top: 20px;
   display: flex;
   flex-direction: row;
+  width: 100%;
+  /* margin-bottom: 60px; */
+  height: 550px;
 }
 
 .first-column {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .second-column {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .separator {
-  width: 1px;
   height: 400px;
-  background-color: #d1d1d1;
+  border: 1px solid #d1d1d1;
   margin-left: 50px;
   margin-right: 50px;
-}
-
-button {
-  color: black;
-}
-
-.input-button {
-  display: flex;
-  flex-direction: row;
-}
-
-.input-button-solo {
-  width: 120px !important;
-  margin-right: 20px;
-  cursor: pointer;
-  background-color: #fff;
 }
 
 label {
@@ -54,43 +51,9 @@ label {
   font-size: 17px;
 }
 
-input {
-  margin-bottom: 16px;
-  border-radius: 8px;
-  width: 400px;
-  height: 45px;
-  border: 1px solid #d1d1d1;
-  padding-left: 10px;
-  padding-top: 5px;
-  font-size: 16px;
-}
-
-textarea {
-  width: 400px;
+.listSubtasks {
+  min-height: 10px;
   height: 100px;
-  margin-bottom: 16px;
-  border-radius: 8px;
-  border: 1px solid #d1d1d1;
-  padding-left: 10px;
-  padding-top: 10px;
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-}
-
-.date-picker {
-  padding-left: 10px;
-  padding-right: 10px;
-  font-family: "Inter", sans-serif;
-}
-
-select {
-  height: 45px;
-  border-radius: 8px;
-  border: 1px solid #d1d1d1;
-  font-size: 16px;
-  cursor: pointer;
-  padding-left: 10px;
-  margin-bottom: 16px;
 }
 
 .radio-btns {
@@ -170,4 +133,23 @@ select {
 .button-white:hover img {
   filter: brightness(0) saturate(100%) invert(53%) sepia(98%) saturate(891%)
     hue-rotate(165deg) brightness(95%) contrast(86%);
+}
+
+.assinged-users {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.assign-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 12px;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  border: 1px solid #ffffff;
 }

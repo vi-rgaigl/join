@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="./styles/addTask.css" />
   </head>
 
-  <body onload="init(2)">
-    <div class="application-main">
+  <body onload="init(2);initLoad()">
+    <div class="application-main" onclick="closeDropdown(event)">
       <div id="navbar-container" class="navbar-container"></div>
       <div class="application-main-content">
         <header id="header-container" class="header"></header>
@@ -25,26 +25,57 @@
             <h1>Add Task</h1>
             <div class="form">
               <div class="first-column">
-                <label required for="title">Title</label>
-                <input type="text" placeholder="Enter a title" />
+                <label required for="inputTitle"
+                  >Title
+                  <p class="lableRequiert">*</p></label
+                >
+                <input
+                  class="input"
+                  type="text"
+                  id="inputTitle"
+                  placeholder="Enter a title"
+                />
+                <div id="errorTitle" class="errorMassage"></div>
                 <label for="description">Description</label>
                 <textarea
-                  class="input-description"
+                  class="input"
                   type="textarea"
                   placeholder="Enter a Description"
                 ></textarea>
-                <label for="assigned to">Assigned to</label>
-                <select name="" id="">
-                  <option>Select contacts to assign</option>
-                  <option></option>
-                </select>
+                <div class="errorMassage"></div>
+                <label for="dropdownAssinged">Assigned to</label>
+                <div
+                  class="input dropdown select-arrow"
+                  id="dropdownAssinged"
+                  data-dropdown="true"
+                >
+                  <div
+                    class="dropdown-click"
+                    onclick="toggleDropdown()"
+                    data-dropdown="true"
+                  >
+                    Select contacts to assign
+                  </div>
+                  <div
+                    class="dropdown-list"
+                    id="dropdown-list"
+                    data-dropdown="true"
+                  >
+                    <hr class="dropdown-hr" data-dropdown="true" />
+                  </div>
+                </div>
+                <div class="assinged-users" id="assingedUsers"></div>
               </div>
 
               <div class="separator"></div>
 
               <div class="second-column">
-                <label for="duedate" required>Due date</label>
-                <input class="date-picker" type="date" />
+                <label for="inputDueDate" required
+                  >Due date
+                  <p class="lableRequiert">*</p></label
+                >
+                <input class="input" id="inputDueDate" type="date" />
+                <div id="errorDueDate" class="errorMassage"></div>
                 <label for="prio">Prio</label>
 
                 <div class="radio-btns">
@@ -80,13 +111,24 @@
                     <label for="inputPriorityLow">Low</label>
                   </div>
                 </div>
-
-                <label for="category" required>Category</label>
-                <select name="" id="">
+                <div class="errorMassage"></div>
+                <label for="category" required
+                  >Category
+                  <p class="lableRequiert">*</p></label
+                >
+                <select class="input" id="inputCategory">
                   <option>Select task category</option>
                   <option></option>
                 </select>
+                <div id="errorCategory" class="errorMassage"></div>
                 <label for="">Subtasks</label>
+                <input
+                  class="input"
+                  type="text"
+                  id="inputTitle"
+                  placeholder="Add a new subtask"
+                />
+                <div class="listSubtasks" id="listSubtasks"></div>
               </div>
             </div>
             <div class="form-footer">
@@ -118,6 +160,7 @@
     <script src="./js/localStorage.js"></script>
     <script src="./templates/header.template.js"></script>
     <script src="./templates/navBar.template.js"></script>
+    <script src="./templates/boardDialog.template.js"></script>
     <script src="./js/navBarHeader.js"></script>
     <script src="./js/summaryUser.js"></script>
     <script src="./js/taskFrom.js"></script>
