@@ -173,3 +173,7 @@ function setButtenDisable() {
   errorTask = { Title: true, DueDate: true, Category: true };
   checkIfError();
 }
+
+function submitNewTask() {
+  console.log(task);
+}
