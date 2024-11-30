@@ -131,9 +131,11 @@ function getAssignInitials(listOfAssign, contacts) {
   let end = `</div>`;
   listOfAssign.forEach((assignId) => {
     let assignedContact = getAssignedContact(assignId, contacts);
-    beginn += ` <div class="assign-name" style="background-color: ${assignedContact.color}">
+    if (assignedContact != undefined) {
+      beginn += ` <div class="assign-name" style="background-color: ${assignedContact.color}">
                   ${assignedContact.initials}
                 </div>`;
+    }
   });
   return beginn + end;
 }
