@@ -137,15 +137,3 @@ function getAssignInitials(listOfAssign, contacts) {
   });
   return beginn + end;
 }
-
-/**
- * Find the Object of contact
- * @param {string} assignId -ID of assigned contacts
- * @param {[]} contacts -List of all contatcs
- * @returns Object of contact
- */
-function getAssignedContact(assignId, contacts) {
-  return contacts.find((contact) => {
-    return contact.id === assignId;
-  });
-}
