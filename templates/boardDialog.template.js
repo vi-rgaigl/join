@@ -85,7 +85,7 @@ function renderDialogTaskEdit(task, contacts) {
                 </div>
               </div>
               <div class="input-row">
-                <label for="inputPriority" class="lable">Priority<p class="lableRequiert">*</p></label>
+                <label for="inputPriority" class="lable">Priority</label>
                 <div class="radio-btns">
                   ${getPriorityEdit(task.prio)}
                 </div>
