@@ -35,7 +35,7 @@ function generateContactListHTML(groupedContacts) {
     let overallIndex = 0;
 
     for (const initial in groupedContacts) {
-        html += `<hr><h3>${initial}</h3>`;
+        html += `<hr><p>${initial}</p>`;
         groupedContacts[initial].forEach((contact) => {
             let initials = getInitials(contact.name);
             let color = contact.color || getRandomColor();
