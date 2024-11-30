@@ -190,9 +190,9 @@ function editContact(id) {
         return;
     }
 
-    let nameElement = document.getElementById("edit-name");
-    let emailElement = document.getElementById("edit-email");
-    let phoneElement = document.getElementById("edit-phone");
+    let nameElement = document.getElementById("error-contact-edit-name-input");
+    let emailElement = document.getElementById("error-contact-edit-email-input");
+    let phoneElement = document.getElementById("error-contact-edit-phone-input");
 
     if (nameElement && emailElement && phoneElement) {
         nameElement.value = contact.name;
@@ -210,7 +210,12 @@ function openEditContactDialog() {
     let dialog = document.getElementById("editContactDialog");
     if (dialog) {
         dialog.style.display = "flex";
-    }
+        let closeButton = document.getElementById("closeBtn");
+        if (closeButton) {
+            closeButton.addEventListener('click',closeEditDialog);
+    } else {
+        console.error("Dialog mit ID 'editContactDialog' nicht gefunden.");
+    }}
 }
 
 function closeEditDialog() {
