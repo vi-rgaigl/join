@@ -148,13 +148,8 @@ async function addContact() {
 function openAddContactDialog() {
     let dialog = document.getElementById("addContactDialog");
     if (dialog) {
+        dialog.classList('show');
         dialog.style.display = "flex";
-        let closeButton = document.getElementById("closeBtn");
-        if (closeButton) {
-            closeButton.addEventListener('click', closeDialog);
-        } else {
-            console.error("Schließen-Symbol nicht gefunden.");
-        }
     }
 }
 
@@ -162,17 +157,46 @@ function openAddContactDialog() {
  * closes the dialog
  * 
  */
+function openAddContactDialog() {
+    let dialog = document.getElementById("addContactDialog");
+    if (dialog) {
+        dialog.classList.add('show'); // Füge die 'show'-Klasse hinzu, um die Animation zu starten
+        dialog.style.display = "flex";
+    }
+}
+
 function closeDialog() {
     let dialog = document.getElementById("addContactDialog");
     if (dialog) {
-        dialog.style.display = "none";
+        dialog.classList.remove('show'); // Entferne die 'show'-Klasse
+        setTimeout(() => {
+            dialog.style.display = "none";
+        }, 500); // Warte, bis die Animation abgeschlossen ist
+
+        let nameElement = document.getElementById("name");
+        let emailElement = document.getElementById("email");
+        let phoneElement = document.getElementById("phone");
+
+        if (nameElement) {
+            nameElement.value = "";
+        } else {
+            console.error("Element mit ID 'name' nicht gefunden.");
+        }
+
+        if (emailElement) {
+            emailElement.value = "";
+        } else {
+            console.error("Element mit ID 'email' nicht gefunden.");
+        }
+
+        if (phoneElement) {
+            phoneElement.value = "";
+        } else {
+            console.error("Element mit ID 'phone' nicht gefunden.");
+        }
     } else {
         console.error("Element mit ID 'addContactDialog' nicht gefunden.");
     }
-
-    document.getElementById("error-contact-name-input").value = "";
-    document.getElementById("error-contact-email-input").value = "";
-    document.getElementById("error-contact-phone-input").value = "";
 }
 
 function editContact(id) {
