@@ -115,6 +115,10 @@
     cursor: pointer;
 }
 
+.edit-initals {
+    
+}
+
 .button-save {
     background-color: var(--dark-blue);
     color: white;
