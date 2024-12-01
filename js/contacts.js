@@ -215,6 +215,7 @@ function fillContactForm(contact) {
         nameElement.value = contact.name;
         emailElement.value = contact.email;
         phoneElement.value = contact.phone;
+        initialsElement.textContent = getInitials(contact.name);
         return true;
     }
     return false; // Ein oder mehrere Formularelemente fehlen
@@ -240,7 +241,8 @@ function closeEditDialog() {
 }
 
 async function saveEditedContact() {
-    if (currentContactIndex === null || !contactsList[currentContactIndex]) return;
+    if (currentContactIndex === null || !contactsList[currentContactIndex]) 
+        return;
     let updatedContact = {
         id: contactsList[currentContactIndex].id,
         name: document.getElementById("edit-name").value,
