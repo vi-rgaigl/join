@@ -188,6 +188,7 @@ hr {
     display: block;
 }
 
+/* element slides into the field from the right */
 @keyframes slideInRight {
     from {
         transform: translateX(100%);
