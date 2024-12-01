@@ -160,7 +160,9 @@ function openAddContactDialog() {
 function openAddContactDialog() {
     let dialog = document.getElementById("addContactDialog");
     if (dialog) {
-        dialog.classList.add('show'); // Füge die 'show'-Klasse hinzu, um die Animation zu starten
+        dialog.classList.remove('slide-out-right');
+        dialog.classList.add('slide-in-right');
+        dialog.classList.add('show');
         dialog.style.display = "flex";
     }
 }
@@ -168,52 +170,43 @@ function openAddContactDialog() {
 function closeDialog() {
     let dialog = document.getElementById("addContactDialog");
     if (dialog) {
-        dialog.classList.remove('show'); // Entferne die 'show'-Klasse
-        setTimeout(() => {
-            dialog.style.display = "none";
-        }, 500); // Warte, bis die Animation abgeschlossen ist
+        dialog.classList.remove('slide-in-right');
+        dialog.classList.add('slide-out-right');
+        dialog.classList.remove('show');
+        dialog.style.display = "none";
 
-        let nameElement = document.getElementById("name");
-        let emailElement = document.getElementById("email");
-        let phoneElement = document.getElementById("phone");
-
-        if (nameElement) {
-            nameElement.value = "";
-        } else {
-            console.error("Element mit ID 'name' nicht gefunden.");
-        }
-
-        if (emailElement) {
-            emailElement.value = "";
-        } else {
-            console.error("Element mit ID 'email' nicht gefunden.");
-        }
-
-        if (phoneElement) {
-            phoneElement.value = "";
-        } else {
-            console.error("Element mit ID 'phone' nicht gefunden.");
-        }
+        clearForm();
     } else {
         console.error("Element mit ID 'addContactDialog' nicht gefunden.");
     }
 }
 
 function editContact(id) {
-    // Durchsuche die Liste nach dem Kontakt mit der angegebenen ID
-    for (let i = 0; i < contactsList.length; i++) {
-        if (contactsList[i].id === id) {
-            currentContactIndex = i;
-            break;
-        }
-    }
-
-    let contact = contactsList[currentContactIndex];
+    let contact = findContactById(id);
     if (!contact) {
         console.error("Kontakt nicht gefunden.");
         return;
     }
 
+    if (!fillContactForm(contact)) {
+        console.error("Ein oder mehrere Formularelemente fehlen.");
+        return;
+    }
+
+    openEditContactDialog();
+}
+
+function findContactById(id) {
+    for (let i = 0; i < contactsList.length; i++) {
+        if (contactsList[i].id === id) {
+            currentContactIndex = i; // Aktuellen Index aktualisieren
+            return contactsList[i];
+        }
+    }
+    return null; // Kontakt nicht gefunden
+}
+
+function fillContactForm(contact) {
     let nameElement = document.getElementById("error-contact-edit-name-input");
     let emailElement = document.getElementById("error-contact-edit-email-input");
     let phoneElement = document.getElementById("error-contact-edit-phone-input");
@@ -222,12 +215,9 @@ function editContact(id) {
         nameElement.value = contact.name;
         emailElement.value = contact.email;
         phoneElement.value = contact.phone;
-    } else {
-        console.error("Ein oder mehrere Formularelemente fehlen.");
-        return;
+        return true;
     }
-
-    openEditContactDialog();
+    return false; // Ein oder mehrere Formularelemente fehlen
 }
 
 function openEditContactDialog() {
@@ -303,6 +293,7 @@ async function saveNewContact() {
         email: email,
         phone: phone,
         color: getRandomColor(),
+        initials: getInitials(name)
     };
 
     try {
