@@ -111,7 +111,6 @@ async function showContactDetails(id) {
     }
 
     let contactDetailsHTML = generateContactDetailsHTML(contact);
-
     let contactDetailsContainer = document.getElementById("current-contact");
     if (contactDetailsContainer) {
         contactDetailsContainer.innerHTML = contactDetailsHTML;
@@ -119,6 +118,8 @@ async function showContactDetails(id) {
     } else {
         console.error("Element mit ID 'current-contact' nicht gefunden.");
     }
+
+    toggleResponsiveView("details");
 }
 
 //neue Suchfunktion in einer JSON Struktur
