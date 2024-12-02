@@ -172,8 +172,13 @@ function closeDialog() {
     if (dialog) {
         dialog.classList.remove('slide-in-right');
         dialog.classList.add('slide-out-right');
-        dialog.classList.remove('show');
-        dialog.style.display = "none";
+
+        // verzögert das Setzen von display: none bis zum Animationsende
+        dialog.addEventListener('animationend', function handleAnimationEnd() {
+            dialog.style.display = "none"; // Dialog ausblenden
+            dialog.classList.remove('slide-out-right');
+            dialog.removeEventListener('animationend', handleAnimationEnd); 
+        });
 
         clearForm();
     } else {
