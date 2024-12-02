@@ -12,8 +12,3 @@ async function initLoad() {
     console.warn(error);
   }
 }
-
-function renderDropdownAssinged() {
-  let dropdownRef = document.getElementById("dropdown-list");
-  dropdownRef.innerHTML += getListOfUsers([], contacts);
-}

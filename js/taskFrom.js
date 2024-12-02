@@ -165,6 +165,11 @@ function submitNewTask() {
   showPopupMessage("addTask-popup-message", "Task added to board");
 }
 
+function renderDropdownAssinged() {
+  let dropdownRef = document.getElementById("dropdown-list");
+  dropdownRef.innerHTML += getListOfUsers([], contacts);
+}
+
 /**
  * Find the Object of contact
  * @param {string} assignId -ID of assigned contacts
@@ -252,4 +257,43 @@ function deleteSubtask(indexOfSubtak) {
     task.subtasks = false;
   }
   renderSubtasks(task);
+}
+
+function resetNewTask() {
+  resetData();
+  resetForm();
+  resetErrorMassage();
+}
+
+function resetData() {
+  task = {
+    id: "",
+    assignedTo: false,
+    category: "",
+    description: "",
+    dueDate: "",
+    prio: "low",
+    status: "to-do",
+    subtasks: false,
+    title: "",
+  };
+}
+
+function resetForm() {
+  document.getElementById("inputTitle").value = "";
+  document.getElementById("inputDescription").value = "";
+  renderDropdownAssinged();
+  renderAssignedTo(task);
+  document.getElementById("inputDueDate").value = "";
+  document.getElementById("inputPriorityLow").checked = true;
+  document.getElementById("inputCategory").value = "";
+  renderSubtasks(task);
+}
+
+function resetErrorMassage() {
+  errorMassage("", "Title");
+  errorMassage("", "DueDate");
+  errorMassage("", "Category");
+  errorTask = { Title: false, DueDate: false, Category: false };
+  checkIfError();
 }

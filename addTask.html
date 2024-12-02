@@ -38,10 +38,11 @@
                   oninput="changeTitle(event)"
                 />
                 <div id="errorTitle" class="errorMassage"></div>
-                <label for="description">Description</label>
+                <label for="inputDescription">Description</label>
                 <textarea
                   class="input"
                   type="textarea"
+                  id="inputDescription"
                   placeholder="Enter a Description"
                   oninput="changeDescription(event)"
                 ></textarea>
@@ -162,7 +163,11 @@
                 This field is required
               </div>
               <div class="form-buttons">
-                <button id="btnResetTask" class="button-white">
+                <button
+                  id="btnResetTask"
+                  class="button-white"
+                  onclick="resetNewTask()"
+                >
                   Clear
                   <img src="./assets/icons/close.svg" alt="check" />
                 </button>
