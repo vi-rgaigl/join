@@ -107,6 +107,10 @@ function checkIfPast(date) {
   return dateTask < dateNow;
 }
 
+/**
+ * change the Category
+ * @param {event} event - input event
+ */
 function changeCategory(event) {
   task.category = event.target.value;
   errorMassage("", "Category");
@@ -165,6 +169,9 @@ function submitNewTask() {
   showPopupMessage("addTask-popup-message", "Task added to board");
 }
 
+/**
+ * Rendered all contatcs to the Dropdown
+ */
 function renderDropdownAssinged() {
   let dropdownRef = document.getElementById("dropdown-list");
   dropdownRef.innerHTML += getListOfUsers([], contacts);
@@ -259,13 +266,20 @@ function deleteSubtask(indexOfSubtak) {
   renderSubtasks(task);
 }
 
+/**
+ * Reset the completed Form
+ */
 function resetNewTask() {
-  resetData();
+  resetData(task.status);
   resetForm();
   resetErrorMassage();
 }
 
-function resetData() {
+/**
+ * Reset the Data
+ * @param {string} status - set the Status
+ */
+function resetData(status) {
   task = {
     id: "",
     assignedTo: false,
@@ -273,12 +287,15 @@ function resetData() {
     description: "",
     dueDate: "",
     prio: "low",
-    status: "to-do",
+    status: status,
     subtasks: false,
     title: "",
   };
 }
 
+/**
+ * Reset the inputs
+ */
 function resetForm() {
   document.getElementById("inputTitle").value = "";
   document.getElementById("inputDescription").value = "";
@@ -290,6 +307,9 @@ function resetForm() {
   renderSubtasks(task);
 }
 
+/**
+ * Reset the error Massage
+ */
 function resetErrorMassage() {
   errorMassage("", "Title");
   errorMassage("", "DueDate");
