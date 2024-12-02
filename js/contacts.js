@@ -199,11 +199,11 @@ function editContact(id) {
 function findContactById(id) {
     for (let i = 0; i < contactsList.length; i++) {
         if (contactsList[i].id === id) {
-            currentContactIndex = i; // Aktuellen Index aktualisieren
+            currentContactIndex = i;
             return contactsList[i];
         }
     }
-    return null; // Kontakt nicht gefunden
+    return null;
 }
 
 function fillContactForm(contact) {
@@ -218,7 +218,6 @@ function fillContactForm(contact) {
         initialsElement.textContent = getInitials(contact.name);
         return true;
     }
-    return false; // Ein oder mehrere Formularelemente fehlen
 }
 
 function openEditContactDialog() {
