@@ -164,9 +164,18 @@ async function submitEditTask(id) {
   }
 }
 
-function submitNewTask() {
-  console.log(task);
-  showPopupMessage("addTask-popup-message", "Task added to board");
+/**
+ * Push the Data to firebase and clear the Form
+ */
+async function submitNewTask() {
+  try {
+    delete task.id;
+    await pushData("tasks", task);
+    resetNewTask();
+    showPopupMessage("addTask-popup-message", "Task added to board");
+  } catch (error) {
+    console.warn(error);
+  }
 }
 
 /**
