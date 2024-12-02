@@ -143,7 +143,7 @@ async function deleteTask(idTask) {
   try {
     await deleteData("tasks", currentTask);
     loadData();
-    closeDialog();
+    closeDialog("boardDialog");
   } catch (error) {
     console.warn(error);
   }
