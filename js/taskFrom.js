@@ -45,7 +45,7 @@ function changeAssignedTo(event) {
   if (AssignedToIds.length > 0) {
     task.assignedTo = AssignedToIds;
   } else {
-    return false;
+    task.assignedTo = false;
   }
   renderAssignedTo(task);
 }
@@ -198,4 +198,57 @@ function changeDescription(event) {
  */
 function changePrio(event) {
   task.prio = event.target.value;
+}
+
+/**
+ * Toggel the visibility of delete Subtask in edit task
+ * @param {event} event - input event
+ */
+function changeVisibilityButton(event) {
+  let subtaskCheckBtnRef = document.getElementById("subtaskCheckBtn");
+  if (event.target.value.length > 0) {
+    subtaskCheckBtnRef.classList.add("subtaskCheckBtnActive");
+  } else {
+    subtaskCheckBtnRef.classList.remove("subtaskCheckBtnActive");
+  }
+}
+
+/**
+ * Added a new Subtask and render the list of Subtasks new
+ */
+function addNewSubtask() {
+  let inputSubtasksRef = document.getElementById("inputSubtasks");
+  let subtaskCheckBtnRef = document.getElementById("subtaskCheckBtn");
+  let newSubtask = inputSubtasksRef.value;
+  let newSubtaskObj = { done: false, subtitle: newSubtask };
+  if (task.subtasks === false) {
+    task.subtasks = [newSubtaskObj];
+  } else {
+    task.subtasks.push(newSubtaskObj);
+  }
+  subtaskCheckBtnRef.classList.remove("subtaskCheckBtnActive");
+  inputSubtasksRef.value = "";
+  renderSubtasks(task);
+}
+
+/**
+ * Rendered the Subtasks of task
+ * @param {object} task - Object to render
+ */
+function renderSubtasks(task) {
+  let listSubtasksRef = document.getElementById("listSubtasks");
+  listSubtasksRef.innerHTML = getListOfSubtasksEdit(task.subtasks);
+}
+
+/**
+ * Delet the Subtask and render list of Subtask new
+ * @param {number} indexOfSubtak - index of Subtask
+ */
+function deleteSubtask(indexOfSubtak) {
+  if (task.subtasks.length > 1) {
+    task.subtasks.splice(indexOfSubtak, 1);
+  } else {
+    task.subtasks = false;
+  }
+  renderSubtasks(task);
 }
