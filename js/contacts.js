@@ -153,10 +153,6 @@ function openAddContactDialog() {
     }
 }
 
-/**
- * closes the dialog
- * 
- */
 function openAddContactDialog() {
     let dialog = document.getElementById("addContactDialog");
     if (dialog) {
@@ -167,6 +163,10 @@ function openAddContactDialog() {
     }
 }
 
+/**
+ * closes the dialog
+ * 
+ */
 function closeDialog() {
     let dialog = document.getElementById("addContactDialog");
     if (dialog) {
@@ -174,8 +174,8 @@ function closeDialog() {
         dialog.classList.add('slide-out-right');
 
         setTimeout(() => {
-            dialog.style.display = "none"; // Dialog ausblenden
-            dialog.classList.remove('slide-out-right'); // Klasse entfernen
+            dialog.style.display = "none";
+            dialog.classList.remove('slide-out-right');
         }, 500);
 
         clearForm();
