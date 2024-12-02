@@ -53,7 +53,10 @@ label {
 
 .listSubtasks {
   min-height: 10px;
-  height: 100px;
+  max-height: 120px;
+  overflow: auto;
+  font-size: 16px;
+  margin-top: 8px;
 }
 
 .radio-btns {
@@ -196,11 +199,6 @@ select:focus {
   display: block;
 }
 
-.listSubtasks {
-  font-size: 16px;
-  margin-top: 8px;
-}
-
 .subtask-list-item {
   padding: 4px 24px;
   position: relative;
@@ -230,4 +228,79 @@ select:focus {
   top: 0;
   font-size: 16px;
   line-height: 1.5;
+}
+
+@media (max-width: 1120px) {
+  .application-content {
+    margin-left: 24px;
+    margin-right: 24px;
+    height: 90%;
+  }
+
+  .form-footer {
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 990px) {
+  .application-content {
+    padding-left: 64px;
+    padding-right: 64px;
+    margin-left: 0;
+    margin-right: 0;
+    height: 80%;
+  }
+  .form {
+    flex-direction: column;
+    height: auto;
+    overflow: auto;
+  }
+  .separator {
+    display: none;
+  }
+  .radio-btns {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 860px) {
+  .application-content {
+    height: 70%;
+  }
+}
+
+@media (max-width: 650px) {
+  .application-content {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+@media (max-width: 560px) {
+  .form-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .application-content {
+    margin-top: 40px;
+    height: 75%;
+  }
+}
+@media (max-width: 390px) {
+  .application-content {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .button-white,
+  .button-blue {
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
 }
