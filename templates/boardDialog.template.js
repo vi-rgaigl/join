@@ -220,7 +220,8 @@ function getAssignInitialsName(listOfAssign, contacts) {
   if (listOfAssign !== false) {
     listOfAssign.forEach((assignId) => {
       let assignedContact = getAssignedContact(assignId, contacts);
-      beginn += `<div class="dialog-assigned" >
+      if (assignedContact != undefined) {
+        beginn += `<div class="dialog-assigned" >
               <div
                 class="assign-name"
                 style="background-color: ${assignedContact.color}"
@@ -229,6 +230,7 @@ function getAssignInitialsName(listOfAssign, contacts) {
               </div>
               ${assignedContact.name}
             </div>`;
+      }
     });
   }
   return beginn;
@@ -239,13 +241,15 @@ function getAssignInitialsNameEdit(listOfAssign, contacts) {
   if (listOfAssign !== false) {
     listOfAssign.forEach((assignId) => {
       let assignedContact = getAssignedContact(assignId, contacts);
-      beginn += `<div
+      if (assignedContact != undefined) {
+        beginn += `<div
                 class="assign-name"
                 style="background-color: ${assignedContact.color}"
               >
               ${assignedContact.initials}
               </div>
               `;
+      }
     });
   }
   return beginn;
