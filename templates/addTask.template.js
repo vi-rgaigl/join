@@ -151,7 +151,7 @@ function getTemplateAddTask(ifDialog) {
                 <button
                   id="btnSubmitEditTask"
                   class="button-blue"
-                  onclick="submitNewTask()"
+                  onclick="submitNewTask(${ifDialog})"
                 >
                   Create Task
                   <img
@@ -168,7 +168,7 @@ function getHead(ifDialog) {
   if (ifDialog) {
     return `<div class="dialog-header-addTask">
     <h1>Add Task</h1>
-    <div class="closeX" onclick="closeDialog('addTaskDialog')">
+    <div class="closeX" onclick="closeDialog('addTaskDialog');">
       <img src="./assets/icons/close.svg" alt="closeButton" />
     </div>
   </div>`;

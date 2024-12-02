@@ -167,12 +167,15 @@ async function submitEditTask(id) {
 /**
  * Push the Data to firebase and clear the Form
  */
-async function submitNewTask() {
+async function submitNewTask(ifDialog) {
   try {
     delete task.id;
     await pushData("tasks", task);
     resetNewTask();
     showPopupMessage("addTask-popup-message", "Task added to board");
+    if (ifDialog) {
+      loadData();
+    }
   } catch (error) {
     console.warn(error);
   }
