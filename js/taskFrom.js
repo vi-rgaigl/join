@@ -162,6 +162,7 @@ async function submitEditTask(id) {
 
 function submitNewTask() {
   console.log(task);
+  showPopupMessage("addTask-popup-message", "Task added to board");
 }
 
 /**
