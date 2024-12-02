@@ -129,13 +129,17 @@ function getCategory(category) {
 function getAssignInitials(listOfAssign, contacts) {
   let beginn = `<div class="card-footer-assign">`;
   let end = `</div>`;
-  listOfAssign.forEach((assignId) => {
-    let assignedContact = getAssignedContact(assignId, contacts);
-    if (assignedContact != undefined) {
-      beginn += ` <div class="assign-name" style="background-color: ${assignedContact.color}">
+  if (listOfAssign === false) {
+    return "";
+  } else {
+    listOfAssign.forEach((assignId) => {
+      let assignedContact = getAssignedContact(assignId, contacts);
+      if (assignedContact != undefined) {
+        beginn += ` <div class="assign-name" style="background-color: ${assignedContact.color}">
                   ${assignedContact.initials}
                 </div>`;
-    }
-  });
+      }
+    });
+  }
   return beginn + end;
 }
