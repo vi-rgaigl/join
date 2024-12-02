@@ -136,12 +136,22 @@
                 </select>
                 <div id="errorCategory" class="errorMassage"></div>
                 <label for="">Subtasks</label>
-                <input
-                  class="input"
-                  type="text"
-                  id="inputTitle"
-                  placeholder="Add a new subtask"
-                />
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="input-subtasks"
+                    id="inputSubtasks"
+                    placeholder="Add new Subtasks"
+                    oninput="changeVisibilityButton(event)"
+                  />
+                  <img
+                    src="./assets/icons/checkWithoutCircle.svg"
+                    alt="check"
+                    class="subtaskCheckBtn"
+                    onclick="addNewSubtask()"
+                    id="subtaskCheckBtn"
+                  />
+                </div>
                 <div class="listSubtasks" id="listSubtasks"></div>
               </div>
             </div>

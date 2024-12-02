@@ -160,6 +160,10 @@ async function submitEditTask(id) {
   }
 }
 
+function submitNewTask() {
+  console.log(task);
+}
+
 /**
  * Find the Object of contact
  * @param {string} assignId -ID of assigned contacts
@@ -178,10 +182,6 @@ function getAssignedContact(assignId, contacts) {
 function setButtenDisable() {
   errorTask = { Title: true, DueDate: true, Category: true };
   checkIfError();
-}
-
-function submitNewTask() {
-  console.log(task);
 }
 
 /**
