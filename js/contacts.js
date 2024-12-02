@@ -144,12 +144,13 @@ async function addContact() {
     }
 }
 
-// Funktion zum Öffnen des Dialogs
-function openAddContactDialog() {
-    let dialog = document.getElementById("addContactDialog");
-    if (dialog) {
-        dialog.classList('show');
-        dialog.style.display = "flex";
+function addCloseBtnToDialog() {
+    let closeBtn = document.getElementById("closeBtn");
+    if (closeBtn && !closeBtn.dataset.listenerAdded) {
+        closeBtn.addEventListener("click", closeDialog);
+        closeBtn.dataset.listenerAdded = "true";
+    } else {
+        console.error("Close-Button nicht gefunden oder Listener bereits hinzugefügt.");
     }
 }
 
@@ -160,6 +161,8 @@ function openAddContactDialog() {
         dialog.classList.add('slide-in-right');
         dialog.classList.add('show');
         dialog.style.display = "flex";
+
+        addCloseBtnToDialog();
     }
 }
 
