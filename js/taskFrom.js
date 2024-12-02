@@ -323,6 +323,6 @@ function resetErrorMassage() {
   errorMassage("", "Title");
   errorMassage("", "DueDate");
   errorMassage("", "Category");
-  errorTask = { Title: false, DueDate: false, Category: false };
+  errorTask = { Title: true, DueDate: true, Category: true };
   checkIfError();
 }
