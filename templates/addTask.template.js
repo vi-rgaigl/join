@@ -1,6 +1,6 @@
-function getTemplateAddTask() {
+function getTemplateAddTask(ifDialog) {
   return `<div class="addTask-Content">
-            <h1>Add Task</h1>
+            ${getHead(ifDialog)}
             <div class="form">
               <div class="first-column">
                 <label required for="inputTitle"
@@ -162,4 +162,17 @@ function getTemplateAddTask() {
               </div>
             </div>
           </div>`;
+}
+
+function getHead(ifDialog) {
+  if (ifDialog) {
+    return `<div class="dialog-header-addTask">
+    <h1>Add Task</h1>
+    <div class="closeX" onclick="closeDialog('addTaskDialog')">
+      <img src="./assets/icons/close.svg" alt="closeButton" />
+    </div>
+  </div>`;
+  } else {
+    return ` <h1>Add Task</h1>`;
+  }
 }

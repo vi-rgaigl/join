@@ -9,7 +9,7 @@ function renderDialogTaskOverview(task, contacts) {
             <div class="dialog-task-overview">
               <div class="dialog-header">
                 ${getCategory(task.category)}
-                <div class="closeX" onclick="closeDialog()">
+                <div class="closeX" onclick="closeDialog('boardDialog')">
                   <img src="./assets/icons/close.svg" alt="closeButton" />
                 </div>
               </div>

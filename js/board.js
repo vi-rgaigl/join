@@ -10,6 +10,7 @@ async function initLoadData() {
     tasks = await getData("tasks");
     contacts = await getData("contacts");
     renderTasks();
+    openDialogAddTask("in-progress");
   } catch (error) {
     console.warn(error);
   }
@@ -80,8 +81,8 @@ function openDialog(id) {
 /**
  * Close the Dialog with animation
  */
-function closeDialog() {
-  let boardDialogRef = document.getElementById("boardDialog");
+function closeDialog(dialog) {
+  let boardDialogRef = document.getElementById(dialog);
   boardDialogRef.classList.add("hide");
   boardDialogRef.addEventListener(
     "webkitAnimationEnd",
@@ -166,4 +167,13 @@ function renderEditTask(id) {
 function renderOverviewTask(id) {
   let boardDialogRef = document.getElementById("boardDialog");
   boardDialogRef.innerHTML = renderDialogTaskOverview(getTask(id), contacts);
+}
+
+function openDialogAddTask(status) {
+  let addTaskDialogRef = document.getElementById("addTaskDialog");
+  addTaskDialogRef.innerHTML = getTemplateAddTask(true);
+  renderDropdownAssinged();
+  setButtenDisable();
+  task.status = status;
+  addTaskDialogRef.showModal();
 }
