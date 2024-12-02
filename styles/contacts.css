@@ -210,6 +210,15 @@ hr {
     display: none;
 }
 
+.back-btn {
+    display: none;
+}
+
+.back-btn img {
+    width: 16px;
+    height: 16px;
+}
+
 .contact-details-container.active .current-contact {
     display: block;
 }
@@ -333,4 +342,39 @@ hr {
 
 .contact-text {
 
+}
+
+@media (max-width: 635px) {
+    #contactDetailsContainer {
+        display: none;
+    }
+
+    #current-contact {
+        display: none;
+    }
+
+    .contacts-container {
+        flex-direction: column;
+    }
+
+    .contact-list-container {
+        width: 100%;
+    }
+
+    .contact-details-container {
+        width: 100%;
+    }
+
+    .back-btn {
+        display: block;
+        top: 130px;
+        right: 110px;
+        width: 32px;
+        height: 32px;
+        padding: 8px;
+        background-position: 50% 50%;
+        cursor: pointer;
+        border-radius: 50%;
+        display: none;
+    }
 }
