@@ -141,6 +141,7 @@ label {
 
 .assinged-users {
   margin-top: 16px;
+  margin-bottom: 16px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -253,7 +254,6 @@ select:focus {
   }
   .form {
     flex-direction: column;
-    height: auto;
     overflow: auto;
   }
   .separator {
@@ -270,6 +270,11 @@ select:focus {
 @media (max-width: 860px) {
   .application-content {
     height: 70%;
+  }
+
+  .button-white,
+  .button-blue {
+    padding: 12px 20px;
   }
 }
 
@@ -289,15 +294,21 @@ select:focus {
     margin-top: 40px;
     height: 75%;
   }
+
+  .button-white,
+  .button-blue {
+    padding: 12px 16px;
+  }
 }
 @media (max-width: 390px) {
   .application-content {
     padding-left: 8px;
     padding-right: 8px;
   }
+
   .button-white,
   .button-blue {
-    padding: 12px 16px;
+    padding: 12px 12px;
     font-size: 16px;
   }
 
