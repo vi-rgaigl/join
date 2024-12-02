@@ -10,7 +10,6 @@ async function initLoadData() {
     tasks = await getData("tasks");
     contacts = await getData("contacts");
     renderTasks();
-    openDialogAddTask("in-progress");
   } catch (error) {
     console.warn(error);
   }

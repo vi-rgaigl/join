@@ -16,5 +16,5 @@ async function initLoad() {
 
 function renderAddTask() {
   let contentRef = document.getElementById("application-content");
-  contentRef.innerHTML = getTemplateAddTask();
+  contentRef.innerHTML = getTemplateAddTask(false);
 }

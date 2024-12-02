@@ -14,11 +14,13 @@
     <link rel="stylesheet" href="./styles/navBarHeader.css" />
     <link rel="stylesheet" href="./styles/board.css" />
     <link rel="stylesheet" href="./styles/boardDialog.css" />
+    <link rel="stylesheet" href="./styles/addTask.css" />
   </head>
 
   <body onload="init(3);initLoadData();">
     <div class="application-main overflow-hidden">
       <dialog id="boardDialog" onclick="closeDropdown(event)"></dialog>
+      <dialog id="addTaskDialog" onclick="closeDropdown(event)"></dialog>
 
       <div id="navbar-container" class="navbar-container"></div>
       <div class="application-main-content flex-column flex-1">
@@ -27,7 +29,10 @@
           <div class="content-top-menue mx-64">
             <div class="content-top-menue-left">
               <h1>Board</h1>
-              <button class="button-blue button-add-mobile">
+              <button
+                class="button-blue button-add-mobile"
+                onclick="openDialogAddTask('to-do')"
+              >
                 <img
                   class="button-add-img"
                   src="./assets/icons/add.svg"
@@ -43,7 +48,10 @@
                 id="inputSearch"
                 oninput="renderTasks()"
               />
-              <button class="button-blue button-add">
+              <button
+                class="button-blue button-add"
+                onclick="openDialogAddTask('to-do')"
+              >
                 Add Task
                 <img
                   class="button-add-img"
@@ -63,7 +71,7 @@
               <img
                 src="./assets/icons/plus-button.svg"
                 alt="plus_button"
-                onclick="addTask('ToDo')"
+                onclick="openDialogAddTask('to-do')"
               />
             </div>
             <div
@@ -80,7 +88,7 @@
               <img
                 src="./assets/icons/plus-button.svg"
                 alt="plus_button"
-                onclick="addTask('InProgess')"
+                onclick="openDialogAddTask('in-progress')"
               />
             </div>
             <div
@@ -97,7 +105,7 @@
               <img
                 src="./assets/icons/plus-button.svg"
                 alt="plus_button"
-                onclick="addTask('AwaitFeedback')"
+                onclick="openDialogAddTask('await-feedback')"
               />
             </div>
             <div
@@ -129,6 +137,7 @@
     <script src="./templates/navBar.template.js"></script>
     <script src="./templates/board.template.js"></script>
     <script src="./templates/boardDialog.template.js"></script>
+    <script src="./templates/addTask.template.js"></script>
     <script src="./js/navBarHeader.js"></script>
     <script src="./js/taskFrom.js"></script>
     <script src="./js/boardDragDrop.js"></script>
