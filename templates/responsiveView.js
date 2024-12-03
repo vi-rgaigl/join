@@ -12,7 +12,7 @@ function toggleResponsiveView(mode) {
     if (backBtn) {
       backBtn.classList.add("active");
     }
-  } else {
+  } else if (window.innerWidth <= 635) {
     contactListContainer.style.display = "block";
     contactDetailsContainer.style.display = "none";
 
