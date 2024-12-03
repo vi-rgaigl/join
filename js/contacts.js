@@ -34,7 +34,7 @@ function generateContactListHTML(groupedContacts) {
     let html = "";
     let overallIndex = 0;
 
-    for (const initial in groupedContacts) {
+    for (let initial in groupedContacts) {
         html += `<hr><p>${initial}</p>`;
         groupedContacts[initial].forEach((contact) => {
             let initials = getInitials(contact.name);
