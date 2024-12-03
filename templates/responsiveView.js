@@ -26,6 +26,5 @@ function backToContactList() {
 
     contactListContainer.style.display = "block";
     contactDetailsContainer.style.display = "none";
-
     toggleResponsiveView("list");
 }
