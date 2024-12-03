@@ -161,7 +161,11 @@ function getPriority(prio) {
           alt="prio-${prio}"/>`;
 }
 
-// TODO Funktion kürzen
+/**
+ * Get the Radiobuttons for the Dialog
+ * @param {string} prio - Value of the Prio
+ * @returns HTML
+ */
 function getPriorityEdit(prio) {
   let inputPriorityUrgent = "";
   let inputPriorityMedium = "";
@@ -214,7 +218,12 @@ function getPriorityEdit(prio) {
                 </div>`;
 }
 
-// TODO Prüfen ob Funktionen zusammen gelegt werden können
+/**
+ * Get the List of Assign Users for Dialog Overview
+ * @param {[]} listOfAssign - List of Assign Users
+ * @param {[]} contacts - List of all Users
+ * @returns HTML
+ */
 function getAssignInitialsName(listOfAssign, contacts) {
   let beginn = `<div class="headline">Assigned To:</div>`;
   if (listOfAssign !== false) {
@@ -236,6 +245,12 @@ function getAssignInitialsName(listOfAssign, contacts) {
   return beginn;
 }
 
+/**
+ * Get the List of Assign Users for Dialog Edit
+ * @param {[]} listOfAssign - List of Assign Users
+ * @param {[]} contacts - List of all Users
+ * @returns HTML
+ */
 function getAssignInitialsNameEdit(listOfAssign, contacts) {
   let beginn = ``;
   if (listOfAssign !== false) {
@@ -255,6 +270,11 @@ function getAssignInitialsNameEdit(listOfAssign, contacts) {
   return beginn;
 }
 
+/**
+ * Get the List of Subtasks for Dialog Overview
+ * @param {[]} subtasks - List of Subtasks
+ * @returns HTML
+ */
 function getListOfSubtasks(subtasks, id) {
   if (subtasks === false) {
     return "";
@@ -272,6 +292,11 @@ function getListOfSubtasks(subtasks, id) {
   }
 }
 
+/**
+ * Get the List of Subtasks for Dialog Edit
+ * @param {[]} subtasks - List of Subtasks
+ * @returns HTML
+ */
 function getListOfSubtasksEdit(subtasks) {
   let html = "";
   if (subtasks === false) {
