@@ -145,12 +145,21 @@ async function addContact() {
 }
 
 function addCloseBtnToDialog() {
-    let closeBtn = document.getElementById("closeBtn");
-    if (closeBtn && !closeBtn.dataset.listenerAdded) {
-        closeBtn.addEventListener("click", closeDialog);
-        closeBtn.dataset.listenerAdded = "true";
-    } else {
-        console.error("Close-Button nicht gefunden oder Listener bereits hinzugefügt.");
+    let closeAddBtn = document.getElementById("closeAddBtn");
+    let closeEditBtn = document.getElementById("closeEditBtn");
+
+    if (closeAddBtn && !closeAddBtn.dataset.listenerAdded) {
+        closeAddBtn.addEventListener("click", closeDialog); 
+        closeAddBtn.dataset.listenerAdded = "true";
+    } else if (!closeAddBtn) { 
+        console.error("Close-Button für Add-Dialog nicht gefunden oder Listener bereits hinzugefügt.");
+    }
+
+    if (closeEditBtn && !closeEditBtn.dataset.listenerAdded) {
+        closeEditBtn.addEventListener("click", closeEditDialog);
+        closeEditBtn.dataset.listenerAdded = "true"; 
+    } else if (!closeEditBtn) { 
+        console.error("Close-Button für Edit-Dialog nicht gefunden oder Listener bereits hinzugefügt.");
     }
 }
 
@@ -231,10 +240,12 @@ function openEditContactDialog() {
         dialog.style.display = "flex";
         let closeButton = document.getElementById("closeBtn");
         if (closeButton) {
-            closeButton.addEventListener('click',closeEditDialog);
+            closeButton.addEventListener('click', closeEditDialog);
     } else {
         console.error("Dialog mit ID 'editContactDialog' nicht gefunden.");
     }}
+
+    addCloseBtnToDialog();
 }
 
 function closeEditDialog() {
