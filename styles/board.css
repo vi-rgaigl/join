@@ -332,7 +332,7 @@
   .cardTask,
   .cardNoTask,
   .drag-area-active {
-    max-width: 300px;
+    max-width: 200px;
     min-width: 200px;
   }
 
@@ -341,7 +341,7 @@
   }
 
   .application-main-content {
-    margin-bottom: 96px;
+    margin-bottom: 16px;
   }
 
   .content-top {
@@ -376,5 +376,17 @@
 
   .button-add-mobile {
     display: flex;
+  }
+}
+
+@media (max-width: 860px) {
+  .application-main-content {
+    margin-bottom: 116px;
+  }
+}
+
+@media (max-width: 560px) {
+  .application-main-content {
+    margin-bottom: 96px;
   }
 }
