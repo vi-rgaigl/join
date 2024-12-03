@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>myJoin</title>
-    <link rel="shortcut icon" href="./assets/icons/logo-blue-small.svg" type="image/x-icon">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./styles/standard.css">
-    <link rel="stylesheet" href="./styles/navBarHeader.css">
-    <link rel="stylesheet" href="./styles/contacts.css">
+    <link
+      rel="shortcut icon"
+      href="./assets/icons/logo-blue-small.svg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./styles/standard.css" />
+    <link rel="stylesheet" href="./styles/navBarHeader.css" />
+    <link rel="stylesheet" href="./styles/contacts.css" />
 
     <script src="./js/remoteStorage.js"></script>
     <script src="./js/localStorage.js"></script>
@@ -20,103 +23,186 @@
     <script src="./js/contacts.js"></script>
     <script src="./templates/responsiveView.js"></script>
     <script src="./script.js"></script>
+  </head>
 
-</head>
-
-<body onload="init(4); renderContactList();">
-
+  <body onload="init(4); renderContactList();">
     <div class="application-main">
-        <div id="navbar-container" class="navbar-container"></div>
+      <div id="navbar-container" class="navbar-container"></div>
 
-        <div class="application-main-content">
-            <header id="header-container" class="header"></header>
+      <div class="application-main-content">
+        <header id="header-container" class="header"></header>
 
-            <div class="contacts-container d-flex">
-                <!-- Left container: contact-list -->
-                <div id="contactListContainer" class="contact-list-container">
-                    <div class="add-contact-button-container">
-                        <button id="addContact" type="button" onclick="openAddContactDialog()"
-                            class="button-blue add-new-contact-btn">
-                            Add new Content
-                            <img id="addPerson" src="./assets/icons/person-add.svg" class="icon">
-                        </button>
-                    </div>
-                    <div id="contactList" class="contact-list"></div>
-                </div>
-                <!-- Right container: Contact details -->
-                <div id="contactDetailsContainer" class="contact-details-container">
-                    <div class="contact-title">
-                        <h1>Contacts</h1>
-                        <div class="contact-vertical-line"></div>
-                        <p class="contact-text">Better with a team</p>
-                    </div>
-                    <!-- contact details are displayed here -->
-                    <div id="current-contact" class="current-contact slide-in-right"></div>
-                    <div class="back-btn" onclick="backToContactList()">
-                        <img src="./assets/icons/arrow-left-line.svg" alt="Back Arrow">
-                    </div>                   
-                </div>
+        <div class="contacts-container d-flex">
+          <!-- Left container: contact-list -->
+          <div id="contactListContainer" class="contact-list-container">
+            <div class="add-contact-button-container">
+              <button
+                id="addContact"
+                type="button"
+                onclick="openAddContactDialog()"
+                class="button-blue add-new-contact-btn"
+              >
+                Add new Content
+                <img
+                  id="addPerson"
+                  src="./assets/icons/person-add.svg"
+                  class="icon"
+                />
+              </button>
             </div>
+            <div class="menü-button-mobile" onclick="openAddContactDialog()">
+              <img
+                id="addPerson"
+                src="./assets/icons/person-add.svg"
+                class="icon"
+              />
+            </div>
+            <div id="contactList" class="contact-list"></div>
+          </div>
+          <!-- Right container: Contact details -->
+          <div id="contactDetailsContainer" class="contact-details-container">
+            <div class="contact-title">
+              <h1>Contacts</h1>
+              <div class="contact-vertical-line"></div>
+              <p class="contact-text">Better with a team</p>
+            </div>
+            <!-- contact details are displayed here -->
+            <div
+              id="current-contact"
+              class="current-contact slide-in-right"
+            ></div>
+            <div class="back-btn" onclick="backToContactList()">
+              <img src="./assets/icons/arrow-left-line.svg" alt="Back Arrow" />
+            </div>
+          </div>
         </div>
+      </div>
     </div>
     <div id="navbar-container-mobile" class="navbar-container-mobile"></div>
 
     <div id="overlay" class="overlay">
-        <div id="addContactDialog" class="dialog slide-in-right" style="display: none;">
-            <div class="contact-add-form-area">
-                <img class="img-logo-add-contact" src="./assets/icons/logo-white-welcome.svg">
-                <h2>Add contact</h2>
-                <p>Tasks are better with a team!</p>
-                <div class="blue-underline"></div>
+      <div
+        id="addContactDialog"
+        class="dialog slide-in-right"
+        style="display: none"
+      >
+        <div class="contact-add-form-area">
+          <img
+            class="img-logo-add-contact"
+            src="./assets/icons/logo-white-welcome.svg"
+          />
+          <h2>Add contact</h2>
+          <p>Tasks are better with a team!</p>
+          <div class="blue-underline"></div>
+        </div>
+
+        <div class="form-content-add-contact">
+          <img
+            id="closeAddBtn"
+            class="close-btn"
+            src="./assets/icons/close.svg"
+            alt="Close"
+          />
+          <img
+            class="img-add-contact"
+            src="./assets/icons/avatar.svg"
+            alt="Avatar"
+          />
+          <div id="contactForm">
+            <input
+              id="name"
+              class="input width-100"
+              type="name"
+              placeholder="Name"
+            />
+            <div id="error-contact-name" class="errorMassage"></div>
+            <input
+              id="email"
+              class="input width-100"
+              type="email"
+              placeholder="Email"
+            />
+            <div id="error-contact-email" class="errorMassage"></div>
+            <input
+              id="phone"
+              class="input width-100"
+              type="call"
+              placeholder="Phone"
+            />
+            <div id="error-contact-phone" class="errorMassage"></div>
+
+            <div class="btn-add-contact">
+              <button class="button-white" onclick="closeDialog()">
+                Cancel
+              </button>
+              <button class="button-blue" onclick="saveNewContact()">
+                Create contact
+              </button>
             </div>
-        
-            <div class="form-content-add-contact">
-                <img id="closeAddBtn" class="close-btn" src="./assets/icons/close.svg" alt="Close">
-                <img class="img-add-contact" src="./assets/icons/avatar.svg" alt="Avatar">
-                <div id="contactForm">
-                    <input id="name" class="input width-100" type="name" placeholder="Name">
-                    <div id="error-contact-name" class="errorMassage"></div>
-                    <input id="email" class="input width-100" type="email" placeholder="Email">
-                    <div id="error-contact-email" class="errorMassage"></div>
-                    <input id="phone" class="input width-100" type="call" placeholder="Phone">
-                    <div id="error-contact-phone" class="errorMassage"></div>
-        
-                    <div class="btn-add-contact">
-                        <button class="button-white" onclick="closeDialog()">Cancel</button>
-                        <button class="button-blue" onclick="saveNewContact()">Create contact</button>
-                    </div>
-                </div>
-            </div>
-        </div>                
-    </div>    
-    
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- dialog for editing the contact -->
     <div id="edit-overlay" class="overlay">
-        <div id="editContactDialog" class="dialog slide-in-right" style="display: none;">
-            <div class="contact-add-form-area">
-                <img class="img-add-contact" src="./assets/icons/logo-white-welcome.svg">
-                <h2>Edit contact</h2>
-                <div class="blue-underline"></div>
-            </div>
-            <div class="form-content-add-contact">
-                <img id="closeEditBtn" class="close-btn" src="./assets/icons/close.svg">
-                <div id="editInitals" class="contact-initials"></div>
-                <div id="editContactForm">
-                    <input id="error-contact-edit-name-input" class="input width-100" id="name" type="name" placeholder="Name">
-                    <div id="error-contact-edit-name" class="errorMassage"></div>
-                    <input id="error-contact-edit-email-input" class="input width-100" id="email" type="email" placeholder="Email">
-                    <div id="error-contact-edit-email" class="errorMassage"></div>
-                    <input id="error-contact-edit-phone-input" class="input width-100" id="phone" type="call" placeholder="Phone">
-                    <div id="error-contact-edit-phone" class="errorMassage"></div>
-    
-                <div class="btn-add-contact">
-                    <button class="button-white" onclick="closeEditDialog()">Delete</button>
-                    <button class="button-save" onclick="saveEditedContact()">Save</button>
-                </div>
-                </div>
-            </div>
+      <div
+        id="editContactDialog"
+        class="dialog slide-in-right"
+        style="display: none"
+      >
+        <div class="contact-add-form-area">
+          <img
+            class="img-add-contact"
+            src="./assets/icons/logo-white-welcome.svg"
+          />
+          <h2>Edit contact</h2>
+          <div class="blue-underline"></div>
         </div>
-    </div>
-</body>
+        <div class="form-content-add-contact">
+          <img
+            id="closeEditBtn"
+            class="close-btn"
+            src="./assets/icons/close.svg"
+          />
+          <div id="editInitals" class="contact-initials"></div>
+          <div id="editContactForm">
+            <input
+              id="error-contact-edit-name-input"
+              class="input width-100"
+              id="name"
+              type="name"
+              placeholder="Name"
+            />
+            <div id="error-contact-edit-name" class="errorMassage"></div>
+            <input
+              id="error-contact-edit-email-input"
+              class="input width-100"
+              id="email"
+              type="email"
+              placeholder="Email"
+            />
+            <div id="error-contact-edit-email" class="errorMassage"></div>
+            <input
+              id="error-contact-edit-phone-input"
+              class="input width-100"
+              id="phone"
+              type="call"
+              placeholder="Phone"
+            />
+            <div id="error-contact-edit-phone" class="errorMassage"></div>
 
+            <div class="btn-add-contact">
+              <button class="button-white" onclick="closeEditDialog()">
+                Delete
+              </button>
+              <button class="button-save" onclick="saveEditedContact()">
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
