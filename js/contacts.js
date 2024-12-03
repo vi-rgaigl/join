@@ -221,7 +221,6 @@ function fillContactForm(contact) {
         nameElement.value = contact.name;
         emailElement.value = contact.email;
         phoneElement.value = contact.phone;
-        initialsElement.textContent = getInitials(contact.name);
         return true;
     }
 }
