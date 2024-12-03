@@ -115,6 +115,7 @@ async function showContactDetails(id) {
     if (contactDetailsContainer) {
         contactDetailsContainer.innerHTML = contactDetailsHTML;
         document.getElementById("contactDetailsContainer").classList.add("active");
+        toggleResponsiveView('details');
     } else {
         console.error("Element mit ID 'current-contact' nicht gefunden.");
     }
