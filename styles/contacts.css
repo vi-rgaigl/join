@@ -343,17 +343,47 @@ hr {
 }
 
 .contact-text {
+  margin: 0;
+}
+
+@media (max-width: 940px) {
+  .contact-vertical-line {
+    display: none;
+  }
+  .contact-title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .contact-header .contact-initials {
+    width: 90px;
+    height: 90px;
+    font-size: 36px;
+  }
 }
 
 @media (max-width: 860px) {
   .contacts-container {
     height: 74%;
   }
+
+  .button-blue {
+    padding: 9px 12px;
+  }
 }
 
 @media (max-width: 635px) {
   #contactDetailsContainer {
     display: none;
+  }
+
+  .add-contact-button-container {
+    display: none;
+  }
+
+  .contact-list {
+    height: 61%;
   }
 
   #current-contact {
@@ -365,7 +395,7 @@ hr {
   }
 
   .contact-list-container {
-    width: 100%;
+    width: 97%;
   }
 
   .contact-details-container {

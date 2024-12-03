@@ -253,7 +253,7 @@ function closeEditDialog() {
     if (dialog) { 
         dialog.classList.remove('slide-in-right'); 
         dialog.classList.add('slide-out-right');
-        
+
         setTimeout(() => { 
             dialog.style.display = "none"; 
             dialog.classList.remove('slide-out-right'); 
