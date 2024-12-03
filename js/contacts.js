@@ -118,8 +118,6 @@ async function showContactDetails(id) {
     } else {
         console.error("Element mit ID 'current-contact' nicht gefunden.");
     }
-
-    toggleResponsiveView("details");
 }
 
 //neue Suchfunktion in einer JSON Struktur
