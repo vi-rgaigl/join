@@ -179,7 +179,7 @@ function closeDialog() {
         setTimeout(() => {
             dialog.style.display = "none";
             dialog.classList.remove('slide-out-right');
-        }, 500);
+        }, 300);
 
         clearForm();
     } else {
