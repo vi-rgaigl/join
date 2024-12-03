@@ -237,22 +237,30 @@ function fillContactForm(contact) {
 function openEditContactDialog() {
     let dialog = document.getElementById("editContactDialog");
     if (dialog) {
+        dialog.classList.remove('slide-out-right');
+        dialog.classList.add('slide-in-right');
+        dialog.classList.add('show');
         dialog.style.display = "flex";
-        let closeButton = document.getElementById("closeBtn");
-        if (closeButton) {
-            closeButton.addEventListener('click', closeEditDialog);
-    } else {
-        console.error("Dialog mit ID 'editContactDialog' nicht gefunden.");
-    }}
 
-    addCloseBtnToDialog();
+        addCloseBtnToDialog(); 
+    } else { 
+        console.error("Dialog mit ID 'editContactDialog' nicht gefunden."); 
+    }
 }
 
 function closeEditDialog() {
-    let dialog = document.getElementById("editContactDialog");
-    if (dialog) {
-        dialog.style.display = "none";
-    }
+    let dialog = document.getElementById("editContactDialog"); 
+    if (dialog) { 
+        dialog.classList.remove('slide-in-right'); 
+        dialog.classList.add('slide-out-right');
+        
+        setTimeout(() => { 
+            dialog.style.display = "none"; 
+            dialog.classList.remove('slide-out-right'); 
+        }, 300); 
+    } else { 
+        console.error("Element mit ID 'editContactDialog' nicht gefunden."); 
+    } 
 }
 
 async function saveEditedContact() {
