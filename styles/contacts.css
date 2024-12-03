@@ -345,6 +345,12 @@ hr {
 .contact-text {
 }
 
+@media (max-width: 860px) {
+  .contacts-container {
+    height: 74%;
+  }
+}
+
 @media (max-width: 635px) {
   #contactDetailsContainer {
     display: none;
