@@ -8,14 +8,14 @@ function toggleResponsiveView(mode) {
         contactDetailsContainer.style.display = "block";
 
         if (backBtn) {
-            backBtn.style.display = "block";
+            backBtn.classList.add("active");
         }
     } else {
         contactListContainer.style.display = "block";
         contactDetailsContainer.style.display = "block";
 
         if (backBtn) {
-            backBtn.style.display = "none";
+            backBtn.classList.remove("active");
         }
     }
 }
