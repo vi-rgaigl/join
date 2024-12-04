@@ -1,6 +1,7 @@
 let contactsList = [];
 let currentContactIndex = null;
 
+//function retrieves the data from the Firebase database
 async function fetchContactsData() {
     try {
         let contacts = await getData("contacts");
@@ -124,8 +125,11 @@ async function showContactDetails(id) {
 //neue Suchfunktion in einer JSON Struktur
 async function getContactById(id) {
     let contacts = await getData("contacts");
-    return contacts.find(contact => contact.id === id);
+    let contact = contacts.find(contact => contact.id === id);
+  
+    return contact;
 }
+
 
 async function addContact() {
     let newContact = {
@@ -196,10 +200,16 @@ function closeDialog() {
     }
 }
 
-function editContact(id) {
-    let contact = findContactById(id);
+async function editContact(id) {
+    let contact = await getContactById(id);
     if (!contact) {
         console.error("Kontakt nicht gefunden.");
+        return;
+    }
+
+    currentContactIndex = contactsList.findIndex(contact => contact.id === id); // Setze den aktuellen Kontaktindex
+    if (currentContactIndex === -1) {
+        console.error("Aktueller Kontaktindex ist ungültig.");
         return;
     }
 
@@ -209,16 +219,6 @@ function editContact(id) {
     }
 
     openEditContactDialog();
-}
-
-function findContactById(id) {
-    for (let i = 0; i < contactsList.length; i++) {
-        if (contactsList[i].id === id) {
-            currentContactIndex = i;
-            return contactsList[i];
-        }
-    }
-    return null;
 }
 
 function fillContactForm(contact) {
@@ -263,44 +263,43 @@ function closeEditDialog() {
     } 
 }
 
-async function saveEditedContact() {
-    if (currentContactIndex === null || !contactsList[currentContactIndex]) 
-        return;
-    let updatedContact = {
-        id: contactsList[currentContactIndex].id,
-        name: document.getElementById("edit-name").value,
-        email: document.getElementById("edit-email").value,
-        phone: document.getElementById("edit-phone").value,
-        color: contactsList[currentContactIndex].color
-    };
-
+async function handleSaveContact(updatedContact) {
     try {
         await changeData("contacts", updatedContact);
-        await renderContactList();
+        contactsList[currentContactIndex] = updatedContact;
+        renderContactList();
         closeEditDialog();
-        showContactDetails(currentContactIndex);
+        document.getElementById("current-contact").innerHTML = "";
+        document.getElementById("contactDetailsContainer").classList.remove("active");
     } catch (error) {
         console.error("Fehler beim Speichern des Kontakts:", error);
+        alert("Failed to save the contact. Please try again.");
     }
 }
 
-async function saveContact() {
-    if (currentContactIndex === null || !contactsList[currentContactIndex]) return;
+async function saveEditedContact() {
+    if (currentContactIndex === null || currentContactIndex === -1) {
+        return console.error("Aktueller Kontaktindex ist ungültig.");
+    }
+
+    let nameElement = document.getElementById("error-contact-edit-name-input");
+    let emailElement = document.getElementById("error-contact-edit-email-input");
+    let phoneElement = document.getElementById("error-contact-edit-phone-input");
+
+    if (!nameElement || !emailElement || !phoneElement) {
+        return console.error("Ein oder mehrere Formularelemente fehlen.");
+    }
+
     let updatedContact = {
-        id: contactsList[currentContactIndex].id,
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        phone: document.getElementById("phone").value,
-        color: contactsList[currentContactIndex].color
+        ...contactsList[currentContactIndex],
+        name: nameElement.value.trim(),
+        email: emailElement.value.trim(),
+        phone: phoneElement.value.trim(),
+        color: contactsList[currentContactIndex].color,
+        initials: getInitials(nameElement.value.trim())
     };
 
-    try {
-        await changeData("contacts", updatedContact);
-        await renderContactList();
-        closeDialog();
-    } catch (error) {
-        console.error("Fehler beim Speichern des Kontakts:", error);
-    }
+    handleSaveContact(updatedContact);
 }
 
 async function saveNewContact() {
