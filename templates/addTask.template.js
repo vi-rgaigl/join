@@ -124,13 +124,23 @@ function getTemplateAddTask(ifDialog) {
                     oninput="changeVisibilityButton(event)"
                     onkeyup="keyUpInput(event)"
                   />
-                  <img
-                    src="./assets/icons/checkWithoutCircle.svg"
-                    alt="check"
-                    class="subtaskCheckBtn"
-                    onclick="addNewSubtask()"
-                    id="subtaskCheckBtn"
-                  />
+                  <div class="subtaskBtn" id="subtaskBtn">
+                    <img
+                      src="./assets/icons/checkWithoutCircle.svg"
+                      alt="check"
+                      class="subtaskCheckBtn"
+                      onclick="addNewSubtask()"
+                      id="subtaskCheckBtn"
+                    />
+                    <div class="subtaskSep"></div>
+                    <img
+                      src="./assets/icons/close.svg"
+                      alt="check"
+                      class="subtaskClearBtn"    
+                      onclick="clearNewSubtask()"                
+                      id="subtaskClearBtn"
+                    />
+                  </div>
                 </div>
                 <div class="listSubtasks" id="listSubtasks"></div>
               </div>

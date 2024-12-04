@@ -230,14 +230,18 @@ function changePrio(event) {
  * @param {event} event - input event
  */
 function changeVisibilityButton(event) {
-  let subtaskCheckBtnRef = document.getElementById("subtaskCheckBtn");
+  let subtaskBtnRef = document.getElementById("subtaskBtn");
   if (event.target.value.length > 0) {
-    subtaskCheckBtnRef.classList.add("subtaskCheckBtnActive");
+    subtaskBtnRef.classList.add("subtaskBtnActive");
   } else {
-    subtaskCheckBtnRef.classList.remove("subtaskCheckBtnActive");
+    subtaskBtnRef.classList.remove("subtaskBtnActive");
   }
 }
 
+/**
+ * created new Subtasks by Key enter
+ * @param {event} event - Keyup event
+ */
 function keyUpInput(event) {
   if (event.key === "Enter") {
     addNewSubtask();
@@ -262,6 +266,16 @@ function addNewSubtask() {
     inputSubtasksRef.value = "";
     renderSubtasks(task);
   }
+}
+
+/**
+ * Clear the input for Subtasks
+ */
+function clearNewSubtask() {
+  let inputSubtasksRef = document.getElementById("inputSubtasks");
+  let subtaskBtnRef = document.getElementById("subtaskBtn");
+  inputSubtasksRef.value = "";
+  subtaskBtnRef.classList.remove("subtaskBtnActive");
 }
 
 /**

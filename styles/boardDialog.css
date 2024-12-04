@@ -301,14 +301,27 @@ dialog.hide {
   outline: none;
 }
 
-.subtaskCheckBtn {
-  filter: invert(1);
-  cursor: pointer;
+.subtaskBtn {
   display: none;
 }
 
-.subtaskCheckBtnActive {
-  display: block;
+.subtaskSep {
+  border: 1px solid #2a3647;
+  margin-left: 4px;
+  margin-right: 6px;
+}
+
+.subtaskCheckBtn {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+.subtaskClearBtn {
+  cursor: pointer;
+}
+
+.subtaskBtnActive {
+  display: flex;
 }
 
 .listSubtasks {
