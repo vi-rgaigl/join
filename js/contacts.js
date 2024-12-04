@@ -207,7 +207,7 @@ async function editContact(id) {
         return;
     }
 
-    currentContactIndex = contactsList.findIndex(contact => contact.id === id); // Setze den aktuellen Kontaktindex
+    currentContactIndex = contactsList.findIndex(contact => contact.id === id);
     if (currentContactIndex === -1) {
         console.error("Aktueller Kontaktindex ist ungültig.");
         return;
