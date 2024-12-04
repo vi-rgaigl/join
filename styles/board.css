@@ -180,6 +180,48 @@
   margin: 10px;
 }
 
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.card-menue-box {
+  display: none;
+}
+
+.card-menue-box img {
+  height: 12px;
+  cursor: pointer;
+}
+
+.card-menue {
+  display: none;
+}
+
+.card-menue p {
+  margin: 0;
+  color: var(--grey);
+}
+
+.card-menue p:hover {
+  background-color: var(--item-light-blue);
+}
+
+.card-menue-box:hover .card-menue {
+  position: absolute;
+  right: 0;
+  z-index: 10;
+  background-color: var(--dark-grey);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  border-radius: 16px 0 16px 16px;
+}
+
 .card-category {
   padding: 4px 16px;
   border-radius: 8px;
@@ -347,6 +389,10 @@
 
   .cardTask {
     height: 300px;
+  }
+
+  .card-menue-box {
+    display: inline;
   }
 
   .application-main-content {

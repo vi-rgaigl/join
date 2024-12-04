@@ -65,3 +65,19 @@ function startDragging(id) {
   }
   dragginTaskId = id;
 }
+
+async function changeStatus(event, newStatus, id) {
+  event.stopPropagation();
+  let task = tasks.find((task) => task.id === id);
+  task.status = newStatus;
+  try {
+    await changeData("tasks", task);
+    loadData();
+  } catch (error) {
+    console.warn(error);
+  }
+}
+
+function openMenue(event) {
+  event.stopPropagation();
+}

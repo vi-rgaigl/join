@@ -43,7 +43,16 @@ function getTemplateCard(task, contacts) {
   }')" ondragend="endDragging('${
     task.id
   }')" draggable="true" onclick="openDialog('${task.id}')">
-            ${getCategory(task.category)}
+            <div class="card-head">
+              ${getCategory(task.category)}
+              <div class="card-menue-box" onclick="openMenue(event)">
+                <img src="./assets/icons/select-arrow.svg"
+                    alt="menue"/>
+                <div class="card-menue">
+                ${getMenue(task)}
+                </div>
+              </div>
+            </div>
             <div class="card-title">
               ${task.title}
               <div class="card-description">
@@ -142,4 +151,37 @@ function getAssignInitials(listOfAssign, contacts) {
     });
   }
   return beginn + end;
+}
+
+/**
+ * Generats the HTML of Menü
+ * @param {{}} task -Task for rendering
+ * @returns HTML of Menü
+ */
+function getMenue(task) {
+  switch (task.status) {
+    case "to-do":
+      return `               
+      <p onclick="changeStatus(event,'in-progress','${task.id}')">In progess</p>
+      <p onclick="changeStatus(event,'await-feedback','${task.id}')">Await feedback</p>
+      <p onclick="changeStatus(event,'done','${task.id}')">Done</p>`;
+
+    case "in-progress":
+      return `               
+      <p onclick="changeStatus(event,'to-do','${task.id}')">To do</p>
+      <p onclick="changeStatus(event,'await-feedback','${task.id}')">Await feedback</p>
+      <p onclick="changeStatus(event,'done','${task.id}')">Done</p>`;
+
+    case "await-feedback":
+      return `               
+      <p onclick="changeStatus(event,'to-do','${task.id}')">To do</p>
+      <p onclick="changeStatus(event,'in-progress','${task.id}')">In progess</p>
+      <p onclick="changeStatus(event,'done','${task.id}')">Done</p>`;
+
+    case "done":
+      return `               
+      <p onclick="changeStatus(event,'to-do','${task.id}')">To do</p>
+      <p onclick="changeStatus(event,'in-progress','${task.id}')">In progess</p>
+      <p onclick="changeStatus(event,'await-feedback','${task.id}')">Await feedback</p>`;
+  }
 }
