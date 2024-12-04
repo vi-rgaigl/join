@@ -15,7 +15,7 @@ function getTemplateCards(list, tasks, contacts) {
     });
     return html + templateDragArea;
   } else {
-    return `<div class="cardNoTask">No Task To do</div>` + templateDragArea;
+    return `<div class="cardNoTask">No Task</div>` + templateDragArea;
   }
 }
 
