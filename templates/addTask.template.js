@@ -122,6 +122,7 @@ function getTemplateAddTask(ifDialog) {
                     id="inputSubtasks"
                     placeholder="Add new Subtasks"
                     oninput="changeVisibilityButton(event)"
+                    onkeyup="keyUpInput(event)"
                   />
                   <img
                     src="./assets/icons/checkWithoutCircle.svg"

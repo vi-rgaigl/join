@@ -238,6 +238,12 @@ function changeVisibilityButton(event) {
   }
 }
 
+function keyUpInput(event) {
+  if (event.key === "Enter") {
+    addNewSubtask();
+  }
+}
+
 /**
  * Added a new Subtask and render the list of Subtasks new
  */
@@ -245,15 +251,17 @@ function addNewSubtask() {
   let inputSubtasksRef = document.getElementById("inputSubtasks");
   let subtaskCheckBtnRef = document.getElementById("subtaskCheckBtn");
   let newSubtask = inputSubtasksRef.value;
-  let newSubtaskObj = { done: false, subtitle: newSubtask };
-  if (task.subtasks === false) {
-    task.subtasks = [newSubtaskObj];
-  } else {
-    task.subtasks.push(newSubtaskObj);
+  if (newSubtask != "") {
+    let newSubtaskObj = { done: false, subtitle: newSubtask };
+    if (task.subtasks === false) {
+      task.subtasks = [newSubtaskObj];
+    } else {
+      task.subtasks.push(newSubtaskObj);
+    }
+    subtaskCheckBtnRef.classList.remove("subtaskCheckBtnActive");
+    inputSubtasksRef.value = "";
+    renderSubtasks(task);
   }
-  subtaskCheckBtnRef.classList.remove("subtaskCheckBtnActive");
-  inputSubtasksRef.value = "";
-  renderSubtasks(task);
 }
 
 /**
