@@ -219,6 +219,8 @@
   overflow: hidden;
   position: relative;
   height: 8px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .progressBar {
@@ -227,6 +229,13 @@
 }
 
 .card-subtasks-text {
+  display: none;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.card-subtasks:hover .card-subtasks-text {
+  display: block;
   font-size: 12px;
   text-wrap: nowrap;
   margin-left: 10px;
