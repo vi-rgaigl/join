@@ -16,6 +16,7 @@ async function fetchContactsData() {
     }
 }
 
+//groups the contacts according to the first letter
 function groupContactsByInitial(contacts) {
     return contacts.reduce((grouped, contact) => {
         let initial = contact.name.charAt(0).toUpperCase();
@@ -31,10 +32,9 @@ function sortContactsByName(contacts) {
     return contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
+//generates the HTML for the contact list
 function generateContactListHTML(groupedContacts) {
     let html = "";
-    let overallIndex = 0;
-
     for (let initial in groupedContacts) {
         html += `<hr><p>${initial}</p>`;
         groupedContacts[initial].forEach((contact) => {
@@ -46,33 +46,23 @@ function generateContactListHTML(groupedContacts) {
                     <p>${contact.name}</p>
                 </div>
             `;
-            overallIndex++;
         });
     }
     return html;
 }
 
+//sorts and generates the list to display it
 async function renderContactList() {
     let contacts = await fetchContactsData();
     if (!contacts.length) return;
+
     contactsList.length = 0;
     contactsList.push(...contacts);
-    contacts.sort((a, b) => a.name.localeCompare(b.name));
-    let html = "";
-    let lastInitial = "";
-    contacts.forEach(contact => {
-        let initial = contact.name.charAt(0).toUpperCase();
-        if (initial !== lastInitial) {
-            html += `<p>${initial}</p><hr>`;
-            lastInitial = initial;
-        }
-        html += `
-            <div class="contact-item" onclick="showContactDetails('${contact.id}')">
-                <div class="contact-initials" style="background-color:${contact.color}">${contact.initials}</div>
-                <p>${contact.name}</p>
-            </div>
-        `;
-    });
+
+    sortContactsByName(contacts);
+    let groupedContacts = groupContactsByInitial(contacts);
+    let html = generateContactListHTML(groupedContacts);
+
     document.getElementById("contactList").innerHTML = html;
 }
 
@@ -200,6 +190,7 @@ function closeDialog() {
     }
 }
 
+//loads the contact data and opens the edit dialog
 async function editContact(id) {
     let contact = await getContactById(id);
     if (!contact) {
@@ -263,6 +254,7 @@ function closeEditDialog() {
     } 
 }
 
+//handleSaveContact takes over the main logic for saving a contact and then updates the contact list
 async function handleSaveContact(updatedContact) {
     try {
         await changeData("contacts", updatedContact);
@@ -277,6 +269,7 @@ async function handleSaveContact(updatedContact) {
     }
 }
 
+//checks the current contact index and then calls handleSaveContact to save the contact
 async function saveEditedContact() {
     if (currentContactIndex === null || currentContactIndex === -1) {
         return console.error("Aktueller Kontaktindex ist ungültig.");
@@ -302,6 +295,7 @@ async function saveEditedContact() {
     handleSaveContact(updatedContact);
 }
 
+//saves the data in the database
 async function saveNewContact() {
     let name = document.getElementById("name").value.trim();
     let email = document.getElementById("email").value.trim();
