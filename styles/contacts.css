@@ -360,14 +360,28 @@ hr {
   border-radius: 10px;
 }
 
+.contact-vertical-line-mobile {
+  display: none;
+}
+
 .contact-text {
   margin: 0;
 }
 
-@media (max-width: 940px) {
+@media (max-width: 980px) {
   .contact-vertical-line {
     display: none;
   }
+
+  .contact-vertical-line-mobile {
+    display: inline;
+    margin-top: 8px;
+    width: 60px;
+    background-color: var(--light-blue);
+    height: 3px;
+    border-radius: 10px;
+  }
+
   .contact-title {
     flex-direction: column;
     align-items: flex-start;
