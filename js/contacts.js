@@ -56,7 +56,7 @@ function getInitials(name) {
 }
 
 function getRandomColor() {
-    let r = Math.floor(Math.random() * 128) + 128; // Random value between 128 and 255
+    let r = Math.floor(Math.random() * 128) + 128;
     let g = Math.floor(Math.random() * 128) + 128;
     let b = Math.floor(Math.random() * 128) + 128;
     return `rgb(${r}, ${g}, ${b})`;
@@ -135,7 +135,6 @@ async function getContactById(id) {
   
     return contact;
 }
-
 
 async function addContact() {
     let newContact = {
@@ -354,6 +353,7 @@ async function deleteContact(id) {
         await deleteData("contacts", { id: contactId });
         contactsList.splice(currentContactIndex, 1);
         renderContactList();
+        document.getElementById('current-contact').innerHTML = '';
     } catch (error) {
         console.error("Fehler beim Löschen des Kontakts:", error);
     }
