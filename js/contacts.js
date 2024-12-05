@@ -51,6 +51,10 @@ function generateContactListHTML(groupedContacts) {
     return html;
 }
 
+function getInitials(name) {
+    return name.split(' ').map((n) => n[0]).join('').toUpperCase();
+}
+
 //sorts and generates the list to display it
 async function renderContactList() {
     let contacts = await fetchContactsData();
