@@ -55,6 +55,13 @@ function getInitials(name) {
     return name.split(' ').map((n) => n[0]).join('').toUpperCase();
 }
 
+function getRandomColor() {
+    let r = Math.floor(Math.random() * 128) + 128; // Random value between 128 and 255
+    let g = Math.floor(Math.random() * 128) + 128;
+    let b = Math.floor(Math.random() * 128) + 128;
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
 //sorts and generates the list to display it
 async function renderContactList() {
     let contacts = await fetchContactsData();
@@ -68,13 +75,6 @@ async function renderContactList() {
     let html = generateContactListHTML(groupedContacts);
 
     document.getElementById("contactList").innerHTML = html;
-}
-
-function getRandomColor() {
-    let r = Math.floor(Math.random() * 128) + 128;
-    let g = Math.floor(Math.random() * 128) + 128;
-    let b = Math.floor(Math.random() * 128) + 128;
-    return `rgb(${r}, ${g}, ${b})`;
 }
 
 function generateContactDetailsHTML(contact) {
