@@ -268,6 +268,8 @@ select:focus {
   .form {
     flex-direction: column;
     overflow: auto;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   .separator {
     display: none;
@@ -323,6 +325,10 @@ select:focus {
   .button-blue {
     padding: 12px 12px;
     font-size: 16px;
+  }
+
+  .dropdown-click {
+    font-size: 14px;
   }
 
   h1 {
