@@ -204,6 +204,8 @@
 .card-menue p {
   margin: 0;
   color: var(--grey);
+  padding: 4px;
+  border-radius: 8px;
 }
 
 .card-menue p:hover {
@@ -213,6 +215,7 @@
 .card-menue-box:hover .card-menue {
   position: absolute;
   right: 0;
+  top: 0;
   z-index: 10;
   background-color: var(--dark-blue);
   display: flex;
@@ -220,6 +223,16 @@
   gap: 4px;
   padding: 12px;
   border-radius: 16px 0 16px 16px;
+  animation: fadeIn 125ms;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .card-category {
