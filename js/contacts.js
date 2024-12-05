@@ -352,8 +352,9 @@ async function deleteContact(id) {
     try {
         await deleteData("contacts", { id: contactId });
         contactsList.splice(currentContactIndex, 1);
-        renderContactList();
         document.getElementById('current-contact').innerHTML = '';
+
+        renderContactList();
     } catch (error) {
         console.error("Fehler beim Löschen des Kontakts:", error);
     }
