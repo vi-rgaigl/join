@@ -70,6 +70,13 @@ async function renderContactList() {
     document.getElementById("contactList").innerHTML = html;
 }
 
+function getRandomColor() {
+    let r = Math.floor(Math.random() * 128) + 128;
+    let g = Math.floor(Math.random() * 128) + 128;
+    let b = Math.floor(Math.random() * 128) + 128;
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
 function generateContactDetailsHTML(contact) {
     return `
         <div class="contact-header">
