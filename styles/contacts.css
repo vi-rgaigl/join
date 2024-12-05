@@ -125,14 +125,14 @@
   border: 2px solid white;
   background-color: var(--dark-blue);
   position: absolute;
-  top: 750px;
+  bottom: 120px;
   right: 30px;
   z-index: 2;
   justify-content: center;
   align-items: center;
 }
 
-.menü-button-mobile:hover {
+.hover:hover {
   cursor: pointer;
   transform: scale(1.1);
 }
@@ -310,6 +310,18 @@ hr {
   gap: 5px;
 }
 
+.action-item-mobile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
+.action-item-mobile:hover {
+  cursor: pointer;
+  background-color: var(--item-light-blue);
+}
+
 .contact-actions img {
   width: 20px;
   height: 20px;
@@ -366,6 +378,41 @@ hr {
 
 .contact-text {
   margin: 0;
+}
+
+.card-menue {
+  position: absolute;
+  bottom: 0px;
+  z-index: 10;
+  background-color: var(--dark-blue);
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  border-radius: 16px 16px 0 16px;
+  color: white;
+  transition: all 250ms ease-in-out;
+  display: none;
+}
+
+.action-item-mobile img {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%)
+    hue-rotate(192deg) brightness(103%) contrast(104%);
+}
+
+.menü-button-mobile:hover .card-menue {
+  display: flex;
+  animation: slideInUP 250ms ease normal;
+}
+
+@keyframes slideInUP {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @media (max-width: 980px) {

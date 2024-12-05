@@ -1,24 +1,24 @@
 //generates the HTML for the contact list
 function generateContactListHTML(groupedContacts) {
-    let html = "";
-    for (let initial in groupedContacts) {
-        html += `<hr><p>${initial}</p>`;
-        groupedContacts[initial].forEach((contact) => {
-            let initials = getInitials(contact.name);
-            let color = contact.color || getRandomColor();
-            html += `
+  let html = "";
+  for (let initial in groupedContacts) {
+    html += `<hr><p>${initial}</p>`;
+    groupedContacts[initial].forEach((contact) => {
+      let initials = getInitials(contact.name);
+      let color = contact.color || getRandomColor();
+      html += `
                 <div class="contact-item" onclick="showContactDetails('${contact.id}')">
                     <div class="contact-initials" style="background-color:${color}">${initials}</div>
                     <p>${contact.name}</p>
                 </div>
             `;
-        });
-    }
-    return html;
+    });
+  }
+  return html;
 }
 
 function generateContactDetailsHTML(contact) {
-    return `
+  return `
         <div class="contact-header">
             <div class="contact-initials" style="background-color:${contact.color}">${contact.initials}</div>
             <div class="contact-name-section">
@@ -42,5 +42,22 @@ function generateContactDetailsHTML(contact) {
             <p><b>Email:</b> ${contact.email}</p>
             <p><b>Phone:</b> ${contact.phone}</p>
         </div>
+        <div class="menü-button-mobile">
+              <img
+                id="addPerson"
+                src="./assets/icons/more_vert.svg"
+                class="icon"
+              />
+              <div class="card-menue">
+                <div class="action-item-mobile" onclick="editContact('${contact.id}')">
+                  <span>Edit</span>
+                  <img src="./assets/icons/edit.svg" alt="Edit" />
+                </div>
+                <div class="action-item-mobile" onclick="deleteContact('${contact.id}')">
+                  <span>Delete</span>
+                  <img src="./assets/icons/delete.svg" alt="Delete" />
+                </div>
+              </div>
+            </div>
     `;
 }
