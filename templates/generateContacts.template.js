@@ -1,4 +1,8 @@
-//generates the HTML for the contact list
+/**
+ * Generates the HTML for the contact list
+ * @param {[*]} groupedContacts - List of all Contacts grouped
+ * @returns HTML
+ */
 function generateContactListHTML(groupedContacts) {
   let html = "";
   for (let initial in groupedContacts) {
@@ -20,6 +24,11 @@ function generateContactListHTML(groupedContacts) {
   return html;
 }
 
+/**
+ * Generates the HTML for the Overview
+ * @param {[*]} contact - Contact for Overview
+ * @returns HTML
+ */
 function generateContactDetailsHTML(contact) {
   return `
         <div class="contact-header">
