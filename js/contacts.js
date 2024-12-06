@@ -87,7 +87,10 @@ async function showContactDetails(id) {
 
 //neue Suchfunktion in einer JSON Struktur
 async function getContactById(id) {
-  return contactsList.find((contact) => contact.id === id);
+  let contacts = await getData("contacts");
+  let contact = contacts.find((contact) => contact.id === id);
+
+  return contact;
 }
 
 async function addContact() {
