@@ -49,7 +49,7 @@ function generateContactDetailsHTML(contact) {
                 class="icon"
               />
               <div class="card-menue">
-                <div class="action-item-mobile" onclick="editContact('${contact.id}')">
+                <div class="action-item-mobile" onclick="openDialog('editContact', '${contact.id}')">
                   <span>Edit</span>
                   <img src="./assets/icons/edit.svg" alt="Edit" />
                 </div>
