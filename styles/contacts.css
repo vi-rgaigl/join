@@ -207,6 +207,7 @@
 .contact-list-mail {
   color: #007CEE;
   font-size: 18px;
+  cursor: pointer;
 }
 
 hr {

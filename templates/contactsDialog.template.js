@@ -1,3 +1,9 @@
+/**
+ * Switch wiche dialog needed
+ * @param {string} type - Type of Dialog
+ * @param {{}} contact - Contact for Edit
+ * @returns HTML
+ */
 function getTemplateDialog(type, contact) {
   switch (type) {
     case "newContact":
@@ -8,6 +14,10 @@ function getTemplateDialog(type, contact) {
   }
 }
 
+/**
+ * Generats the Dialog for add new Contact
+ * @returns HTML
+ */
 function getNewContact() {
   return `<div class="dialog">
         <div class="contact-add-form-area">
@@ -33,6 +43,11 @@ ${getInputs()}
       </div>`;
 }
 
+/**
+ * Generats the Dialog for Edit Contact
+ * @param {{}} contact - Contact for Edit
+ * @returns HTML
+ */
 function getEditContact(contact) {
   return `<div class="dialog">
           <div class="contact-add-form-area">
@@ -64,6 +79,15 @@ function getEditContact(contact) {
         </div>`;
 }
 
+/**
+ * Generats the Input for Form with or without Value
+ * @param {string} name - Name of Contact
+ * @param {string} email - Email of Contact
+ * @param {string} phone - Tel. Nr. of Contact
+ * @param {string} color - Color of Contact
+ * @param {string} initials - Initials of Contact
+ * @returns HTML
+ */
 function getInputs(
   name = "",
   email = "",
@@ -107,6 +131,12 @@ function getInputs(
             <div id="error-contact-phone" class="errorMassage"></div>`;
 }
 
+/**
+ *  Generates the HTML for Avatar
+ * @param {string} color - Color of Contact
+ * @param {string} initials - Initials of Contact
+ * @returns HTML
+ */
 function getAvatar(color, initials) {
   if (initials === "") {
     return `<img
