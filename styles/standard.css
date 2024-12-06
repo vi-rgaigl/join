@@ -41,7 +41,7 @@
   box-shadow: var(--box-shadow);
 }
 
-a:not([href^="mailto"]) {
+a {
   all: unset;
   cursor: pointer;
 }
@@ -69,7 +69,6 @@ form {
 }
 
 .input {
-  /* all: unset; */
   border: 1px solid var(--light-grey);
   background-color: var(--white);
   border-radius: 10px;

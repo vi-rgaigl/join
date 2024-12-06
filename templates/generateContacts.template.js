@@ -51,7 +51,7 @@ function generateContactDetailsHTML(contact) {
         </div>
         <p>Contact Information</p>
         <div class="contact-infos">
-            <p><b>Email:</b><a href="mailto:${contact.email}"> ${contact.email}</a></p>
+            <p><b>Email:</b><a class="link-mail" href="mailto:${contact.email}"> ${contact.email}</a></p>
             <p><b>Phone:</b> ${contact.phone}</p>
         </div>
         <div class="menü-button-mobile">
