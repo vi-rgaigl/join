@@ -11,7 +11,7 @@ function generateContactListHTML(groupedContacts) {
                     <div class="contact-initials" style="background-color:${color}">${initials}</div>
                     <div class="contact-item-info">
                       <p>${contact.name}</p>
-                      <p>${contact.email}</p>
+                      <p class="contact-list-mail">${contact.email}</p>
                     </div>
                 </div>
             `;
