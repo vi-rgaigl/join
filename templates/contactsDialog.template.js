@@ -52,7 +52,7 @@ function getEditContact(contact) {
   )}
               <div class="btn-add-contact">
                 <button class="button-white">Delete</button>
-                <button class="button-blue">Save
+                <button class="button-blue" onclick="saveEditedContact()">Save
                 <img
               class="img-btn"
               src="./assets/icons/checkWithoutCircle.svg"
