@@ -204,6 +204,11 @@
   font-size: 18px;
 }
 
+.contact-item-info {
+  margin: 0;
+  line-height: 0.4;
+}
+
 .contact-list-mail {
   color: #007CEE;
   font-size: 18px;
