@@ -22,7 +22,11 @@ function getNewContact() {
 ${getInputs()}
             <div class="btn-add-contact">
               <button class="button-white">Cancel</button>
-              <button class="button-blue">Create contact</button>
+              <button class="button-blue">Create contact
+              <img
+              class="img-btn"
+              src="./assets/icons/checkWithoutCircle.svg"
+            /></button>
             </div>
           </div>
         </div>
@@ -48,7 +52,12 @@ function getEditContact(contact) {
   )}
               <div class="btn-add-contact">
                 <button class="button-white">Delete</button>
-                <button class="button-blue">Save</button>
+                <button class="button-blue">Save
+                <img
+              class="img-btn"
+              src="./assets/icons/checkWithoutCircle.svg"
+            />
+            </button>
               </div>
             </div>
           </div>
