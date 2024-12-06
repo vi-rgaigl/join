@@ -41,7 +41,7 @@
   box-shadow: var(--box-shadow);
 }
 
-a {
+a:not([href^="mailto"]) {
   all: unset;
   cursor: pointer;
 }
