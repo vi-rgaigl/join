@@ -1,7 +1,10 @@
 let contactsList = [];
 let currentContactIndex = null;
 
-//function retrieves the data from the Firebase database
+/**
+ * Fetch the data from the Firebase database
+ * @returns List of all Contacts
+ */
 async function fetchContactsData() {
   try {
     let contacts = await getData("contacts");
@@ -16,7 +19,11 @@ async function fetchContactsData() {
   }
 }
 
-//groups the contacts according to the first letter
+/**
+ * Groups the contacts according to the first letter
+ * @param {[]} contacts - List of all Contacts
+ * @returns grouped list of all Contacts
+ */
 function groupContactsByInitial(contacts) {
   return contacts.reduce((grouped, contact) => {
     let initial = contact.name.charAt(0).toUpperCase();
@@ -28,10 +35,20 @@ function groupContactsByInitial(contacts) {
   }, {});
 }
 
+/**
+ * Sort the list by Name
+ * @param {[*]} contacts - List of all Contacts
+ * @returns Sorted list
+ */
 function sortContactsByName(contacts) {
   return contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
+/**
+ * Creat the Initials from Name of Contact
+ * @param {string} name - Name of Contact
+ * @returns Initials of Contact
+ */
 function getInitials(name) {
   return name
     .split(" ")
@@ -40,6 +57,10 @@ function getInitials(name) {
     .toUpperCase();
 }
 
+/**
+ * Generate a random RGB-Color
+ * @returns RGB-Color
+ */
 function getRandomColor() {
   let r = Math.floor(Math.random() * 128) + 128;
   let g = Math.floor(Math.random() * 128) + 128;
@@ -47,36 +68,33 @@ function getRandomColor() {
   return `rgb(${r}, ${g}, ${b})`;
 }
 
-//sorts and generates the list to display it
+/**
+ * Rendered the Contact list
+ */
 async function renderContactList() {
   let contacts = await fetchContactsData();
-  if (!contacts.length) return;
-
-  contactsList.length = 0;
   contactsList.push(...contacts);
-
   sortContactsByName(contacts);
   let groupedContacts = groupContactsByInitial(contacts);
   let html = generateContactListHTML(groupedContacts);
-
   document.getElementById("contactList").innerHTML = html;
 }
 
+/**
+ * Redered the Details of Contact
+ * @param {string} id - Id of contact
+ */
 async function showContactDetails(id) {
   let contact = await getContactById(id);
   if (!contact) {
     console.error("Kontakt nicht gefunden.");
     return;
   }
-
   let contactDetailsHTML = generateContactDetailsHTML(contact);
   let contactDetailsContainer = document.getElementById("current-contact");
-
   if (contactDetailsContainer) {
     contactDetailsContainer.classList.remove("slide-in-right");
-    let replayAnimationSlide = contactDetailsContainer.offsetWidth;
     contactDetailsContainer.classList.add("slide-in-right");
-
     contactDetailsContainer.innerHTML = contactDetailsHTML;
     document.getElementById("contactDetailsContainer").classList.add("active");
     toggleResponsiveView("details");
@@ -85,32 +103,37 @@ async function showContactDetails(id) {
   }
 }
 
-//neue Suchfunktion in einer JSON Struktur
+/**
+ * Find the Contact by Id
+ * @param {string} id - Id of contact
+ * @returns the Contact
+ */
 async function getContactById(id) {
-  let contacts = await getData("contacts");
-  let contact = contacts.find((contact) => contact.id === id);
-
-  return contact;
+  return contactsList.find((contact) => contact.id === id);
 }
 
-//loads the contact data and opens the edit dialog
+/**
+ * Loads the contact data and opens the edit dialog
+ * @param {string} id - Id of contact
+ */
 async function editContact(id) {
   let contact = await getContactById(id);
   if (!contact) {
     console.error("Kontakt nicht gefunden.");
     return;
   }
-
   currentContactIndex = contactsList.findIndex((contact) => contact.id === id);
   if (currentContactIndex === -1) {
     console.error("Aktueller Kontaktindex ist ungültig.");
     return;
   }
-
   openDialog("editContact", id);
 }
 
-//handleSaveContact takes over the main logic for saving a contact and then updates the contact list
+/**
+ * HandleSaveContact takes over the main logic for saving a contact and then updates the contact list
+ * @param {{}} updatedContact - Contact to updated
+ */
 async function handleSaveContact(updatedContact) {
   try {
     await changeData("contacts", updatedContact);
@@ -130,20 +153,19 @@ async function handleSaveContact(updatedContact) {
   }
 }
 
-//checks the current contact index and then calls handleSaveContact to save the contact
+/**
+ * Checks the current contact index and then calls handleSaveContact to save the contact
+ */
 async function saveEditedContact() {
   if (currentContactIndex === null || currentContactIndex === -1) {
     return console.error("Aktueller Kontaktindex ist ungültig.");
   }
-
   let nameElement = document.getElementById("name");
   let emailElement = document.getElementById("email");
   let phoneElement = document.getElementById("phone");
-
   if (!nameElement || !emailElement || !phoneElement) {
     return console.error("Ein oder mehrere Formularelemente fehlen.");
   }
-
   let updatedContact = {
     ...contactsList[currentContactIndex],
     name: nameElement.value.trim(),
@@ -152,11 +174,12 @@ async function saveEditedContact() {
     color: contactsList[currentContactIndex].color,
     initials: getInitials(nameElement.value.trim()),
   };
-
   handleSaveContact(updatedContact);
 }
 
-//saves the data in the database
+/**
+ * saves the data in the database
+ */
 async function saveNewContact() {
   let name = document.getElementById("name").value.trim();
   let email = document.getElementById("email").value.trim();
@@ -190,6 +213,10 @@ async function saveNewContact() {
   }
 }
 
+/**
+ * Delete the Contact
+ * @param {string} id - Id of Contact
+ */
 async function deleteContact(id) {
   for (let i = 0; i < contactsList.length; i++) {
     if (contactsList[i].id === id) {
@@ -197,13 +224,11 @@ async function deleteContact(id) {
       break;
     }
   }
-
   let contactId = contactsList[currentContactIndex].id;
   try {
     await deleteData("contacts", { id: contactId });
     contactsList.splice(currentContactIndex, 1);
     document.getElementById("current-contact").innerHTML = "";
-
     renderContactList();
     await showPopupMessage("signup-popup-message", "Contact was deleted");
   } catch (error) {
@@ -211,6 +236,9 @@ async function deleteContact(id) {
   }
 }
 
+/**
+ * Clear the Form
+ */
 function clearForm() {
   let nameElement = document.getElementById("name");
   let emailElement = document.getElementById("email");
@@ -221,12 +249,20 @@ function clearForm() {
   if (phoneElement) phoneElement.value = "";
 }
 
+/**
+ * Open the Dialag
+ * @param {string} type - Type of Dialog
+ * @param {string} id - Id of Contact
+ */
 async function openDialog(type, id) {
   let boardDialogRef = document.getElementById("contactDialog");
   boardDialogRef.innerHTML = getTemplateDialog(type, await getContactById(id));
   boardDialogRef.showModal();
 }
 
+/**
+ * Close the Dialog
+ */
 function closeDialog() {
   let boardDialogRef = document.getElementById("contactDialog");
   boardDialogRef.classList.add("hide");
@@ -245,6 +281,10 @@ function closeDialog() {
   );
 }
 
+/**
+ * Change the mode of View
+ * @param {string} mode - Mode of View
+ */
 function toggleResponsiveView(mode) {
   let backBtn = document.querySelector(".back-btn");
   let contactListContainer = document.getElementById("contactListContainer");
@@ -262,6 +302,9 @@ function toggleResponsiveView(mode) {
   }
 }
 
+/**
+ * Eventlistener for resize site
+ */
 addEventListener("resize", (event) => {
   if (event.target.innerWidth > 635) {
     document.querySelector(".back-btn").classList.remove("active");
@@ -271,112 +314,3 @@ addEventListener("resize", (event) => {
       .classList.remove("d_block");
   }
 });
-
-// function backToContactList() {
-//   let contactListContainer = document.getElementById("contactListContainer");
-//   let contactDetailsContainer = document.getElementById(
-//     "contactDetailsContainer"
-//   );
-
-//   contactListContainer.style.display = "block";
-//   contactDetailsContainer.style.display = "none";
-//   toggleResponsiveView("list");
-// }
-
-// function addCloseBtnToDialog() {
-//   let closeAddBtn = document.getElementById("closeAddBtn");
-//   let closeEditBtn = document.getElementById("closeEditBtn");
-
-//   if (closeAddBtn && !closeAddBtn.dataset.listenerAdded) {
-//     closeAddBtn.addEventListener("click", closeDialog);
-//     closeAddBtn.dataset.listenerAdded = "true";
-//   } else if (!closeAddBtn) {
-//     console.error(
-//       "Close-Button für Add-Dialog nicht gefunden oder Listener bereits hinzugefügt."
-//     );
-//   }
-
-//   if (closeEditBtn && !closeEditBtn.dataset.listenerAdded) {
-//     closeEditBtn.addEventListener("click", closeEditDialog);
-//     closeEditBtn.dataset.listenerAdded = "true";
-//   } else if (!closeEditBtn) {
-//     console.error(
-//       "Close-Button für Edit-Dialog nicht gefunden oder Listener bereits hinzugefügt."
-//     );
-//   }
-// }
-
-// function openAddContactDialog() {
-//   let dialog = document.getElementById("addContactDialog");
-//   if (dialog) {
-//     dialog.classList.remove("slide-out-right");
-//     dialog.classList.add("slide-in-right");
-//     dialog.classList.add("show");
-//     dialog.style.display = "flex";
-
-//     addCloseBtnToDialog();
-//   }
-// }
-
-/**
- * closes the dialog
- *
- */
-// function closeDialog() {
-//   let dialog = document.getElementById("addContactDialog");
-//   if (dialog) {
-//     dialog.classList.remove("slide-in-right");
-//     dialog.classList.add("slide-out-right");
-
-//     setTimeout(() => {
-//       dialog.style.display = "none";
-//       dialog.classList.remove("slide-out-right");
-//     }, 300);
-
-//     clearForm();
-//   } else {
-//     console.error("Element mit ID 'addContactDialog' nicht gefunden.");
-//   }
-// }
-
-// function fillContactForm(contact) {
-//   let nameElement = document.getElementById("error-contact-edit-name-input");
-//   let emailElement = document.getElementById("error-contact-edit-email-input");
-//   let phoneElement = document.getElementById("error-contact-edit-phone-input");
-
-//   if (nameElement && emailElement && phoneElement) {
-//     nameElement.value = contact.name;
-//     emailElement.value = contact.email;
-//     phoneElement.value = contact.phone;
-//     return true;
-//   }
-// }
-
-// function openEditContactDialog() {
-//   let dialog = document.getElementById("editContactDialog");
-//   if (dialog) {
-//     dialog.classList.remove("slide-out-right");
-//     dialog.classList.add("slide-in-right");
-//     dialog.classList.add("show");
-//     dialog.style.display = "flex";
-
-//     addCloseBtnToDialog();
-//   } else {
-//     console.error("Dialog mit ID 'editContactDialog' nicht gefunden.");
-//   }
-// }
-
-// function closeEditDialog() {
-//   let dialog = document.getElementById("editContactDialog");
-//   if (dialog) {
-//     dialog.classList.remove("slide-in-right");
-//     dialog.classList.add("slide-out-right");
-
-//     setTimeout(() => {
-//       dialog.style.display = "none";
-//       dialog.classList.remove("slide-out-right");
-//     }, 300);
-//   } else {
-//     console.error("Element mit ID 'editContactDialog' nicht gefunden.");
-//   }
-// }
