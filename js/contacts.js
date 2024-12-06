@@ -194,6 +194,10 @@ async function saveNewContact() {
     await pushData("contacts", newContact);
     contactsList.push(newContact);
     renderContactList();
+    await showPopupMessage(
+      "signup-popup-message",
+      "Contact succesfully created "
+    );
     closeDialog();
   } catch (error) {
     console.error("Error saving new contact:", error);
@@ -216,7 +220,7 @@ async function deleteContact(id) {
     document.getElementById("current-contact").innerHTML = "";
 
     renderContactList();
-    await showPopupMessage("signup-popup-message", "Contact was deleted!");
+    await showPopupMessage("signup-popup-message", "Contact was deleted");
   } catch (error) {
     console.error("Fehler beim Löschen des Kontakts:", error);
   }
