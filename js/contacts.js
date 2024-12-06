@@ -128,6 +128,10 @@ async function editContact(id) {
 async function handleSaveContact(updatedContact) {
   try {
     await changeData("contacts", updatedContact);
+    await showPopupMessage(
+      "signup-popup-message",
+      "Contact succesfully changed "
+    );
     contactsList[currentContactIndex] = updatedContact;
     renderContactList();
     document.getElementById("current-contact").innerHTML = "";
