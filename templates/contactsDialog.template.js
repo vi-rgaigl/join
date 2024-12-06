@@ -21,7 +21,7 @@ function getNewContact() {
         </div>
 ${getInputs()}
             <div class="btn-add-contact">
-              <button class="button-white">Cancel</button>
+              <button class="button-white" onclick="closeDialog()">Cancel</button>
               <button class="button-blue" onclick="saveNewContact()">Create contact
               <img
               class="img-btn"
