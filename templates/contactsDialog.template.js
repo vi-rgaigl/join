@@ -22,7 +22,7 @@ function getNewContact() {
 ${getInputs()}
             <div class="btn-add-contact">
               <button class="button-white">Cancel</button>
-              <button class="button-blue">Create contact
+              <button class="button-blue" onclick="saveNewContact()">Create contact
               <img
               class="img-btn"
               src="./assets/icons/checkWithoutCircle.svg"
