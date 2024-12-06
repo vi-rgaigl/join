@@ -121,12 +121,7 @@ async function editContact(id) {
     return;
   }
 
-  if (!fillContactForm(contact)) {
-    console.error("Ein oder mehrere Formularelemente fehlen.");
-    return;
-  }
-
-  // openEditContactDialog();
+  openDialog("editContact", id);
 }
 
 //handleSaveContact takes over the main logic for saving a contact and then updates the contact list
@@ -151,9 +146,9 @@ async function saveEditedContact() {
     return console.error("Aktueller Kontaktindex ist ungültig.");
   }
 
-  let nameElement = document.getElementById("error-contact-edit-name-input");
-  let emailElement = document.getElementById("error-contact-edit-email-input");
-  let phoneElement = document.getElementById("error-contact-edit-phone-input");
+  let nameElement = document.getElementById("name");
+  let emailElement = document.getElementById("email");
+  let phoneElement = document.getElementById("phone");
 
   if (!nameElement || !emailElement || !phoneElement) {
     return console.error("Ein oder mehrere Formularelemente fehlen.");
