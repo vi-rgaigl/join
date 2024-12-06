@@ -2,6 +2,14 @@
   overflow: hidden;
 }
 
+.d_none {
+  display: none !important;
+}
+
+.d_block {
+  display: block !important;
+}
+
 /* Container-Style */
 .contacts-container {
   max-width: var(--app-max-width);

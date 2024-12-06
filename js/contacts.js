@@ -138,7 +138,6 @@ async function handleSaveContact(updatedContact) {
     await changeData("contacts", updatedContact);
     contactsList[currentContactIndex] = updatedContact;
     renderContactList();
-    closeEditDialog();
     document.getElementById("current-contact").innerHTML = "";
     document
       .getElementById("contactDetailsContainer")
@@ -236,10 +235,6 @@ function clearForm() {
   if (phoneElement) phoneElement.value = "";
 }
 
-/**
- * JS für Dialog Niko
- */
-
 async function openDialog(type, id) {
   let boardDialogRef = document.getElementById("contactDialog");
   boardDialogRef.innerHTML = getTemplateDialog(type, await getContactById(id));
@@ -271,26 +266,36 @@ function toggleResponsiveView(mode) {
     "contactDetailsContainer"
   );
   if (mode === "details" && window.innerWidth <= 635) {
-    contactListContainer.style.display = "none";
-    contactDetailsContainer.style.display = "block";
+    contactListContainer.classList.add("d_none");
+    contactDetailsContainer.classList.add("d_block");
     if (backBtn) backBtn.classList.add("active");
-  } else if (window.innerWidth <= 635) {
-    contactListContainer.style.display = "block";
-    contactDetailsContainer.style.display = "none";
+  } else if (mode === "list" && window.innerWidth <= 635) {
+    contactListContainer.classList.remove("d_none");
+    contactDetailsContainer.classList.remove("d_block");
     if (backBtn) backBtn.classList.remove("active");
   }
 }
 
-function backToContactList() {
-  let contactListContainer = document.getElementById("contactListContainer");
-  let contactDetailsContainer = document.getElementById(
-    "contactDetailsContainer"
-  );
+addEventListener("resize", (event) => {
+  if (event.target.innerWidth > 635) {
+    document.querySelector(".back-btn").classList.remove("active");
+    document.getElementById("contactListContainer").classList.remove("d_none");
+    document
+      .getElementById("contactDetailsContainer")
+      .classList.remove("d_block");
+  }
+});
 
-  contactListContainer.style.display = "block";
-  contactDetailsContainer.style.display = "none";
-  toggleResponsiveView("list");
-}
+// function backToContactList() {
+//   let contactListContainer = document.getElementById("contactListContainer");
+//   let contactDetailsContainer = document.getElementById(
+//     "contactDetailsContainer"
+//   );
+
+//   contactListContainer.style.display = "block";
+//   contactDetailsContainer.style.display = "none";
+//   toggleResponsiveView("list");
+// }
 
 // function addCloseBtnToDialog() {
 //   let closeAddBtn = document.getElementById("closeAddBtn");
