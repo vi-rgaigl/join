@@ -1,0 +1,120 @@
+#contactDialog {
+  border-radius: 30px;
+  background-color: white;
+  border: none;
+  box-shadow: 0px 0px 4px 0px #00000029;
+  padding: 0;
+  overflow: hidden;
+}
+
+#contactDialog:focus-visible {
+  outline: none;
+}
+
+dialog[open] {
+  animation: show 0.4s ease-out normal;
+}
+
+@keyframes show {
+  from {
+    transform: translateX(600%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+dialog.hide {
+  animation: hide 1s ease-out normal;
+}
+
+@keyframes hide {
+  to {
+    transform: translateX(600%);
+  }
+}
+
+.dialog {
+  display: flex;
+  flex-direction: row;
+  background-color: #ffffff;
+  height: 500px;
+}
+
+.contact-add-form-area {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  color: white;
+  background-color: var(--dark-blue);
+}
+
+.contact-add-form-area h1 {
+  margin-bottom: 10px;
+}
+
+.contact-add-form-area p {
+  font-size: 16px;
+  margin: 0;
+}
+
+.form-content-add-contact {
+  display: flex;
+  align-items: center;
+  padding-right: 24px;
+}
+
+.img-logo-add-contact {
+  display: flex;
+  align-items: flex-start;
+  width: 55px;
+  height: 66px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 45px;
+  right: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.edit-initials,
+.img-add-contact {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+  margin: 0px 48px;
+}
+
+.edit-initials {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 48px;
+  font-weight: 400;
+}
+
+.btn-add-contact {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  width: 350px;
+  margin-top: 24px;
+  cursor: pointer;
+}
+
+.blue-underline {
+  width: 18%;
+  height: 3px;
+  background-color: var(--light-blue);
+  margin: 10px 0;
+}

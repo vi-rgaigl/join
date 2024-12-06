@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./styles/standard.css" />
     <link rel="stylesheet" href="./styles/navBarHeader.css" />
     <link rel="stylesheet" href="./styles/contacts.css" />
+    <link rel="stylesheet" href="./styles/contentDialog.css" />
 
     <script src="./js/remoteStorage.js"></script>
     <script src="./js/localStorage.js"></script>
@@ -23,10 +24,11 @@
     <script src="./js/contacts.js"></script>
     <script src="./templates/generateContacts.template.js"></script>
     <script src="./templates/responsiveView.js"></script>
+    <script src="./templates/contactsDialog.template.js"></script>
     <script src="./script.js"></script>
   </head>
 
-  <body onload="init(4); renderContactList();">
+  <body onload="init(4); renderContactList()">
     <div class="application-main">
       <div id="navbar-container" class="navbar-container"></div>
 
@@ -40,7 +42,7 @@
               <button
                 id="addContact"
                 type="button"
-                onclick="openAddContactDialog()"
+                onclick="openDialog('newContact')"
                 class="button-blue add-new-contact-btn"
               >
                 Add new Contact
@@ -53,7 +55,7 @@
             </div>
             <div
               class="menü-button-mobile hover"
-              onclick="openAddContactDialog()"
+              onclick="openDialog('newContact')"
             >
               <img
                 id="addPerson"
@@ -90,7 +92,9 @@
     </div>
     <div id="navbar-container-mobile" class="navbar-container-mobile"></div>
 
-    <div id="overlay" class="overlay">
+    <dialog id="contactDialog"></dialog>
+
+    <!-- <div id="overlay" class="overlay">
       <div
         id="addContactDialog"
         class="dialog slide-in-right"
@@ -152,10 +156,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- dialog for editing the contact -->
-    <div id="edit-overlay" class="overlay">
+    <!-- <div id="edit-overlay" class="overlay">
       <div
         id="editContactDialog"
         class="dialog slide-in-right"
@@ -213,6 +217,6 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </body>
 </html>
