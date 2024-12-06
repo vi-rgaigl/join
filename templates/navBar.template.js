@@ -1,9 +1,9 @@
 function getNavbarTemplate(mobile) {
-    return /*html*/ `
+  return /*html*/ `<div class="navbar-main">
         <div id="navbar_logo" class="navbar-logo">
             <img class="navbar-logo-img" src="./assets/icons/logo-white-small.svg" onclick="window.open('./summaryUser.html','_self')" alt="Join Logo">
         </div>
-        <div class="navbar-main">
+        
             <div class="navbar-menu">
                 <div id="navbar-menu-${mobile}1" class="navbar-menu-item" onclick="window.open('./summaryUser.html','_self')">
                     <img class="navbar-menu-item-img" src="./assets/icons/summary-icon.svg" alt="Summary">
@@ -34,13 +34,13 @@ function getNavbarTemplate(mobile) {
     `;
 }
 
-
 function getNavbarNoLoginTemplate() {
-    return /*html*/ `
+  return /*html*/ `
+        
+        <div class="navbar-main-nologin">
         <div id="navbar_logo" class="navbar-logo">
             <img class="navbar-logo-img" src="./assets/icons/logo-white-small.svg" onclick="window.open('./summaryUser.html','_self')" alt="Join Logo">
         </div>
-        <div class="navbar-main-nologin">
             <div class="navbar-footer-link">
             <div id="navbar-menu-5" class="navbar-menu-item">
                     <a class="a-link" href="./privacyPolicyNoLogin.html">Privacy Policy</a>
