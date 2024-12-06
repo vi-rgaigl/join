@@ -160,21 +160,20 @@ async function saveEditedContact() {
   if (currentContactIndex === null || currentContactIndex === -1) {
     return console.error("Aktueller Kontaktindex ist ungültig.");
   }
-  let nameElement = document.getElementById("name");
-  let emailElement = document.getElementById("email");
-  let phoneElement = document.getElementById("phone");
-  if (!nameElement || !emailElement || !phoneElement) {
-    return console.error("Ein oder mehrere Formularelemente fehlen.");
+  let name = document.getElementById("name").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let phone = document.getElementById("phone").value.trim();
+  if (checkEmailRegex(email) || checkName(name)) {
+    let updatedContact = {
+      ...contactsList[currentContactIndex],
+      name: name,
+      email: email,
+      phone: phone,
+      color: contactsList[currentContactIndex].color,
+      initials: getInitials(name),
+    };
+    handleSaveContact(updatedContact);
   }
-  let updatedContact = {
-    ...contactsList[currentContactIndex],
-    name: nameElement.value.trim(),
-    email: emailElement.value.trim(),
-    phone: phoneElement.value.trim(),
-    color: contactsList[currentContactIndex].color,
-    initials: getInitials(nameElement.value.trim()),
-  };
-  handleSaveContact(updatedContact);
 }
 
 /**
@@ -184,20 +183,71 @@ async function saveNewContact() {
   let name = document.getElementById("name").value.trim();
   let email = document.getElementById("email").value.trim();
   let phone = document.getElementById("phone").value.trim();
-
-  if (!name || !email || !phone) {
-    alert("Please fill out all fields.");
-    return;
+  if (checkEmailRegex(email) || checkName(name)) {
+    let newContact = {
+      name: name,
+      email: email,
+      phone: phone,
+      color: getRandomColor(),
+      initials: getInitials(name),
+    };
+    await pushToFirebase(newContact);
   }
+}
 
-  let newContact = {
-    name: name,
-    email: email,
-    phone: phone,
-    color: getRandomColor(),
-    initials: getInitials(name),
-  };
+/**
+ * Checks if the email matches the required pattern.
+ *
+ * @param {string} email - The email to check.
+ * @returns {boolean} True if the email matches the pattern, false otherwise.
+ */
+function checkEmailRegex(email) {
+  let emailRegex =
+    /^(?!.*\.\.)[\-A-Za-z0-9_][\-A-Za-z0-9_\.]+[\-A-Za-z0-9]@[\-A-Za-z0-9][\-A-Za-z0-9_]+\.[A-Za-z]{2,4}/;
+  if (emailRegex.test(email)) {
+    return true;
+  }
+  {
+    setErrorMessage("email", "Please enter a valid email address.");
+    return false;
+  }
+}
 
+/**
+ * Checks if the password matches the required pattern.
+ *
+ * @param {string} password - The password to check.
+ * @returns {boolean} True if the password matches the pattern (at least 8 char, 1 Uppercase, 1 digit, 1 special char), false otherwise.
+ */
+function checkName(name) {
+  if (name != "") {
+    return true;
+  }
+  {
+    setErrorMessage("name", "This field ist requiered.");
+    return false;
+  }
+}
+
+/**
+ * Sets an error message for a specified element.
+ *
+ * @param {string} elementId - The ID of the element where the error message will be displayed.
+ * @param {string} message - The error message to display.
+ */
+function setErrorMessage(id, message) {
+  let errorMessage = document.getElementById(`error-contact-${id}`);
+  errorMessage.textContent = message;
+  if ((errorBorder = document.getElementById(`${id}`))) {
+    errorBorder.classList.add("inputError");
+  }
+}
+
+/**
+ * Push contact to Firebase
+ * @param {{}} newContact - New Contact
+ */
+async function pushToFirebase(newContact) {
   try {
     await pushData("contacts", newContact);
     contactsList.push(newContact);
