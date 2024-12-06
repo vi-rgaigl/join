@@ -9,7 +9,10 @@ function generateContactListHTML(groupedContacts) {
       html += `
                 <div class="contact-item" onclick="showContactDetails('${contact.id}')">
                     <div class="contact-initials" style="background-color:${color}">${initials}</div>
-                    <p>${contact.name}</p>
+                    <div class="contact-item-info">
+                      <p>${contact.name}</p>
+                      <p>${contact.email}</p>
+                    </div>
                 </div>
             `;
     });
