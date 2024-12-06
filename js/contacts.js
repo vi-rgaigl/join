@@ -110,62 +110,6 @@ async function addContact() {
   }
 }
 
-// function addCloseBtnToDialog() {
-//   let closeAddBtn = document.getElementById("closeAddBtn");
-//   let closeEditBtn = document.getElementById("closeEditBtn");
-
-//   if (closeAddBtn && !closeAddBtn.dataset.listenerAdded) {
-//     closeAddBtn.addEventListener("click", closeDialog);
-//     closeAddBtn.dataset.listenerAdded = "true";
-//   } else if (!closeAddBtn) {
-//     console.error(
-//       "Close-Button für Add-Dialog nicht gefunden oder Listener bereits hinzugefügt."
-//     );
-//   }
-
-//   if (closeEditBtn && !closeEditBtn.dataset.listenerAdded) {
-//     closeEditBtn.addEventListener("click", closeEditDialog);
-//     closeEditBtn.dataset.listenerAdded = "true";
-//   } else if (!closeEditBtn) {
-//     console.error(
-//       "Close-Button für Edit-Dialog nicht gefunden oder Listener bereits hinzugefügt."
-//     );
-//   }
-// }
-
-// function openAddContactDialog() {
-//   let dialog = document.getElementById("addContactDialog");
-//   if (dialog) {
-//     dialog.classList.remove("slide-out-right");
-//     dialog.classList.add("slide-in-right");
-//     dialog.classList.add("show");
-//     dialog.style.display = "flex";
-
-//     addCloseBtnToDialog();
-//   }
-// }
-
-/**
- * closes the dialog
- *
- */
-// function closeDialog() {
-//   let dialog = document.getElementById("addContactDialog");
-//   if (dialog) {
-//     dialog.classList.remove("slide-in-right");
-//     dialog.classList.add("slide-out-right");
-
-//     setTimeout(() => {
-//       dialog.style.display = "none";
-//       dialog.classList.remove("slide-out-right");
-//     }, 300);
-
-//     clearForm();
-//   } else {
-//     console.error("Element mit ID 'addContactDialog' nicht gefunden.");
-//   }
-// }
-
 //loads the contact data and opens the edit dialog
 async function editContact(id) {
   let contact = await getContactById(id);
@@ -187,48 +131,6 @@ async function editContact(id) {
 
   // openEditContactDialog();
 }
-
-// function fillContactForm(contact) {
-//   let nameElement = document.getElementById("error-contact-edit-name-input");
-//   let emailElement = document.getElementById("error-contact-edit-email-input");
-//   let phoneElement = document.getElementById("error-contact-edit-phone-input");
-
-//   if (nameElement && emailElement && phoneElement) {
-//     nameElement.value = contact.name;
-//     emailElement.value = contact.email;
-//     phoneElement.value = contact.phone;
-//     return true;
-//   }
-// }
-
-// function openEditContactDialog() {
-//   let dialog = document.getElementById("editContactDialog");
-//   if (dialog) {
-//     dialog.classList.remove("slide-out-right");
-//     dialog.classList.add("slide-in-right");
-//     dialog.classList.add("show");
-//     dialog.style.display = "flex";
-
-//     addCloseBtnToDialog();
-//   } else {
-//     console.error("Dialog mit ID 'editContactDialog' nicht gefunden.");
-//   }
-// }
-
-// function closeEditDialog() {
-//   let dialog = document.getElementById("editContactDialog");
-//   if (dialog) {
-//     dialog.classList.remove("slide-in-right");
-//     dialog.classList.add("slide-out-right");
-
-//     setTimeout(() => {
-//       dialog.style.display = "none";
-//       dialog.classList.remove("slide-out-right");
-//     }, 300);
-//   } else {
-//     console.error("Element mit ID 'editContactDialog' nicht gefunden.");
-//   }
-// }
 
 //handleSaveContact takes over the main logic for saving a contact and then updates the contact list
 async function handleSaveContact(updatedContact) {
@@ -361,3 +263,129 @@ function closeDialog() {
     false
   );
 }
+
+function toggleResponsiveView(mode) {
+  let backBtn = document.querySelector(".back-btn");
+  let contactListContainer = document.getElementById("contactListContainer");
+  let contactDetailsContainer = document.getElementById(
+    "contactDetailsContainer"
+  );
+  if (mode === "details" && window.innerWidth <= 635) {
+    contactListContainer.style.display = "none";
+    contactDetailsContainer.style.display = "block";
+    if (backBtn) backBtn.classList.add("active");
+  } else if (window.innerWidth <= 635) {
+    contactListContainer.style.display = "block";
+    contactDetailsContainer.style.display = "none";
+    if (backBtn) backBtn.classList.remove("active");
+  }
+}
+
+function backToContactList() {
+  let contactListContainer = document.getElementById("contactListContainer");
+  let contactDetailsContainer = document.getElementById(
+    "contactDetailsContainer"
+  );
+
+  contactListContainer.style.display = "block";
+  contactDetailsContainer.style.display = "none";
+  toggleResponsiveView("list");
+}
+
+// function addCloseBtnToDialog() {
+//   let closeAddBtn = document.getElementById("closeAddBtn");
+//   let closeEditBtn = document.getElementById("closeEditBtn");
+
+//   if (closeAddBtn && !closeAddBtn.dataset.listenerAdded) {
+//     closeAddBtn.addEventListener("click", closeDialog);
+//     closeAddBtn.dataset.listenerAdded = "true";
+//   } else if (!closeAddBtn) {
+//     console.error(
+//       "Close-Button für Add-Dialog nicht gefunden oder Listener bereits hinzugefügt."
+//     );
+//   }
+
+//   if (closeEditBtn && !closeEditBtn.dataset.listenerAdded) {
+//     closeEditBtn.addEventListener("click", closeEditDialog);
+//     closeEditBtn.dataset.listenerAdded = "true";
+//   } else if (!closeEditBtn) {
+//     console.error(
+//       "Close-Button für Edit-Dialog nicht gefunden oder Listener bereits hinzugefügt."
+//     );
+//   }
+// }
+
+// function openAddContactDialog() {
+//   let dialog = document.getElementById("addContactDialog");
+//   if (dialog) {
+//     dialog.classList.remove("slide-out-right");
+//     dialog.classList.add("slide-in-right");
+//     dialog.classList.add("show");
+//     dialog.style.display = "flex";
+
+//     addCloseBtnToDialog();
+//   }
+// }
+
+/**
+ * closes the dialog
+ *
+ */
+// function closeDialog() {
+//   let dialog = document.getElementById("addContactDialog");
+//   if (dialog) {
+//     dialog.classList.remove("slide-in-right");
+//     dialog.classList.add("slide-out-right");
+
+//     setTimeout(() => {
+//       dialog.style.display = "none";
+//       dialog.classList.remove("slide-out-right");
+//     }, 300);
+
+//     clearForm();
+//   } else {
+//     console.error("Element mit ID 'addContactDialog' nicht gefunden.");
+//   }
+// }
+
+// function fillContactForm(contact) {
+//   let nameElement = document.getElementById("error-contact-edit-name-input");
+//   let emailElement = document.getElementById("error-contact-edit-email-input");
+//   let phoneElement = document.getElementById("error-contact-edit-phone-input");
+
+//   if (nameElement && emailElement && phoneElement) {
+//     nameElement.value = contact.name;
+//     emailElement.value = contact.email;
+//     phoneElement.value = contact.phone;
+//     return true;
+//   }
+// }
+
+// function openEditContactDialog() {
+//   let dialog = document.getElementById("editContactDialog");
+//   if (dialog) {
+//     dialog.classList.remove("slide-out-right");
+//     dialog.classList.add("slide-in-right");
+//     dialog.classList.add("show");
+//     dialog.style.display = "flex";
+
+//     addCloseBtnToDialog();
+//   } else {
+//     console.error("Dialog mit ID 'editContactDialog' nicht gefunden.");
+//   }
+// }
+
+// function closeEditDialog() {
+//   let dialog = document.getElementById("editContactDialog");
+//   if (dialog) {
+//     dialog.classList.remove("slide-in-right");
+//     dialog.classList.add("slide-out-right");
+
+//     setTimeout(() => {
+//       dialog.style.display = "none";
+//       dialog.classList.remove("slide-out-right");
+//     }, 300);
+//   } else {
+//     console.error("Element mit ID 'editContactDialog' nicht gefunden.");
+//   }
+// }
