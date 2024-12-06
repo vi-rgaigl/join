@@ -66,7 +66,7 @@ async function pushData(endpoint, data) {
  */
 async function changeData(endpoint, data) {
   let url = `${Base_URL}${endpoint}/${data.id}.json`;
-  delete data.id;
+  // delete data.id;
   try {
     await fetch(url, {
       method: "PUT",
