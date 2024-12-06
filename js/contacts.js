@@ -163,9 +163,10 @@ async function saveEditedContact() {
   let name = document.getElementById("name").value.trim();
   let email = document.getElementById("email").value.trim();
   let phone = document.getElementById("phone").value.trim();
-  if (checkEmailRegex(email) || checkName(name)) {
+  let nameCorrect = checkName(name);
+  let mailCorrect = checkEmailRegex(email);
+  if (nameCorrect && mailCorrect) {
     let updatedContact = {
-      ...contactsList[currentContactIndex],
       name: name,
       email: email,
       phone: phone,
@@ -183,7 +184,9 @@ async function saveNewContact() {
   let name = document.getElementById("name").value.trim();
   let email = document.getElementById("email").value.trim();
   let phone = document.getElementById("phone").value.trim();
-  if (checkEmailRegex(email) || checkName(name)) {
+  let nameCorrect = checkName(name);
+  let mailCorrect = checkEmailRegex(email);
+  if (nameCorrect && mailCorrect) {
     let newContact = {
       name: name,
       email: email,
@@ -205,6 +208,7 @@ function checkEmailRegex(email) {
   let emailRegex =
     /^(?!.*\.\.)[\-A-Za-z0-9_][\-A-Za-z0-9_\.]+[\-A-Za-z0-9]@[\-A-Za-z0-9][\-A-Za-z0-9_]+\.[A-Za-z]{2,4}/;
   if (emailRegex.test(email)) {
+    clearErrorMessage("email");
     return true;
   }
   {
@@ -221,6 +225,7 @@ function checkEmailRegex(email) {
  */
 function checkName(name) {
   if (name != "") {
+    clearErrorMessage("name");
     return true;
   }
   {
@@ -240,6 +245,18 @@ function setErrorMessage(id, message) {
   errorMessage.textContent = message;
   if ((errorBorder = document.getElementById(`${id}`))) {
     errorBorder.classList.add("inputError");
+  }
+}
+
+/**
+ * Clears the error message for a specified element.
+ *
+ * @param {string} elementId - The ID of the element where the error message will be cleared.
+ */
+function clearErrorMessage(id) {
+  document.getElementById(`error-contact-${id}`).textContent = "";
+  if ((errorBorder = document.getElementById(`${id}`))) {
+    errorBorder.classList.remove("inputError");
   }
 }
 
