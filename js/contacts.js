@@ -93,23 +93,6 @@ async function getContactById(id) {
   return contact;
 }
 
-async function addContact() {
-  let newContact = {
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    phone: document.getElementById("phone").value,
-    color: document.getElementById("color").value,
-  };
-
-  try {
-    await pushData("contacts", newContact);
-    contactsList.push(newContact);
-    renderContactList();
-  } catch (error) {
-    console.error("Fehler beim Hinzufügen des Kontakts:", error);
-  }
-}
-
 //loads the contact data and opens the edit dialog
 async function editContact(id) {
   let contact = await getContactById(id);
@@ -124,18 +107,17 @@ async function editContact(id) {
     return;
   }
 
-  if (!fillContactForm(contact)) {
-    console.error("Ein oder mehrere Formularelemente fehlen.");
-    return;
-  }
-
-  // openEditContactDialog();
+  openDialog("editContact", id);
 }
 
 //handleSaveContact takes over the main logic for saving a contact and then updates the contact list
 async function handleSaveContact(updatedContact) {
   try {
     await changeData("contacts", updatedContact);
+    await showPopupMessage(
+      "signup-popup-message",
+      "Contact succesfully changed "
+    );
     contactsList[currentContactIndex] = updatedContact;
     renderContactList();
     document.getElementById("current-contact").innerHTML = "";
@@ -154,9 +136,9 @@ async function saveEditedContact() {
     return console.error("Aktueller Kontaktindex ist ungültig.");
   }
 
-  let nameElement = document.getElementById("error-contact-edit-name-input");
-  let emailElement = document.getElementById("error-contact-edit-email-input");
-  let phoneElement = document.getElementById("error-contact-edit-phone-input");
+  let nameElement = document.getElementById("name");
+  let emailElement = document.getElementById("email");
+  let phoneElement = document.getElementById("phone");
 
   if (!nameElement || !emailElement || !phoneElement) {
     return console.error("Ein oder mehrere Formularelemente fehlen.");
@@ -197,6 +179,10 @@ async function saveNewContact() {
     await pushData("contacts", newContact);
     contactsList.push(newContact);
     renderContactList();
+    await showPopupMessage(
+      "signup-popup-message",
+      "Contact succesfully created "
+    );
     closeDialog();
   } catch (error) {
     console.error("Error saving new contact:", error);
@@ -219,7 +205,7 @@ async function deleteContact(id) {
     document.getElementById("current-contact").innerHTML = "";
 
     renderContactList();
-    await showPopupMessage("signup-popup-message", "Contact was deleted!");
+    await showPopupMessage("signup-popup-message", "Contact was deleted");
   } catch (error) {
     console.error("Fehler beim Löschen des Kontakts:", error);
   }

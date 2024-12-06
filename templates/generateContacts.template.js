@@ -27,7 +27,7 @@ function generateContactDetailsHTML(contact) {
                 </div>
                 <div class="contact-actions-container">
                     <div class="contact-actions">
-                        <div class="action-item" onclick="openDialog('editContact', '${contact.id}')">
+                        <div class="action-item" onclick="editContact('${contact.id}')">
                             <img src="./assets/icons/edit.svg" alt="Edit"> <span>Edit</span>
                         </div>
                         <div class="action-item" onclick="deleteContact('${contact.id}')">
@@ -49,7 +49,7 @@ function generateContactDetailsHTML(contact) {
                 class="icon"
               />
               <div class="card-menue">
-                <div class="action-item-mobile" onclick="openDialog('editContact', '${contact.id}')">
+                <div class="action-item-mobile" onclick="editContact('${contact.id}')">
                   <span>Edit</span>
                   <img src="./assets/icons/edit.svg" alt="Edit" />
                 </div>
