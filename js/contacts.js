@@ -87,24 +87,10 @@ async function showContactDetails(id) {
 
 //neue Suchfunktion in einer JSON Struktur
 async function getContactById(id) {
-  return contactsList.find((contact) => contact.id === id);
-}
+  let contacts = await getData("contacts");
+  let contact = contacts.find((contact) => contact.id === id);
 
-async function addContact() {
-  let newContact = {
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    phone: document.getElementById("phone").value,
-    color: document.getElementById("color").value,
-  };
-
-  try {
-    await pushData("contacts", newContact);
-    contactsList.push(newContact);
-    renderContactList();
-  } catch (error) {
-    console.error("Fehler beim Hinzufügen des Kontakts:", error);
-  }
+  return contact;
 }
 
 //loads the contact data and opens the edit dialog
