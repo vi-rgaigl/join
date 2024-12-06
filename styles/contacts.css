@@ -168,6 +168,10 @@
   margin: 10px 0;
 } */
 
+.alphabet-header{
+  margin-left: 15px;
+}
+
 /* contact-element */
 .contact-item {
   display: flex;
