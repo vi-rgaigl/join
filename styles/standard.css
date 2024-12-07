@@ -190,6 +190,7 @@ input[type="call"] {
 
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -201,4 +202,10 @@ input[type="call"] {
 ::-webkit-scrollbar-track {
   background: #f0f0f0;
   border-radius: 10px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: #c1c1c1 #f0f0f0;
+  }
 }
