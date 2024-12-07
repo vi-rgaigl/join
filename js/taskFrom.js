@@ -358,11 +358,19 @@ function resetErrorMassage() {
   checkIfError();
 }
 
+/**
+ * Change the value of the Subtask
+ * @param {event} event - Input event
+ * @param {number} indexOfSubtask - Index of the Subtask
+ */
 function changeSubtask(event, indexOfSubtask) {
   task.subtasks[indexOfSubtask].subtitle = event.target.value;
   checkSubtasks();
 }
 
+/**
+ * Check if all Subtasks filled
+ */
 function checkSubtasks() {
   let listOfSubtasks = document.getElementsByClassName(
     "input-subtask-list-item"
