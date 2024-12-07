@@ -190,24 +190,28 @@ function getMenue(task) {
   switch (task.status) {
     case "to-do":
       return `               
+      <p class="card-menue-title">Change to:</p>
       <p onclick="changeStatus(event,'in-progress','${task.id}')">In progess</p>
       <p onclick="changeStatus(event,'await-feedback','${task.id}')">Await feedback</p>
       <p onclick="changeStatus(event,'done','${task.id}')">Done</p>`;
 
     case "in-progress":
       return `               
+      <p class="card-menue-title">Change to:</p>
       <p onclick="changeStatus(event,'to-do','${task.id}')">To do</p>
       <p onclick="changeStatus(event,'await-feedback','${task.id}')">Await feedback</p>
       <p onclick="changeStatus(event,'done','${task.id}')">Done</p>`;
 
     case "await-feedback":
-      return `               
+      return `             
+      <p class="card-menue-title">Change to:</p>  
       <p onclick="changeStatus(event,'to-do','${task.id}')">To do</p>
       <p onclick="changeStatus(event,'in-progress','${task.id}')">In progess</p>
       <p onclick="changeStatus(event,'done','${task.id}')">Done</p>`;
 
     case "done":
-      return `               
+      return `           
+      <p class="card-menue-title">Change to:</p>    
       <p onclick="changeStatus(event,'to-do','${task.id}')">To do</p>
       <p onclick="changeStatus(event,'in-progress','${task.id}')">In progess</p>
       <p onclick="changeStatus(event,'await-feedback','${task.id}')">Await feedback</p>`;
