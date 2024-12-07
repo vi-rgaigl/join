@@ -4,7 +4,6 @@
 
 #application-content {
   max-width: var(--app-max-width);
-  /* width: 100%; */
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -236,12 +235,17 @@
 }
 
 @media (max-width: 860px) {
+  #application-content {
+    overflow-y: auto;
+    height: 86%;
+  }
+
   #summary-greacing-mobile {
     position: absolute;
     top: 0;
     right: 0;
     left: 0;
-    height: 78%;
+    height: 100%;
     background-color: var(--silk);
     display: flex;
     flex-direction: column;
@@ -273,6 +277,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 40px;
+    margin-bottom: 24px;
     width: auto;
   }
 
