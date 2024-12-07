@@ -4,7 +4,6 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    max-width: var(--desktop-max-width);
     background-color: #F6F7F8;
 }
 
@@ -23,7 +22,6 @@
     top: 0;
     left: 0;
     right: 0;
-    max-width: var(--desktop-max-width);
     display: flex;
     justify-content: end;
 }
