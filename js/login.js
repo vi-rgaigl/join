@@ -66,7 +66,6 @@ function login() {
     if (!user || user.password !== formData.password) {
         setErrorMessage('email', 'Email or password not correct.');
         setErrorMessage('password', 'Email or password not correct.');
-        clearLoginForm();
         return;
     } else {
         clearErrorMessage('email');
