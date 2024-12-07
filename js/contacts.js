@@ -94,6 +94,7 @@ async function showContactDetails(id) {
   let contactDetailsContainer = document.getElementById("current-contact");
   if (contactDetailsContainer) {
     contactDetailsContainer.classList.remove("slide-in-right");
+    let replayAnimationSlide = contactDetailsContainer.offsetWidth;
     contactDetailsContainer.classList.add("slide-in-right");
     contactDetailsContainer.innerHTML = contactDetailsHTML;
     document.getElementById("contactDetailsContainer").classList.add("active");
