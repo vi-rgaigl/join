@@ -308,7 +308,7 @@ function getListOfSubtasks(subtasks, id) {
  * @param {[]} subtasks - List of Subtasks
  * @returns HTML
  */
-function getListOfSubtasksEdit(subtasks) {
+function getListOfSubtasksEditold(subtasks) {
   let html = "";
   if (subtasks === false) {
     return "";
@@ -316,6 +316,26 @@ function getListOfSubtasksEdit(subtasks) {
     subtasks.forEach((subtask, index) => {
       html += `<div class="subtask-list-item" data-done="${subtask.done}">
       ${subtask.subtitle}
+      <img
+        src="./assets/icons/delete.svg"
+        alt="delete"
+        class="subtask-list-img"
+        onclick="deleteSubtask(${index})"
+      />
+    </div>`;
+    });
+    return html;
+  }
+}
+
+function getListOfSubtasksEdit(subtasks) {
+  let html = "";
+  if (subtasks === false) {
+    return "";
+  } else {
+    subtasks.forEach((subtask, index) => {
+      html += `<div class="subtask-list-item" data-done="${subtask.done}">
+      <input oninput="changeSubtask(event,${index})" class="input-subtask-list-item" type="text" value="${subtask.subtitle}">
       <img
         src="./assets/icons/delete.svg"
         alt="delete"
@@ -363,5 +383,9 @@ function getListOfUsers(assignedTo, contacts) {
  * @returns checked if assigned
  */
 function ifUserAssigned(assignedTo, userId) {
-  return assignedTo.includes(userId) ? "checked" : "";
+  if (assignedTo === false) {
+    return "";
+  } else {
+    return assignedTo.includes(userId) ? "checked" : "";
+  }
 }

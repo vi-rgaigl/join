@@ -245,6 +245,12 @@ select:focus {
   line-height: 1.5;
 }
 
+.input-subtask-list-item {
+  border: none;
+  background-color: transparent;
+  width: 95%;
+}
+
 @media (max-width: 1120px) {
   .application-content {
     margin-left: 24px;

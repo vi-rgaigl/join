@@ -9,7 +9,12 @@ let task = {
   subtasks: false,
   title: "",
 };
-let errorTask = { Title: false, DueDate: false, Category: false };
+let errorTask = {
+  Title: false,
+  DueDate: false,
+  Category: false,
+  Subtask: false,
+};
 
 /**
  * Toggel the status of dropdown
@@ -205,7 +210,7 @@ function getAssignedContact(assignId, contacts) {
  * Set submit button initail disable
  */
 function setButtenDisable() {
-  errorTask = { Title: true, DueDate: true, Category: true };
+  errorTask = { Title: true, DueDate: true, Category: true, Subtask: false };
   checkIfError();
 }
 
@@ -298,6 +303,7 @@ function deleteSubtask(indexOfSubtak) {
     task.subtasks = false;
   }
   renderSubtasks(task);
+  checkSubtasks();
 }
 
 /**
@@ -348,6 +354,30 @@ function resetErrorMassage() {
   errorMassage("", "Title");
   errorMassage("", "DueDate");
   errorMassage("", "Category");
-  errorTask = { Title: true, DueDate: true, Category: true };
+  errorTask = { Title: true, DueDate: true, Category: true, Subtask: false };
+  checkIfError();
+}
+
+function changeSubtask(event, indexOfSubtask) {
+  task.subtasks[indexOfSubtask].subtitle = event.target.value;
+  checkSubtasks();
+}
+
+function checkSubtasks() {
+  let listOfSubtasks = document.getElementsByClassName(
+    "input-subtask-list-item"
+  );
+  let isError = false;
+  if (listOfSubtasks.length > 0) {
+    Array.from(listOfSubtasks).forEach((element) => {
+      if (element.value == "") {
+        isError = true;
+        element.parentNode.classList.add("errorSubtask");
+      } else {
+        element.parentNode.classList.remove("errorSubtask");
+      }
+    });
+  }
+  errorTask.Subtask = isError;
   checkIfError();
 }
