@@ -106,7 +106,7 @@ function validateSignupForm(formData) {
   if (!checkPasswordRegex(formData.password)) {
     setErrorMessage(
       "password",
-      "At least 8 chars, 1 uppercase, 1 digit, 1 special char."
+      "At least 8 charakters, 1 uppercase and 1 digit."
     );
     isValid = false;
   } else {
@@ -157,7 +157,7 @@ function checkEmailRegex(email) {
  */
 function checkPasswordRegex(password) {
   let passwordRegex =
-    /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.-_#+])[A-Za-z\d@$!%*?&.-_#+]{8,}$/;
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
   return passwordRegex.test(password);
 }
 
