@@ -208,8 +208,12 @@
   border-radius: 8px;
 }
 
-.card-menue p:hover {
+.card-menue p:not(.card-menue-title):hover {
   background-color: var(--item-light-blue);
+}
+
+.card-menue-title {
+  color: white !important;
 }
 
 .card-menue-box:hover .card-menue {
@@ -222,6 +226,7 @@
   flex-direction: column;
   gap: 4px;
   padding: 12px;
+  padding-top: 15px;
   border-radius: 16px 0 16px 16px;
   animation: fadeIn 125ms;
 }
