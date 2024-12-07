@@ -66,6 +66,12 @@ function startDragging(id) {
   dragginTaskId = id;
 }
 
+/**
+ * Changes the status of a task and updates the data.
+ * @param {Event} event - The event object.
+ * @param {string} newStatus - The new status to set for the task.
+ * @param {number} id - The ID of the task to update.
+ */
 async function changeStatus(event, newStatus, id) {
   event.stopPropagation();
   let task = tasks.find((task) => task.id === id);
@@ -78,6 +84,10 @@ async function changeStatus(event, newStatus, id) {
   }
 }
 
+/**
+ * Opens the menu and stops the event from propagating.
+ * @param {Event} event - The event object.
+ */
 function openMenue(event) {
   event.stopPropagation();
 }
