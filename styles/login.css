@@ -112,6 +112,7 @@
 }
 
 .show-hidden-password {
+    background-color: tomato;
     position: relative;
     bottom: 70px;
     right: -93%;
@@ -261,11 +262,27 @@ input[type="checkbox"] {
 }
 
 @media (max-width: 360px) {
+    .headline h1 {
+        font-size: 40px;
+    }
+    .input-line {
+        margin-top: 12px;
+    }
+    .button-line {
+        margin-top: 12px;
+    }
+    .checkbox-line {
+        margin-top: -50px;
+    }
+    .show-hidden-password {
+        right: -79%;
+    }
     .login-body {
         margin-top: 14vh;
     }
     .login-form-box {
-        width: 86vw;
+        width: 92vw;
+        height: 380px;
         border-radius: 16px;
     }
     .login-form-pad-wd {
