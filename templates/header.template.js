@@ -6,7 +6,7 @@ function getHeaderTemplate() {
   return /*html*/ `
         <div class="header-group">
             <div class="header-group-left">
-                <div class="header-group-logo"></div>
+                <div class="header-group-logo" onclick="window.open('./summaryUser.html','_self')"></div>
                 <div class="header-headline-text">Kanban Project Management Tool</div>
             </div>
             <div class="header-group-right">
