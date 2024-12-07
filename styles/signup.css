@@ -75,7 +75,7 @@
 /* Media queries for different screen sizes */
 @media (max-height: 920px) {
     .signup-body {
-        margin-top: 16vh;
+        margin-top: 14vh;
     }
 }
 @media (max-height: 760px) {
@@ -150,11 +150,14 @@
 }
 
 @media (max-width: 360px) {
+    form {
+        width: 112%;
+    }
     .signup-title {
         font-size: 46px;
     }
     .signup-form-box {
-        width: 90vw;
+        width: 92vw;
         height: 456px;
         border-radius: 16px;
     }
@@ -179,6 +182,7 @@
         margin-top: -12px;
     }
     .footer-login {
+        margin-top: 85px;
         width: 218px;
     }
 }
