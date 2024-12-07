@@ -299,6 +299,10 @@ select:focus {
     height: 70%;
   }
 
+  .form {
+    height: 100%;
+  }
+
   .button-white,
   .button-blue {
     padding: 12px 20px;
