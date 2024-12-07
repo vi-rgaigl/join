@@ -201,7 +201,6 @@ async function saveNewContact() {
 
 /**
  * Checks if the email matches the required pattern.
- *
  * @param {string} email - The email to check.
  * @returns {boolean} True if the email matches the pattern, false otherwise.
  */
@@ -220,7 +219,6 @@ function checkEmailRegex(email) {
 
 /**
  * Checks if the password matches the required pattern.
- *
  * @param {string} password - The password to check.
  * @returns {boolean} True if the password matches the pattern (at least 8 char, 1 Uppercase, 1 digit, 1 special char), false otherwise.
  */
@@ -237,7 +235,6 @@ function checkName(name) {
 
 /**
  * Sets an error message for a specified element.
- *
  * @param {string} elementId - The ID of the element where the error message will be displayed.
  * @param {string} message - The error message to display.
  */
@@ -251,7 +248,6 @@ function setErrorMessage(id, message) {
 
 /**
  * Clears the error message for a specified element.
- *
  * @param {string} elementId - The ID of the element where the error message will be cleared.
  */
 function clearErrorMessage(id) {
