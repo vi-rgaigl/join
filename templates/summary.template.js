@@ -1,3 +1,9 @@
+/**
+ * Generates the HTML template for the summary section.
+ * @param {Array} tasks - The list of tasks.
+ * @param {string} user - The name of the user.
+ * @returns {string} - The HTML template for the summary section.
+ */
 function getTemplateSummary(tasks, user) {
   return `<div class="summary-data-left">
               <div class="summary-data-row">
@@ -64,6 +70,11 @@ function getTemplateSummary(tasks, user) {
             </div>`;
 }
 
+/**
+ * Generates the greeting HTML for the summary section.
+ * @param {string} user - The name of the user.
+ * @returns {string} - The HTML greeting for the summary section.
+ */
 function getGreacing(user) {
   if (user == "guest") {
     return `<div class="summary-data-text">${getGreacingText()}</div>`;
@@ -73,6 +84,13 @@ function getGreacing(user) {
   }
 }
 
+/**
+ * Gets the number of tasks with a specific status.
+ * This function filters the tasks by their status and returns the count.
+ * @param {Array} tasks - The list of tasks.
+ * @param {string} listName - The status of the tasks to count.
+ * @returns {number} - The number of tasks with the specified status.
+ */
 function getNumbersOfList(tasks, listName) {
   let tasksOfList = tasks.filter((task) => {
     return task.status === listName;
@@ -80,6 +98,12 @@ function getNumbersOfList(tasks, listName) {
   return tasksOfList.length;
 }
 
+/**
+ * Gets the number of tasks with a specific priority.
+ * @param {Array} tasks - The list of tasks.
+ * @param {string} listName - The priority of the tasks to count.
+ * @returns {number} - The number of tasks with the specified priority.
+ */
 function getNumbersOfPrio(tasks, listName) {
   let tasksOfList = tasks.filter((task) => {
     return task.prio === listName;
@@ -87,6 +111,12 @@ function getNumbersOfPrio(tasks, listName) {
   return tasksOfList.length;
 }
 
+/**
+ * Gets the due date of the task with the highest priority.
+ * @param {Array} tasks - The list of tasks.
+ * @param {string} listName - The priority of the tasks to filter.
+ * @returns {string} - The formatted due date of the task with the highest priority.
+ */
 function getDateOfPrio(tasks, listName) {
   let listOfFilteredTasks = tasks.filter((task) => {
     return task.prio === listName;
@@ -95,10 +125,20 @@ function getDateOfPrio(tasks, listName) {
   return fromatDate(listOfSortedTasks[0].dueDate);
 }
 
+/**
+ * Sorts the tasks by their due date.
+ * @param {Array} tasks - The list of tasks.
+ * @returns {Array} - The sorted list of tasks.
+ */
 function sortByDate(tasks) {
   return tasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
 }
 
+/**
+ * Formats a date string into a readable format.
+ * @param {string} dateString - The date string to format.
+ * @returns {string} - The formatted date string.
+ */
 function fromatDate(dateString) {
   const date = new Date(dateString);
   return date.toLocaleDateString("en-US", {
@@ -108,6 +148,10 @@ function fromatDate(dateString) {
   });
 }
 
+/**
+ * Gets the greeting text based on the current time.
+ * @returns {string} - The greeting text.
+ */
 function getGreacingText() {
   const now = new Date();
   const hour = now.getHours();

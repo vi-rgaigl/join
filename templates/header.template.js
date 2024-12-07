@@ -1,3 +1,7 @@
+/**
+ * Generates the HTML template for the header.
+ * @returns {string} - The HTML template for the header.
+ */
 function getHeaderTemplate() {
   return /*html*/ `
         <div class="header-group">
@@ -27,6 +31,10 @@ function getHeaderTemplate() {
     `;
 }
 
+/**
+ * Generates the HTML template for the header without login-specific elements.
+ * @returns {string} - The HTML template for the header without login-specific elements.
+ */
 function getHeaderNoLoginTemplate() {
   return /*html*/ `
     <div class="header-group-left">
