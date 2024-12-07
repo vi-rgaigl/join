@@ -168,6 +168,10 @@ function renderOverviewTask(id) {
   boardDialogRef.innerHTML = renderDialogTaskOverview(getTask(id), contacts);
 }
 
+/**
+ * Opens the Add Task dialog with a specific status.
+ * @param {string} status - The status to set for the new task.
+ */
 function openDialogAddTask(status) {
   let addTaskDialogRef = document.getElementById("addTaskDialog");
   addTaskDialogRef.innerHTML = getTemplateAddTask(true);
