@@ -1,3 +1,8 @@
+/**
+ * Generates the HTML template for the Add Task form. 
+ * @param {boolean} ifDialog - A flag indicating whether the template is used in a dialog.
+ * @returns {string} - The HTML template for the Add Task form.
+ */
 function getTemplateAddTask(ifDialog) {
   return `<div class="addTask-Content">
             ${getHead(ifDialog)}
@@ -175,6 +180,11 @@ function getTemplateAddTask(ifDialog) {
           </div>`;
 }
 
+/**
+ * Generates the header HTML for the Add Task form.
+ * @param {boolean} ifDialog - A flag indicating whether the template is used in a dialog.
+ * @returns {string} - The HTML header for the Add Task form.
+ */
 function getHead(ifDialog) {
   if (ifDialog) {
     return `<div class="dialog-header-addTask">
