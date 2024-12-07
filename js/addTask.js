@@ -14,6 +14,9 @@ async function initLoad() {
   }
 }
 
+/**
+ * Renders the Add Task template into the application content area.
+ */
 function renderAddTask() {
   let contentRef = document.getElementById("application-content");
   contentRef.innerHTML = getTemplateAddTask(false);
