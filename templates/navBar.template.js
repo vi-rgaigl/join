@@ -1,3 +1,8 @@
+/**
+ * Generates the HTML template for the navigation bar.
+ * @param {string} mobile - A string to differentiate between mobile and desktop views.
+ * @returns {string} - The HTML template for the navigation bar.
+ */
 function getNavbarTemplate(mobile) {
   return /*html*/ `<div class="navbar-main">
         <div id="navbar_logo" class="navbar-logo">
@@ -34,6 +39,10 @@ function getNavbarTemplate(mobile) {
     `;
 }
 
+/**
+ * Generates the HTML template for the navigation bar without login-specific elements.
+ * @returns {string} - The HTML template for the navigation bar without login-specific elements.
+ */
 function getNavbarNoLoginTemplate() {
   return /*html*/ `
         
