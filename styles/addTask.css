@@ -154,6 +154,7 @@ label {
   color: white;
   font-size: 12px;
   height: 32px;
+  min-width: 32px;
   width: 32px;
   border-radius: 50%;
   border: 1px solid #ffffff;
@@ -279,6 +280,12 @@ select:focus {
     justify-content: center;
     flex-wrap: wrap;
     gap: 16px;
+  }
+
+  .assinged-users {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 8px;
   }
 }
 
