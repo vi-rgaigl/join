@@ -13,7 +13,7 @@ function renderDialogTaskOverview(task, contacts) {
                   <img src="./assets/icons/close.svg" alt="closeButton" />
                 </div>
               </div>
-              <h1>${task.title}</h1>
+              <h1 class="title">${task.title}</h1>
               <div>${task.description}</div>
               <div class="headline">Due date:
                 <p>${formatDate(task.dueDate)}</p>
