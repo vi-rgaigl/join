@@ -26,11 +26,17 @@
   align-items: center;
 }
 
+.help-headline {
+  margin: 0;
+  font-size: 61px;
+  font-weight: 700;
+}
+
 .arrowBack {
-  width: 37px;
-  height: 37px;
-  background-image: url("../assets/icons/");
-  background-size: 24px 24px;
+  width: 48px;
+  height: 48px;
+  background-image: url("../assets/icons/arrow-left-line.svg");
+  background-size: 48px 48px;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -42,5 +48,30 @@
 @media (max-width: 1100px) {
   main {
     margin-left: unset;
+  }
+}
+
+
+@media (max-width: 1100px) {
+  .help-content {
+    margin-left: 0px !important;
+  }
+}
+
+@media (max-width: 580px) {
+
+  .wrapHead {
+    margin-bottom: 32px;
+  }
+  
+  .help-headline {
+    font-size: 42px;
+  }
+
+  .help-content {
+    padding-top: 8px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    margin-bottom: 100px;
   }
 }

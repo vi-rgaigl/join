@@ -54,11 +54,15 @@
 }
 
 @media (max-width: 580px) {
+  .wrapHead {
+    margin-bottom: 32px;
+  }
   .legal-notice-headline {
-    font-size: 48px;
+    font-size: 42px;
   }
 
-  .legal-notice-content {
+  .legal-notice-content { 
+    padding-top: 8px !important;
     padding-left: 8px !important;
     padding-right: 8px !important;
     margin-bottom: 100px;
