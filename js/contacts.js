@@ -148,6 +148,7 @@ async function handleSaveContact(updatedContact) {
     document
       .getElementById("contactDetailsContainer")
       .classList.remove("active");
+    closeDialog();
   } catch (error) {
     console.error("Fehler beim Speichern des Kontakts:", error);
     alert("Failed to save the contact. Please try again.");
@@ -235,6 +236,11 @@ function checkName(name) {
   }
 }
 
+/**
+ * Validates a phone number using a regular expression.
+ * @param {string} phone - The phone number to validate.
+ * @returns {boolean} True if the phone number is valid, otherwise false.
+ */
 function checkPhoneRegex(phone) {
   let phoneRegex = /(?:([+]\d{1,4})[-.\s]?)?(?:[(](\d{1,3})[)][-.\s]?)?(\d{1,4})[-.\s]?(\d{1,4})[-.\s]?(\d{1,9})/;
   if (phoneRegex.test(phone)) {
