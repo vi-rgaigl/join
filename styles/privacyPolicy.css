@@ -35,10 +35,10 @@
 }
 
 .arrowBack {
-  width: 37px;
-  height: 37px;
+  width: 48px;
+  height: 48px;
   background-image: url("../assets/icons/arrow-left-line.svg");
-  background-size: 24px 24px;
+  background-size: 48px 48px;
   background-position: center;
   background-repeat: no-repeat;
 }

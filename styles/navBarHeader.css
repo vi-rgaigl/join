@@ -263,8 +263,11 @@ a .navbar-footer-link:hover {
 
   .header-group-right {
     width: 64px;
+    margin-right: 16px;
   }
-
+  .header-group-logo {
+    margin-left: -30px;
+  }
   .header-avatar {
     height: 40px;
     width: 40px;
