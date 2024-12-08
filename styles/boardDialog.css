@@ -1,5 +1,6 @@
 #boardDialog {
   width: 525px;
+  height: 90%;
   border-radius: 30px;
   background-color: white;
   border: none;
@@ -30,11 +31,14 @@
   max-height: calc(100vh - 160px);
   overflow: auto;
   padding: 0 20px;
+  height: 100%;
 }
 
 .dialog-task-overview {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
   gap: 24px;
 }
 
