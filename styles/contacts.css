@@ -431,6 +431,7 @@ hr {
 
   .contact-list-container {
     width: 97%;
+    height: 100vh;
   }
 
   .contact-details-container {
