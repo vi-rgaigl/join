@@ -46,12 +46,13 @@
   width: 115%;
 }
 
-.back-to-login {
-  width: 6%;
-  cursor: pointer;
+.back-to-login-link {
+  display: flex;
+  height: 48px;
 }
 
 .back-to-login-img {
+  cursor: pointer;
   height: 48px;
   width: 48px;
 }
@@ -112,9 +113,7 @@
 
 @media (max-width: 860px) {
   .logo-signup {
-    height: 120px;
-    top: 70px;
-    left: 67px;
+    display: none;
   }
   .signup-form-box {
     width: 72vw;
@@ -134,11 +133,6 @@
   }
   .signup-form-pad-wd {
     padding: 14px 24px 51px 24px;
-  }
-  .logo-signup {
-    height: 90px;
-    top: 20px;
-    left: 0px;
   }
   .signup-title {
     font-size: 50px;
@@ -162,11 +156,6 @@
   }
   .mrg-top-signup-mobile {
     margin-top: 16px;
-  }
-  .logo-signup {
-    height: 60px;
-    top: 20px;
-    left: 0px;
   }
   .back-to-login {
     width: 20%;

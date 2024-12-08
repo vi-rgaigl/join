@@ -95,7 +95,7 @@
 }
 
 .headline {
-  width: 94%;
+  width: 81%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -217,11 +217,6 @@ input[type="checkbox"] {
     top: 50px;
     left: 67px;
   }
-  .logo-signup {
-    height: 120px;
-    top: 70px;
-    left: 67px;
-  }
   .login-form-box {
     width: 72vw;
   }
@@ -250,9 +245,6 @@ input[type="checkbox"] {
     height: 90px;
     top: 20px;
     left: 20px;
-  }
-  .logo-signup {
-    display: none;
   }
   .footer-login {
     bottom: 24px;
