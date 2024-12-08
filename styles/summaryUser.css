@@ -294,7 +294,8 @@
 
 @media (max-width: 530px) {
   #application-content {
-    padding: 40px 16px;
+    padding: 16px 16px;
+    height: 100%;
   }
 
   .summary-data-row {
