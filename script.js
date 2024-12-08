@@ -59,6 +59,6 @@ function showPopupMessage(elementId, message) {
     setTimeout(() => {
       popup.classList.remove("show");
       resolve();
-    }, 3000); // Show the popup for 3 seconds
+    }, 1500); // Show the popup for 1,5 seconds
   });
 }
