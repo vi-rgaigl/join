@@ -91,4 +91,26 @@
         background-repeat: no-repeat;
     }
 
+    @keyframes moveToCornerAndShrink {
+        0% {}
+    
+        100% {
+            transform: translate(-50%, -50%) scale(0.35);
+            top: 80px;
+            left: 60px;
+        }
+    }
+
+}
+
+@media (max-width: 860px) {
+    @keyframes moveToCornerAndShrink {
+        0% {}
+    
+        100% {
+            transform: translate(-50%, -50%) scale(0.35);
+            top: 60px;
+            left: 40px;
+        }
+    }
 }
