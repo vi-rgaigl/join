@@ -166,7 +166,8 @@ async function saveEditedContact() {
   let phone = document.getElementById("phone").value.trim();
   let nameCorrect = checkName(name);
   let mailCorrect = checkEmailRegex(email);
-  if (nameCorrect && mailCorrect) {
+  let phoneCorrect = checkPhoneRegex(phone);
+  if (nameCorrect && mailCorrect && phoneCorrect) {
     let updatedContact = {
       name: name,
       email: email,
@@ -187,7 +188,8 @@ async function saveNewContact() {
   let phone = document.getElementById("phone").value.trim();
   let nameCorrect = checkName(name);
   let mailCorrect = checkEmailRegex(email);
-  if (nameCorrect && mailCorrect) {
+  let phoneCorrect = checkPhoneRegex(phone);
+  if (nameCorrect && mailCorrect && phoneCorrect) {
     let newContact = {
       name: name,
       email: email,
@@ -229,6 +231,18 @@ function checkName(name) {
   }
   {
     setErrorMessage("name", "This field ist requiered.");
+    return false;
+  }
+}
+
+function checkPhoneRegex(phone) {
+  let phoneRegex = /(?:([+]\d{1,4})[-.\s]?)?(?:[(](\d{1,3})[)][-.\s]?)?(\d{1,4})[-.\s]?(\d{1,4})[-.\s]?(\d{1,9})/;
+  if (phoneRegex.test(phone)) {
+    clearErrorMessage("phone");
+    return true;
+  }
+  {
+    setErrorMessage("phone", "Please enter a valid phone number.");
     return false;
   }
 }
