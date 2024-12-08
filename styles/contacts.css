@@ -386,13 +386,13 @@ hr {
   }
 }
 
-@media(max-height: 780px) {
+@media (max-height: 780px) {
   .contact-list {
     height: 72vh;
   }
 }
 
-@media(max-height: 680px) {
+@media (max-height: 680px) {
   .contact-list {
     height: 68vh;
   }
@@ -462,7 +462,7 @@ hr {
 
 @media (max-width: 560px) {
   .contact-list {
-    height: 15%;
+    height: 70%;
   }
 }
 

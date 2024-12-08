@@ -242,7 +242,8 @@ function checkName(name) {
  * @returns {boolean} True if the phone number is valid, otherwise false.
  */
 function checkPhoneRegex(phone) {
-  let phoneRegex = /(?:([+]\d{1,4})[-.\s]?)?(?:[(](\d{1,3})[)][-.\s]?)?(\d{1,4})[-.\s]?(\d{1,4})[-.\s]?(\d{1,9})/;
+  let phoneRegex =
+    /(?:([+]\d{1,4})[-.\s]?)?(?:[(](\d{1,3})[)][-.\s]?)?(\d{1,4})[-.\s]?(\d{1,4})[-.\s]?(\d{1,9})/;
   if (phoneRegex.test(phone)) {
     clearErrorMessage("phone");
     return true;
@@ -286,10 +287,7 @@ async function pushToFirebase(newContact) {
     await pushData("contacts", newContact);
     contactsList.push(newContact);
     renderContactList();
-    await showPopupMessage(
-      "signup-popup-message",
-      "Contact succesfully created "
-    );
+    showPopupMessage("signup-popup-message", "Contact succesfully created ");
     closeDialog();
   } catch (error) {
     console.error("Error saving new contact:", error);

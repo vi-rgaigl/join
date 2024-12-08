@@ -191,7 +191,7 @@ async function submitNewTask(ifDialog) {
  */
 function renderDropdownAssinged() {
   let dropdownRef = document.getElementById("dropdown-list");
-  dropdownRef.innerHTML += getListOfUsers([], contacts);
+  dropdownRef.innerHTML = getListOfUsers([], contacts);
 }
 
 /**
