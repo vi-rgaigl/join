@@ -16,6 +16,7 @@
   box-shadow: 0px 0px 4px 0px #00000029;
   padding: 40px 20px;
   overflow: hidden;
+  height: 90%;
 }
 
 #addTaskDialog:focus-visible,

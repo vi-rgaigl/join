@@ -314,6 +314,10 @@ select:focus {
     padding-left: 24px;
     padding-right: 24px;
   }
+
+  .input-subtask-list-item {
+    width: 90%;
+  }
 }
 @media (max-width: 560px) {
   .form-footer {
