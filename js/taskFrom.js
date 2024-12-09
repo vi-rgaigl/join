@@ -176,8 +176,13 @@ async function submitNewTask(ifDialog) {
   try {
     delete task.id;
     await pushData("tasks", task);
-    resetNewTask();
-    showPopupMessage("addTask-popup-message", "Task added to board");
+    // resetNewTask();
+    if (!ifDialog) {
+      setToLocalStorage("newTask", true);
+      window.location.href = "./board.html";
+    } else {
+      showPopupMessage("addTask-popup-message", "Task added to board");
+    }
     if (ifDialog) {
       loadData();
     }

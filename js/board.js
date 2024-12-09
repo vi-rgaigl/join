@@ -2,6 +2,13 @@ let tasks = [];
 let contacts = [];
 let dragginTaskId;
 
+function ifNewTastAdded() {
+  if (getFromLocalStorage("newTask")) {
+    showPopupMessage("addTask-popup-message", "Task added to board");
+    removeFromLocalStorage("newTask");
+  }
+}
+
 /**
  * Inital load of all Data from Firebase
  */
