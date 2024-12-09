@@ -164,7 +164,7 @@ async function saveEditedContact() {
   }
   let name = document.getElementById("name").value.trim();
   let email = document.getElementById("email").value.trim();
-  let phone = document.getElementById("phone").value.trim();
+  let phone = document.getElementById("phone").value.trim().replace(/\s+/g, '');
   let nameCorrect = checkName(name);
   let mailCorrect = checkEmailRegex(email);
   let phoneCorrect = checkPhoneRegex(phone);
@@ -186,7 +186,7 @@ async function saveEditedContact() {
 async function saveNewContact() {
   let name = document.getElementById("name").value.trim();
   let email = document.getElementById("email").value.trim();
-  let phone = document.getElementById("phone").value.trim();
+  let phone = document.getElementById("phone").value.trim().replace(/\s+/g, '');
   let nameCorrect = checkName(name);
   let mailCorrect = checkEmailRegex(email);
   let phoneCorrect = checkPhoneRegex(phone);
@@ -242,8 +242,7 @@ function checkName(name) {
  * @returns {boolean} True if the phone number is valid, otherwise false.
  */
 function checkPhoneRegex(phone) {
-  let phoneRegex =
-    /(?:([+]\d{1,4})[-.\s]?)?(?:[(](\d{1,3})[)][-.\s]?)?(\d{1,4})[-.\s]?(\d{1,4})[-.\s]?(\d{1,9})/;
+  let phoneRegex = /^\+?\d[\d\s]*$/;
   if (phoneRegex.test(phone)) {
     clearErrorMessage("phone");
     return true;
