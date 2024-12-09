@@ -264,21 +264,45 @@ function getAssignInitialsName(listOfAssign, contacts) {
  */
 function getAssignInitialsNameEdit(listOfAssign, contacts) {
   let beginn = ``;
+  let numberOfIcons = 0;
+  let numberOfUsers = 0;
   if (listOfAssign !== false) {
     listOfAssign.forEach((assignId) => {
       let assignedContact = getAssignedContact(assignId, contacts);
-      if (assignedContact != undefined) {
-        beginn += `<div
-                class="assign-name"
-                style="background-color: ${assignedContact.color}"
-              >
-              ${assignedContact.initials}
-              </div>
-              `;
+      if (assignedContact != undefined && numberOfIcons < 5) {
+        numberOfIcons++;
+        beginn += getIconAssig(assignedContact);
       }
+      numberOfUsers++;
     });
+    if (numberOfUsers > 5) {
+      beginn += getIconsOverflow(numberOfUsers);
+    }
   }
   return beginn;
+}
+
+/**
+ * Generats the HTML of Icon assign contacts
+ * @param {{}} assignedContact - Assigned Contact
+ * @returns HTML of Icon User
+ */
+function getIconAssig(assignedContact) {
+  return ` <div class="assign-name" style="background-color: ${assignedContact.color}">
+              ${assignedContact.initials}
+            </div>`;
+}
+
+/**
+ * Generats the HTML of Icon with numbers of assign contacts
+ * @param {number} numberOfUsers - Number of all Users
+ * @returns HTML of placeholder Icon
+ */
+function getIconsOverflow(numberOfUsers) {
+  return ` <div class="assign-name" style="background-color: #919191">${
+    numberOfUsers - 5
+  }+
+            </div>`;
 }
 
 /**

@@ -337,6 +337,10 @@ select:focus {
     padding-right: 8px;
   }
 
+  .assinged-users {
+    gap: 4px;
+  }
+
   .button-white,
   .button-blue {
     padding: 12px 12px;
